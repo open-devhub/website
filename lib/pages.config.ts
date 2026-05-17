@@ -111,7 +111,7 @@ export const pages: Page[] = [
           "#terminal - a bot channel where you can run any bot commands",
           "#skullboard - a channel where messages with many reactions get sent to",
           "#tech-news - sharing and discussing the latest news in tech, programming, and the industry",
-          "#project-showcase and #work-in-progress - show off your projects, get feedback, and share what you're working on",
+          "#project-showcase - show off your projects, get feedback, and share what you're working on",
           "#coding-challenges - regular coding challenges and puzzles to sharpen your skills and have fun",
         ],
       },

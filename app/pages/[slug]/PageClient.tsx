@@ -1,23 +1,41 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { Page, PageContent } from "@/lib/pages.config";
-import { staggerContainer, fadeInUp } from "@/lib/animations";
+import { motion } from "framer-motion";
 import {
-  Clock,
+  OctagonAlert as AlertOctagon,
+  TriangleAlert as AlertTriangle,
   Calendar,
   ChevronLeft,
   ChevronRight,
+  Clock,
   Info,
-  TriangleAlert as AlertTriangle,
-  OctagonAlert as AlertOctagon,
 } from "lucide-react";
+import Link from "next/link";
+import React from "react";
 
 interface Props {
   page: Page;
   prev?: Page;
   next?: Page;
+}
+
+function Highlight({ text }: { text: string }) {
+  return text.split(/(\s+)/).map((part, i) => {
+    if (part.startsWith("#")) {
+      return (
+        <span
+          key={i}
+          className="text-[#4fbfff] hover:underline cursor-pointer hover:opacity-80 inline flex-shrink-0 transition-opacity"
+        >
+          {part}
+        </span>
+      );
+    }
+
+    return <React.Fragment key={i}>{part}</React.Fragment>;
+  });
 }
 
 function ContentBlock({ block }: { block: PageContent }) {
@@ -28,19 +46,19 @@ function ContentBlock({ block }: { block: PageContent }) {
           id={block.text?.toLowerCase().replace(/\s+/g, "-")}
           className="font-[var(--font-space-grotesk)] font-bold text-2xl text-[#f0f0f0] mt-10 mb-4 scroll-mt-28"
         >
-          {block.text}
+          <Highlight text={block.text || ""} />
         </h2>
       );
     case "h3":
       return (
         <h3 className="font-[var(--font-space-grotesk)] font-semibold text-lg text-[#f0f0f0] mt-6 mb-3">
-          {block.text}
+          <Highlight text={block.text || ""} />
         </h3>
       );
     case "p":
       return (
         <p className="text-[#9ca3af] leading-relaxed mb-4 font-[var(--font-inter)]">
-          {block.text}
+          <Highlight text={block.text || ""} />
         </p>
       );
     case "ul":
@@ -52,7 +70,7 @@ function ContentBlock({ block }: { block: PageContent }) {
               className="flex items-start gap-2 text-[#9ca3af] font-[var(--font-inter)]"
             >
               <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#4fbfff] flex-shrink-0 opacity-60" />
-              {item}
+              <Highlight text={item} />
             </li>
           ))}
         </ul>
@@ -68,7 +86,7 @@ function ContentBlock({ block }: { block: PageContent }) {
               <span className="font-[var(--font-jetbrains)] text-xs text-[#4fbfff] mt-0.5 w-5 flex-shrink-0">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              {item}
+              <Highlight text={item} />
             </li>
           ))}
         </ol>
@@ -119,7 +137,7 @@ function ContentBlock({ block }: { block: PageContent }) {
             style={{ color: s.text }}
           />
           <p className="text-sm text-[#9ca3af] font-[var(--font-inter)]">
-            {block.text}
+            <Highlight text={block.text || ""} />
           </p>
         </div>
       );
