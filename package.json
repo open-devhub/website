@@ -1,13 +1,15 @@
 {
-  "name": "devhub",
+  "name": "wesite",
   "version": "1.0.0",
   "private": true,
+  "license": "GPL-3.0-only",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -71,6 +73,7 @@
     "eslint": "8.49.0",
     "eslint-config-next": "13.5.1",
     "postcss": "8.4.30",
+    "prettier": "^3.8.3",
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.2.2"
