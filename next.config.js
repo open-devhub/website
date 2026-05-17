@@ -1,5 +1,4 @@
-const data = require("./lib/staticdata.config.ts").default;
-const { invite, github } = data;
+const redir = require("./lib/redirects.config.ts").default;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -8,23 +7,15 @@ const nextConfig = {
   },
   images: { unoptimized: true },
   async redirects() {
-    return [
-      {
-        source: "/invite",
-        destination: invite,
-        permanent: false,
-      },
-      {
-        source: "/discord",
-        destination: invite,
-        permanent: false,
-      },
-      {
-        source: "/github",
-        destination: github,
-        permanent: false,
-      },
-    ];
+    return redir
+      .map(({ sources, destination, permanent }) =>
+        sources.map((source) => ({
+          source: `${source}`,
+          destination,
+          permanent,
+        })),
+      )
+      .flat();
   },
 };
 
