@@ -1,20 +1,22 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { pageSections } from '@/lib/pages.config';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { pageSections } from "@/lib/pages.config";
+import { ChevronDown, Menu, X } from "lucide-react";
 
 interface SidebarSectionProps {
-  section: typeof pageSections[0];
+  section: (typeof pageSections)[0];
   currentSlug: string;
 }
 
 function SidebarSection({ section, currentSlug }: SidebarSectionProps) {
   const [open, setOpen] = useState(
-    section.pages.some((p) => `/pages/${p.slug}` === currentSlug || currentSlug.includes(p.slug))
+    section.pages.some(
+      (p) => `/pages/${p.slug}` === currentSlug || currentSlug.includes(p.slug),
+    ),
   );
 
   return (
@@ -24,7 +26,10 @@ function SidebarSection({ section, currentSlug }: SidebarSectionProps) {
         className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-widest text-[#4b5563] hover:text-[#9ca3af] transition-colors"
       >
         {section.title}
-        <motion.span animate={{ rotate: open ? 0 : -90 }} transition={{ duration: 0.2 }}>
+        <motion.span
+          animate={{ rotate: open ? 0 : -90 }}
+          transition={{ duration: 0.2 }}
+        >
           <ChevronDown className="w-3 h-3" />
         </motion.span>
       </button>
@@ -32,7 +37,7 @@ function SidebarSection({ section, currentSlug }: SidebarSectionProps) {
         {open && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
+            animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
             className="overflow-hidden"
@@ -45,8 +50,8 @@ function SidebarSection({ section, currentSlug }: SidebarSectionProps) {
                     <motion.span
                       className={`block px-3 py-2 rounded-lg text-sm transition-all cursor-pointer font-[var(--font-inter)] ${
                         isActive
-                          ? 'sidebar-active font-medium'
-                          : 'text-[#6b7280] hover:text-[#f0f0f0] hover:bg-[rgba(255,255,255,0.03)]'
+                          ? "sidebar-active font-medium"
+                          : "text-[#6b7280] hover:text-[#f0f0f0] hover:bg-[rgba(255,255,255,0.03)]"
                       }`}
                     >
                       {page.title}
@@ -62,7 +67,11 @@ function SidebarSection({ section, currentSlug }: SidebarSectionProps) {
   );
 }
 
-export default function PagesLayout({ children }: { children: React.ReactNode }) {
+export default function PagesLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -73,9 +82,13 @@ export default function PagesLayout({ children }: { children: React.ReactNode })
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="w-10 h-10 glass rounded-lg flex items-center justify-center text-[#9ca3af]"
-          style={{ border: '1px solid rgba(255,255,255,0.08)' }}
+          style={{ border: "1px solid rgba(255,255,255,0.08)" }}
         >
-          {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+          {mobileOpen ? (
+            <X className="w-4 h-4" />
+          ) : (
+            <Menu className="w-4 h-4" />
+          )}
         </button>
       </div>
 
@@ -89,9 +102,9 @@ export default function PagesLayout({ children }: { children: React.ReactNode })
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-y-0 left-0 w-72 z-30 pt-24 pb-8 px-4 overflow-y-auto"
             style={{
-              background: 'rgba(8,8,14,0.98)',
-              borderRight: '1px solid rgba(255,255,255,0.06)',
-              backdropFilter: 'blur(20px)',
+              background: "rgba(8,8,14,0.98)",
+              borderRight: "1px solid rgba(255,255,255,0.06)",
+              backdropFilter: "blur(20px)",
             }}
           >
             <SidebarContent currentSlug={pathname} />
@@ -108,9 +121,7 @@ export default function PagesLayout({ children }: { children: React.ReactNode })
         </aside>
 
         {/* Content */}
-        <main className="flex-1 min-w-0 pb-24">
-          {children}
-        </main>
+        <main className="flex-1 min-w-0 pb-24">{children}</main>
       </div>
     </div>
   );
@@ -125,7 +136,11 @@ function SidebarContent({ currentSlug }: { currentSlug: string }) {
         </p>
       </div>
       {pageSections.map((section) => (
-        <SidebarSection key={section.title} section={section} currentSlug={currentSlug} />
+        <SidebarSection
+          key={section.title}
+          section={section}
+          currentSlug={currentSlug}
+        />
       ))}
     </nav>
   );

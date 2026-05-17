@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 interface SectionProps {
   children: ReactNode;
@@ -8,15 +8,19 @@ interface SectionProps {
   dot?: boolean;
 }
 
-export default function Section({ children, className = '', id, grid = false, dot = false }: SectionProps) {
+export default function Section({
+  children,
+  className = "",
+  id,
+  grid = false,
+  dot = false,
+}: SectionProps) {
   return (
     <section
       id={id}
-      className={`relative px-4 md:px-6 ${grid ? 'grid-bg' : ''} ${dot ? 'dot-bg' : ''} ${className}`}
+      className={`relative px-4 md:px-6 ${grid ? "grid-bg" : ""} ${dot ? "dot-bg" : ""} ${className}`}
     >
-      <div className="relative z-10 max-w-6xl mx-auto">
-        {children}
-      </div>
+      <div className="relative z-10 max-w-6xl mx-auto">{children}</div>
     </section>
   );
 }

@@ -1,6 +1,6 @@
-import { notFound } from 'next/navigation';
-import { getPage, getAdjacentPages } from '@/lib/pages.config';
-import PageClient from '../PageClient';
+import { notFound } from "next/navigation";
+import { getPage, getAdjacentPages } from "@/lib/pages.config";
+import PageClient from "../PageClient";
 
 interface Props {
   params: { slug: string; subslug: string };
@@ -16,11 +16,11 @@ export default function SubPageRoute({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-  const { pages } = await import('@/lib/pages.config');
+  const { pages } = await import("@/lib/pages.config");
   return pages
-    .filter((p) => p.slug.includes('/'))
+    .filter((p) => p.slug.includes("/"))
     .map((p) => {
-      const [slug, subslug] = p.slug.split('/');
+      const [slug, subslug] = p.slug.split("/");
       return { slug, subslug };
     });
 }

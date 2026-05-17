@@ -1,4 +1,4 @@
-import { Variants } from 'framer-motion';
+import { Variants } from "framer-motion";
 
 export const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -22,7 +22,7 @@ export const fadeIn: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.5, ease: 'easeOut' },
+    transition: { duration: 0.5, ease: "easeOut" },
   },
 };
 
@@ -87,18 +87,21 @@ export const cardHover = {
   rest: {
     scale: 1,
     y: 0,
-    transition: { duration: 0.3, ease: 'easeOut' },
+    transition: { duration: 0.3, ease: "easeOut" },
   },
   hover: {
     scale: 1.02,
     y: -4,
-    transition: { duration: 0.3, ease: 'easeOut' },
+    transition: { duration: 0.3, ease: "easeOut" },
   },
 };
 
 export const glowHover = {
-  rest: { boxShadow: '0 0 0px rgba(0, 245, 255, 0)' },
-  hover: { boxShadow: '0 0 25px rgba(0, 245, 255, 0.3), 0 0 50px rgba(0, 245, 255, 0.15)' },
+  rest: { boxShadow: "0 0 0px rgba(0, 245, 255, 0)" },
+  hover: {
+    boxShadow:
+      "0 0 25px rgba(0, 245, 255, 0.3), 0 0 50px rgba(0, 245, 255, 0.15)",
+  },
 };
 
 export const pageTransition: Variants = {
@@ -111,7 +114,7 @@ export const pageTransition: Variants = {
   exit: {
     opacity: 0,
     y: -20,
-    transition: { duration: 0.3, ease: 'easeIn' },
+    transition: { duration: 0.3, ease: "easeIn" },
   },
 };
 
@@ -120,19 +123,19 @@ export const navLinkVariants: Variants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.08, duration: 0.4, ease: 'easeOut' },
+    transition: { delay: i * 0.08, duration: 0.4, ease: "easeOut" },
   }),
 };
 
 export const menuOverlay: Variants = {
   closed: {
     opacity: 0,
-    clipPath: 'inset(0 0 100% 0)',
+    clipPath: "inset(0 0 100% 0)",
     transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
   },
   open: {
     opacity: 1,
-    clipPath: 'inset(0 0 0% 0)',
+    clipPath: "inset(0 0 0% 0)",
     transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
   },
 };
@@ -142,7 +145,11 @@ export const menuItem: Variants = {
   open: (i: number) => ({
     opacity: 1,
     x: 0,
-    transition: { delay: 0.1 + i * 0.08, duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      delay: 0.1 + i * 0.08,
+      duration: 0.4,
+      ease: [0.22, 1, 0.36, 1],
+    },
   }),
 };
 

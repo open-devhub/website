@@ -1,17 +1,22 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { wordReveal } from '@/lib/animations';
+import { motion } from "framer-motion";
+import { wordReveal } from "@/lib/animations";
 
 interface AnimatedTextProps {
   text: string;
   className?: string;
-  as?: 'h1' | 'h2' | 'h3' | 'p' | 'span';
+  as?: "h1" | "h2" | "h3" | "p" | "span";
   delay?: number;
 }
 
-export default function AnimatedText({ text, className = '', as = 'p', delay = 0 }: AnimatedTextProps) {
-  const words = text.split(' ');
+export default function AnimatedText({
+  text,
+  className = "",
+  as = "p",
+  delay = 0,
+}: AnimatedTextProps) {
+  const words = text.split(" ");
   const Tag = as;
 
   return (
@@ -19,7 +24,7 @@ export default function AnimatedText({ text, className = '', as = 'p', delay = 0
       <motion.span
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-50px' }}
+        viewport={{ once: true, margin: "-50px" }}
         className="inline"
       >
         {words.map((word, i) => (
