@@ -6,7 +6,7 @@ export interface Page {
   title: string;
   section: string;
   description: string;
-  lastUpdated: "May 17, 2026";
+  lastUpdated: string;
   readingTime: string;
   content: PageContent[];
 }
@@ -33,10 +33,10 @@ export const pageSections: PageSection[] = [
       { slug: "how-to-ask", title: "How to Ask" },
       { slug: "how-to-help", title: "How to Help" },
       { slug: "code-of-conduct", title: "Code of Conduct" },
-      { slug: "contributing", title: "Contributing" },
       { slug: "moderation-guide", title: "Moderation Guide" },
       { slug: "staff-roles", title: "Staff Roles" },
       { slug: "faq", title: "FAQ" },
+      { slug: "acknowledgements", title: "Acknowledgements" },
     ],
   },
   {
@@ -50,6 +50,7 @@ export const pageSections: PageSection[] = [
     title: "Open Source",
     pages: [
       { slug: "github-org", title: "GitHub Organization" },
+      { slug: "contributing", title: "Contributing" },
       { slug: "project-guidelines", title: "Project Guidelines" },
       { slug: "submit-project", title: "Submitting a Project" },
     ],
@@ -59,7 +60,6 @@ export const pageSections: PageSection[] = [
     pages: [
       { slug: "privacy-policy", title: "Privacy Policy" },
       { slug: "security-notice", title: "Security Notice" },
-      { slug: "acknowledgements", title: "Acknowledgements" },
     ],
   },
 ];
@@ -418,87 +418,6 @@ export const pages: Page[] = [
   },
 
   {
-    slug: "contributing",
-    title: "How to Contribute",
-    section: "Community",
-    description:
-      "Ways to contribute to DevHub, code, community, and everything in between.",
-    lastUpdated: "May 17, 2026",
-    readingTime: "6 min read",
-    content: [
-      {
-        type: "p",
-        text: "DevHub runs on community contributions. Not just code, though we love that too, but answering questions, improving docs, running events, giving project feedback, and just showing up consistently. All of it matters.",
-      },
-      { type: "h2", text: "Ways to Contribute" },
-      {
-        type: "ul",
-        items: [
-          "Answer questions asked in channels and threads",
-          "Review pull requests in our GitHub org",
-          "Improve or add to our documentation",
-          "Share resources, challenges, posts etc. in designated forum channels",
-          "Report bugs in open source projects (you will recieve 'Bug Hunter' role on our Discord server for doing this)",
-          "Help new members get oriented",
-          "Propose and run community events",
-        ],
-      },
-      { type: "h2", text: "Code Contributions" },
-      {
-        type: "p",
-        text: "All DevHub projects live in the GitHub org. To contribute code, fork the repo, make your changes on a feature branch, and open a PR. Include a clear description of what you changed and why.",
-      },
-      { type: "h3", text: "Getting Set Up" },
-      {
-        type: "code",
-        text: `git clone ${github}/[project-name]\ncd [project-name]\nnpm install`,
-      },
-      { type: "h3", text: "Making Changes" },
-      {
-        type: "p",
-        text: "Create a new branch, and make your changes there. This keeps the main branch clean and makes it easier to review your work.",
-      },
-      {
-        type: "code",
-        text: "git checkout -b feature/your-feature-name",
-      },
-      { type: "h3", text: "Before You Open a PR" },
-      {
-        type: "p",
-        text: "Make sure your code is clean, well-formatted, and follows the project's style. Run linting and tests locally to catch any issues before opening a PR.",
-      },
-      {
-        type: "code",
-        text: "npm run lint\nnpm test",
-      },
-      {
-        type: "p",
-        text: "PRs that fail linting or tests take longer to review. Catching it yourself first saves everyone time.",
-      },
-      {
-        type: "callout",
-        variant: "info",
-        text: "All PRs require at least one review from a community maintainer before merging. First-time contributors: look for issues labeled 'good first issue'.",
-      },
-      { type: "h2", text: "Documentation Contributions" },
-      {
-        type: "p",
-        text: "Docs and resources are in the website repo. If you find something confusing, out of date, or just missing, fix it. Small improvements compound into something really good over time.",
-      },
-      { type: "h2", text: "Non-Code Contributions" },
-      {
-        type: "p",
-        text: "Some of the most impactful contributions aren't code at all. Being a consistently helpful, kind, and present community member is genuinely valuable. Moderating thoughtfully. Welcoming new members. Remembering someone's project and following up weeks later. That's what makes a community feel like a community.",
-      },
-      { type: "h2", text: "Recognition" },
-      {
-        type: "p",
-        text: "Contributors get the 'GitHub Contributor' and other roles on Discord, which are displayed separately from other online members.",
-      },
-    ],
-  },
-
-  {
     slug: "moderation-guide",
     title: "Moderation Guide",
     section: "Community",
@@ -649,13 +568,63 @@ export const pages: Page[] = [
     ],
   },
 
+  {
+    slug: "acknowledgements",
+    title: "Acknowledgements",
+    section: "Community",
+    description: "The people and tools that make DevHub possible.",
+    lastUpdated: "May 22, 2026",
+    readingTime: "3 min read",
+    content: [
+      {
+        type: "p",
+        text: "DevHub exists because a lot of people chose to put time and energy into it. This page is for saying thank you clearly.",
+      },
+      { type: "h2", text: "The Mod Team" },
+      {
+        type: "p",
+        text: "The volunteer moderators who keep the server civil and welcoming, answer the same questions with patience every time, and handle the unglamorous work of enforcement, thank you. You make the difference between a Discord server and an actual community.",
+      },
+      { type: "h2", text: "Open Source Maintainers" },
+      {
+        type: "p",
+        text: "Everyone who has opened a PR, reviewed someone else's code, filed a well-written issue, or improved documentation in a DevHub project. The projects exist because of you.",
+      },
+      { type: "h2", text: "Tools We Use" },
+      {
+        type: "ul",
+        items: [
+          "Discord, The platform the entire DevHub community runs on and communicates through.",
+          "Next.js, Powers the DevHub website with a modern and fast React framework.",
+          "Tailwind CSS, Used for building the site's clean, responsive, and customizable UI.",
+          "TypeScript, Helps keep the codebase scalable, maintainable, and type-safe.",
+          "Vercel, Hosts and deploys the DevHub website with seamless CI/CD integration.",
+          "GitHub, Hosts the source code and manages issues, pull requests, and contributions.",
+          "Node.js, Runs backend services, tooling, and development utilities across the project.",
+          "Discord.js, Powers DevHub bots and integrations within the Discord ecosystem.",
+          "ESLint & Prettier, Maintain consistent code quality and formatting across the project.",
+        ],
+      },
+      { type: "h2", text: "Inspiration" },
+      {
+        type: "p",
+        text: "Communities like The Programmer's Hangout, TCD, and The CodeVerse Hub showed what a good developer community can look like. We've learned from them.",
+      },
+      {
+        type: "callout",
+        variant: "info",
+        text: "If you believe someone or something should be acknowledged here and isn't, open a PR on the website repo or let a repo maintainer know.",
+      },
+    ],
+  },
+
   // ─── BOTS
   {
     slug: "bots",
     title: "Bots Overview",
     section: "Bots",
     description: "Overview of all bots running in the DevHub Discord server.",
-    lastUpdated: "May 17, 2026",
+    lastUpdated: "May 22, 2026",
     readingTime: "3 min read",
     content: [
       {
@@ -712,7 +681,7 @@ export const pages: Page[] = [
       },
       {
         type: "p",
-        text: "Perfect for events, voice chats, and casual hangouts.",
+        text: "Perfect for events, and casual hangouts.",
       },
       { type: "h3", text: "Giveaway Boat" },
       {
@@ -735,11 +704,11 @@ export const pages: Page[] = [
       { type: "h3", text: "Quill" },
       {
         type: "p",
-        text: "DevHub's custom utility and community bot built for server management and developer-focused features.",
+        text: "Advanced Discord developer assistant for coding, debugging, AI help, documentation lookup, and developer utilities.",
       },
       {
         type: "p",
-        text: "Handles moderation, utilities, automation, integrations, and custom server systems.",
+        text: "Supports code execution, AI assistance, documentation lookup, and developer tooling directly within Discord.",
       },
       { type: "h3", text: "Rhythm" },
       {
@@ -793,7 +762,7 @@ export const pages: Page[] = [
       },
       {
         type: "p",
-        text: "Helps power many of the community systems and daily server features.",
+        text: "Provides a wide range of features for managing the server and enhancing the community experience.",
       },
       { type: "h2", text: "Bot Commands" },
       {
@@ -905,6 +874,87 @@ export const pages: Page[] = [
       {
         type: "p",
         text: "All projects use Prettier for formatting and ESLint (or the language equivalent) for linting. Run these before opening a PR. Tests live in the same repo, check the README for the test command.",
+      },
+    ],
+  },
+
+  {
+    slug: "contributing",
+    title: "How to Contribute",
+    section: "Open Source",
+    description:
+      "Ways to contribute to DevHub, code, community, and everything in between.",
+    lastUpdated: "May 17, 2026",
+    readingTime: "6 min read",
+    content: [
+      {
+        type: "p",
+        text: "DevHub runs on community contributions. Not just code, though we love that too, but answering questions, improving docs, running events, giving project feedback, and just showing up consistently. All of it matters.",
+      },
+      { type: "h2", text: "Ways to Contribute" },
+      {
+        type: "ul",
+        items: [
+          "Answer questions asked in channels and threads",
+          "Review pull requests in our GitHub org",
+          "Improve or add to our documentation",
+          "Share resources, challenges, posts etc. in designated forum channels",
+          "Report bugs in open source projects (you will recieve 'Bug Hunter' role on our Discord server for doing this)",
+          "Help new members get oriented",
+          "Propose and run community events",
+        ],
+      },
+      { type: "h2", text: "Code Contributions" },
+      {
+        type: "p",
+        text: "All DevHub projects live in the GitHub org. To contribute code, fork the repo, make your changes on a feature branch, and open a PR. Include a clear description of what you changed and why.",
+      },
+      { type: "h3", text: "Getting Set Up" },
+      {
+        type: "code",
+        text: `git clone ${github}/[project-name]\ncd [project-name]\nnpm install`,
+      },
+      { type: "h3", text: "Making Changes" },
+      {
+        type: "p",
+        text: "Create a new branch, and make your changes there. This keeps the main branch clean and makes it easier to review your work.",
+      },
+      {
+        type: "code",
+        text: "git checkout -b feature/your-feature-name",
+      },
+      { type: "h3", text: "Before You Open a PR" },
+      {
+        type: "p",
+        text: "Make sure your code is clean, well-formatted, and follows the project's style. Run linting and tests locally to catch any issues before opening a PR.",
+      },
+      {
+        type: "code",
+        text: "npm run lint\nnpm test",
+      },
+      {
+        type: "p",
+        text: "PRs that fail linting or tests take longer to review. Catching it yourself first saves everyone time.",
+      },
+      {
+        type: "callout",
+        variant: "info",
+        text: "All PRs require at least one review from a community maintainer before merging. First-time contributors: look for issues labeled 'good first issue'.",
+      },
+      { type: "h2", text: "Documentation Contributions" },
+      {
+        type: "p",
+        text: "Docs and resources are in the website repo. If you find something confusing, out of date, or just missing, fix it. Small improvements compound into something really good over time.",
+      },
+      { type: "h2", text: "Non-Code Contributions" },
+      {
+        type: "p",
+        text: "Some of the most impactful contributions aren't code at all. Being a consistently helpful, kind, and present community member is genuinely valuable. Moderating thoughtfully. Welcoming new members. Remembering someone's project and following up weeks later. That's what makes a community feel like a community.",
+      },
+      { type: "h2", text: "Recognition" },
+      {
+        type: "p",
+        text: "Contributors get the 'GitHub Contributor' and other roles on Discord, which are displayed separately from other online members.",
       },
     ],
   },
@@ -1139,56 +1189,6 @@ export const pages: Page[] = [
           "Issues requiring physical access.",
           "Rate limiting or brute force on non-sensitive endpoints.",
         ],
-      },
-    ],
-  },
-
-  {
-    slug: "acknowledgements",
-    title: "Acknowledgements",
-    section: "Legal",
-    description: "The people and tools that make DevHub possible.",
-    lastUpdated: "May 17, 2026",
-    readingTime: "3 min read",
-    content: [
-      {
-        type: "p",
-        text: "DevHub exists because a lot of people chose to put time and energy into it. This page is for saying thank you clearly.",
-      },
-      { type: "h2", text: "The Mod Team" },
-      {
-        type: "p",
-        text: "The volunteer moderators who keep the server civil and welcoming, answer the same questions with patience every time, and handle the unglamorous work of enforcement, thank you. You make the difference between a Discord server and an actual community.",
-      },
-      { type: "h2", text: "Open Source Maintainers" },
-      {
-        type: "p",
-        text: "Everyone who has opened a PR, reviewed someone else's code, filed a well-written issue, or improved documentation in a DevHub project. The projects exist because of you.",
-      },
-      { type: "h2", text: "Tools We Use" },
-      {
-        type: "ul",
-        items: [
-          "Discord, The platform the entire DevHub community runs on and communicates through.",
-          "Next.js, Powers the DevHub website with a modern and fast React framework.",
-          "Tailwind CSS, Used for building the site's clean, responsive, and customizable UI.",
-          "TypeScript, Helps keep the codebase scalable, maintainable, and type-safe.",
-          "Vercel, Hosts and deploys the DevHub website with seamless CI/CD integration.",
-          "GitHub, Hosts the source code and manages issues, pull requests, and contributions.",
-          "Node.js, Runs backend services, tooling, and development utilities across the project.",
-          "Discord.js, Powers DevHub bots and integrations within the Discord ecosystem.",
-          "ESLint & Prettier, Maintain consistent code quality and formatting across the project.",
-        ],
-      },
-      { type: "h2", text: "Inspiration" },
-      {
-        type: "p",
-        text: "Communities like The Programmer's Hangout, TCD, and The CodeVerse Hub showed what a good developer community can look like. We've learned from them.",
-      },
-      {
-        type: "callout",
-        variant: "info",
-        text: "If you believe someone or something should be acknowledged here and isn't, open a PR on the website repo or let a repo maintainer know.",
       },
     ],
   },

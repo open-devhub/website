@@ -56,7 +56,7 @@ Open [http://localhost:3000](http://localhost:3000) and you're in.
 ## Project Structure
 
 ```
-devhub-website/
+website/
 ├── 📁 app
 │   ├── 📄 globals.css
 │   ├── 📄 layout.tsx
