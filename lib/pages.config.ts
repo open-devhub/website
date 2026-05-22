@@ -6,7 +6,7 @@ export interface Page {
   title: string;
   section: string;
   description: string;
-  lastUpdated: "May 17, 2026";
+  lastUpdated: string;
   readingTime: string;
   content: PageContent[];
 }
@@ -573,7 +573,7 @@ export const pages: Page[] = [
     title: "Acknowledgements",
     section: "Community",
     description: "The people and tools that make DevHub possible.",
-    lastUpdated: "May 17, 2026",
+    lastUpdated: "May 22, 2026",
     readingTime: "3 min read",
     content: [
       {
@@ -624,7 +624,7 @@ export const pages: Page[] = [
     title: "Bots Overview",
     section: "Bots",
     description: "Overview of all bots running in the DevHub Discord server.",
-    lastUpdated: "May 17, 2026",
+    lastUpdated: "May 22, 2026",
     readingTime: "3 min read",
     content: [
       {
@@ -681,7 +681,7 @@ export const pages: Page[] = [
       },
       {
         type: "p",
-        text: "Perfect for events, voice chats, and casual hangouts.",
+        text: "Perfect for events, and casual hangouts.",
       },
       { type: "h3", text: "Giveaway Boat" },
       {
@@ -704,11 +704,11 @@ export const pages: Page[] = [
       { type: "h3", text: "Quill" },
       {
         type: "p",
-        text: "DevHub's custom utility and community bot built for server management and developer-focused features.",
+        text: "Advanced Discord developer assistant for coding, debugging, AI help, documentation lookup, and developer utilities.",
       },
       {
         type: "p",
-        text: "Handles moderation, utilities, automation, integrations, and custom server systems.",
+        text: "Supports code execution, AI assistance, documentation lookup, and developer tooling directly within Discord.",
       },
       { type: "h3", text: "Rhythm" },
       {
@@ -762,7 +762,7 @@ export const pages: Page[] = [
       },
       {
         type: "p",
-        text: "Helps power many of the community systems and daily server features.",
+        text: "Provides a wide range of features for managing the server and enhancing the community experience.",
       },
       { type: "h2", text: "Bot Commands" },
       {
