@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { useEffect, useRef } from "react";
 
-export default async function HeroSection() {
+export default function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
