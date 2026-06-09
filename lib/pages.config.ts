@@ -81,7 +81,7 @@ export const pages: Page[] = [
       { type: "h2", text: "Step 1: Join the Discord" },
       {
         type: "p",
-        text: 'Click the "Join Discord" button on the top navbar. You\'ll land in #welcome. read #intro, it has everything you need to know in one place.',
+        text: 'Click the "Join Discord" button on the top navbar. You\'ll land in #welcome. read #info, it has everything you need to know in one place.',
       },
       { type: "h2", text: "Step 2: Read the Rules" },
       {
@@ -96,7 +96,7 @@ export const pages: Page[] = [
       { type: "h2", text: "Step 4: Introduce Yourself" },
       {
         type: "p",
-        text: "Drop a message in #introductions. No pressure to write an essay, just tell us your preferred name/nickname, favorite languages/tools/frameworks, areas of interest and your hobbies outside tech. People respond. It's a good place to start.",
+        text: "Drop a message in #infoductions. No pressure to write an essay, just tell us your preferred name/nickname, favorite languages/tools/frameworks, areas of interest and your hobbies outside tech. People respond. It's a good place to start.",
       },
       { type: "h2", text: "Key Channels" },
       {
@@ -1229,7 +1229,7 @@ export const pages: Page[] = [
         items: [
           "Read #rules",
           "React to the message in #reaction-roles to self-assign roles",
-          "Post in #introductions, a sentence or two is plenty.",
+          "Post in #infoductions, a sentence or two is plenty.",
           "Browse the channels and see what's active.",
           "Ask a question, answer one, or just jump in to a chat.",
         ],

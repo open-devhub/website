@@ -5,7 +5,11 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: { unoptimized: true },
+
+  images: {
+    unoptimized: true,
+  },
+
   async redirects() {
     return redir
       .map(({ sources, destination, permanent }) =>
@@ -16,6 +20,24 @@ const nextConfig = {
         })),
       )
       .flat();
+  },
+
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "X-Frame-Options",
+            value: "DENY",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: "frame-ancestors 'none';",
+          },
+        ],
+      },
+    ];
   },
 };
 
