@@ -1,16 +1,17 @@
+import { getAdjacentPages, getPage } from "@/lib/pages.config";
 import { notFound } from "next/navigation";
-import { getPage, getAdjacentPages, PageContent } from "@/lib/pages.config";
 import PageClient from "./PageClient";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }> | { slug: string };
 }
 
-export default function PageRoute({ params }: Props) {
-  const page = getPage(params.slug);
+export default async function PageRoute({ params }: Props) {
+  const { slug } = (await params) as { slug: string };
+  const page = getPage(slug);
   if (!page) notFound();
 
-  const { prev, next } = getAdjacentPages(params.slug);
+  const { prev, next } = getAdjacentPages(slug);
 
   return <PageClient page={page} prev={prev} next={next} />;
 }
