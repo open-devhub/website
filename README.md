@@ -56,7 +56,13 @@ Open [http://localhost:3000](http://localhost:3000) and you're in.
 ## Project Structure
 
 ```
-website/
+├── 📄 .eslintrc.json
+├── 📄 .gitignore
+├── 📁 .vscode
+│   └── 📄 settings.json
+├── 📄 CONTRIBUTING.md
+├── 📄 LICENSE
+├── 📄 README.md
 ├── 📁 app
 │   ├── 📄 globals.css
 │   ├── 📄 layout.tsx
@@ -73,10 +79,13 @@ website/
 ├── 📁 components
 │   ├── 📄 AnimatedText.tsx
 │   ├── 📄 Badge.tsx
+│   ├── 📄 BorderGlowButton.tsx
 │   ├── 📄 Footer.tsx
 │   ├── 📄 GlowButton.tsx
 │   ├── 📄 Navbar.tsx
 │   ├── 📄 Section.tsx
+│   ├── 📄 ShinyText.tsx
+│   ├── 📄 TargetCursor.tsx
 │   ├── 📁 home
 │   │   ├── 📄 BelongSection.tsx
 │   │   ├── 📄 CTASection.tsx
@@ -90,16 +99,18 @@ website/
 │       ├── 📄 alert.tsx
 │       ├── 📄 aspect-ratio.tsx
 │       ├── 📄 avatar.tsx
-│       ...
+│       ├── 📄 badge.tsx
+│       ├── 📄 breadcrumb.tsx
+│       ├── 📄 button.tsx
+│       ├── ...
 ├── 📁 hooks
 │   └── 📄 use-toast.ts
 ├── 📁 lib
 │   ├── 📄 animations.ts
 │   ├── 📄 pages.config.ts
+│   ├── 📄 redirects.config.ts
 │   ├── 📄 staticdata.config.ts
 │   └── 📄 utils.ts
-├── 📄 .eslintrc.json
-├── 📄 .gitignore
 ├── 📄 next.config.js
 ├── 📄 package-lock.json
 ├── 📄 package.json

@@ -1,8 +1,9 @@
 "use client";
 
-import Section from "@/components/Section";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { motion } from "framer-motion";
+
+const shadowIntensity = 400;
 
 const projects = [
   {
@@ -13,13 +14,13 @@ const projects = [
   },
   {
     name: "chorddb",
-    desc: "ChordDB is a lightweight, MongoDB-inspired database that uses Discord channels as storage, with end-to-end encryption and optional wrapper-based caching for performance.",
+    desc: "ChordDB is a lightweight, MongoDB-inspired database that uses Discord channels as storage, with end-to-end encryption and optional wrapper-based caching.",
     lang: "TypeScript",
-    langColor: "#3572a5",
+    langColor: "#6366f1",
   },
   {
     name: "pawgrammerbot",
-    desc: "Pawgrammer (aka rael) is DevHub’s documentation, AI, and reference assistant bot. It provides access to AI chat, curated knowledge, and utility commands designed to support contributors and users across the platform.",
+    desc: "Pawgrammer is DevHub's documentation, AI, and reference assistant bot. It provides access to AI chat, curated knowledge, and utility commands.",
     lang: "Discord.js",
     langColor: "#f59e0b",
   },
@@ -31,13 +32,13 @@ const projects = [
   },
   {
     name: "website",
-    desc: "The DevHub website built with Next.js, showcasing the community, projects, and resources. It features a custom CMS for content management and a sleek, responsive design.",
+    desc: "The DevHub website built with Next.js, showcasing the community, projects, and resources with a sleek, responsive design.",
     lang: "Next.js",
-    langColor: "#f0f0f0",
+    langColor: "#c4c4cc",
   },
   {
     name: "modmailbot",
-    desc: "A lightweight modmail system for DevHub built with discord.js v14. Users can DM the bot to open a private support thread in a designated forum channel.",
+    desc: "A lightweight modmail system for DevHub built with discord.js v14. Users DM the bot to open a private support thread in a dedicated forum channel.",
     lang: "Discord.js",
     langColor: "#f59e0b",
   },
@@ -54,27 +55,47 @@ const doubledProjects = [...projects, ...projects];
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   return (
     <div
-      className="flex-shrink-0 w-72 h-62 flex flex-col justify-between glass rounded-2xl p-5 mx-3 group hover:border-[rgba(0,245,255,0.2)] transition-all"
-      style={{ border: "1px solid rgba(255,255,255,0.06)" }}
+      className="flex-shrink-0 w-72 flex flex-col justify-between rounded-xl p-5 mx-3 group"
+      style={{
+        background: "rgba(7, 7, 15, 0.9)",
+        border: "1px solid rgba(99,102,241,0.12)",
+        minHeight: "180px",
+      }}
     >
       <div>
-        <div className="flex items-start justify-between mb-3">
-          <div>
-            <h4 className="font-[var(--font-jetbrains)] text-[#4fbfff] text-sm font-medium">
-              {project.name}
-            </h4>
-          </div>
+        <div className="flex items-center gap-2 mb-3">
+          <span
+            className="font-mono text-xs"
+            style={{
+              fontFamily: "var(--font-geist-mono)",
+              color: "rgba(99,102,241,0.5)",
+            }}
+          >
+            {"~/"}
+          </span>
+          <h4
+            className="text-sm font-semibold"
+            style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
+          >
+            {project.name}
+          </h4>
         </div>
-        <p className="text-[#6b7280] text-xs leading-relaxed mb-3 font-[var(--font-inter)]">
+        <p
+          className="text-xs leading-relaxed"
+          style={{ fontFamily: "var(--font-geist-mono)", color: "#52525b" }}
+        >
           {project.desc}
         </p>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 mt-4">
         <span
-          className="w-2.5 h-2.5 rounded-full"
+          className="w-2 h-2 rounded-full"
           style={{ backgroundColor: project.langColor }}
         />
-        <span className="text-xs text-[#9ca3af] font-[var(--font-jetbrains)]">
+        <span
+          className="text-xs"
+          style={{ fontFamily: "var(--font-geist-mono)", color: "#71717a" }}
+        >
           {project.lang}
         </span>
       </div>
@@ -84,35 +105,93 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
 
 export default function ShowcaseSection() {
   return (
-    <Section className="py-24 overflow-hidden">
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-80px" }}
-        className="text-center mb-14"
-      >
-        <motion.span
-          variants={fadeInUp}
-          className="inline-block text-xs font-[var(--font-jetbrains)] text-[#4fbfff] uppercase tracking-widest mb-4"
+    <section
+      className="relative py-24 overflow-hidden"
+      style={{ background: "#030305" }}
+    >
+      <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)",
+        }}
+      />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="text-center mb-14"
         >
-          Open Source
-        </motion.span>
-        <motion.h2
-          variants={fadeInUp}
-          className="font-[var(--font-space-grotesk)] font-bold text-4xl md:text-5xl text-[#f0f0f0]"
-        >
-          Built by the <span className="gradient-text">community</span>
-        </motion.h2>
-      </motion.div>
+          <motion.div
+            variants={fadeInUp}
+            className="flex items-center justify-center gap-3 mb-4"
+          >
+            <span
+              style={{
+                color: "rgba(99,102,241,0.5)",
+                fontFamily: "var(--font-geist-mono)",
+              }}
+            >
+              {"{"}
+            </span>
+            <span
+              className="text-xs tracking-widest uppercase"
+              style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
+            >
+              Open Source
+            </span>
+            <span
+              style={{
+                color: "rgba(99,102,241,0.5)",
+                fontFamily: "var(--font-geist-mono)",
+              }}
+            >
+              {"}"}
+            </span>
+          </motion.div>
+
+          <motion.h2
+            variants={fadeInUp}
+            style={{
+              fontFamily: "var(--font-pixelify), 'Pixelify Sans', monospace",
+              fontSize: "clamp(1.8rem, 4vw, 3rem)",
+            }}
+          >
+            <span
+              style={{
+                background:
+                  "linear-gradient(135deg, #e2e2f0 0%, #a5b4fc 50%, #8b5cf6 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              Built by the{" "}
+              <span
+                className="cursor-target"
+                style={{ color: "#818cf8", WebkitTextFillColor: "#818cf8" }}
+              >
+                community
+              </span>
+            </span>
+          </motion.h2>
+        </motion.div>
+      </div>
 
       {/* Marquee */}
       <div className="relative -mx-4 md:-mx-6">
-        {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-[#050508] to-transparent pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-[#050508] to-transparent pointer-events-none" />
-
-        <div className="overflow-hidden">
+        <div
+          className="overflow-hidden relative"
+          style={{
+            WebkitMaskImage: `linear-gradient(90deg, transparent 0%, black ${shadowIntensity / 8}%, black ${100 - shadowIntensity / 8}%, transparent 100%)`,
+            maskImage: `linear-gradient(90deg, transparent 0%, black ${shadowIntensity / 8}%, black ${100 - shadowIntensity / 8}%, transparent 100%)`,
+            boxShadow: `inset ${shadowIntensity}px 0 ${shadowIntensity}px -60px #030305, inset -${shadowIntensity}px 0 ${shadowIntensity}px -60px #030305`,
+          }}
+        >
           <div className="flex marquee-track w-max">
             {doubledProjects.map((project, i) => (
               <ProjectCard key={i} project={project} />
@@ -120,6 +199,14 @@ export default function ShowcaseSection() {
           </div>
         </div>
       </div>
-    </Section>
+
+      <div
+        className="absolute bottom-0 left-0 right-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)",
+        }}
+      />
+    </section>
   );
 }

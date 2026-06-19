@@ -25,13 +25,16 @@ export default function BelongSection() {
   return (
     <section
       className="relative py-24 md:py-32 overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(180deg, #050508 0%, #08080f 50%, #050508 100%)",
-      }}
+      style={{ background: "#030305" }}
     >
-      {/* Subtle dot bg */}
-      <div className="absolute inset-0 dot-bg opacity-50 pointer-events-none" />
+      <div className="absolute inset-0 dot-bg opacity-40 pointer-events-none" />
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)",
+        }}
+      />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <motion.div
@@ -41,22 +44,65 @@ export default function BelongSection() {
           viewport={{ once: true, margin: "-80px" }}
           className="text-center mb-16"
         >
-          <motion.span
+          <motion.div
             variants={fadeInUp}
-            className="inline-block text-xs font-[var(--font-jetbrains)] text-[#4fbfff] uppercase tracking-widest mb-4"
+            className="flex items-center justify-center gap-3 mb-4"
           >
-            For Every Developer
-          </motion.span>
+            <span
+              style={{
+                color: "rgba(99,102,241,0.5)",
+                fontFamily: "var(--font-geist-mono)",
+              }}
+            >
+              {"{"}
+            </span>
+            <span
+              className="text-xs tracking-widest uppercase"
+              style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
+            >
+              For Every Developer
+            </span>
+            <span
+              style={{
+                color: "rgba(99,102,241,0.5)",
+                fontFamily: "var(--font-geist-mono)",
+              }}
+            >
+              {"}"}
+            </span>
+          </motion.div>
+
           <motion.h2
             variants={fadeInUp}
-            className="font-[var(--font-space-grotesk)] font-bold text-4xl md:text-5xl text-[#f0f0f0] mb-4"
+            style={{
+              fontFamily: "var(--font-pixelify), 'Pixelify Sans', monospace",
+              fontSize: "clamp(1.8rem, 4vw, 3rem)",
+              lineHeight: 1.2,
+            }}
           >
-            A place for <span className="gradient-text">developers</span> at
-            every stage.
+            <span
+              style={{
+                background:
+                  "linear-gradient(135deg, #e2e2f0 0%, #a5b4fc 50%, #8b5cf6 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              A place for{" "}
+              <span
+                style={{ color: "#818cf8", WebkitTextFillColor: "#818cf8" }}
+              >
+                developers
+              </span>{" "}
+              at every stage.
+            </span>
           </motion.h2>
+
           <motion.p
             variants={fadeInUp}
-            className="text-[#6b7280] text-lg max-w-xl mx-auto font-[var(--font-inter)]"
+            className="mt-4 text-sm max-w-xl mx-auto leading-relaxed"
+            style={{ fontFamily: "var(--font-geist-mono)", color: "#52525b" }}
           >
             Whether you're making your first commit or building your next big
             project, DevHub is a community where you can learn, contribute, and
@@ -79,29 +125,51 @@ export default function BelongSection() {
                 visible: {
                   opacity: 1,
                   x: 0,
-                  transition: {
-                    delay: i * 0.04,
-                    duration: 0.5,
-                    ease: [0.22, 1, 0.36, 1],
-                  },
+                  transition: { delay: i * 0.04, duration: 0.5 },
                 },
               }}
-              className="flex items-center gap-3 glass rounded-xl px-4 py-3 group"
-              style={{ border: "1px solid rgba(255,255,255,0.05)" }}
+              className="flex items-center gap-3 rounded-xl px-4 py-3 group cursor-default"
+              style={{
+                background: "rgba(7, 7, 15, 0.7)",
+                border: "1px solid rgba(99,102,241,0.08)",
+              }}
               whileHover={{
-                borderColor: "rgba(0,245,255,0.15)",
+                borderColor: "rgba(99,102,241,0.25)",
+                background: "rgba(10, 10, 22, 0.9)",
                 x: 4,
                 transition: { duration: 0.2 },
               }}
             >
-              <div className="w-1.5 h-1.5 rounded-full bg-[#4fbfff] flex-shrink-0 opacity-60 group-hover:opacity-100 transition-opacity" />
-              <span className="text-[#9ca3af] text-sm group-hover:text-[#f0f0f0] transition-colors font-[var(--font-inter)]">
+              <span
+                className="font-mono text-xs flex-shrink-0"
+                style={{
+                  fontFamily: "var(--font-geist-mono)",
+                  color: "rgba(99,102,241,0.4)",
+                }}
+              >
+                {">"}
+              </span>
+              <span
+                className="text-sm"
+                style={{
+                  fontFamily: "var(--font-geist-mono)",
+                  color: "#52525b",
+                }}
+              >
                 {type}
               </span>
             </motion.div>
           ))}
         </motion.div>
       </div>
+
+      <div
+        className="absolute bottom-0 left-0 right-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)",
+        }}
+      />
     </section>
   );
 }

@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { pageSections } from "@/lib/pages.config";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { pageSections } from "@/lib/pages.config";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { useState } from "react";
 
 interface SidebarSectionProps {
   section: (typeof pageSections)[0];
@@ -23,7 +23,11 @@ function SidebarSection({ section, currentSlug }: SidebarSectionProps) {
     <div className="mb-2">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-widest text-[#4b5563] hover:text-[#9ca3af] transition-colors"
+        className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-widest transition-colors"
+        style={{
+          fontFamily: "var(--font-geist-mono)",
+          color: "#3f3f46",
+        }}
       >
         {section.title}
         <motion.span
@@ -48,11 +52,26 @@ function SidebarSection({ section, currentSlug }: SidebarSectionProps) {
                 return (
                   <Link key={page.slug} href={`/pages/${page.slug}`}>
                     <motion.span
-                      className={`block px-3 py-2 rounded-lg text-sm transition-all cursor-pointer font-[var(--font-inter)] ${
-                        isActive
-                          ? "sidebar-active font-medium"
-                          : "text-[#6b7280] hover:text-[#f0f0f0] hover:bg-[rgba(255,255,255,0.03)]"
-                      }`}
+                      className="block px-3 py-2 rounded-lg text-sm cursor-pointer"
+                      style={{ fontFamily: "var(--font-geist-mono)" }}
+                      initial={false}
+                      animate={{
+                        backgroundColor: isActive
+                          ? "rgba(99,102,241,0.1)"
+                          : "rgba(0,0,0,0)",
+                        color: isActive ? "#a5b4fc" : "#52525b",
+                        borderColor: isActive
+                          ? "rgba(99,102,241,0.3)"
+                          : "rgba(0,0,0,0)",
+                      }}
+                      transition={{ duration: 0.15 }}
+                      whileHover={{
+                        x: 2,
+                        backgroundColor: "rgba(99,102,241,0.1)",
+                        borderColor: "rgba(99,102,241,0.3)",
+                        color: "#a5b4fc",
+                      }}
+                      whileTap={{ scale: 0.98 }}
                     >
                       {page.title}
                     </motion.span>
@@ -76,13 +95,19 @@ export default function PagesLayout({
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#050508]">
+    <div className="min-h-screen relative" style={{ background: "#030305" }}>
+      <div className="absolute inset-0 dot-bg opacity-50 pointer-events-none" />
+
       {/* Mobile sidebar toggle */}
       <div className="lg:hidden fixed top-20 left-4 z-40">
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="w-10 h-10 glass rounded-lg flex items-center justify-center text-[#9ca3af]"
-          style={{ border: "1px solid rgba(255,255,255,0.08)" }}
+          className="w-10 h-10 rounded-lg flex items-center justify-center transition-all"
+          style={{
+            background: "rgba(99,102,241,0.06)",
+            border: "1px solid rgba(99,102,241,0.15)",
+            color: "#52525b",
+          }}
         >
           {mobileOpen ? (
             <X className="w-4 h-4" />
@@ -102,8 +127,8 @@ export default function PagesLayout({
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-y-0 left-0 w-72 z-30 pt-24 pb-8 px-4 overflow-y-auto"
             style={{
-              background: "rgba(8,8,14,0.98)",
-              borderRight: "1px solid rgba(255,255,255,0.06)",
+              background: "rgba(3, 3, 5, 0.98)",
+              borderRight: "1px solid rgba(99,102,241,0.1)",
               backdropFilter: "blur(20px)",
             }}
           >
@@ -112,7 +137,7 @@ export default function PagesLayout({
         )}
       </AnimatePresence>
 
-      <div className="max-w-[1400px] mx-auto px-6 pt-24 flex gap-8">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 pt-24 flex gap-8">
         {/* Desktop sidebar */}
         <aside className="hidden lg:block w-60 flex-shrink-0">
           <div className="sticky top-28 h-[calc(100vh-8rem)] overflow-y-auto pr-2">
@@ -131,7 +156,10 @@ function SidebarContent({ currentSlug }: { currentSlug: string }) {
   return (
     <nav>
       <div className="mb-6">
-        <p className="text-xs font-[var(--font-jetbrains)] text-[#4b5563] uppercase tracking-widest px-3 mb-3">
+        <p
+          className="text-xs uppercase tracking-widest px-3 mb-3"
+          style={{ fontFamily: "var(--font-geist-mono)", color: "#3f3f46" }}
+        >
           Pages
         </p>
       </div>

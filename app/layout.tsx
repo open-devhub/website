@@ -1,25 +1,26 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Geist, Geist_Mono, Pixelify_Sans } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-geist",
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-jetbrains",
+  variable: "--font-geist-mono",
   display: "swap",
 });
 
-const inter = Inter({
+const pixelifySans = Pixelify_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-pixelify",
   display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -42,9 +43,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} ${inter.variable}`}
+      className={`${geist.variable} ${geistMono.variable} ${pixelifySans.variable}`}
     >
-      <body className="bg-[#050508] text-[#f0f0f0]">
+      <body className="bg-[#030305] text-[#c4c4cc]" cz-shortcut-listen="true">
         <Navbar />
         <main>{children}</main>
         <Footer />
