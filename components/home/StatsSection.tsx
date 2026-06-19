@@ -1,136 +1,212 @@
 "use client";
 
-import Section from "@/components/Section";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
-import { motion, useInView } from "framer-motion";
-import { Code as Code2, MessageCircle, Users } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
-const stats = [
+const shadowIntensity = 80;
+
+const projects = [
   {
-    icon: Users,
-    value: 500,
-    label: "Members",
-    suffix: "+",
-    color: "#4fafff",
+    name: "quillbot",
+    desc: "Quill is an advanced Discord developer assistant bot built to help programmers code faster, learn better, and debug smarter, directly inside Discord.",
+    lang: "Discord.js",
+    langColor: "#f59e0b",
   },
   {
-    icon: Code2,
-    value: 10,
-    label: "OSS Projects",
-    suffix: "+",
-    color: "#10b981",
+    name: "chorddb",
+    desc: "ChordDB is a lightweight, MongoDB-inspired database that uses Discord channels as storage, with end-to-end encryption and optional wrapper-based caching.",
+    lang: "TypeScript",
+    langColor: "#6366f1",
   },
   {
-    icon: MessageCircle,
-    value: 100,
-    label: "Resources",
-    suffix: "+",
-    color: "#7c3aed",
+    name: "pawgrammerbot",
+    desc: "Pawgrammer is DevHub's documentation, AI, and reference assistant bot. It provides access to AI chat, curated knowledge, and utility commands.",
+    lang: "Discord.js",
+    langColor: "#f59e0b",
+  },
+  {
+    name: "pandabot",
+    desc: "Panda Bot is a powerful, all-in-one Discord bot designed to make DevHub server more engaging, organized, and fun.",
+    lang: "Discord.js",
+    langColor: "#f59e0b",
+  },
+  {
+    name: "website",
+    desc: "The DevHub website built with Next.js, showcasing the community, projects, and resources with a sleek, responsive design.",
+    lang: "Next.js",
+    langColor: "#c4c4cc",
+  },
+  {
+    name: "modmailbot",
+    desc: "A lightweight modmail system for DevHub built with discord.js v14. Users DM the bot to open a private support thread in a dedicated forum channel.",
+    lang: "Discord.js",
+    langColor: "#f59e0b",
+  },
+  {
+    name: "hangmanbot",
+    desc: "A Discord bot that lets you play the classic Hangman game in both single-player and multiplayer modes.",
+    lang: "Discord.js",
+    langColor: "#f59e0b",
   },
 ];
 
-function AnimatedCounter({
-  target,
-  duration = 2,
-}: {
-  target: number;
-  duration?: number;
-}) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true });
+const doubledProjects = [...projects, ...projects];
 
-  useEffect(() => {
-    if (!inView) return;
-    let startTime: number;
-    const step = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * target));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [inView, target, duration]);
-
-  return <span ref={ref}>{count.toLocaleString()}</span>;
+function ProjectCard({ project }: { project: (typeof projects)[0] }) {
+  return (
+    <div
+      className="flex-shrink-0 w-72 flex flex-col justify-between rounded-xl p-5 mx-3 group"
+      style={{
+        background: "rgba(7, 7, 15, 0.9)",
+        border: "1px solid rgba(99,102,241,0.12)",
+        minHeight: "180px",
+      }}
+    >
+      <div>
+        <div className="flex items-center gap-2 mb-3">
+          <span
+            className="font-mono text-xs"
+            style={{
+              fontFamily: "var(--font-geist-mono)",
+              color: "rgba(99,102,241,0.5)",
+            }}
+          >
+            {"~/"}
+          </span>
+          <h4
+            className="text-sm font-semibold"
+            style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
+          >
+            {project.name}
+          </h4>
+        </div>
+        <p
+          className="text-xs leading-relaxed"
+          style={{ fontFamily: "var(--font-geist-mono)", color: "#52525b" }}
+        >
+          {project.desc}
+        </p>
+      </div>
+      <div className="flex items-center gap-2 mt-4">
+        <span
+          className="w-2 h-2 rounded-full"
+          style={{ backgroundColor: project.langColor }}
+        />
+        <span
+          className="text-xs"
+          style={{ fontFamily: "var(--font-geist-mono)", color: "#71717a" }}
+        >
+          {project.lang}
+        </span>
+      </div>
+    </div>
+  );
 }
 
-export default function StatsSection() {
+export default function ShowcaseSection() {
   return (
-    <Section className="py-24 md:py-32 relative overflow-hidden">
-      {/* Background blobs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#7c3aed] rounded-full opacity-[0.04] blur-[100px] blob" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#4fafff] rounded-full opacity-[0.04] blur-[80px]" />
-      </div>
+    <section
+      className="relative py-24 overflow-hidden"
+      style={{ background: "#030305" }}
+    >
+      <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)",
+        }}
+      />
 
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-80px" }}
-        className="text-center mb-16"
-      >
-        <motion.span
-          variants={fadeInUp}
-          className="inline-block text-xs font-[var(--font-jetbrains)] text-[#4fafff] uppercase tracking-widest mb-4"
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="text-center mb-14"
         >
-          By the Numbers
-        </motion.span>
-        <motion.h2
-          variants={fadeInUp}
-          className="font-[var(--font-space-grotesk)] font-bold text-4xl md:text-5xl text-[#f0f0f0]"
-        >
-          A community that <span className="gradient-text">ships</span>
-        </motion.h2>
-      </motion.div>
-
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-80px" }}
-        className="grid grid-cols-2 lg:grid-cols-4 gap-6"
-      >
-        {stats.map((stat) => {
-          const Icon = stat.icon;
-          return (
-            <motion.div
-              key={stat.label}
-              variants={fadeInUp}
-              className="glass rounded-2xl p-8 text-center group"
-              style={{ border: "1px solid rgba(255,255,255,0.06)" }}
-              whileHover={{
-                borderColor: `${stat.color}30`,
-                boxShadow: `0 0 30px ${stat.color}15`,
-                transition: { duration: 0.3 },
+          <motion.div
+            variants={fadeInUp}
+            className="flex items-center justify-center gap-3 mb-4"
+          >
+            <span
+              style={{
+                color: "rgba(99,102,241,0.5)",
+                fontFamily: "var(--font-geist-mono)",
               }}
             >
-              <div
-                className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center"
-                style={{
-                  background: `${stat.color}15`,
-                  border: `1px solid ${stat.color}30`,
-                }}
+              {"{"}
+            </span>
+            <span
+              className="text-xs tracking-widest uppercase"
+              style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
+            >
+              Open Source
+            </span>
+            <span
+              style={{
+                color: "rgba(99,102,241,0.5)",
+                fontFamily: "var(--font-geist-mono)",
+              }}
+            >
+              {"}"}
+            </span>
+          </motion.div>
+
+          <motion.h2
+            variants={fadeInUp}
+            style={{
+              fontFamily: "var(--font-pixelify), 'Pixelify Sans', monospace",
+              fontSize: "clamp(1.8rem, 4vw, 3rem)",
+            }}
+          >
+            <span
+              style={{
+                background:
+                  "linear-gradient(135deg, #e2e2f0 0%, #a5b4fc 50%, #8b5cf6 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              Built by the{" "}
+              <span
+                className="cursor-target"
+                style={{ color: "#818cf8", WebkitTextFillColor: "#818cf8" }}
               >
-                <Icon className="w-6 h-6" style={{ color: stat.color }} />
-              </div>
-              <div
-                className="font-[var(--font-space-grotesk)] font-bold text-4xl mb-1"
-                style={{ color: stat.color }}
-              >
-                <AnimatedCounter target={stat.value} />
-                {stat.suffix}
-              </div>
-              <div className="text-[#6b7280] text-sm font-[var(--font-inter)]">
-                {stat.label}
-              </div>
-            </motion.div>
-          );
-        })}
-      </motion.div>
-    </Section>
+                community
+              </span>
+            </span>
+          </motion.h2>
+        </motion.div>
+      </div>
+
+      {/* Marquee */}
+      <div className="relative -mx-4 md:-mx-6">
+        <div
+          className="overflow-hidden relative"
+          style={{
+            WebkitMaskImage: `linear-gradient(90deg, transparent 0%, black ${shadowIntensity / 8}%, black ${100 - shadowIntensity / 8}%, transparent 100%)`,
+            maskImage: `linear-gradient(90deg, transparent 0%, black ${shadowIntensity / 8}%, black ${100 - shadowIntensity / 8}%, transparent 100%)`,
+            boxShadow: `inset ${shadowIntensity}px 0 ${shadowIntensity}px -60px #030305, inset -${shadowIntensity}px 0 ${shadowIntensity}px -60px #030305`,
+          }}
+        >
+          <div className="flex marquee-track w-max">
+            {doubledProjects.map((project, i) => (
+              <ProjectCard key={i} project={project} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div
+        className="absolute bottom-0 left-0 right-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)",
+        }}
+      />
+    </section>
   );
 }

@@ -27,7 +27,8 @@ function Highlight({ text }: { text: string }) {
       return (
         <span
           key={i}
-          className="text-[#4fbfff] hover:underline cursor-pointer hover:opacity-80 inline flex-shrink-0 transition-opacity"
+          className="hover:underline cursor-pointer hover:opacity-80 inline flex-shrink-0 transition-opacity"
+          style={{ color: "#a5b4fc" }}
         >
           {part}
         </span>
@@ -44,20 +45,33 @@ function ContentBlock({ block }: { block: PageContent }) {
       return (
         <h2
           id={block.text?.toLowerCase().replace(/\s+/g, "-")}
-          className="font-[var(--font-space-grotesk)] font-bold text-2xl text-[#f0f0f0] mt-10 mb-4 scroll-mt-28"
+          className="font-bold text-2xl mt-10 mb-4 scroll-mt-28"
+          style={{
+            fontFamily: "var(--font-geist-mono)",
+            color: "#e2e2f0",
+          }}
         >
           <Highlight text={block.text || ""} />
         </h2>
       );
     case "h3":
       return (
-        <h3 className="font-[var(--font-space-grotesk)] font-semibold text-lg text-[#f0f0f0] mt-6 mb-3">
+        <h3
+          className="font-semibold text-lg mt-6 mb-3"
+          style={{
+            fontFamily: "var(--font-geist-mono)",
+            color: "#e2e2f0",
+          }}
+        >
           <Highlight text={block.text || ""} />
         </h3>
       );
     case "p":
       return (
-        <p className="text-[#9ca3af] leading-relaxed mb-4 font-[var(--font-inter)]">
+        <p
+          className="leading-relaxed mb-4"
+          style={{ fontFamily: "var(--font-geist-mono)", color: "#71717a" }}
+        >
           <Highlight text={block.text || ""} />
         </p>
       );
@@ -67,9 +81,13 @@ function ContentBlock({ block }: { block: PageContent }) {
           {block.items?.map((item, i) => (
             <li
               key={i}
-              className="flex items-start gap-2 text-[#9ca3af] font-[var(--font-inter)]"
+              className="flex items-start gap-2"
+              style={{ fontFamily: "var(--font-geist-mono)", color: "#71717a" }}
             >
-              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#4fbfff] flex-shrink-0 opacity-60" />
+              <span
+                className="mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                style={{ background: "rgba(99,102,241,0.5)" }}
+              />
               <Highlight text={item} />
             </li>
           ))}
@@ -81,9 +99,13 @@ function ContentBlock({ block }: { block: PageContent }) {
           {block.items?.map((item, i) => (
             <li
               key={i}
-              className="flex items-start gap-3 text-[#9ca3af] font-[var(--font-inter)]"
+              className="flex items-start gap-3"
+              style={{ fontFamily: "var(--font-geist-mono)", color: "#71717a" }}
             >
-              <span className="font-[var(--font-jetbrains)] text-xs text-[#4fbfff] mt-0.5 w-5 flex-shrink-0">
+              <span
+                className="text-xs mt-0.5 w-5 flex-shrink-0"
+                style={{ color: "#a5b4fc" }}
+              >
                 {String(i + 1).padStart(2, "0")}
               </span>
               <Highlight text={item} />
@@ -94,13 +116,45 @@ function ContentBlock({ block }: { block: PageContent }) {
     case "code":
       return (
         <div
-          className="rounded-xl p-4 mb-4 overflow-x-auto border"
+          className="rounded-xl p-4 mb-4 overflow-x-auto relative"
           style={{
-            background: "rgba(0,0,0,0.4)",
-            borderColor: "rgba(255,255,255,0.06)",
+            background: "rgba(7, 7, 15, 0.8)",
+            border: "1px solid rgba(99,102,241,0.12)",
           }}
         >
-          <pre className="font-[var(--font-jetbrains)] text-sm text-[#e5e7eb] whitespace-pre-wrap">
+          {/* Corner brackets */}
+          <div
+            className="absolute top-2 left-2 w-3 h-3"
+            style={{
+              borderTop: "1.5px solid rgba(99,102,241,0.25)",
+              borderLeft: "1.5px solid rgba(99,102,241,0.25)",
+            }}
+          />
+          <div
+            className="absolute top-2 right-2 w-3 h-3"
+            style={{
+              borderTop: "1.5px solid rgba(99,102,241,0.25)",
+              borderRight: "1.5px solid rgba(99,102,241,0.25)",
+            }}
+          />
+          <div
+            className="absolute bottom-2 left-2 w-3 h-3"
+            style={{
+              borderBottom: "1.5px solid rgba(99,102,241,0.25)",
+              borderLeft: "1.5px solid rgba(99,102,241,0.25)",
+            }}
+          />
+          <div
+            className="absolute bottom-2 right-2 w-3 h-3"
+            style={{
+              borderBottom: "1.5px solid rgba(99,102,241,0.25)",
+              borderRight: "1.5px solid rgba(99,102,241,0.25)",
+            }}
+          />
+          <pre
+            className="text-sm whitespace-pre-wrap"
+            style={{ fontFamily: "var(--font-geist-mono)", color: "#c4c4cc" }}
+          >
             {block.text}
           </pre>
         </div>
@@ -108,9 +162,9 @@ function ContentBlock({ block }: { block: PageContent }) {
     case "callout": {
       const styles = {
         info: {
-          bg: "rgba(0,245,255,0.05)",
-          border: "rgba(0,245,255,0.15)",
-          text: "#4fbfff",
+          bg: "rgba(99,102,241,0.05)",
+          border: "rgba(99,102,241,0.15)",
+          text: "#a5b4fc",
           Icon: Info,
         },
         warning: {
@@ -136,7 +190,10 @@ function ContentBlock({ block }: { block: PageContent }) {
             className="w-4 h-4 flex-shrink-0 mt-0.5"
             style={{ color: s.text }}
           />
-          <p className="text-sm text-[#9ca3af] font-[var(--font-inter)]">
+          <p
+            className="text-sm"
+            style={{ fontFamily: "var(--font-geist-mono)", color: "#71717a" }}
+          >
             <Highlight text={block.text || ""} />
           </p>
         </div>
@@ -154,7 +211,10 @@ function TableOfContents({ content }: { content: PageContent[] }) {
   return (
     <div className="hidden xl:block w-48 flex-shrink-0">
       <div className="sticky top-28">
-        <p className="text-xs font-[var(--font-jetbrains)] text-[#4b5563] uppercase tracking-widest mb-4">
+        <p
+          className="text-xs uppercase tracking-widest mb-4"
+          style={{ fontFamily: "var(--font-geist-mono)", color: "#3f3f46" }}
+        >
           On this page
         </p>
         <nav className="space-y-1">
@@ -162,9 +222,13 @@ function TableOfContents({ content }: { content: PageContent[] }) {
             <a
               key={h.text}
               href={`#${h.text?.toLowerCase().replace(/\s+/g, "-")}`}
-              className="block text-sm text-[#6b7280] hover:text-[#4fbfff] transition-colors py-0.5 font-[var(--font-inter)]"
+              className="block text-sm py-0.5 transition-colors"
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                color: "#52525b",
+              }}
             >
-              {h.text}
+              <span className="hover:text-[#a5b4fc]">{h.text}</span>
             </a>
           ))}
         </nav>
@@ -185,23 +249,52 @@ export default function PageClient({ page, prev, next }: Props) {
         {/* Header */}
         <motion.div variants={fadeInUp} className="mb-10">
           <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs font-[var(--font-jetbrains)] text-[#4b5563]">
+            <span
+              className="text-xs"
+              style={{ fontFamily: "var(--font-geist-mono)", color: "#3f3f46" }}
+            >
               {page.section}
             </span>
-            <span className="text-[#4b5563]">/</span>
-            <span className="text-xs font-[var(--font-jetbrains)] text-[#6b7280]">
+            <span style={{ color: "#3f3f46" }}>/</span>
+            <span
+              className="text-xs"
+              style={{ fontFamily: "var(--font-geist-mono)", color: "#52525b" }}
+            >
               {page.title}
             </span>
           </div>
 
-          <h1 className="font-[var(--font-space-grotesk)] font-bold text-4xl md:text-5xl text-[#f0f0f0] mb-4 leading-tight">
-            {page.title}
+          <h1
+            style={{
+              fontFamily: "var(--font-pixelify), 'Pixelify Sans', monospace",
+              fontSize: "clamp(2rem, 4vw, 3rem)",
+              lineHeight: 1.2,
+            }}
+          >
+            <span
+              style={{
+                background:
+                  "linear-gradient(135deg, #e2e2f0 0%, #a5b4fc 50%, #8b5cf6 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              {page.title}
+            </span>
           </h1>
-          <p className="text-[#6b7280] text-lg mb-6 font-[var(--font-inter)]">
+
+          <p
+            className="mt-4 text-sm mb-6"
+            style={{ fontFamily: "var(--font-geist-mono)", color: "#52525b" }}
+          >
             {page.description}
           </p>
 
-          <div className="flex items-center gap-4 text-xs text-[#4b5563] font-[var(--font-jetbrains)]">
+          <div
+            className="flex items-center gap-4 text-xs"
+            style={{ fontFamily: "var(--font-geist-mono)", color: "#3f3f46" }}
+          >
             <span className="flex items-center gap-1.5">
               <Calendar className="w-3 h-3" />
               Updated {page.lastUpdated}
@@ -212,7 +305,13 @@ export default function PageClient({ page, prev, next }: Props) {
             </span>
           </div>
 
-          <div className="mt-6 h-px bg-gradient-to-r from-[rgba(0,245,255,0.3)] via-[rgba(124,58,237,0.2)] to-transparent" />
+          <div
+            className="mt-6 h-px"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(99,102,241,0.4), rgba(139,92,246,0.2), transparent)",
+            }}
+          />
         </motion.div>
 
         {/* Content */}
@@ -225,22 +324,52 @@ export default function PageClient({ page, prev, next }: Props) {
         {/* Prev/Next */}
         <motion.div
           variants={fadeInUp}
-          className="mt-16 pt-8 grid grid-cols-2 gap-4 border-t"
-          style={{ borderColor: "rgba(255,255,255,0.06)" }}
+          className="mt-16 pt-8 grid grid-cols-2 gap-4"
+          style={{ borderTop: "1px solid rgba(99,102,241,0.1)" }}
         >
           {prev ? (
             <Link href={`/pages/${prev.slug}`} className="group block">
               <motion.div
-                className="glass rounded-xl p-4 border"
-                style={{ borderColor: "rgba(255,255,255,0.06)" }}
-                whileHover={{ borderColor: "rgba(0,245,255,0.15)", x: -2 }}
+                className="relative rounded-xl p-4 overflow-hidden"
+                style={{
+                  background: "rgba(7, 7, 15, 0.6)",
+                  border: "1px solid rgba(99,102,241,0.1)",
+                }}
+                whileHover={{ x: -2 }}
               >
-                <div className="flex items-center gap-2 text-xs text-[#4b5563] mb-1">
+                {/* Corner brackets */}
+                <div
+                  className="absolute top-2 left-2 w-3 h-3"
+                  style={{
+                    borderTop: "1.5px solid rgba(99,102,241,0.25)",
+                    borderLeft: "1.5px solid rgba(99,102,241,0.25)",
+                  }}
+                />
+                <div
+                  className="absolute bottom-2 right-2 w-3 h-3"
+                  style={{
+                    borderBottom: "1.5px solid rgba(99,102,241,0.25)",
+                    borderRight: "1.5px solid rgba(99,102,241,0.25)",
+                  }}
+                />
+
+                <div
+                  className="flex items-center gap-2 text-xs mb-1"
+                  style={{ color: "#3f3f46" }}
+                >
                   <ChevronLeft className="w-3 h-3" />
                   Previous
                 </div>
-                <p className="font-[var(--font-space-grotesk)] font-medium text-[#9ca3af] group-hover:text-[#4fbfff] transition-colors text-sm">
-                  {prev.title}
+                <p
+                  className="font-medium transition-colors text-sm"
+                  style={{
+                    fontFamily: "var(--font-geist-mono)",
+                    color: "#71717a",
+                  }}
+                >
+                  <span className="group-hover:text-[#a5b4fc]">
+                    {prev.title}
+                  </span>
                 </p>
               </motion.div>
             </Link>
@@ -251,16 +380,46 @@ export default function PageClient({ page, prev, next }: Props) {
           {next ? (
             <Link href={`/pages/${next.slug}`} className="group block">
               <motion.div
-                className="glass rounded-xl p-4 text-right border"
-                style={{ borderColor: "rgba(255,255,255,0.06)" }}
-                whileHover={{ borderColor: "rgba(0,245,255,0.15)", x: 2 }}
+                className="relative rounded-xl p-4 text-right overflow-hidden"
+                style={{
+                  background: "rgba(7, 7, 15, 0.6)",
+                  border: "1px solid rgba(99,102,241,0.1)",
+                }}
+                whileHover={{ x: 2 }}
               >
-                <div className="flex items-center justify-end gap-2 text-xs text-[#4b5563] mb-1">
+                {/* Corner brackets */}
+                <div
+                  className="absolute top-2 right-2 w-3 h-3"
+                  style={{
+                    borderTop: "1.5px solid rgba(99,102,241,0.25)",
+                    borderRight: "1.5px solid rgba(99,102,241,0.25)",
+                  }}
+                />
+                <div
+                  className="absolute bottom-2 left-2 w-3 h-3"
+                  style={{
+                    borderBottom: "1.5px solid rgba(99,102,241,0.25)",
+                    borderLeft: "1.5px solid rgba(99,102,241,0.25)",
+                  }}
+                />
+
+                <div
+                  className="flex items-center justify-end gap-2 text-xs mb-1"
+                  style={{ color: "#3f3f46" }}
+                >
                   Next
                   <ChevronRight className="w-3 h-3" />
                 </div>
-                <p className="font-[var(--font-space-grotesk)] font-medium text-[#9ca3af] group-hover:text-[#4fbfff] transition-colors text-sm">
-                  {next.title}
+                <p
+                  className="font-medium transition-colors text-sm"
+                  style={{
+                    fontFamily: "var(--font-geist-mono)",
+                    color: "#71717a",
+                  }}
+                >
+                  <span className="group-hover:text-[#a5b4fc]">
+                    {next.title}
+                  </span>
                 </p>
               </motion.div>
             </Link>

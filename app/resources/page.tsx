@@ -939,7 +939,6 @@ const resources: Resource[] = [
   },
 
   // ── Community
-
   {
     title: "Dev.to",
     description:
@@ -991,48 +990,48 @@ const languages: Language[] = [
 ];
 
 const languageColors: Record<Exclude<Language, "All">, string> = {
-  TypeScript: "#3178c6",
-  JavaScript: "#f7df1e",
-  React: "#61dafb",
-  Python: "#3572a5",
-  Go: "#00add8",
-  Rust: "#ce422b",
-  C: "#a8b9cc",
-  "C++": "#00599c",
-  Java: "#007396",
-  Kotlin: "#7f52ff",
-  Swift: "#fa7343",
-  PHP: "#777bb4",
-  Ruby: "#cc342d",
-  SQL: "#336791",
-  Design: "#f59e0b",
-  "Full-Stack": "#7c3aed",
-  Git: "#f1502f",
-  DevOps: "#0db7ed",
+  TypeScript: "#6366f1",
+  JavaScript: "#a5b4fc",
+  React: "#818cf8",
+  Python: "#8b5cf6",
+  Go: "#a78bfa",
+  Rust: "#c4b5fd",
+  C: "#7c3aed",
+  "C++": "#6d28d9",
+  Java: "#8b5cf6",
+  Kotlin: "#a78bfa",
+  Swift: "#c4b5fd",
+  PHP: "#818cf8",
+  Ruby: "#a5b4fc",
+  SQL: "#6366f1",
+  Design: "#8b5cf6",
+  "Full-Stack": "#6366f1",
+  Git: "#a5b4fc",
+  DevOps: "#818cf8",
 };
 
 const languageBadgeVariants: Record<
   Exclude<Language, "All">,
-  "cyan" | "yellow" | "green" | "gray"
+  "purple" | "indigo" | "violet" | "gray"
 > = {
-  TypeScript: "cyan",
-  JavaScript: "yellow",
-  React: "cyan",
-  Python: "cyan",
-  Go: "cyan",
+  TypeScript: "purple",
+  JavaScript: "indigo",
+  React: "indigo",
+  Python: "violet",
+  Go: "violet",
   Rust: "gray",
-  C: "gray",
-  "C++": "gray",
-  Java: "cyan",
-  Kotlin: "cyan",
-  Swift: "yellow",
-  PHP: "cyan",
-  Ruby: "yellow",
-  SQL: "cyan",
-  Design: "yellow",
-  "Full-Stack": "gray",
-  Git: "yellow",
-  DevOps: "cyan",
+  C: "purple",
+  "C++": "purple",
+  Java: "violet",
+  Kotlin: "violet",
+  Swift: "gray",
+  PHP: "indigo",
+  Ruby: "indigo",
+  SQL: "purple",
+  Design: "violet",
+  "Full-Stack": "purple",
+  Git: "indigo",
+  DevOps: "indigo",
 };
 
 export default function ResourcesPage() {
@@ -1043,9 +1042,37 @@ export default function ResourcesPage() {
   );
 
   return (
-    <div className="min-h-screen bg-[#050508] relative">
-      <div className="absolute inset-0 dot-bg opacity-40 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#4fbfff] rounded-full opacity-[0.03] blur-[130px] pointer-events-none" />
+    <div className="min-h-screen relative" style={{ background: "#030305" }}>
+      <div className="absolute inset-0 dot-bg opacity-50 pointer-events-none" />
+      <div
+        className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse, rgba(99,102,241,0.06) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* Corner brackets */}
+      <div className="absolute top-20 left-8 hidden md:block">
+        <div
+          style={{
+            width: 40,
+            height: 40,
+            borderTop: "1.5px solid rgba(99,102,241,0.4)",
+            borderLeft: "1.5px solid rgba(99,102,241,0.4)",
+          }}
+        />
+      </div>
+      <div className="absolute top-20 right-8 hidden md:block">
+        <div
+          style={{
+            width: 40,
+            height: 40,
+            borderTop: "1.5px solid rgba(99,102,241,0.4)",
+            borderRight: "1.5px solid rgba(99,102,241,0.4)",
+          }}
+        />
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24">
         {/* Hero */}
@@ -1055,21 +1082,64 @@ export default function ResourcesPage() {
           animate="visible"
           className="mb-14 text-center"
         >
-          <motion.span
+          <motion.div
             variants={fadeInUp}
-            className="inline-block text-xs font-[var(--font-jetbrains)] text-[#4fbfff] uppercase tracking-widest mb-4"
+            className="flex items-center justify-center gap-3 mb-4"
           >
-            Community Curated
-          </motion.span>
+            <span
+              style={{
+                color: "rgba(99,102,241,0.5)",
+                fontFamily: "var(--font-geist-mono)",
+              }}
+            >
+              {"{"}
+            </span>
+            <span
+              className="text-xs tracking-widest uppercase"
+              style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
+            >
+              Community Curated
+            </span>
+            <span
+              style={{
+                color: "rgba(99,102,241,0.5)",
+                fontFamily: "var(--font-geist-mono)",
+              }}
+            >
+              {"}"}
+            </span>
+          </motion.div>
+
           <motion.h1
             variants={fadeInUp}
-            className="font-[var(--font-space-grotesk)] font-bold text-5xl md:text-6xl text-[#f0f0f0] mb-4 leading-tight"
+            style={{
+              fontFamily: "var(--font-pixelify), 'Pixelify Sans', monospace",
+              fontSize: "clamp(2rem, 5vw, 3.5rem)",
+              lineHeight: 1.2,
+            }}
           >
-            Resources to <span className="gradient-text">Level Up</span>
+            <span
+              style={{
+                background:
+                  "linear-gradient(135deg, #e2e2f0 0%, #a5b4fc 50%, #8b5cf6 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              Resources to{" "}
+              <span
+                style={{ color: "#818cf8", WebkitTextFillColor: "#818cf8" }}
+              >
+                Level Up
+              </span>
+            </span>
           </motion.h1>
+
           <motion.p
             variants={fadeInUp}
-            className="text-[#6b7280] text-lg max-w-xl mx-auto font-[var(--font-inter)]"
+            className="mt-4 text-sm max-w-xl mx-auto"
+            style={{ fontFamily: "var(--font-geist-mono)", color: "#52525b" }}
           >
             Curated learning paths by programming language. Find exactly what
             you need to master any stack.
@@ -1081,24 +1151,46 @@ export default function ResourcesPage() {
           {/* Sidebar */}
           <aside className="w-40 flex-shrink-0">
             <div className="sticky top-32 space-y-1">
-              <p className="text-xs font-[var(--font-jetbrains)] text-[#4b5563] uppercase tracking-widest mb-3">
+              <p
+                className="text-xs uppercase tracking-widest mb-3"
+                style={{
+                  fontFamily: "var(--font-geist-mono)",
+                  color: "#3f3f46",
+                }}
+              >
                 Languages
               </p>
-              {languages.map((lang) => (
-                <motion.button
-                  key={lang}
-                  onClick={() => setActiveLanguage(lang)}
-                  className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all font-[var(--font-inter)] ${
-                    activeLanguage === lang
-                      ? "bg-[rgba(0,245,255,0.1)] text-[#4fbfff] border border-[rgba(0,245,255,0.3)]"
-                      : "text-[#6b7280] hover:text-[#f0f0f0] border border-transparent hover:border-[rgba(255,255,255,0.1)]"
-                  }`}
-                  whileHover={{ x: 2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {lang}
-                </motion.button>
-              ))}
+              {languages.map((lang) => {
+                const isActive = activeLanguage === lang;
+                return (
+                  <motion.button
+                    key={lang}
+                    onClick={() => setActiveLanguage(lang)}
+                    className="w-full text-left px-3 py-2 rounded-lg text-sm"
+                    style={{ fontFamily: "var(--font-geist-mono)" }}
+                    initial={false}
+                    animate={{
+                      backgroundColor: isActive
+                        ? "rgba(99,102,241,0.1)"
+                        : "rgba(0,0,0,0)",
+                      color: isActive ? "#a5b4fc" : "#52525b",
+                      borderColor: isActive
+                        ? "rgba(99,102,241,0.3)"
+                        : "rgba(0,0,0,0)",
+                    }}
+                    transition={{ duration: 0.15 }}
+                    whileHover={{
+                      x: 2,
+                      backgroundColor: "rgba(99,102,241,0.1)",
+                      borderColor: "rgba(99,102,241,0.3)",
+                      color: "#a5b4fc",
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {lang}
+                  </motion.button>
+                );
+              })}
             </div>
           </aside>
 
@@ -1120,7 +1212,12 @@ export default function ResourcesPage() {
                     animate="visible"
                     className="col-span-full text-center py-20"
                   >
-                    <p className="text-[#4b5563] text-lg font-[var(--font-space-grotesk)]">
+                    <p
+                      style={{
+                        fontFamily: "var(--font-geist-mono)",
+                        color: "#3f3f46",
+                      }}
+                    >
                       No resources for {activeLanguage}. Check another language!
                     </p>
                   </motion.div>
@@ -1129,7 +1226,7 @@ export default function ResourcesPage() {
                     const langColor =
                       resource.languages.length > 0
                         ? languageColors[resource.languages[0]]
-                        : "#4fbfff";
+                        : "#6366f1";
                     return (
                       <motion.a
                         key={resource.title}
@@ -1142,76 +1239,144 @@ export default function ResourcesPage() {
                           y: 0,
                           transition: { delay: i * 0.04, duration: 0.4 },
                         }}
-                        className="group block glass rounded-xl p-4 relative overflow-hidden border"
-                        style={{ borderColor: "rgba(255,255,255,0.08)" }}
+                        className="group block relative overflow-hidden rounded-xl"
+                        style={{
+                          background: "rgba(7, 7, 15, 0.7)",
+                          border: "1px solid rgba(99,102,241,0.1)",
+                        }}
                         whileHover={{
                           y: -2,
-                          borderColor: `${langColor}40`,
                           transition: { duration: 0.2 },
                         }}
                       >
-                        {/* Featured indicator */}
-                        {resource.featured && (
-                          <div className="absolute top-3 right-3">
-                            <span className="text-[9px] font-[var(--font-jetbrains)] text-[#4fbfff] uppercase tracking-widest">
-                              ★ Featured
+                        {/* Corner brackets */}
+                        <div
+                          className="absolute top-2 left-2 w-3 h-3"
+                          style={{
+                            borderTop: "1.5px solid rgba(99,102,241,0.25)",
+                            borderLeft: "1.5px solid rgba(99,102,241,0.25)",
+                          }}
+                        />
+                        <div
+                          className="absolute top-2 right-2 w-3 h-3"
+                          style={{
+                            borderTop: "1.5px solid rgba(99,102,241,0.25)",
+                            borderRight: "1.5px solid rgba(99,102,241,0.25)",
+                          }}
+                        />
+                        <div
+                          className="absolute bottom-2 left-2 w-3 h-3"
+                          style={{
+                            borderBottom: "1.5px solid rgba(99,102,241,0.25)",
+                            borderLeft: "1.5px solid rgba(99,102,241,0.25)",
+                          }}
+                        />
+                        <div
+                          className="absolute bottom-2 right-2 w-3 h-3"
+                          style={{
+                            borderBottom: "1.5px solid rgba(99,102,241,0.25)",
+                            borderRight: "1.5px solid rgba(99,102,241,0.25)",
+                          }}
+                        />
+
+                        <div className="p-4 relative">
+                          {/* Featured indicator */}
+                          {resource.featured && (
+                            <div className="absolute top-3 right-3">
+                              <span
+                                className="text-[9px] uppercase tracking-widest"
+                                style={{
+                                  fontFamily: "var(--font-geist-mono)",
+                                  color: "#a5b4fc",
+                                }}
+                              >
+                                Featured
+                              </span>
+                            </div>
+                          )}
+
+                          {/* Header: source + primary language */}
+                          <div className="flex items-center gap-2 mb-2">
+                            <div
+                              className="w-6 h-6 rounded-md flex items-center justify-center text-[9px] font-bold"
+                              style={{
+                                background: `${langColor}20`,
+                                color: langColor,
+                                border: `1px solid ${langColor}40`,
+                              }}
+                            >
+                              {resource.source.slice(0, 1).toUpperCase()}
+                            </div>
+                            <span
+                              className="text-xs"
+                              style={{
+                                fontFamily: "var(--font-geist-mono)",
+                                color: "#52525b",
+                              }}
+                            >
+                              {resource.source}
                             </span>
                           </div>
-                        )}
 
-                        {/* Header: source + primary language */}
-                        <div className="flex items-center gap-2 mb-2">
-                          <div
-                            className="w-6 h-6 rounded-md flex items-center justify-center text-[9px] font-bold"
+                          {/* Title */}
+                          <h3
+                            className="font-semibold text-sm mb-1.5 transition-colors"
                             style={{
-                              background: `${langColor}20`,
-                              color: langColor,
-                              border: `1px solid ${langColor}40`,
+                              fontFamily: "var(--font-geist-mono)",
+                              color: "#e2e2f0",
                             }}
                           >
-                            {resource.source.slice(0, 1).toUpperCase()}
+                            {resource.title}
+                          </h3>
+
+                          {/* Description */}
+                          <p
+                            className="text-xs leading-relaxed mb-3"
+                            style={{
+                              fontFamily: "var(--font-geist-mono)",
+                              color: "#52525b",
+                            }}
+                          >
+                            {resource.description}
+                          </p>
+
+                          {/* Languages + Tags */}
+                          <div className="flex flex-wrap gap-1 mb-3">
+                            {resource.languages.slice(0, 2).map((lang) => (
+                              <Badge
+                                key={lang}
+                                variant={languageBadgeVariants[lang]}
+                                size="sm"
+                              >
+                                {lang}
+                              </Badge>
+                            ))}
+                            {resource.tags.slice(0, 1).map((tag) => (
+                              <span
+                                key={tag}
+                                className="text-[9px] px-1.5 py-0.5 rounded"
+                                style={{
+                                  fontFamily: "var(--font-geist-mono)",
+                                  color: "#3f3f46",
+                                  background: "rgba(99,102,241,0.06)",
+                                }}
+                              >
+                                {tag}
+                              </span>
+                            ))}
                           </div>
-                          <span className="text-xs text-[#6b7280] font-[var(--font-jetbrains)]">
-                            {resource.source}
-                          </span>
-                        </div>
 
-                        {/* Title */}
-                        <h3 className="font-[var(--font-space-grotesk)] font-semibold text-[#f0f0f0] mb-1.5 text-sm group-hover:text-[#4fbfff] transition-colors">
-                          {resource.title}
-                        </h3>
-
-                        {/* Description */}
-                        <p className="text-[#6b7280] text-xs leading-relaxed mb-3 font-[var(--font-inter)]">
-                          {resource.description}
-                        </p>
-
-                        {/* Languages + Tags */}
-                        <div className="flex flex-wrap gap-1 mb-3">
-                          {resource.languages.slice(0, 2).map((lang) => (
-                            <Badge
-                              key={lang}
-                              variant={languageBadgeVariants[lang]}
-                              size="sm"
-                            >
-                              {lang}
-                            </Badge>
-                          ))}
-                          {resource.tags.slice(0, 1).map((tag) => (
-                            <span
-                              key={tag}
-                              className="text-[9px] font-[var(--font-jetbrains)] px-1.5 py-0.5 rounded text-[#6b7280]"
-                              style={{ background: "rgba(255,255,255,0.04)" }}
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-
-                        {/* Link */}
-                        <div className="flex items-center gap-1 text-[10px] text-[#4b5563] group-hover:text-[#4fbfff] transition-colors font-[var(--font-jetbrains)]">
-                          <ExternalLink className="w-3 h-3" />
-                          Visit
+                          {/* Link */}
+                          <div
+                            className="flex items-center gap-1 text-[10px] transition-colors"
+                            style={{
+                              fontFamily: "var(--font-geist-mono)",
+                              color: "#3f3f46",
+                            }}
+                          >
+                            <ExternalLink className="w-3 h-3" />
+                            Visit
+                          </div>
                         </div>
                       </motion.a>
                     );
@@ -1222,6 +1387,14 @@ export default function ResourcesPage() {
           </div>
         </div>
       </div>
+
+      <div
+        className="absolute bottom-0 left-0 right-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(99,102,241,0.3), transparent)",
+        }}
+      />
     </div>
   );
 }

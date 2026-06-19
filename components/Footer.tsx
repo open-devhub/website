@@ -1,73 +1,83 @@
 import data from "@/lib/staticdata.config";
 import Link from "next/link";
 
-const { invite, email } = data;
+const { email } = data;
 
 const footerLinks = [
   { label: "Home", href: "/" },
   { label: "Rules", href: "/rules" },
   { label: "Resources", href: "/resources" },
   { label: "Pages", href: "/pages/getting-started" },
-  {
-    label: "GitHub",
-    href: "/github",
-    external: true,
-  },
 ];
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-[rgba(255,255,255,0.06)] bg-[#050508]">
+    <footer
+      className="relative border-t"
+      style={{
+        background: "#030305",
+        borderColor: "rgba(99,102,241,0.12)",
+      }}
+    >
       {/* Top gradient line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-[#4fbfff] to-transparent opacity-50" />
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(99,102,241,0.4), transparent)",
+        }}
+      />
 
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#4fbfff] to-[#7c3aed] flex items-center justify-center">
-                <span className="text-[#050508] font-bold text-sm font-[var(--font-space-grotesk)]">
-                  D
-                </span>
-              </div>
-              <span className="font-[var(--font-space-grotesk)] font-bold text-[#f0f0f0] text-xl">
-                Dev<span className="text-[#4fbfff]">Hub</span>
+              <span
+                className="font-bold text-[#6366f1] text-lg"
+                style={{ fontFamily: "var(--font-geist-mono)" }}
+              >
+                {"</>"}
+              </span>
+              <span
+                className="font-bold text-[#e2e2f0] text-sm tracking-widest uppercase"
+                style={{ fontFamily: "var(--font-geist-mono)" }}
+              >
+                Dev<span style={{ color: "#6366f1" }}>Hub</span>
               </span>
             </div>
-            <p className="text-[#6b7280] text-sm leading-relaxed max-w-xs">
+            <p
+              className="text-sm leading-relaxed max-w-xs"
+              style={{ fontFamily: "var(--font-geist-mono)", color: "#3f3f46" }}
+            >
               A collaborative Discord community where developers build,
-              contribute and learn together. Join us to connect with fellow
-              developers, share your projects, and grow your skills in a
-              supportive environment.
+              contribute and learn together.
             </p>
           </div>
 
-          {/* Links */}
+          {/* Navigate */}
           <div>
-            <h4 className="font-[var(--font-space-grotesk)] font-semibold text-[#f0f0f0] mb-4 text-sm uppercase tracking-wider">
+            <h4
+              className="text-xs uppercase tracking-widest mb-4"
+              style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
+            >
               Navigate
             </h4>
             <ul className="space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.href}>
-                  {link.external ? (
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#6b7280] hover:text-[#4fbfff] transition-colors text-sm"
-                    >
-                      {link.label}
-                    </a>
-                  ) : (
+                  {
                     <Link
                       href={link.href}
-                      className="text-[#6b7280] hover:text-[#4fbfff] transition-colors text-sm"
+                      className="text-sm transition-colors hover:text-[#a5b4fc]"
+                      style={{
+                        fontFamily: "var(--font-geist-mono)",
+                        color: "#3f3f46",
+                      }}
                     >
                       {link.label}
                     </Link>
-                  )}
+                  }
                 </li>
               ))}
             </ul>
@@ -75,21 +85,28 @@ export default function Footer() {
 
           {/* Community */}
           <div>
-            <h4 className="font-[var(--font-space-grotesk)] font-semibold text-[#f0f0f0] mb-4 text-sm uppercase tracking-wider">
+            <h4
+              className="text-xs uppercase tracking-widest mb-4"
+              style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
+            >
               Community
             </h4>
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               <a
                 href="/invite"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full glass flex items-center justify-center text-[#6b7280] hover:text-[#4fbfff] hover:border-[rgba(0,245,255,0.3)] transition-all"
-                style={{ border: "1px solid rgba(255,255,255,0.08)" }}
+                className="w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:border-[rgba(99,102,241,0.5)]"
+                style={{
+                  background: "rgba(99,102,241,0.06)",
+                  border: "1px solid rgba(99,102,241,0.15)",
+                  color: "#52525b",
+                }}
                 aria-label="Discord"
               >
                 <svg
-                  width="18"
-                  height="18"
+                  width="16"
+                  height="16"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
@@ -100,13 +117,17 @@ export default function Footer() {
                 href="/github"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full glass flex items-center justify-center text-[#6b7280] hover:text-[#f0f0f0] transition-all"
-                style={{ border: "1px solid rgba(255,255,255,0.08)" }}
+                className="w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:border-[rgba(99,102,241,0.5)]"
+                style={{
+                  background: "rgba(99,102,241,0.06)",
+                  border: "1px solid rgba(99,102,241,0.15)",
+                  color: "#52525b",
+                }}
                 aria-label="GitHub"
               >
                 <svg
-                  width="18"
-                  height="18"
+                  width="16"
+                  height="16"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
@@ -115,13 +136,17 @@ export default function Footer() {
               </a>
               <a
                 href={`mailto:${email}`}
-                className="w-10 h-10 rounded-full glass flex items-center justify-center text-[#6b7280] hover:text-[#f0f0f0] transition-all"
-                style={{ border: "1px solid rgba(255,255,255,0.08)" }}
+                className="w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:border-[rgba(99,102,241,0.5)]"
+                style={{
+                  background: "rgba(99,102,241,0.06)",
+                  border: "1px solid rgba(99,102,241,0.15)",
+                  color: "#52525b",
+                }}
                 aria-label="Email"
               >
                 <svg
-                  width="18"
-                  height="18"
+                  width="16"
+                  height="16"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
@@ -129,18 +154,24 @@ export default function Footer() {
                 </svg>
               </a>
             </div>
-            <p className="mt-4 text-xs text-[#4b5563]">
-              Join many developers building the future together.
-            </p>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-[rgba(255,255,255,0.06)] pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[#4b5563] text-sm font-[var(--font-jetbrains)]">
+        <div
+          className="border-t pt-8 flex flex-col md:flex-row items-center justify-between gap-4"
+          style={{ borderColor: "rgba(99,102,241,0.08)" }}
+        >
+          <p
+            className="text-xs"
+            style={{ fontFamily: "var(--font-geist-mono)", color: "#3f3f46" }}
+          >
             &copy; {new Date().getFullYear()} DevHub. All rights reserved.
           </p>
-          <p className="text-[#4b5563] text-xs">
+          <p
+            className="text-xs"
+            style={{ fontFamily: "var(--font-geist-mono)", color: "#3f3f46" }}
+          >
             Built with love by the community, for the community.
           </p>
         </div>

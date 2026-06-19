@@ -2,20 +2,17 @@ import { ReactNode } from "react";
 
 interface BadgeProps {
   children: ReactNode;
-  variant?: "cyan" | "violet" | "green" | "yellow" | "red" | "gray";
+  variant?: "purple" | "indigo" | "violet" | "cyan" | "green" | "gray";
   size?: "sm" | "md";
   className?: string;
 }
 
 const variantStyles = {
-  cyan: "bg-[rgba(0,245,255,0.1)] text-[#4fbfff] border border-[rgba(0,245,255,0.2)]",
-  violet:
-    "bg-[rgba(124,58,237,0.15)] text-[#a78bfa] border border-[rgba(124,58,237,0.3)]",
-  green:
-    "bg-[rgba(34,197,94,0.1)] text-[#4ade80] border border-[rgba(34,197,94,0.2)]",
-  yellow:
-    "bg-[rgba(234,179,8,0.1)] text-[#facc15] border border-[rgba(234,179,8,0.2)]",
-  red: "bg-[rgba(239,68,68,0.1)] text-[#f87171] border border-[rgba(239,68,68,0.2)]",
+  purple: "bg-[rgba(99,102,241,0.1)] text-[#a5b4fc] border border-[rgba(99,102,241,0.25)]",
+  indigo: "bg-[rgba(99,102,241,0.15)] text-[#818cf8] border border-[rgba(99,102,241,0.3)]",
+  violet: "bg-[rgba(139,92,246,0.15)] text-[#a78bfa] border border-[rgba(139,92,246,0.3)]",
+  cyan: "bg-[rgba(99,102,241,0.1)] text-[#a5b4fc] border border-[rgba(99,102,241,0.25)]",
+  green: "bg-[rgba(34,197,94,0.1)] text-[#4ade80] border border-[rgba(34,197,94,0.2)]",
   gray: "bg-[rgba(107,114,128,0.15)] text-[#9ca3af] border border-[rgba(107,114,128,0.2)]",
 };
 
@@ -26,13 +23,13 @@ const sizeStyles = {
 
 export default function Badge({
   children,
-  variant = "cyan",
+  variant = "purple",
   size = "md",
   className = "",
 }: BadgeProps) {
   return (
     <span
-      className={`inline-flex items-center rounded-full font-medium font-[var(--font-jetbrains)] ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      className={`inline-flex items-center rounded-full font-medium font-[var(--font-geist-mono)] ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
     >
       {children}
     </span>
