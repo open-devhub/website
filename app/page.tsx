@@ -1,5 +1,3 @@
-"use client";
-
 import BelongSection from "@/components/home/BelongSection";
 import CTASection from "@/components/home/CTASection";
 import FeaturesSection from "@/components/home/FeaturesSection";
