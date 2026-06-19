@@ -3,6 +3,8 @@
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { motion } from "framer-motion";
 
+const shadowIntensity = 400;
+
 const projects = [
   {
     name: "quillbot",
@@ -183,16 +185,13 @@ export default function ShowcaseSection() {
       {/* Marquee */}
       <div className="relative -mx-4 md:-mx-6">
         <div
-          className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
-          style={{ background: "linear-gradient(90deg, #030305, transparent)" }}
-        />
-        <div
-          className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+          className="overflow-hidden relative"
           style={{
-            background: "linear-gradient(-90deg, #030305, transparent)",
+            WebkitMaskImage: `linear-gradient(90deg, transparent 0%, black ${shadowIntensity / 8}%, black ${100 - shadowIntensity / 8}%, transparent 100%)`,
+            maskImage: `linear-gradient(90deg, transparent 0%, black ${shadowIntensity / 8}%, black ${100 - shadowIntensity / 8}%, transparent 100%)`,
+            boxShadow: `inset ${shadowIntensity}px 0 ${shadowIntensity}px -60px #030305, inset -${shadowIntensity}px 0 ${shadowIntensity}px -60px #030305`,
           }}
-        />
-        <div className="overflow-hidden">
+        >
           <div className="flex marquee-track w-max">
             {doubledProjects.map((project, i) => (
               <ProjectCard key={i} project={project} />
