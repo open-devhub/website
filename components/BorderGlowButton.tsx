@@ -41,7 +41,12 @@ export default function BorderGlowButton({
   if (href) {
     if (external) {
       return (
-        <a href={href} target="_blank" rel="noopener noreferrer" className={baseClass}>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={baseClass}
+        >
           {children}
         </a>
       );

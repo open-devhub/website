@@ -23,9 +23,18 @@ const memberTypes = [
 
 export default function BelongSection() {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden" style={{ background: "#030305" }}>
+    <section
+      className="relative py-24 md:py-32 overflow-hidden"
+      style={{ background: "#030305" }}
+    >
       <div className="absolute inset-0 dot-bg opacity-40 pointer-events-none" />
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)" }} />
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)",
+        }}
+      />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <motion.div
@@ -35,15 +44,32 @@ export default function BelongSection() {
           viewport={{ once: true, margin: "-80px" }}
           className="text-center mb-16"
         >
-          <motion.div variants={fadeInUp} className="flex items-center justify-center gap-3 mb-4">
-            <span style={{ color: "rgba(99,102,241,0.5)", fontFamily: "var(--font-geist-mono)" }}>{"{"}</span>
+          <motion.div
+            variants={fadeInUp}
+            className="flex items-center justify-center gap-3 mb-4"
+          >
+            <span
+              style={{
+                color: "rgba(99,102,241,0.5)",
+                fontFamily: "var(--font-geist-mono)",
+              }}
+            >
+              {"{"}
+            </span>
             <span
               className="text-xs tracking-widest uppercase"
               style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
             >
               For Every Developer
             </span>
-            <span style={{ color: "rgba(99,102,241,0.5)", fontFamily: "var(--font-geist-mono)" }}>{"}"}</span>
+            <span
+              style={{
+                color: "rgba(99,102,241,0.5)",
+                fontFamily: "var(--font-geist-mono)",
+              }}
+            >
+              {"}"}
+            </span>
           </motion.div>
 
           <motion.h2
@@ -56,15 +82,20 @@ export default function BelongSection() {
           >
             <span
               style={{
-                background: "linear-gradient(135deg, #e2e2f0 0%, #a5b4fc 50%, #8b5cf6 100%)",
+                background:
+                  "linear-gradient(135deg, #e2e2f0 0%, #a5b4fc 50%, #8b5cf6 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
               }}
             >
               A place for{" "}
-              <span style={{ color: "#818cf8", WebkitTextFillColor: "#818cf8" }}>developers</span>
-              {" "}at every stage.
+              <span
+                style={{ color: "#818cf8", WebkitTextFillColor: "#818cf8" }}
+              >
+                developers
+              </span>{" "}
+              at every stage.
             </span>
           </motion.h2>
 
@@ -73,7 +104,9 @@ export default function BelongSection() {
             className="mt-4 text-sm max-w-xl mx-auto leading-relaxed"
             style={{ fontFamily: "var(--font-geist-mono)", color: "#52525b" }}
           >
-            Whether you're making your first commit or building your next big project, DevHub is a community where you can learn, contribute, and learn together.
+            Whether you're making your first commit or building your next big
+            project, DevHub is a community where you can learn, contribute, and
+            learn together.
           </motion.p>
         </motion.div>
 
@@ -109,13 +142,19 @@ export default function BelongSection() {
             >
               <span
                 className="font-mono text-xs flex-shrink-0"
-                style={{ fontFamily: "var(--font-geist-mono)", color: "rgba(99,102,241,0.4)" }}
+                style={{
+                  fontFamily: "var(--font-geist-mono)",
+                  color: "rgba(99,102,241,0.4)",
+                }}
               >
                 {">"}
               </span>
               <span
                 className="text-sm"
-                style={{ fontFamily: "var(--font-geist-mono)", color: "#52525b" }}
+                style={{
+                  fontFamily: "var(--font-geist-mono)",
+                  color: "#52525b",
+                }}
               >
                 {type}
               </span>
@@ -124,7 +163,13 @@ export default function BelongSection() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)" }} />
+      <div
+        className="absolute bottom-0 left-0 right-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)",
+        }}
+      />
     </section>
   );
 }

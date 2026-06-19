@@ -82,7 +82,10 @@ body {
     linear-gradient(rgba(99, 102, 241, 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(99, 102, 241, 0.06) 1px, transparent 1px),
     radial-gradient(rgba(99, 102, 241, 0.08) 1px, transparent 1px);
-  background-size: 80px 80px, 80px 80px, 28px 28px;
+  background-size:
+    80px 80px,
+    80px 80px,
+    28px 28px;
 }
 
 /* Glassmorphism */
@@ -112,7 +115,13 @@ body {
 
 /* Metallic silver-to-purple gradient text (for main titles) */
 .gradient-text-pixel {
-  background: linear-gradient(135deg, #e2e2f0 0%, #a5b4fc 40%, #8b5cf6 70%, #6366f1 100%);
+  background: linear-gradient(
+    135deg,
+    #e2e2f0 0%,
+    #a5b4fc 40%,
+    #8b5cf6 70%,
+    #6366f1 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -188,8 +197,12 @@ body {
 
 /* Marquee */
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 .marquee-track {
   animation: marquee 40s linear infinite;
@@ -200,8 +213,12 @@ body {
 
 /* Shiny text animation */
 @keyframes shiny-text {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 .shiny-text {
   background: linear-gradient(
@@ -222,8 +239,15 @@ body {
 
 /* Pulse glow purple */
 @keyframes pulse-glow-purple {
-  0%, 100% { box-shadow: 0 0 10px rgba(99, 102, 241, 0.3); }
-  50% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.7), 0 0 60px rgba(99, 102, 241, 0.3); }
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 30px rgba(99, 102, 241, 0.7),
+      0 0 60px rgba(99, 102, 241, 0.3);
+  }
 }
 .pulse-glow {
   animation: pulse-glow-purple 2s ease-in-out infinite;
@@ -231,8 +255,13 @@ body {
 
 /* Float animation */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 .float-anim {
   animation: float 4s ease-in-out infinite;
@@ -240,8 +269,13 @@ body {
 
 /* Blob */
 @keyframes blob {
-  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  0%,
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
 }
 .blob {
   animation: blob 8s ease-in-out infinite;
@@ -249,15 +283,25 @@ body {
 
 /* Border glow button animation */
 @keyframes border-glow-rotate {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Scanning line animation */
 @keyframes scan-line {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
 }
 
 /* Transition timing */

@@ -2,9 +2,9 @@ const redir = require("./lib/redirects.config.ts").default;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
- // eslint: {
- //   ignoreDuringBuilds: true,
-//  },
+  // eslint: {
+  //   ignoreDuringBuilds: true,
+  //  },
 
   images: {
     unoptimized: true,
