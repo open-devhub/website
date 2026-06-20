@@ -15,7 +15,7 @@ export default function CTASection() {
     >
       <div className="absolute inset-0 circuit-bg opacity-60 pointer-events-none" />
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] pointer-events-none"
         style={{
           background:
             "radial-gradient(ellipse, rgba(99,102,241,0.08) 0%, transparent 70%)",
@@ -149,7 +149,7 @@ export default function CTASection() {
               href="/invite"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-10 py-4 rounded-full text-sm font-mono font-semibold tracking-wider uppercase text-white cursor-target"
+              className="inline-flex items-center gap-3 px-10 py-4 text-sm font-mono font-semibold tracking-wider uppercase text-white cursor-target"
               style={{
                 fontFamily: "var(--font-geist-mono)",
                 background: "rgba(99, 102, 241, 0.18)",
@@ -181,15 +181,15 @@ export default function CTASection() {
             style={{ fontFamily: "var(--font-geist-mono)", color: "#3f3f46" }}
           >
             <span className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#22d3ee]" />
+              <span className="w-1.5 h-1.5 bg-[#22d3ee]" />
               No application required
             </span>
             <span className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]" />
+              <span className="w-1.5 h-1.5 bg-[#6366f1]" />
               All skill levels welcome
             </span>
             <span className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#8b5cf6]" />
+              <span className="w-1.5 h-1.5 bg-[#8b5cf6]" />
               Active 24/7
             </span>
           </motion.div>

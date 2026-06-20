@@ -23,7 +23,7 @@ function SidebarSection({ section, currentSlug }: SidebarSectionProps) {
     <div className="mb-2">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-widest transition-colors"
+        className="w-full flex items-center justify-between px-3 py-2 text-xs font-semibold uppercase tracking-widest transition-colors"
         style={{
           fontFamily: "var(--font-geist-mono)",
           color: "#3f3f46",
@@ -52,7 +52,7 @@ function SidebarSection({ section, currentSlug }: SidebarSectionProps) {
                 return (
                   <Link key={page.slug} href={`/pages/${page.slug}`}>
                     <motion.span
-                      className="block px-3 py-2 rounded-lg text-sm cursor-pointer"
+                      className="block px-3 py-2 text-sm cursor-pointer"
                       style={{ fontFamily: "var(--font-geist-mono)" }}
                       initial={false}
                       animate={{
@@ -102,7 +102,7 @@ export default function PagesLayout({
       <div className="lg:hidden fixed top-20 left-4 z-40">
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="w-10 h-10 rounded-lg flex items-center justify-center transition-all"
+          className="w-10 h-10 flex items-center justify-center transition-all"
           style={{
             background: "rgba(99,102,241,0.06)",
             border: "1px solid rgba(99,102,241,0.15)",

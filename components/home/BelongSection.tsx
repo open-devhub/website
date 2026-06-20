@@ -128,7 +128,7 @@ export default function BelongSection() {
                   transition: { delay: i * 0.04, duration: 0.5 },
                 },
               }}
-              className="flex items-center gap-3 rounded-xl px-4 py-3 group cursor-default"
+              className="flex items-center gap-3 px-4 py-3 group cursor-default"
               style={{
                 background: "rgba(7, 7, 15, 0.7)",
                 border: "1px solid rgba(99,102,241,0.08)",

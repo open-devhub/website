@@ -30,7 +30,7 @@ export default function BorderGlowButton({
   };
 
   const baseClass = cn(
-    "relative inline-flex items-center gap-2 rounded-full font-mono uppercase tracking-wider font-medium transition-all duration-200 overflow-hidden",
+    "relative inline-flex items-center gap-2 font-mono uppercase tracking-wider font-medium transition-all duration-200 overflow-hidden",
     sizeClasses[size],
     variant === "primary"
       ? "bg-[#6366f1] text-white border border-[#6366f1] hover:bg-[#5558e3] hover:shadow-[0_0_20px_rgba(99,102,241,0.5)]"

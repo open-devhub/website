@@ -85,7 +85,7 @@ function ContentBlock({ block }: { block: PageContent }) {
               style={{ fontFamily: "var(--font-geist-mono)", color: "#71717a" }}
             >
               <span
-                className="mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                className="mt-2 w-1.5 h-1.5 flex-shrink-0"
                 style={{ background: "rgba(99,102,241,0.5)" }}
               />
               <Highlight text={item} />
@@ -116,7 +116,7 @@ function ContentBlock({ block }: { block: PageContent }) {
     case "code":
       return (
         <div
-          className="rounded-xl p-4 mb-4 overflow-x-auto relative"
+          className="p-4 mb-4 overflow-x-auto relative"
           style={{
             background: "rgba(7, 7, 15, 0.8)",
             border: "1px solid rgba(99,102,241,0.12)",
@@ -183,7 +183,7 @@ function ContentBlock({ block }: { block: PageContent }) {
       const s = styles[block.variant || "info"];
       return (
         <div
-          className="flex gap-3 rounded-xl p-4 mb-4 border"
+          className="flex gap-3 p-4 mb-4 border"
           style={{ background: s.bg, borderColor: s.border }}
         >
           <s.Icon
@@ -330,7 +330,7 @@ export default function PageClient({ page, prev, next }: Props) {
           {prev ? (
             <Link href={`/pages/${prev.slug}`} className="group block">
               <motion.div
-                className="relative rounded-xl p-4 overflow-hidden"
+                className="relative p-4 overflow-hidden"
                 style={{
                   background: "rgba(7, 7, 15, 0.6)",
                   border: "1px solid rgba(99,102,241,0.1)",
@@ -380,7 +380,7 @@ export default function PageClient({ page, prev, next }: Props) {
           {next ? (
             <Link href={`/pages/${next.slug}`} className="group block">
               <motion.div
-                className="relative rounded-xl p-4 text-right overflow-hidden"
+                className="relative p-4 text-right overflow-hidden"
                 style={{
                   background: "rgba(7, 7, 15, 0.6)",
                   border: "1px solid rgba(99,102,241,0.1)",

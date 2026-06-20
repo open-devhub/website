@@ -137,7 +137,7 @@ export default function FeaturesSection() {
                 display: "block",
               }}
             >
-              Everything you
+              Everything <span className="cursor-target">you</span>
             </span>
             <span
               style={{
@@ -212,7 +212,7 @@ export default function FeaturesSection() {
                     transition: { delay: i * 0.08, duration: 0.5 },
                   },
                 }}
-                className="group relative rounded-xl p-6 cursor-default"
+                className="group relative p-6 cursor-default"
                 style={{
                   background: "rgba(7, 7, 15, 0.8)",
                   border: "1px solid rgba(99,102,241,0.12)",
@@ -237,7 +237,7 @@ export default function FeaturesSection() {
                 {/* Icon with bracket corners */}
                 <div className="relative mt-4 mb-5 w-14 h-14 mx-0">
                   <div
-                    className="absolute inset-0 rounded-lg flex items-center justify-center"
+                    className="absolute inset-0 flex items-center justify-center"
                     style={{
                       background: `${feature.color}12`,
                       border: `1px solid ${feature.color}25`,

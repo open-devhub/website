@@ -113,7 +113,7 @@ export default function RulesPage() {
     <div className="min-h-screen relative" style={{ background: "#030305" }}>
       <div className="absolute inset-0 dot-bg opacity-50 pointer-events-none" />
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full pointer-events-none"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] pointer-events-none"
         style={{
           background:
             "radial-gradient(ellipse, rgba(99,102,241,0.08) 0%, transparent 70%)",
@@ -238,7 +238,7 @@ export default function RulesPage() {
               className="scroll-mt-32 group"
             >
               <div
-                className="relative rounded-xl p-6 md:p-8 overflow-hidden"
+                className="relative p-6 md:p-8 overflow-hidden"
                 style={{
                   background: "rgba(7, 7, 15, 0.7)",
                   border: "1px solid rgba(99,102,241,0.1)",
@@ -330,7 +330,7 @@ export default function RulesPage() {
           className="mt-16"
         >
           <div
-            className="relative rounded-xl p-6 overflow-hidden"
+            className="relative p-6 overflow-hidden"
             style={{
               background: "rgba(99,102,241,0.03)",
               border: "1px solid rgba(99,102,241,0.15)",

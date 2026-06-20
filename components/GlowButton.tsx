@@ -64,7 +64,7 @@ export default function GlowButton({
     },
   };
 
-  const combinedClass = `inline-flex items-center gap-2 rounded-full font-[var(--font-space-grotesk)] cursor-pointer ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
+  const combinedClass = `inline-flex items-center gap-2 font-[var(--font-space-grotesk)] cursor-pointer ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
 
   const motionProps = {
     initial: glowStyles[variant].rest,

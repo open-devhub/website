@@ -47,7 +47,7 @@ export default function Navbar() {
           className={`mx-auto px-4 transition-all duration-300 ${scrolled ? "max-w-3xl" : "max-w-4xl"}`}
         >
           <div
-            className="rounded-full px-5 py-2.5 flex items-center justify-between"
+            className="px-5 py-2.5 flex items-center justify-between"
             style={{
               background: "rgba(7, 7, 15, 0.88)",
               border: "1px solid rgba(99, 102, 241, 0.25)",
@@ -59,7 +59,11 @@ export default function Navbar() {
             }}
           >
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group" onClick={() => setMenuOpen(false)}>
+            <Link
+              href="/"
+              className="flex items-center gap-2 group"
+              onClick={() => setMenuOpen(false)}
+            >
               <span
                 className="font-bold text-[#6366f1] text-lg"
                 style={{ fontFamily: "var(--font-geist-mono)" }}
@@ -88,7 +92,7 @@ export default function Navbar() {
                 return (
                   <Link key={link.href} href={link.href}>
                     <motion.span
-                      className={`relative px-4 py-1.5 rounded-full text-xs font-mono font-medium tracking-widest transition-colors cursor-pointer ${
+                      className={`relative px-4 py-1.5 text-xs font-mono font-medium tracking-widest transition-colors cursor-pointer ${
                         isActive
                           ? "text-[#a5b4fc]"
                           : "text-[#52525b] hover:text-[#c4c4cc]"
@@ -99,7 +103,7 @@ export default function Navbar() {
                       {isActive && (
                         <motion.span
                           layoutId="nav-indicator"
-                          className="absolute inset-0 rounded-full"
+                          className="absolute inset-0"
                           style={{
                             background: "rgba(99,102,241,0.1)",
                             border: "1px solid rgba(99,102,241,0.3)",
@@ -118,7 +122,7 @@ export default function Navbar() {
                 href="/invite"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden md:inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-semibold tracking-wider uppercase text-white cursor-target"
+                className="hidden md:inline-flex items-center gap-2 px-4 py-1.5 text-xs font-mono font-semibold tracking-wider uppercase text-white cursor-target"
                 style={{
                   fontFamily: "var(--font-geist-mono)",
                   background: "rgba(99, 102, 241, 0.12)",
@@ -137,7 +141,7 @@ export default function Navbar() {
 
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-full"
+                className="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5"
                 aria-label="Toggle menu"
               >
                 <motion.span
@@ -206,7 +210,7 @@ export default function Navbar() {
                   href="/invite"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 py-3 rounded-full text-sm font-mono font-semibold tracking-wider uppercase text-white"
+                  className="inline-flex items-center gap-2 px-8 py-3 text-sm font-mono font-semibold tracking-wider uppercase text-white"
                   style={{
                     fontFamily: "var(--font-geist-mono)",
                     background: "rgba(99, 102, 241, 0.15)",
