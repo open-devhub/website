@@ -59,7 +59,7 @@ export default function Navbar() {
             }}
           >
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
+            <Link href="/" className="flex items-center gap-2 group" onClick={() => setMenuOpen(false)}>
               <span
                 className="font-bold text-[#6366f1] text-lg"
                 style={{ fontFamily: "var(--font-geist-mono)" }}
