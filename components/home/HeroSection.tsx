@@ -111,7 +111,7 @@ export default function HeroSection() {
 
       {/* Purple glow center */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none"
         style={{
           background:
             "radial-gradient(ellipse, rgba(99,102,241,0.06) 0%, transparent 70%)",
@@ -177,13 +177,13 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="inline-flex items-center gap-2 rounded-none px-4 py-2 mb-12"
+          className="inline-flex items-center gap-2 px-4 py-2 mb-12"
           style={{
             background: "rgba(99, 102, 241, 0.08)",
             border: "1px solid rgba(99, 102, 241, 0.3)",
           }}
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1] animate-pulse" />
+          <span className="w-1.5 h-1.5 bg-[#6366f1] animate-pulse" />
           <span
             className="text-xs font-mono tracking-widest text-[#a5b4fc] uppercase"
             style={{ fontFamily: "var(--font-geist-mono)" }}
@@ -296,7 +296,7 @@ export default function HeroSection() {
             href="/invite"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-none text-sm font-mono font-semibold tracking-wider uppercase text-white cursor-target"
+            className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-mono font-semibold tracking-wider uppercase text-white cursor-target"
             style={{
               fontFamily: "var(--font-geist-mono)",
               background: "rgba(99, 102, 241, 0.2)",
@@ -316,7 +316,7 @@ export default function HeroSection() {
 
           <motion.a
             href="/pages"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-none text-sm font-mono font-medium tracking-wider uppercase cursor-target"
+            className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-mono font-medium tracking-wider uppercase cursor-target"
             style={{
               fontFamily: "var(--font-geist-mono)",
               color: "#71717a",

@@ -96,7 +96,7 @@ export default function Footer() {
                 href="/invite"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:border-[rgba(99,102,241,0.5)]"
+                className="w-9 h-9 flex items-center justify-center transition-all hover:border-[rgba(99,102,241,0.5)]"
                 style={{
                   background: "rgba(99,102,241,0.06)",
                   border: "1px solid rgba(99,102,241,0.15)",
@@ -117,7 +117,7 @@ export default function Footer() {
                 href="/github"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:border-[rgba(99,102,241,0.5)]"
+                className="w-9 h-9 flex items-center justify-center transition-all hover:border-[rgba(99,102,241,0.5)]"
                 style={{
                   background: "rgba(99,102,241,0.06)",
                   border: "1px solid rgba(99,102,241,0.15)",
@@ -136,7 +136,7 @@ export default function Footer() {
               </a>
               <a
                 href={`mailto:${email}`}
-                className="w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:border-[rgba(99,102,241,0.5)]"
+                className="w-9 h-9 flex items-center justify-center transition-all hover:border-[rgba(99,102,241,0.5)]"
                 style={{
                   background: "rgba(99,102,241,0.06)",
                   border: "1px solid rgba(99,102,241,0.15)",

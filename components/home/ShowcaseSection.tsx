@@ -55,7 +55,7 @@ const doubledProjects = [...projects, ...projects];
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   return (
     <div
-      className="flex-shrink-0 w-72 flex flex-col justify-between rounded-xl p-5 mx-3 group"
+      className="flex-shrink-0 w-72 flex flex-col justify-between p-5 mx-3 group"
       style={{
         background: "rgba(7, 7, 15, 0.9)",
         border: "1px solid rgba(99,102,241,0.12)",
@@ -89,7 +89,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
       </div>
       <div className="flex items-center gap-2 mt-4">
         <span
-          className="w-2 h-2 rounded-full"
+          className="w-2 h-2"
           style={{ backgroundColor: project.langColor }}
         />
         <span

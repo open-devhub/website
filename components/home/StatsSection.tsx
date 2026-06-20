@@ -140,7 +140,7 @@ export default function StatsSection() {
               <motion.div
                 key={stat.label}
                 variants={fadeInUp}
-                className="rounded-xl p-8 text-center group relative overflow-hidden"
+                className="p-8 text-center group relative overflow-hidden"
                 style={{
                   background: "rgba(7, 7, 15, 0.9)",
                   border: "1px solid rgba(99,102,241,0.12)",
@@ -168,7 +168,7 @@ export default function StatsSection() {
                 />
 
                 <div
-                  className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center"
+                  className="w-12 h-12 mx-auto mb-4 flex items-center justify-center"
                   style={{
                     background: `${stat.color}12`,
                     border: `1px solid ${stat.color}25`,

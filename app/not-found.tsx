@@ -16,7 +16,7 @@ export default function NotFound() {
 
       {/* Purple glow center */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none"
         style={{
           background:
             "radial-gradient(ellipse, rgba(99,102,241,0.08) 0%, transparent 70%)",
@@ -111,7 +111,7 @@ export default function NotFound() {
         >
           <motion.a
             href="/"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-mono font-semibold tracking-wider uppercase text-white cursor-target"
+            className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-mono font-semibold tracking-wider uppercase text-white cursor-target"
             style={{
               fontFamily: "var(--font-geist-mono)",
               background: "rgba(99, 102, 241, 0.2)",
@@ -129,7 +129,7 @@ export default function NotFound() {
 
           <motion.a
             href="/pages"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-mono font-medium tracking-wider uppercase cursor-target"
+            className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-mono font-medium tracking-wider uppercase cursor-target"
             style={{
               fontFamily: "var(--font-geist-mono)",
               color: "#71717a",

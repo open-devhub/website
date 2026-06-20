@@ -1054,7 +1054,7 @@ export default function ResourcesPage() {
     <div className="min-h-screen relative" style={{ background: "#030305" }}>
       <div className="absolute inset-0 dot-bg opacity-50 pointer-events-none" />
       <div
-        className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+        className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none"
         style={{
           background:
             "radial-gradient(ellipse, rgba(99,102,241,0.06) 0%, transparent 70%)",
@@ -1175,7 +1175,7 @@ export default function ResourcesPage() {
                   <motion.button
                     key={lang}
                     onClick={() => setActiveLanguage(lang)}
-                    className="w-full text-left px-3 py-2 rounded-lg text-sm"
+                    className="w-full text-left px-3 py-2 text-sm"
                     style={{ fontFamily: "var(--font-geist-mono)" }}
                     initial={false}
                     animate={{
@@ -1210,7 +1210,7 @@ export default function ResourcesPage() {
               <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
                 <DrawerTrigger asChild>
                   <button
-                    className="flex w-full items-center justify-between rounded-lg border px-4 py-3 text-sm"
+                    className="flex w-full items-center justify-between border px-4 py-3 text-sm"
                     style={{
                       fontFamily: "var(--font-geist-mono)",
                       borderColor: "rgba(99,102,241,0.25)",
@@ -1244,7 +1244,7 @@ export default function ResourcesPage() {
                         <DrawerClose asChild key={lang}>
                           <button
                             onClick={() => setActiveLanguage(lang)}
-                            className="w-full text-left px-3 py-2.5 rounded-lg text-sm border"
+                            className="w-full text-left px-3 py-2.5 text-sm border"
                             style={{
                               fontFamily: "var(--font-geist-mono)",
                               backgroundColor: isActive
@@ -1309,7 +1309,7 @@ export default function ResourcesPage() {
                           y: 0,
                           transition: { delay: i * 0.04, duration: 0.4 },
                         }}
-                        className="group block relative overflow-hidden rounded-xl"
+                        className="group block relative overflow-hidden"
                         style={{
                           background: "rgba(7, 7, 15, 0.7)",
                           border: "1px solid rgba(99,102,241,0.1)",
@@ -1368,7 +1368,7 @@ export default function ResourcesPage() {
                           {/* Header: source + primary language */}
                           <div className="flex items-center gap-2 mb-2">
                             <div
-                              className="w-6 h-6 rounded-md flex items-center justify-center text-[9px] font-bold"
+                              className="w-6 h-6 flex items-center justify-center text-[9px] font-bold"
                               style={{
                                 background: `${langColor}20`,
                                 color: langColor,
