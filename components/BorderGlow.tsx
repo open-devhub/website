@@ -183,56 +183,58 @@ const BorderGlow: React.FC<BorderGlowProps> = ({
     [getEdgeProximity, getCursorAngle],
   );
 
-useEffect(() => {
-if (!animated) return;
-const angleStart = 110;
-const angleEnd = 465;
-setSweepActive(true);
-setCursorAngle(angleStart);
-let cancelled = false;
-const cleanupFns: (() => void)[] = [];
-const safeSetEdgeProximity = (v: number) => {
-if (!cancelled) setEdgeProximity(v);
-};
-const safeSetCursorAngle = (v: number) => {
-if (!cancelled) setCursorAngle(v);
-};
-const safeSetSweepActive = (v: boolean) => {
-if (!cancelled) setSweepActive(v);
-};
-animateValue({ duration: 500, onUpdate: (v) => safeSetEdgeProximity(v / 100) });
-animateValue({
-ease: easeInCubic,
-duration: 1500,
-end: 50,
-onUpdate: (v) => {
-safeSetCursorAngle((angleEnd - angleStart) * (v / 100) + angleStart);
-},
-});
-animateValue({
-ease: easeOutCubic,
-delay: 1500,
-duration: 2250,
-start: 50,
-end: 100,
-onUpdate: (v) => {
-safeSetCursorAngle((angleEnd - angleStart) * (v / 100) + angleStart);
-},
-});
-animateValue({
-ease: easeInCubic,
-delay: 2500,
-duration: 1500,
-start: 100,
-end: 0,
-onUpdate: (v) => safeSetEdgeProximity(v / 100),
-onEnd: () => safeSetSweepActive(false),
-});
-return () => {
-cancelled = true;
-};
-}, [animated]);
-
+  useEffect(() => {
+    if (!animated) return;
+    const angleStart = 110;
+    const angleEnd = 465;
+    setSweepActive(true);
+    setCursorAngle(angleStart);
+    let cancelled = false;
+    const cleanupFns: (() => void)[] = [];
+    const safeSetEdgeProximity = (v: number) => {
+      if (!cancelled) setEdgeProximity(v);
+    };
+    const safeSetCursorAngle = (v: number) => {
+      if (!cancelled) setCursorAngle(v);
+    };
+    const safeSetSweepActive = (v: boolean) => {
+      if (!cancelled) setSweepActive(v);
+    };
+    animateValue({
+      duration: 500,
+      onUpdate: (v) => safeSetEdgeProximity(v / 100),
+    });
+    animateValue({
+      ease: easeInCubic,
+      duration: 1500,
+      end: 50,
+      onUpdate: (v) => {
+        safeSetCursorAngle((angleEnd - angleStart) * (v / 100) + angleStart);
+      },
+    });
+    animateValue({
+      ease: easeOutCubic,
+      delay: 1500,
+      duration: 2250,
+      start: 50,
+      end: 100,
+      onUpdate: (v) => {
+        safeSetCursorAngle((angleEnd - angleStart) * (v / 100) + angleStart);
+      },
+    });
+    animateValue({
+      ease: easeInCubic,
+      delay: 2500,
+      duration: 1500,
+      start: 100,
+      end: 0,
+      onUpdate: (v) => safeSetEdgeProximity(v / 100),
+      onEnd: () => safeSetSweepActive(false),
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [animated]);
 
   const colorSensitivity = edgeSensitivity + 20;
   const isVisible = isHovered || sweepActive;
