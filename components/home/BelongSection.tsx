@@ -95,7 +95,7 @@ export default function BelongSection() {
               >
                 developers
               </span>{" "}
-              at every stage.
+              at <span className="cursor-target">every stage</span>.
             </span>
           </motion.h2>
 

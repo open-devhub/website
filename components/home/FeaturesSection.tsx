@@ -139,7 +139,7 @@ export default function FeaturesSection() {
                 display: "block",
               }}
             >
-              Everything <span className="cursor-target">you</span>
+              Everything you
             </span>
             <span
               style={{
@@ -153,6 +153,7 @@ export default function FeaturesSection() {
             >
               need to{" "}
               <span
+                className="cursor-target"
                 style={{ color: "#818cf8", WebkitTextFillColor: "#818cf8" }}
               >
                 level up

@@ -121,6 +121,7 @@ export default function StatsSection() {
             >
               A community that{" "}
               <span
+                className="cursor-target"
                 style={{ color: "#818cf8", WebkitTextFillColor: "#818cf8" }}
               >
                 ships

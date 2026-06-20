@@ -61,7 +61,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center gap-2 group"
+              className="flex items-center gap-2 group cursor-target"
               onClick={() => setMenuOpen(false)}
             >
               <span
