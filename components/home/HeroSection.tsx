@@ -219,11 +219,11 @@ export default function HeroSection() {
             <ShinyText
               text="Developers"
               className="cursor-target"
-              speed={3}
-              delay={0}
+              speed={3.5}
+              delay={1}
               color="#818cf8"
-              shineColor="#a5b4fc"
-              spread={130}
+              shineColor="#c7d2fe"
+              spread={90}
               direction="left"
               yoyo={false}
               pauseOnHover={false}
@@ -260,7 +260,6 @@ export default function HeroSection() {
                 color: "#818cf8",
                 WebkitTextFillColor: "#818cf8",
               }}
-              className="cursor-target"
             >
               Connect
             </span>

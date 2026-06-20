@@ -18,6 +18,7 @@ export default function Home() {
           parallaxOn
           hoverDuration={0.25}
           cursorColor="rgba(99,102,241,0.5)"
+          cursorColorOnTarget="#a5b4fc"
         />
       </div>
       <HeroSection />

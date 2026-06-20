@@ -125,6 +125,7 @@ export default function CTASection() {
             >
               Ready to ship something{" "}
               <span
+                className="cursor-target"
                 style={{ color: "#818cf8", WebkitTextFillColor: "#818cf8" }}
               >
                 great?

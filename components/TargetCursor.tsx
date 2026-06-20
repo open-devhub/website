@@ -49,7 +49,8 @@ export interface TargetCursorProps {
   hideDefaultCursor?: boolean;
   hoverDuration?: number;
   parallaxOn?: boolean;
-  cursorColor?: string; // NEW
+  cursorColor?: string;
+  cursorColorOnTarget?: string;
 }
 
 const TargetCursor: React.FC<TargetCursorProps> = ({
@@ -59,6 +60,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
   hoverDuration = 0.2,
   parallaxOn = true,
   cursorColor = "#ffffff",
+  cursorColorOnTarget,
 }) => {
   const cursorRef = useRef<HTMLDivElement>(null);
   const cornersRef = useRef<NodeListOf<HTMLDivElement> | null>(null);
@@ -248,11 +250,27 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       }
 
       activeTarget = target;
+      activeTarget = target;
       const corners = Array.from(cornersRef.current);
       corners.forEach((corner) => gsap.killTweensOf(corner));
       gsap.killTweensOf(cursorRef.current, "rotation");
       spinTl.current?.pause();
       gsap.set(cursorRef.current, { rotation: 0 });
+
+      if (cursorColorOnTarget) {
+        gsap.to(corners, {
+          borderColor: cursorColorOnTarget,
+          duration: 0.15,
+          ease: "power2.out",
+        });
+        if (dotRef.current) {
+          gsap.to(dotRef.current, {
+            backgroundColor: cursorColorOnTarget,
+            duration: 0.15,
+            ease: "power2.out",
+          });
+        }
+      }
 
       const rect = target.getBoundingClientRect();
       const { borderWidth, cornerSize } = constants;
@@ -303,9 +321,25 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
         targetCornerPositionsRef.current = null;
         gsap.set(activeStrengthRef.current, { current: 0, overwrite: true });
         activeTarget = null;
+
+        if (cursorColorOnTarget && cornersRef.current) {
+          gsap.to(Array.from(cornersRef.current), {
+            borderColor: cursorColor,
+            duration: 0.15,
+            ease: "power2.out",
+          });
+          if (dotRef.current) {
+            gsap.to(dotRef.current, {
+              backgroundColor: cursorColor,
+              duration: 0.15,
+              ease: "power2.out",
+            });
+          }
+        }
+
         if (cornersRef.current) {
           const corners = Array.from(cornersRef.current);
-          gsap.killTweensOf(corners);
+          gsap.killTweensOf(corners, "x,y");
           const { cornerSize } = constants;
           const positions = [
             { x: -cornerSize * 1.5, y: -cornerSize * 1.5 },
@@ -395,6 +429,8 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
     isMobile,
     hoverDuration,
     parallaxOn,
+    cursorColor,
+    cursorColorOnTarget,
   ]);
 
   useEffect(() => {
