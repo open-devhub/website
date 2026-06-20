@@ -1,9 +1,11 @@
 "use client";
 
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { hexToHslString } from "@/lib/utils";
 import { motion, useInView } from "framer-motion";
 import { Code as Code2, MessageCircle, Users } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import BorderGlow from "../BorderGlow";
 
 const stats = [
   { icon: Users, value: 500, label: "Members", suffix: "+", color: "#6366f1" },
@@ -140,63 +142,78 @@ export default function StatsSection() {
               <motion.div
                 key={stat.label}
                 variants={fadeInUp}
-                className="p-8 text-center group relative overflow-hidden"
-                style={{
-                  background: "rgba(7, 7, 15, 0.9)",
-                  border: "1px solid rgba(99,102,241,0.12)",
-                }}
-                whileHover={{
-                  borderColor: `${stat.color}35`,
-                  // boxShadow: `0 0 30px ${stat.color}12`,
-                  transition: { duration: 0.3 },
-                }}
+                className="h-full w-full"
               >
-                {/* Corner bracket top-left */}
-                <div
-                  className="absolute top-2 left-2 w-3 h-3"
-                  style={{
-                    borderTop: `1.5px solid ${stat.color}40`,
-                    borderLeft: `1.5px solid ${stat.color}40`,
-                  }}
-                />
-                <div
-                  className="absolute bottom-2 right-2 w-3 h-3"
-                  style={{
-                    borderBottom: `1.5px solid ${stat.color}40`,
-                    borderRight: `1.5px solid ${stat.color}40`,
-                  }}
-                />
-
-                <div
-                  className="w-12 h-12 mx-auto mb-4 flex items-center justify-center"
-                  style={{
-                    background: `${stat.color}12`,
-                    border: `1px solid ${stat.color}25`,
-                  }}
+                <BorderGlow
+                  className="h-full w-full"
+                  edgeSensitivity={30}
+                  glowColor={hexToHslString(stat.color)}
+                  backgroundColor="#120F17"
+                  glowRadius={40}
+                  glowIntensity={1}
+                  coneSpread={25}
+                  animated={false}
+                  colors={[stat.color]}
                 >
-                  <Icon className="w-5 h-5" style={{ color: stat.color }} />
-                </div>
+                  <motion.div
+                    className="p-8 text-center group relative overflow-hidden h-full w-full"
+                    style={{
+                      background: "rgba(7, 7, 15, 0.9)",
+                      border: "1px solid rgba(99,102,241,0.12)",
+                    }}
+                    whileHover={{
+                      borderColor: `${stat.color}35`,
+                      transition: { duration: 0.3 },
+                    }}
+                  >
+                    {/* Corner bracket top-left */}
+                    <div
+                      className="absolute top-2 left-2 w-3 h-3"
+                      style={{
+                        borderTop: `1.5px solid ${stat.color}40`,
+                        borderLeft: `1.5px solid ${stat.color}40`,
+                      }}
+                    />
+                    <div
+                      className="absolute bottom-2 right-2 w-3 h-3"
+                      style={{
+                        borderBottom: `1.5px solid ${stat.color}40`,
+                        borderRight: `1.5px solid ${stat.color}40`,
+                      }}
+                    />
 
-                <div
-                  className="font-mono font-bold text-4xl mb-1"
-                  style={{
-                    fontFamily: "var(--font-geist-mono)",
-                    color: stat.color,
-                  }}
-                >
-                  <AnimatedCounter target={stat.value} />
-                  {stat.suffix}
-                </div>
+                    <div
+                      className="w-12 h-12 mx-auto mb-4 flex items-center justify-center"
+                      style={{
+                        background: `${stat.color}12`,
+                        border: `1px solid ${stat.color}25`,
+                      }}
+                    >
+                      <Icon className="w-5 h-5" style={{ color: stat.color }} />
+                    </div>
 
-                <div
-                  className="text-sm"
-                  style={{
-                    fontFamily: "var(--font-geist-mono)",
-                    color: "#52525b",
-                  }}
-                >
-                  {stat.label}
-                </div>
+                    <div
+                      className="font-mono font-bold text-4xl mb-1"
+                      style={{
+                        fontFamily: "var(--font-geist-mono)",
+                        color: stat.color,
+                      }}
+                    >
+                      <AnimatedCounter target={stat.value} />
+                      {stat.suffix}
+                    </div>
+
+                    <div
+                      className="text-sm"
+                      style={{
+                        fontFamily: "var(--font-geist-mono)",
+                        color: "#52525b",
+                      }}
+                    >
+                      {stat.label}
+                    </div>
+                  </motion.div>
+                </BorderGlow>
               </motion.div>
             );
           })}

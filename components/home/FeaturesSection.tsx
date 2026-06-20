@@ -1,6 +1,7 @@
 "use client";
 
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { hexToHslString } from "@/lib/utils";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -11,6 +12,7 @@ import {
   Users,
   Wrench,
 } from "lucide-react";
+import BorderGlow from "../BorderGlow";
 
 const features = [
   {
@@ -212,88 +214,101 @@ export default function FeaturesSection() {
                     transition: { delay: i * 0.08, duration: 0.5 },
                   },
                 }}
-                className="group relative p-6 cursor-default"
-                style={{
-                  background: "rgba(7, 7, 15, 0.8)",
-                  border: "1px solid rgba(99,102,241,0.12)",
-                }}
-                whileHover={{
-                  borderColor: `${feature.color}30`,
-                  background: "rgba(10, 10, 22, 0.9)",
-                  transition: { duration: 0.2 },
-                }}
+                className="h-full w-full"
               >
-                {/* Number badge */}
-                <span
-                  className="absolute top-4 left-5 text-xs font-mono font-semibold"
-                  style={{
-                    fontFamily: "var(--font-geist-mono)",
-                    color: "rgba(99,102,241,0.35)",
-                  }}
+                <BorderGlow
+                  className="h-full w-full"
+                  edgeSensitivity={30}
+                  glowColor={hexToHslString(feature.color)}
+                  backgroundColor="#120F17"
+                  borderRadius={0}
+                  glowRadius={40}
+                  glowIntensity={1}
+                  coneSpread={25}
+                  animated={false}
+                  colors={[feature.color]}
                 >
-                  {feature.num}
-                </span>
-
-                {/* Icon with bracket corners */}
-                <div className="relative mt-4 mb-5 w-14 h-14 mx-0">
-                  <div
-                    className="absolute inset-0 flex items-center justify-center"
+                  <motion.div
+                    className="group relative p-6 cursor-default h-full w-full"
                     style={{
-                      background: `${feature.color}12`,
-                      border: `1px solid ${feature.color}25`,
+                      background: "rgb(9,9,20)",
+                      border: "1px solid rgb(9,9,20)",
+                    }}
+                    whileHover={{
+                      borderColor: `${feature.color}30`,
+                      background: "rgba(10, 10, 22, 0.9)",
+                      transition: { duration: 0.2 },
                     }}
                   >
-                    <Icon
-                      className="w-6 h-6"
-                      style={{ color: feature.color }}
-                    />
-                  </div>
-                  {/* corner brackets on icon */}
-                  <div
-                    className="absolute -top-0.5 -left-0.5 w-2.5 h-2.5"
-                    style={{
-                      borderTop: `1.5px solid ${feature.color}60`,
-                      borderLeft: `1.5px solid ${feature.color}60`,
-                    }}
-                  />
-                  <div
-                    className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5"
-                    style={{
-                      borderBottom: `1.5px solid ${feature.color}60`,
-                      borderRight: `1.5px solid ${feature.color}60`,
-                    }}
-                  />
-                </div>
-
-                {/* Title */}
-                <h3
-                  className="mb-2 text-base font-semibold"
-                  style={{
-                    fontFamily: "var(--font-geist-mono)",
-                    color: feature.color,
-                  }}
-                >
-                  {feature.title}
-                </h3>
-
-                {/* Description */}
-                <p
-                  className="text-sm leading-relaxed mb-4"
-                  style={{
-                    fontFamily: "var(--font-geist-mono)",
-                    color: "#52525b",
-                  }}
-                >
-                  {feature.description}
-                </p>
-
-                {/* Arrow */}
-                <div className="flex justify-end">
-                  <ArrowRight
-                    className="w-4 h-4 transition-transform group-hover:translate-x-1"
-                    style={{ color: "rgba(99,102,241,0.3)" }}
-                  />
-                </div>
+                    {/* Number badge */}
+                    <span
+                      className="absolute top-4 left-5 text-xs font-mono font-semibold"
+                      style={{
+                        fontFamily: "var(--font-geist-mono)",
+                        color: "rgba(99,102,241,0.35)",
+                      }}
+                    >
+                      {feature.num}
+                    </span>
+                    {/* Icon with bracket corners */}
+                    <div className="relative mt-4 mb-5 w-14 h-14 mx-0">
+                      <div
+                        className="absolute inset-0 flex items-center justify-center"
+                        style={{
+                          background: `${feature.color}12`,
+                          border: `1px solid ${feature.color}25`,
+                        }}
+                      >
+                        <Icon
+                          className="w-6 h-6"
+                          style={{ color: feature.color }}
+                        />
+                      </div>
+                      {/* corner brackets on icon */}
+                      <div
+                        className="absolute -top-0.5 -left-0.5 w-2.5 h-2.5"
+                        style={{
+                          borderTop: `1.5px solid ${feature.color}60`,
+                          borderLeft: `1.5px solid ${feature.color}60`,
+                        }}
+                      />
+                      <div
+                        className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5"
+                        style={{
+                          borderBottom: `1.5px solid ${feature.color}60`,
+                          borderRight: `1.5px solid ${feature.color}60`,
+                        }}
+                      />
+                    </div>
+                    {/* Title */}
+                    <h3
+                      className="mb-2 text-base font-semibold"
+                      style={{
+                        fontFamily: "var(--font-geist-mono)",
+                        color: feature.color,
+                      }}
+                    >
+                      {feature.title}
+                    </h3>
+                    {/* Description */}
+                    <p
+                      className="text-sm leading-relaxed mb-4"
+                      style={{
+                        fontFamily: "var(--font-geist-mono)",
+                        color: "#52525b",
+                      }}
+                    >
+                      {feature.description}
+                    </p>
+                    {/* Arrow */}
+                    <div className="flex justify-end">
+                      <ArrowRight
+                        className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                        style={{ color: "rgba(99,102,241,0.3)" }}
+                      />
+                    </div>
+                  </motion.div>
+                </BorderGlow>
               </motion.div>
             );
           })}
