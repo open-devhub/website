@@ -1,9 +1,17 @@
 "use client";
 
 import Badge from "@/components/Badge";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 import { fadeInUp, scaleIn, staggerContainer } from "@/lib/animations";
 import { AnimatePresence, motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, SlidersHorizontal } from "lucide-react";
 import { useState } from "react";
 
 type Language =
@@ -1036,6 +1044,7 @@ const languageBadgeVariants: Record<
 
 export default function ResourcesPage() {
   const [activeLanguage, setActiveLanguage] = useState<Language>("TypeScript");
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const filtered = resources.filter((r) =>
     r.languages.includes(activeLanguage as Exclude<Language, "All">),
@@ -1148,8 +1157,8 @@ export default function ResourcesPage() {
 
         {/* Two-column layout: Sidebar + Grid */}
         <div className="flex gap-8">
-          {/* Sidebar */}
-          <aside className="w-40 flex-shrink-0">
+          {/* Sidebar (desktop) */}
+          <aside className="hidden md:block w-40 flex-shrink-0">
             <div className="sticky top-32 space-y-1">
               <p
                 className="text-xs uppercase tracking-widest mb-3"
@@ -1196,6 +1205,67 @@ export default function ResourcesPage() {
 
           {/* Resources grid */}
           <div className="flex-1">
+            {/* Mobile filter bar */}
+            <div className="md:hidden mb-6">
+              <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
+                <DrawerTrigger asChild>
+                  <button
+                    className="flex w-full items-center justify-between rounded-lg border px-4 py-3 text-sm"
+                    style={{
+                      fontFamily: "var(--font-geist-mono)",
+                      borderColor: "rgba(99,102,241,0.25)",
+                      backgroundColor: "rgba(99,102,241,0.06)",
+                      color: "#a5b4fc",
+                    }}
+                  >
+                    <span className="flex items-center gap-2">
+                      <SlidersHorizontal className="h-4 w-4" />
+                      Language
+                    </span>
+                    <span style={{ color: "#818cf8" }}>{activeLanguage}</span>
+                  </button>
+                </DrawerTrigger>
+                <DrawerContent style={{ backgroundColor: "#0a0a12" }}>
+                  <DrawerHeader>
+                    <DrawerTitle
+                      className="text-xs uppercase tracking-widest"
+                      style={{
+                        fontFamily: "var(--font-geist-mono)",
+                        color: "#a5b4fc",
+                      }}
+                    >
+                      Select Language
+                    </DrawerTitle>
+                  </DrawerHeader>
+                  <div className="grid grid-cols-2 gap-2 px-4 pb-8">
+                    {languages.map((lang) => {
+                      const isActive = activeLanguage === lang;
+                      return (
+                        <DrawerClose asChild key={lang}>
+                          <button
+                            onClick={() => setActiveLanguage(lang)}
+                            className="w-full text-left px-3 py-2.5 rounded-lg text-sm border"
+                            style={{
+                              fontFamily: "var(--font-geist-mono)",
+                              backgroundColor: isActive
+                                ? "rgba(99,102,241,0.12)"
+                                : "rgba(0,0,0,0)",
+                              borderColor: isActive
+                                ? "rgba(99,102,241,0.3)"
+                                : "rgba(255,255,255,0.06)",
+                              color: isActive ? "#a5b4fc" : "#52525b",
+                            }}
+                          >
+                            {lang}
+                          </button>
+                        </DrawerClose>
+                      );
+                    })}
+                  </div>
+                </DrawerContent>
+              </Drawer>
+            </div>
+
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeLanguage}
