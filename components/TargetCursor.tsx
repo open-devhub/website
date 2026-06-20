@@ -1,7 +1,7 @@
 "use client";
 
 import { gsap } from "gsap";
-import React, { useCallback, useEffect, useMemo, useRef } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 // A position: fixed element is positioned relative to the viewport UNLESS an
 // ancestor establishes a containing block (transform, perspective, filter,
@@ -67,8 +67,15 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
   const tickerFnRef = useRef<(() => void) | null>(null);
   const activeStrengthRef = useRef({ current: 0 });
 
+  // Keep null until after mount so SSR and first client render both return null,
+  // avoiding any hydration mismatch.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const isMobile = useMemo(() => {
-    if (typeof window === "undefined") return false;
+    if (!mounted) return false;
     const hasTouchScreen =
       "ontouchstart" in window || navigator.maxTouchPoints > 0;
     const isSmallScreen = window.innerWidth <= 768;
@@ -78,7 +85,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
     const isMobileUserAgent = mobileRegex.test(userAgent.toLowerCase());
     return (hasTouchScreen && isSmallScreen) || isMobileUserAgent;
-  }, []);
+  }, [mounted]);
 
   const constants = useMemo(() => ({ borderWidth: 3, cornerSize: 12 }), []);
 
@@ -395,7 +402,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
     }
   }, [spinDuration, isMobile]);
 
-  if (isMobile) {
+  if (!mounted || isMobile) {
     return null;
   }
 
