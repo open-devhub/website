@@ -171,13 +171,13 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 pt-28 pb-20 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 pt-28 pb-20 text-left sm:text-center">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-12"
+          className="inline-flex items-center gap-2 rounded-none px-4 py-2 mb-12"
           style={{
             background: "rgba(99, 102, 241, 0.08)",
             border: "1px solid rgba(99, 102, 241, 0.3)",
@@ -273,7 +273,7 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.8 }}
-          className="text-base md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed"
+          className="text-base md:text-lg mb-10 max-w-2xl sm:mx-auto leading-relaxed"
           style={{
             fontFamily: "var(--font-geist-mono), 'Geist Mono', monospace",
             color: "#71717a",
@@ -290,13 +290,13 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
           transition={{ delay: 1.0 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-center gap-4"
         >
           <motion.a
             href="/invite"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-mono font-semibold tracking-wider uppercase text-white cursor-target"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-none text-sm font-mono font-semibold tracking-wider uppercase text-white cursor-target"
             style={{
               fontFamily: "var(--font-geist-mono)",
               background: "rgba(99, 102, 241, 0.2)",
@@ -316,7 +316,7 @@ export default function HeroSection() {
 
           <motion.a
             href="/pages"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-mono font-medium tracking-wider uppercase cursor-target"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-none text-sm font-mono font-medium tracking-wider uppercase cursor-target"
             style={{
               fontFamily: "var(--font-geist-mono)",
               color: "#71717a",
@@ -360,7 +360,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="mt-8 flex flex-col items-center gap-2"
+          className="mt-8 flex flex-col items-start sm:items-center gap-2"
         >
           <motion.div
             animate={{ y: [0, 6, 0] }}
