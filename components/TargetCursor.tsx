@@ -1,7 +1,13 @@
 "use client";
 
 import { gsap } from "gsap";
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 // A position: fixed element is positioned relative to the viewport UNLESS an
 // ancestor establishes a containing block (transform, perspective, filter,
@@ -103,7 +109,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
   }, []);
 
   useEffect(() => {
-    if (isMobile || !cursorRef.current) return;
+    if (!mounted || isMobile || !cursorRef.current) return;
 
     const originalCursor = document.body.style.cursor;
     if (hideDefaultCursor) {
@@ -380,6 +386,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       activeStrengthRef.current.current = 0;
     };
   }, [
+    mounted,
     targetSelector,
     spinDuration,
     moveCursor,
