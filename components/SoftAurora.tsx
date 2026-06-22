@@ -199,6 +199,10 @@ export default function SoftAurora({
     const container = containerRef.current;
     const renderer = new Renderer({ alpha: true, premultipliedAlpha: false });
     const gl = renderer.gl;
+    if (!gl) {
+      console.error("WebGL not supported");
+      return;
+    }
     gl.clearColor(0, 0, 0, 0);
 
     let program: Program;
