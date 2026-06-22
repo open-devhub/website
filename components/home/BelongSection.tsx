@@ -2,6 +2,7 @@
 
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { motion } from "framer-motion";
+import SoftAurora from "../SoftAurora";
 
 const memberTypes = [
   "Solo founders figuring it out as they go",
@@ -27,6 +28,23 @@ export default function BelongSection() {
       className="relative py-24 md:py-32 overflow-hidden"
       style={{ background: "#030305" }}
     >
+      <SoftAurora
+        speed={0.6}
+        scale={1.5}
+        brightness={1}
+        className="absolute opacity-10"
+        color1="#c0a7f7"
+        color2="#1274ff"
+        noiseFrequency={3.5}
+        noiseAmplitude={1}
+        bandHeight={0.5}
+        bandSpread={1}
+        octaveDecay={0.1}
+        layerOffset={0}
+        colorSpeed={1}
+        enableMouseInteraction
+        mouseInfluence={0.25}
+      />
       <div className="absolute inset-0 dot-bg opacity-40 pointer-events-none" />
       <div
         className="absolute top-0 left-0 right-0 h-px"
