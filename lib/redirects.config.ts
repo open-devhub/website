@@ -24,7 +24,7 @@ export default [
   },
   {
     sources: ["/discussions/:discussion", "/d/:discussion"],
-destination: "https://github.com/orgs/open-devhub/discussions/:discussion*",
+    destination: "https://github.com/orgs/open-devhub/discussions/:discussion*",
 
     permanent: false,
   },

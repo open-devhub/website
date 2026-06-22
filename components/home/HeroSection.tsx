@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import ShinyText from "../ShinyText";
+import SoftAurora from "../SoftAurora";
 
 export default function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -100,6 +101,23 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ background: "#030305" }}
     >
+      <SoftAurora
+        speed={0.6}
+        scale={1.5}
+        brightness={1}
+        className="absolute opacity-40"
+        color1="#a0f7f7"
+        color2="#1234ff"
+        noiseFrequency={2.5}
+        noiseAmplitude={1}
+        bandHeight={0.5}
+        bandSpread={1}
+        octaveDecay={0.1}
+        layerOffset={0}
+        colorSpeed={1}
+        enableMouseInteraction
+        mouseInfluence={0.25}
+      />
       {/* Canvas particles */}
       <canvas
         ref={canvasRef}
