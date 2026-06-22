@@ -43,7 +43,7 @@ export const pageSections: PageSection[] = [
     title: "Bots",
     pages: [
       { slug: "bots", title: "Overview" },
-      { slug: "bots/adding", title: "Adding a Bot" },
+      { slug: "adding-a-bot", title: "Adding a Bot" },
     ],
   },
   {
@@ -880,7 +880,7 @@ export const pages: Page[] = [
     ],
   },
   {
-    slug: "bots/adding",
+    slug: "adding-a-bot",
     title: "Adding a Bot",
     section: "Bots",
     description: "How to propose and add a new bot to the DevHub server.",
