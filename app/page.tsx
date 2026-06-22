@@ -22,8 +22,8 @@ export default function Home() {
         />
       </div>
       <HeroSection />
-      <StatsSection />
       <FeaturesSection />
+      <StatsSection />
       <ShowcaseSection />
       <BelongSection />
       <CTASection />
