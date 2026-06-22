@@ -2,12 +2,9 @@
 
 import ShinyText from "@/components/ShinyText";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
-import data from "@/lib/staticdata.config";
 import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { useEffect, useState } from "react";
-
-const { invite } = data;
 
 // ─── Partner config ───────────────────────────────────────────────
 // Fill in inviteCode (just the code, e.g. "abc123" from discord.gg/abc123)
@@ -625,7 +622,7 @@ export default function PartnersPage() {
           >
             Want to partner with DevHub?{" "}
             <a
-              href={invite}
+              href="/discord"
               style={{ color: "#6366f1", textDecoration: "none" }}
             >
               Reach out →

@@ -147,7 +147,7 @@ export default function CTASection() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <motion.a
-              href="/invite"
+              href="/join"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-10 py-4 text-sm font-mono font-semibold tracking-wider uppercase text-white cursor-target"
