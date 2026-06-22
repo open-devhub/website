@@ -9,14 +9,16 @@ import { useState } from "react";
 
 interface SidebarSectionProps {
   section: (typeof pageSections)[0];
-  currentSlug: string;
+  currentSlug: string | null;
 }
 
 function SidebarSection({ section, currentSlug }: SidebarSectionProps) {
   const [open, setOpen] = useState(
-    section.pages.some(
-      (p) => `/pages/${p.slug}` === currentSlug || currentSlug.includes(p.slug),
-    ),
+    !!currentSlug?.startsWith("/pages") ||
+      section.pages.some(
+        (p) =>
+          `/pages/${p.slug}` === currentSlug || currentSlug?.includes(p.slug),
+      ),
   );
 
   return (
@@ -152,7 +154,7 @@ export default function PagesLayout({
   );
 }
 
-function SidebarContent({ currentSlug }: { currentSlug: string }) {
+function SidebarContent({ currentSlug }: { currentSlug: string | null }) {
   return (
     <nav>
       <div className="mb-6">

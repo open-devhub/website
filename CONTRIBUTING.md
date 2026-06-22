@@ -205,4 +205,4 @@ Open an issue and describe:
 
 ## Questions?
 
-Ask in `#dev-chat` on the [DevHub Discord Server](https://devhub.vercel.app/invite), or just open an issue on Github.
+Ask in `#dev-chat` on the [DevHub Discord Server](https://devhub.vercel.app/join), or just open an issue on Github.

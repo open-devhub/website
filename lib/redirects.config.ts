@@ -3,7 +3,7 @@ const { invite, github, quillbot } = data;
 
 export default [
   {
-    sources: ["/invite", "/discord", "/join", "/chat"],
+    sources: ["/join", "/invite", "/discord", "/chat"],
     destination: invite,
     permanent: false,
   },

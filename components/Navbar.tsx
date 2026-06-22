@@ -119,7 +119,7 @@ export default function Navbar() {
             {/* CTA + Hamburger */}
             <div className="flex items-center gap-3">
               <motion.a
-                href="/invite"
+                href="/join"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden md:inline-flex items-center gap-2 px-4 py-1.5 text-xs font-mono font-semibold tracking-wider uppercase text-white cursor-target"
@@ -207,7 +207,7 @@ export default function Navbar() {
                 exit="closed"
               >
                 <a
-                  href="/invite"
+                  href="/join"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-8 py-3 text-sm font-mono font-semibold tracking-wider uppercase text-white"

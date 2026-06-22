@@ -310,7 +310,7 @@ export default function HeroSection() {
           className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-center gap-4"
         >
           <motion.a
-            href="/invite"
+            href="/join"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-mono font-semibold tracking-wider uppercase text-white cursor-target"

@@ -43,7 +43,7 @@ export const pageSections: PageSection[] = [
     title: "Bots",
     pages: [
       { slug: "bots", title: "Overview" },
-      { slug: "bots/adding", title: "Adding a Bot" },
+      { slug: "adding-a-bot", title: "Adding a Bot" },
     ],
   },
   {
@@ -132,6 +132,54 @@ export const pages: Page[] = [
           "No question is too beginner. Seriously, we have a no-gatekeeping policy.",
           "The community is genuinely friendly. If something feels off, ping a mod.",
         ],
+      },
+    ],
+  },
+
+  {
+    slug: "join-guide",
+    title: "Join Guide",
+    section: "Community",
+    description: "Everything you need before you click that invite link.",
+    lastUpdated: "May 17, 2026",
+    readingTime: "3 min read",
+    content: [
+      {
+        type: "p",
+        text: "About to join DevHub? Here's everything you need to know before you do, what to expect, what to do first, and how to get the most out of it from day one.",
+      },
+      { type: "h2", text: "Who This Community Is For" },
+      {
+        type: "p",
+        text: "Anyone who builds things with code. Beginners figuring out their first project, experienced engineers who want to stay connected to a community, open source contributors, freelancers, students, bootcamp grads, all welcome. If you're not a developer, you're still very welcome, but be aware that the focus is on coding and development topics.",
+      },
+      { type: "h2", text: "What You'll Find Inside" },
+      {
+        type: "ul",
+        items: [
+          "Help channels staffed by people who actually know what they're doing.",
+          "Project showcase and feedback.",
+          "Language and framework-specific channels",
+          "Career and job hunting channels.",
+          "An active open source org on GitHub.",
+          "Some bots to help get things done faster.",
+        ],
+      },
+      { type: "h2", text: "Your First 5 Minutes" },
+      {
+        type: "ol",
+        items: [
+          "Read #rules",
+          "React to the message in #reaction-roles to self-assign roles",
+          "Post in #infoductions, a sentence or two is plenty.",
+          "Browse the channels and see what's active.",
+          "Ask a question, answer one, or just jump in to a chat.",
+        ],
+      },
+      {
+        type: "callout",
+        variant: "info",
+        text: "No intro required to start participating. Lurking is fine. There's no pressure to be active, the server will be here when you want it.",
       },
     ],
   },
@@ -491,6 +539,56 @@ export const pages: Page[] = [
   },
 
   {
+    slug: "staff-roles",
+    title: "Staff Roles",
+    section: "Community",
+    description: "Who does what on the DevHub team.",
+    lastUpdated: "May 17, 2026",
+    readingTime: "3 min read",
+    content: [
+      {
+        type: "p",
+        text: "DevHub's staff are volunteers. Understanding who does what helps you know who to contact for different situations.",
+      },
+      { type: "h2", text: "Admin" },
+      {
+        type: "p",
+        text: "Manages the mod team, handles escalated appeals, makes decisions on bans, and takes care of server configuration. If a mod decision seems wrong, admins are your second contact.",
+      },
+      { type: "h2", text: "Moderators" },
+      {
+        type: "p",
+        text: "Day-to-day enforcement of community rules. Handles reports, issues warnings, and manages mutes. Your first point of contact for most situations. All mods can be reached via DM or the /report command.",
+      },
+      { type: "h2", text: "Staff" },
+      {
+        type: "p",
+        text: "Same as Moderators, but with a different role name. The title is just a label, the responsibilities are the same.",
+      },
+      { type: "h2", text: "Supporters" },
+      {
+        type: "p",
+        text: "Closest moderators to members, can handle moderation except ban.",
+      },
+      { type: "h2", text: "Trial Staff" },
+      {
+        type: "p",
+        text: "New moderators start here. They have don't the same permissions as regular moderators, but are in a trial period where they receive more guidance and oversight to become full moderators.",
+      },
+      {
+        type: "callout",
+        variant: "info",
+        text: "Staff members are community members who volunteered. They're not infallible and can be held accountable through the appeals process. Please treat them with the same respect you'd want in return.",
+      },
+      { type: "h2", text: "Becoming a Moderator" },
+      {
+        type: "p",
+        text: "Interested in joining our moderation team? Open a ticket to submit your application and tell us why you’d be a great fit. We look for people who are active, helpful, patient, and have a good understanding of the community norms. There's no formal application form, just start a conversation with us.",
+      },
+    ],
+  },
+
+  {
     slug: "faq",
     title: "FAQ",
     section: "Community",
@@ -782,7 +880,7 @@ export const pages: Page[] = [
     ],
   },
   {
-    slug: "bots/adding",
+    slug: "adding-a-bot",
     title: "Adding a Bot",
     section: "Bots",
     description: "How to propose and add a new bot to the DevHub server.",
@@ -1194,103 +1292,6 @@ export const pages: Page[] = [
   },
 
   // ─── RESOURCES
-  {
-    slug: "join-guide",
-    title: "Join Guide",
-    section: "Community",
-    description: "Everything you need before you click that invite link.",
-    lastUpdated: "May 17, 2026",
-    readingTime: "3 min read",
-    content: [
-      {
-        type: "p",
-        text: "About to join DevHub? Here's everything you need to know before you do, what to expect, what to do first, and how to get the most out of it from day one.",
-      },
-      { type: "h2", text: "Who This Community Is For" },
-      {
-        type: "p",
-        text: "Anyone who builds things with code. Beginners figuring out their first project, experienced engineers who want to stay connected to a community, open source contributors, freelancers, students, bootcamp grads, all welcome. If you're not a developer, you're still very welcome, but be aware that the focus is on coding and development topics.",
-      },
-      { type: "h2", text: "What You'll Find Inside" },
-      {
-        type: "ul",
-        items: [
-          "Help channels staffed by people who actually know what they're doing.",
-          "Project showcase and feedback.",
-          "Language and framework-specific channels",
-          "Career and job hunting channels.",
-          "An active open source org on GitHub.",
-          "Some bots to help get things done faster.",
-        ],
-      },
-      { type: "h2", text: "Your First 5 Minutes" },
-      {
-        type: "ol",
-        items: [
-          "Read #rules",
-          "React to the message in #reaction-roles to self-assign roles",
-          "Post in #infoductions, a sentence or two is plenty.",
-          "Browse the channels and see what's active.",
-          "Ask a question, answer one, or just jump in to a chat.",
-        ],
-      },
-      {
-        type: "callout",
-        variant: "info",
-        text: "No intro required to start participating. Lurking is fine. There's no pressure to be active, the server will be here when you want it.",
-      },
-    ],
-  },
-
-  {
-    slug: "staff-roles",
-    title: "Staff Roles",
-    section: "Community",
-    description: "Who does what on the DevHub team.",
-    lastUpdated: "May 17, 2026",
-    readingTime: "3 min read",
-    content: [
-      {
-        type: "p",
-        text: "DevHub's staff are volunteers. Understanding who does what helps you know who to contact for different situations.",
-      },
-      { type: "h2", text: "Admin" },
-      {
-        type: "p",
-        text: "Manages the mod team, handles escalated appeals, makes decisions on bans, and takes care of server configuration. If a mod decision seems wrong, admins are your second contact.",
-      },
-      { type: "h2", text: "Moderators" },
-      {
-        type: "p",
-        text: "Day-to-day enforcement of community rules. Handles reports, issues warnings, and manages mutes. Your first point of contact for most situations. All mods can be reached via DM or the /report command.",
-      },
-      { type: "h2", text: "Staff" },
-      {
-        type: "p",
-        text: "Same as Moderators, but with a different role name. The title is just a label, the responsibilities are the same.",
-      },
-      { type: "h2", text: "Supporters" },
-      {
-        type: "p",
-        text: "Closest moderators to members, can handle moderation except ban.",
-      },
-      { type: "h2", text: "Trial Staff" },
-      {
-        type: "p",
-        text: "New moderators start here. They have don't the same permissions as regular moderators, but are in a trial period where they receive more guidance and oversight to become full moderators.",
-      },
-      {
-        type: "callout",
-        variant: "info",
-        text: "Staff members are community members who volunteered. They're not infallible and can be held accountable through the appeals process. Please treat them with the same respect you'd want in return.",
-      },
-      { type: "h2", text: "Becoming a Moderator" },
-      {
-        type: "p",
-        text: "Interested in joining our moderation team? Open a ticket to submit your application and tell us why you’d be a great fit. We look for people who are active, helpful, patient, and have a good understanding of the community norms. There's no formal application form, just start a conversation with us.",
-      },
-    ],
-  },
 ];
 
 export function getPage(slug: string): Page | undefined {
