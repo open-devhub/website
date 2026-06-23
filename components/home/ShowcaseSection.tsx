@@ -19,8 +19,8 @@ const projects = [
     langColor: "#6366f1",
   },
   {
-    name: "pawgrammerbot",
-    desc: "Pawgrammer is DevHub's documentation, AI, and reference assistant bot. It provides access to AI chat, curated knowledge, and utility commands.",
+    name: "rael",
+    desc: "Rael is an AI-powered Discord bot supporting multiple models, image understanding, live market data, and visual usage tracking",
     lang: "Discord.js",
     langColor: "#f59e0b",
   },
@@ -44,7 +44,7 @@ const projects = [
   },
   {
     name: "hangmanbot",
-    desc: "A Discord bot that lets you play the classic Hangman game in both single-player and multiplayer modes.",
+    desc: "GitHub Bot designed to automate the boring stuff within the DevHub Organization. Built on the powerful Probot framework.",
     lang: "Discord.js",
     langColor: "#f59e0b",
   },
@@ -73,12 +73,15 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
           >
             {"~/"}
           </span>
-          <h4
-            className="text-sm font-semibold"
+          <a
+            href={`/r/${project.name}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-semibold cursor-pointer"
             style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
           >
             {project.name}
-          </h4>
+          </a>
         </div>
         <p
           className="text-xs leading-relaxed"
