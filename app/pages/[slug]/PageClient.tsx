@@ -22,21 +22,29 @@ interface Props {
 }
 
 function Highlight({ text }: { text: string }) {
-  return text.split(/(\s+)/).map((part, i) => {
-    if (part.startsWith("#")) {
-      return (
-        <span
-          key={i}
-          className="hover:underline cursor-pointer hover:opacity-80 inline flex-shrink-0 transition-opacity"
-          style={{ color: "#a5b4fc" }}
-        >
-          {part}
-        </span>
-      );
-    }
-
-    return <React.Fragment key={i}>{part}</React.Fragment>;
-  });
+  return (
+    <>
+      {text.split(/(\s+)/).map((part, i) => {
+        if (part.startsWith("#")) {
+          const match = part.match(/^(#[\w-]+)(.*)?$/);
+          if (match) {
+            return (
+              <React.Fragment key={i}>
+                <span
+                  className="hover:underline cursor-pointer hover:opacity-80 transition-opacity"
+                  style={{ color: "#a5b4fc" }}
+                >
+                  {match[1]}
+                </span>
+                {match[2]}
+              </React.Fragment>
+            );
+          }
+        }
+        return part;
+      })}
+    </>
+  );
 }
 
 function ContentBlock({ block }: { block: PageContent }) {
@@ -88,7 +96,9 @@ function ContentBlock({ block }: { block: PageContent }) {
                 className="mt-2 w-1.5 h-1.5 flex-shrink-0"
                 style={{ background: "rgba(99,102,241,0.5)" }}
               />
-              <Highlight text={item} />
+              <span>
+                <Highlight text={item} />
+              </span>
             </li>
           ))}
         </ul>
@@ -108,7 +118,9 @@ function ContentBlock({ block }: { block: PageContent }) {
               >
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <Highlight text={item} />
+              <span>
+                <Highlight text={item} />
+              </span>
             </li>
           ))}
         </ol>
