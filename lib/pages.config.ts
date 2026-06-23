@@ -522,7 +522,7 @@ export const pages: Page[] = [
           "Contact the moderator who handled the action, clearly and calmly. Most things can be resolved here.",
           "If you don't get a satisfactory response, escalate to an Admin via DM.",
           "If you believe there's bias or a serious process failure, contact the Owner.",
-          "For bans, go to https://appeal.gg/dvh and submit an appeal form. This goes to the admin team for review.",
+          "For bans, go to https://appeal.gg/s/1429026875946172459 and submit an appeal form. This goes to the admin team for review.",
         ],
       },
       {

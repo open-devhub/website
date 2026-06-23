@@ -1,6 +1,7 @@
 "use client";
 
 import Badge from "@/components/Badge";
+import ShinyText from "@/components/ShinyText";
 import {
   Drawer,
   DrawerClose,
@@ -1140,7 +1141,19 @@ export default function ResourcesPage() {
               <span
                 style={{ color: "#818cf8", WebkitTextFillColor: "#818cf8" }}
               >
-                Level Up
+                <ShinyText
+                  text="Level Up"
+                  className="cursor-target"
+                  speed={3.5}
+                  delay={1}
+                  color="#818cf8"
+                  shineColor="#c7d2fe"
+                  spread={90}
+                  direction="left"
+                  yoyo={false}
+                  pauseOnHover={false}
+                  disabled={false}
+                />
               </span>
             </span>
           </motion.h1>
