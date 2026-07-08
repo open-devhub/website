@@ -34,6 +34,33 @@ function decodeHtmlEntities(str: string): string {
     .replace(/&gt;/g, ">");
 }
 
+const PRIVATE_HOSTNAME_PATTERNS = [
+  /^localhost$/i,
+  /^0\.0\.0\.0$/,
+  /^127\./,
+  /^10\./,
+  /^172\.(1[6-9]|2[0-9]|3[0-1])\./,
+  /^192\.168\./,
+  /^169\.254\./,
+  /^::1$/,
+  /^fc00:/i,
+  /^fe80:/i,
+];
+
+function isSafeUrl(candidate: string): boolean {
+  let parsed: URL;
+  try {
+    parsed = new URL(candidate);
+  } catch {
+    return false;
+  }
+  if (!["http:", "https:"].includes(parsed.protocol)) {
+    return false;
+  }
+  const hostname = parsed.hostname.toLowerCase();
+  return !PRIVATE_HOSTNAME_PATTERNS.some((pattern) => pattern.test(hostname));
+}
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const url = searchParams.get("url");
@@ -42,10 +69,11 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "missing url" }, { status: 400 });
   }
 
-  try {
-    new URL(url);
-  } catch {
-    return NextResponse.json({ error: "invalid url" }, { status: 400 });
+  if (!isSafeUrl(url)) {
+    return NextResponse.json(
+      { error: "invalid or disallowed url" },
+      { status: 400 },
+    );
   }
 
   try {
@@ -54,6 +82,7 @@ export async function GET(request: NextRequest) {
 
     const res = await fetch(url, {
       signal: controller.signal,
+      redirect: "error",
       headers: {
         "User-Agent":
           "Mozilla/5.0 (compatible; LinkPreviewBot/1.0; +https://example.com/bot)",
@@ -66,7 +95,21 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "failed to fetch" }, { status: 502 });
     }
 
+    const contentLength = res.headers.get("content-length");
+    if (contentLength && parseInt(contentLength, 10) > 1024 * 1024) {
+      return NextResponse.json(
+        { error: "response too large" },
+        { status: 502 },
+      );
+    }
+
     const html = await res.text();
+    if (html.length > 1024 * 1024) {
+      return NextResponse.json(
+        { error: "response too large" },
+        { status: 502 },
+      );
+    }
 
     const rawTitle = extractMeta(html, "og:title") || extractTitleTag(html);
     const rawDescription =
@@ -76,7 +119,8 @@ export async function GET(request: NextRequest) {
     let image: string | null = null;
     if (rawImage) {
       try {
-        image = new URL(rawImage, url).toString();
+        const resolvedImage = new URL(rawImage, url).toString();
+        image = isSafeUrl(resolvedImage) ? resolvedImage : null;
       } catch {
         image = null;
       }

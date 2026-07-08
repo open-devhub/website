@@ -173,6 +173,8 @@ export function LinkPreviewCard({
                     <img
                       src={data.image}
                       alt=""
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
                       onError={() => setImgError(true)}
                       className="absolute top-0 right-0 w-14 h-14 object-cover"
                       style={{ border: "1px solid rgba(99,102,241,0.12)" }}

@@ -40,7 +40,7 @@ function ApplySpecialClass({ text }: { text: string }) {
       parts.push(
         <code
           key={key++}
-          className="px-1 py-0.5 text-sm font-mono"
+          className="px-1.5 py-0.5 text-sm"
           style={{
             fontFamily: "var(--font-geist-mono)",
             background: "rgba(7, 7, 15, 0.8)",

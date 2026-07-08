@@ -1,10 +1,10 @@
+import TargetCursor from "@/components/bits/TargetCursor";
 import BelongSection from "@/components/home/BelongSection";
 import CTASection from "@/components/home/CTASection";
 import FeaturesSection from "@/components/home/FeaturesSection";
 import HeroSection from "@/components/home/HeroSection";
 import ShowcaseSection from "@/components/home/ShowcaseSection";
 import StatsSection from "@/components/home/StatsSection";
-import TargetCursor from "@/components/TargetCursor";
 
 export default function Home() {
   return (

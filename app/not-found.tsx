@@ -1,6 +1,6 @@
 "use client";
 
-import FuzzyText from "@/components/FuzzyText";
+import FuzzyText from "@/components/bits/FuzzyText";
 import { fadeInUp } from "@/lib/animations";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
