@@ -1,7 +1,7 @@
 "use client";
 
 import Badge from "@/components/Badge";
-import ShinyText from "@/components/ShinyText";
+import ShinyText from "@/components/bits/ShinyText";
 import {
   Drawer,
   DrawerClose,

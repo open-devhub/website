@@ -1,6 +1,6 @@
 "use client";
 
-import ShinyText from "@/components/ShinyText";
+import ShinyText from "@/components/bits/ShinyText";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { motion } from "framer-motion";
 

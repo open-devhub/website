@@ -2,7 +2,7 @@
 
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { motion } from "framer-motion";
-import SoftAurora from "../SoftAurora";
+import SoftAurora from "../bits/SoftAurora";
 
 const memberTypes = [
   "Solo founders figuring it out as they go",

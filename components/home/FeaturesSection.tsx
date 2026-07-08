@@ -12,7 +12,7 @@ import {
   Users,
   Wrench,
 } from "lucide-react";
-import BorderGlow from "../BorderGlow";
+import BorderGlow from "../bits/BorderGlow";
 
 const features = [
   {
