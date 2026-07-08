@@ -68,7 +68,10 @@ export default function Navbar() {
                 className="font-bold text-[#6366f1] text-lg"
                 style={{ fontFamily: "var(--font-geist-mono)" }}
               >
-                {"</>"}
+                <img
+                  src="https://raw.githubusercontent.com/open-devhub/.github/refs/heads/main/assets/icon_darker.png"
+                  width="30"
+                />
               </span>
               <span
                 className="font-bold text-[#e2e2f0] text-sm tracking-widest uppercase"
