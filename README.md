@@ -56,36 +56,38 @@ Open [http://localhost:3000](http://localhost:3000) and you're in.
 ## Project Structure
 
 ```
-├── 📄 .eslintrc.json
-├── 📄 .gitignore
+├── 📁 .github
+│   └── 📁 workflows
+│       └── 📄 linter.yaml
 ├── 📁 .vscode
 │   └── 📄 settings.json
-├── 📄 CONTRIBUTING.md
-├── 📄 LICENSE
-├── 📄 README.md
 ├── 📁 app
 │   ├── 📄 globals.css
 │   ├── 📄 layout.tsx
+│   ├── 📄 not-found.tsx
 │   ├── 📄 page.tsx
 │   ├── 📁 pages
-│   │   ├── 📄 [slug]
+│   │   ├── 📁 [slug]
+│   │   │   ├── 📄 PageClient.tsx
+│   │   │   ├── 📁 [subslug]
+│   │   │   │   └── 📄 page.tsx
+│   │   │   └── 📄 page.tsx
 │   │   ├── 📄 layout.tsx
+│   │   └── 📄 page.tsx
+│   ├── 📁 partners
 │   │   └── 📄 page.tsx
 │   ├── 📁 resources
 │   │   └── 📄 page.tsx
 │   └── 📁 rules
 │       └── 📄 page.tsx
-├── 📄 components.json
 ├── 📁 components
 │   ├── 📄 AnimatedText.tsx
 │   ├── 📄 Badge.tsx
+│   ├── 📄 BorderGlow.tsx
 │   ├── 📄 BorderGlowButton.tsx
 │   ├── 📄 Footer.tsx
-│   ├── 📄 GlowButton.tsx
-│   ├── 📄 Navbar.tsx
-│   ├── 📄 Section.tsx
-│   ├── 📄 ShinyText.tsx
-│   ├── 📄 TargetCursor.tsx
+│   ├── 📄 FuzzyText.tsx
+│           ...
 │   ├── 📁 home
 │   │   ├── 📄 BelongSection.tsx
 │   │   ├── 📄 CTASection.tsx
@@ -100,9 +102,9 @@ Open [http://localhost:3000](http://localhost:3000) and you're in.
 │       ├── 📄 aspect-ratio.tsx
 │       ├── 📄 avatar.tsx
 │       ├── 📄 badge.tsx
-│       ├── 📄 breadcrumb.tsx
-│       ├── 📄 button.tsx
-│       ├── ...
+                ...
+├── 📁 content
+│   └── 📄 pages.ts
 ├── 📁 hooks
 │   └── 📄 use-toast.ts
 ├── 📁 lib
@@ -111,10 +113,16 @@ Open [http://localhost:3000](http://localhost:3000) and you're in.
 │   ├── 📄 redirects.config.ts
 │   ├── 📄 staticdata.config.ts
 │   └── 📄 utils.ts
+├── 📄 .eslintrc.json
+├── 📄 .gitignore
+├── 📄 components.json
+├── 📄 CONTRIBUTING.md
+├── 📄 LICENSE
 ├── 📄 next.config.js
 ├── 📄 package-lock.json
 ├── 📄 package.json
 ├── 📄 postcss.config.js
+├── 📄 README.md
 ├── 📄 tailwind.config.ts
 └── 📄 tsconfig.json
 ```
@@ -145,7 +153,7 @@ npm run format     # Run Prettier
 
 ## Community
 
-- **Discord** - [devhub.vercel.app/invite](https://devhub.vercel.app/invite)
+- **Discord** - [devhub.vercel.app/join](https://devhub.vercel.app/join)
 - **GitHub Org** - [github.com/open-devhub](https://github.com/open-devhub)
 - **Email** - open-devhub@outlook.com
 

@@ -5,7 +5,7 @@ import { hexToHslString } from "@/lib/utils";
 import { motion, useInView } from "framer-motion";
 import { Code as Code2, MessageCircle, Users } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import BorderGlow from "../BorderGlow";
+import BorderGlow from "../bits/BorderGlow";
 
 const stats = [
   { icon: Users, value: 500, label: "Members", suffix: "+", color: "#6366f1" },

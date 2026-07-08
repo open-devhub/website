@@ -1,4 +1,4 @@
-import { getAdjacentPages, getPage } from "@/lib/pages.config";
+import { getAdjacentPages, getPage } from "@/content/pages";
 import { notFound } from "next/navigation";
 import PageClient from "./PageClient";
 
@@ -17,6 +17,6 @@ export default async function PageRoute({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-  const { pages } = await import("@/lib/pages.config");
+  const { pages } = await import("@/content/pages");
   return pages.map((page) => ({ slug: page.slug }));
 }

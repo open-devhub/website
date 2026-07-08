@@ -45,8 +45,8 @@ const projects = [
   {
     name: "devhub-bot",
     desc: "GitHub Bot designed to automate the boring stuff within the DevHub Organization. Built on the powerful Probot framework.",
-    lang: "Discord.js",
-    langColor: "#f59e0b",
+    lang: "TypeScript",
+    langColor: "#6366f1",
   },
 ];
 

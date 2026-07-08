@@ -5,8 +5,8 @@ import data from "@/lib/staticdata.config";
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { useEffect, useRef } from "react";
-import ShinyText from "../ShinyText";
-import SoftAurora from "../SoftAurora";
+import ShinyText from "../bits/ShinyText";
+import SoftAurora from "../bits/SoftAurora";
 
 export default function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null);

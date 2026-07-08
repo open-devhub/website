@@ -108,6 +108,10 @@ body {
   font-family: var(--font-pixelify), "Pixelify Sans", monospace;
 }
 
+.font-mono {
+  font-family: monospace;
+}
+
 /* Mono font */
 .font-mono-custom {
   font-family: var(--font-geist-mono), "Geist Mono", monospace;

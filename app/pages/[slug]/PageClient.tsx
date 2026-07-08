@@ -1,7 +1,8 @@
 "use client";
 
+import { LinkPreviewCard } from "@/components/LinkPreviewCard";
+import { Page, PageContent } from "@/content/pages";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
-import { Page, PageContent } from "@/lib/pages.config";
 import { motion } from "framer-motion";
 import {
   OctagonAlert as AlertOctagon,
@@ -21,30 +22,66 @@ interface Props {
   next?: Page;
 }
 
-function Highlight({ text }: { text: string }) {
-  return (
-    <>
-      {text.split(/(\s+)/).map((part, i) => {
-        if (part.startsWith("#")) {
-          const match = part.match(/^(#[\w-]+)(.*)?$/);
-          if (match) {
-            return (
-              <React.Fragment key={i}>
-                <span
-                  className="hover:underline cursor-pointer hover:opacity-80 transition-opacity"
-                  style={{ color: "#a5b4fc" }}
-                >
-                  {match[1]}
-                </span>
-                {match[2]}
-              </React.Fragment>
-            );
-          }
-        }
-        return part;
-      })}
-    </>
-  );
+function ApplySpecialClass({ text }: { text: string }) {
+  const regex = /(`[^`]+`)|(\[[^\]]+\]\([^)]+\))|(#[\w-]+)/g;
+  const parts: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let key = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+
+    const [full, code, link, channel] = match;
+
+    if (code) {
+      parts.push(
+        <code
+          key={key++}
+          className="px-1.5 py-0.5 text-sm"
+          style={{
+            fontFamily: "var(--font-geist-mono)",
+            background: "rgba(7, 7, 15, 0.8)",
+            border: "1px solid rgba(99,102,241,0.12)",
+            color: "#c4c4cc",
+          }}
+        >
+          {code.slice(1, -1)}
+        </code>,
+      );
+    } else if (link) {
+      const linkMatch = link.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+      if (linkMatch) {
+        parts.push(
+          <LinkPreviewCard key={key++} href={linkMatch[2]}>
+            {linkMatch[1]}
+          </LinkPreviewCard>,
+        );
+      } else {
+        parts.push(full);
+      }
+    } else if (channel) {
+      parts.push(
+        <span
+          key={key++}
+          className="hover:underline cursor-pointer hover:opacity-80 transition-opacity"
+          style={{ color: "#a5b4fc" }}
+        >
+          {channel}
+        </span>,
+      );
+    }
+
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return <>{parts}</>;
 }
 
 function ContentBlock({ block }: { block: PageContent }) {
@@ -59,7 +96,7 @@ function ContentBlock({ block }: { block: PageContent }) {
             color: "#e2e2f0",
           }}
         >
-          <Highlight text={block.text || ""} />
+          <ApplySpecialClass text={block.text || ""} />
         </h2>
       );
     case "h3":
@@ -71,7 +108,7 @@ function ContentBlock({ block }: { block: PageContent }) {
             color: "#e2e2f0",
           }}
         >
-          <Highlight text={block.text || ""} />
+          <ApplySpecialClass text={block.text || ""} />
         </h3>
       );
     case "p":
@@ -80,7 +117,7 @@ function ContentBlock({ block }: { block: PageContent }) {
           className="leading-relaxed mb-4"
           style={{ fontFamily: "var(--font-geist-mono)", color: "#71717a" }}
         >
-          <Highlight text={block.text || ""} />
+          <ApplySpecialClass text={block.text || ""} />
         </p>
       );
     case "ul":
@@ -97,7 +134,7 @@ function ContentBlock({ block }: { block: PageContent }) {
                 style={{ background: "rgba(99,102,241,0.5)" }}
               />
               <span>
-                <Highlight text={item} />
+                <ApplySpecialClass text={item} />
               </span>
             </li>
           ))}
@@ -119,7 +156,7 @@ function ContentBlock({ block }: { block: PageContent }) {
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span>
-                <Highlight text={item} />
+                <ApplySpecialClass text={item} />
               </span>
             </li>
           ))}
@@ -206,7 +243,7 @@ function ContentBlock({ block }: { block: PageContent }) {
             className="text-sm"
             style={{ fontFamily: "var(--font-geist-mono)", color: "#71717a" }}
           >
-            <Highlight text={block.text || ""} />
+            <ApplySpecialClass text={block.text || ""} />
           </p>
         </div>
       );
