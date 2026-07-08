@@ -522,7 +522,7 @@ export const pages: Page[] = [
           "Contact the moderator who handled the action, clearly and calmly. Most things can be resolved here.",
           "If you don't get a satisfactory response, escalate to an Admin via DM.",
           "If you believe there's bias or a serious process failure, contact the Owner.",
-          "For bans, go to https://appeal.gg/s/1429026875946172459 and submit an appeal form. This goes to the admin team for review.",
+          "For bans, go to [appeal.gg](https://appeal.gg/s/1429026875946172459) and submit an appeal form. This goes to the admin team for review.",
         ],
       },
       {
@@ -651,7 +651,7 @@ export const pages: Page[] = [
       { type: "h2", text: "I got banned. Can I appeal?" },
       {
         type: "p",
-        text: "Yes. Use https://appeal.gg/s/1429026875946172459. See the Moderation Guide for the full process. Bans aren't always permanent, context and how you handle the appeal matters.",
+        text: "Yes. Use [appeal.gg](https://appeal.gg/s/1429026875946172459). See the Moderation Guide for the full process. Bans aren't always permanent, context and how you handle the appeal matters.",
       },
       { type: "h2", text: "Who runs DevHub?" },
       {
@@ -1091,7 +1091,7 @@ export const pages: Page[] = [
       { type: "h2", text: "Commit Messages" },
       {
         type: "p",
-        text: 'We use Conventional Commits: "type(scope): description". Common types are feat, fix, docs, chore, refactor, test (full documentation at https://www.conventionalcommits.org/en/v1.0.0/). The commit history is documentation, write it like someone will read it.',
+        text: 'We use Conventional Commits: "type(scope): description". Common types are feat, fix, docs, chore, refactor, test (full documentation at [conventionalcommits.org](https://www.conventionalcommits.org/en/v1.0.0/)). The commit history is documentation, write it like someone will read it.',
       },
       {
         type: "code",
