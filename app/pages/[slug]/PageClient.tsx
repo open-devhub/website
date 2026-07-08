@@ -1,5 +1,6 @@
 "use client";
 
+import { LinkPreviewCard } from "@/components/LinkPreviewCard";
 import { Page, PageContent } from "@/content/pages";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { motion } from "framer-motion";
@@ -39,7 +40,7 @@ function ApplySpecialClass({ text }: { text: string }) {
       parts.push(
         <code
           key={key++}
-          className="px-1.5 py-0.5 text-sm"
+          className="px-1 py-0.5 text-sm font-mono"
           style={{
             fontFamily: "var(--font-geist-mono)",
             background: "rgba(7, 7, 15, 0.8)",
@@ -54,16 +55,9 @@ function ApplySpecialClass({ text }: { text: string }) {
       const linkMatch = link.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
       if (linkMatch) {
         parts.push(
-          <a
-            key={key++}
-            href={linkMatch[2]}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline cursor-pointer hover:opacity-80 transition-opacity"
-            style={{ color: "#a5b4fc" }}
-          >
+          <LinkPreviewCard key={key++} href={linkMatch[2]}>
             {linkMatch[1]}
-          </a>,
+          </LinkPreviewCard>,
         );
       } else {
         parts.push(full);
