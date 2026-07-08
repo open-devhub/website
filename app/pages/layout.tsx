@@ -1,6 +1,6 @@
 "use client";
 
-import { pageSections } from "@/lib/pages.config";
+import { pageSections } from "@/content/pages";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";

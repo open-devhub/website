@@ -1,7 +1,7 @@
 "use client";
 
+import { Page, PageContent } from "@/content/pages";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
-import { Page, PageContent } from "@/lib/pages.config";
 import { motion } from "framer-motion";
 import {
   OctagonAlert as AlertOctagon,
