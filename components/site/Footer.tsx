@@ -1,6 +1,6 @@
+import { accent, background, indigo, text } from "@/lib/colors";
 import data from "@/lib/staticdata.config";
 import Link from "next/link";
-import { background, text, accent, indigo } from "@/lib/colors";
 
 const { email } = data;
 
@@ -9,6 +9,7 @@ const footerLinks = [
   { label: "Rules", href: "/rules" },
   { label: "Resources", href: "/resources" },
   { label: "Pages", href: "/pages/getting-started" },
+  { label: "Articles", href: "/articles" },
   { label: "Partners", href: "/partners" },
 ];
 
@@ -76,18 +77,16 @@ export default function Footer() {
             <ul className="space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.href}>
-                  {
-                    <Link
-                      href={link.href}
-                      className="text-sm transition-colors hover:text-[#a5b4fc]"
-                      style={{
-                        fontFamily: "var(--font-geist-mono)",
-                        color: text.veryDim,
-                      }}
-                    >
-                      {link.label}
-                    </Link>
-                  }
+                  <Link
+                    href={link.href}
+                    className="text-sm transition-colors hover:text-[#a5b4fc]"
+                    style={{
+                      fontFamily: "var(--font-geist-mono)",
+                      color: text.veryDim,
+                    }}
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>

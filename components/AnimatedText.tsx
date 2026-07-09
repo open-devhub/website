@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { wordReveal } from "@/lib/animations";
+import { motion } from "framer-motion";
 
 interface AnimatedTextProps {
   text: string;
