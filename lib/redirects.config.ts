@@ -18,6 +18,17 @@ export default [
     permanent: false,
   },
   {
+    sources: ["/repos", "/repositories"],
+    destination: "https://github.com/orgs/open-devhub/repositories*",
+    permanent: false,
+  },
+
+  {
+    sources: ["/discussions"],
+    destination: "https://github.com/orgs/open-devhub/discussions",
+    permanent: false,
+  },
+  {
     sources: ["/repo/:repo", "/r/:repo"],
     destination: "https://github.com/open-devhub/:repo*",
     permanent: false,
