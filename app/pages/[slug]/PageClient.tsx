@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import redirects from "../../../lib/redirects.config";
 
 interface Props {
   page: Page;
@@ -55,7 +56,14 @@ function ApplySpecialClass({ text }: { text: string }) {
       const linkMatch = link.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
       if (linkMatch) {
         parts.push(
-          <LinkPreviewCard key={key++} href={linkMatch[2]}>
+          <LinkPreviewCard
+            key={key++}
+            href={linkMatch[2]}
+            newTab={
+              linkMatch[2].startsWith("https") ||
+              redirects[0].sources.includes(linkMatch[2])
+            }
+          >
             {linkMatch[1]}
           </LinkPreviewCard>,
         );

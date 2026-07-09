@@ -76,7 +76,7 @@ export const pages: Page[] = [
     content: [
       {
         type: "p",
-        text: "Welcome to DevHub, a community built by developers, for developers. Whether you just graduated a bootcamp, have been writing code for 15 years, or are somewhere in the middle, you're in the right place. Here's how to get settled in.",
+        text: `Welcome to [DevHub](/join), a community built by developers, for developers. Whether you just graduated a bootcamp, have been writing code for 15 years, or are somewhere in the middle, you're in the right place. Here's how to get settled in.`,
       },
       { type: "h2", text: "Step 1: Join the Discord" },
       {
@@ -146,7 +146,7 @@ export const pages: Page[] = [
     content: [
       {
         type: "p",
-        text: "About to join DevHub? Here's everything you need to know before you do, what to expect, what to do first, and how to get the most out of it from day one.",
+        text: "About to join [DevHub](/join)? Here's everything you need to know before you do, what to expect, what to do first, and how to get the most out of it from day one.",
       },
       { type: "h2", text: "Who This Community Is For" },
       {
@@ -161,8 +161,8 @@ export const pages: Page[] = [
           "Project showcase and feedback.",
           "Language and framework-specific channels",
           "Career and job hunting channels.",
-          "An active open source org on GitHub.",
-          "Some bots to help get things done faster.",
+          `An active [open source org](${github}) on GitHub.`,
+          "Some [bots](/pages/bots) to help get things done faster.",
         ],
       },
       { type: "h2", text: "Your First 5 Minutes" },
@@ -194,7 +194,7 @@ export const pages: Page[] = [
     content: [
       {
         type: "p",
-        text: "DevHub is a developer community on Discord. We're not affiliated with any company, not funded, and not trying to sell you anything. Just a space for people who build things with code.",
+        text: "[DevHub](/join) is a developer community on [Discord](https://discord.com). We're not affiliated with any company, not funded, and not trying to sell you anything. Just a space for people who build things with code.",
       },
       { type: "h2", text: "What DevHub Is" },
       {
@@ -217,7 +217,7 @@ export const pages: Page[] = [
       { type: "h2", text: "Roles" },
       {
         type: "p",
-        text: "Roles in DevHub serve two purposes: they show what you're into, and they gate certain channels to keep them relevant. Use /roles to assign yourself from the self-serve menu.",
+        text: "Roles in [DevHub](/join) serve two purposes: they show what you're into, and they gate certain channels to keep them relevant. Use /roles to assign yourself from the self-serve menu.",
       },
       {
         type: "ul",
@@ -245,7 +245,7 @@ export const pages: Page[] = [
       { type: "h2", text: "Events and Giveaways" },
       {
         type: "p",
-        text: "We run occasional events, code jams, and giveaways like Discord Nitro. Watch #events for upcoming events, and #giveaways for any giveaways.",
+        text: "We run occasional events, code jams, and giveaways like [Discord Nitro](https://discord.com/nitro). Watch #events for upcoming events, and #giveaways for any giveaways.",
       },
     ],
   },
@@ -268,7 +268,7 @@ export const pages: Page[] = [
         type: "ul",
         items: [
           "Describe what you're trying to do",
-          "Show the relevant code (formatted, please)",
+          "Show the relevant code ([formatted](/rules#06), please)",
           "Share the exact error message or unexpected output",
           "Tell us what you've already tried",
           "Ask in the right channel",
@@ -281,7 +281,7 @@ export const pages: Page[] = [
       },
       {
         type: "p",
-        text: 'Not as helpful: "my code doesn\'t work help"',
+        text: 'Not helpful: "my code doesn\'t work help"',
       },
       {
         type: "p",
@@ -290,7 +290,7 @@ export const pages: Page[] = [
       { type: "h2", text: "Format Your Code" },
       {
         type: "p",
-        text: "Paste code inside a code block using triple backticks and the language name. Discord renders it with syntax highlighting and preserves indentation.",
+        text: "Paste code [inside a code block](/rules#06) using triple backticks and the language name. Discord renders it with [syntax highlighting](https://en.wikipedia.org/wiki/Syntax_highlighting) and preserves indentation.",
       },
       {
         type: "code",
@@ -303,7 +303,7 @@ export const pages: Page[] = [
       { type: "h2", text: "Include the Error Message" },
       {
         type: "p",
-        text: "Copy the full error, stack trace included. The line number in a stack trace often points directly at the problem. Screenshots of errors are okay, but text is better because people can search and quote it.",
+        text: "Copy the full error, [stack trace](https://en.wikipedia.org/wiki/Stack_trace) included. The line number in a stack trace often points directly at the problem. Screenshots of errors are okay, but text is better because people can search and quote it.",
       },
       { type: "h2", text: "Tell Us What You've Tried" },
       {
@@ -313,12 +313,12 @@ export const pages: Page[] = [
       { type: "h2", text: "Minimal Reproducible Example" },
       {
         type: "p",
-        text: "If your codebase is large, try to reduce the problem to the smallest piece of code that still shows the bug. This is good debugging practice anyway, often, the act of isolating the problem leads you to the answer before anyone else can.",
+        text: "If your codebase is large, try to reduce the problem to the [smallest piece of code](https://stackoverflow.com/help/minimal-reproducible-example) that still shows the bug. This is good debugging practice anyway, often, the act of isolating the problem leads you to the answer before anyone else can.",
       },
       { type: "h2", text: "Choosing the Right Channel" },
       {
         type: "p",
-        text: "Posting in the right channel gets you in front of the people most likely to know the answer. If it's a question about React, post in #web-dev not #ai-ml. If you're unsure, ask in #dev-chat.",
+        text: "[Posting in the right channel](/rules#05) gets you in front of the people most likely to know the answer. If it's a question about React, post in #web-dev not #ai-ml. If you're unsure, ask in #dev-chat.",
       },
       {
         type: "callout",
@@ -371,10 +371,10 @@ export const pages: Page[] = [
         type: "p",
         text: "Linking to documentation is great, but 'read the docs' with no context leaves the person exactly where they were. Link the specific section that answers their question, and add a sentence explaining what they'll find there.",
       },
-      { type: "h2", text: "Code Reviews vs Quick Fixes" },
+      { type: "h2", text: "Quick Fixes vs Deeper Feedbacks" },
       {
         type: "p",
-        text: "In #help, people usually just need the thing to work. In #code-review, they're asking for deeper feedback, architecture, readability, patterns. Calibrate your response to what was asked for.",
+        text: "In #dev-chat, people usually just need the thing to work. In #work-in-progress, they're asking for deeper feedback, architecture, readability, patterns. Calibrate your response to what was asked for.",
       },
       {
         type: "callout",
@@ -404,7 +404,7 @@ export const pages: Page[] = [
     content: [
       {
         type: "p",
-        text: "DevHub is a place for developers to learn, build, and collaborate. To keep it that way, useful and welcoming for everyone, we need a shared understanding of how we treat each other. This is that document.",
+        text: "[DevHub](/join) is a place for developers to learn, build, and collaborate. To keep it that way, useful and welcoming for everyone, we need a shared understanding of how we treat each other. This is that document.",
       },
       { type: "h2", text: "The Simple Version" },
       {
@@ -414,7 +414,7 @@ export const pages: Page[] = [
       { type: "h2", text: "What This Community Is Built On" },
       {
         type: "p",
-        text: "DevHub is open to developers regardless of experience level, background, identity, or what tools they use. That's not a PR statement, it's what makes the community actually useful. Experts learn from helping beginners. Beginners learn from watching experts disagree. That only works if everyone feels like they can show up.",
+        text: "[DevHub](/join) is open to developers regardless of experience level, background, identity, or what tools they use. That's not a PR statement, it's what makes the community actually useful. Experts learn from helping beginners. Beginners learn from watching experts disagree. That only works if everyone feels like they can show up.",
       },
       { type: "h2", text: "What We Expect" },
       {
@@ -432,12 +432,12 @@ export const pages: Page[] = [
       {
         type: "ul",
         items: [
-          "Harassment, bullying, or personal attacks, in public or in DMs.",
+          "[Harassment, bullying, or personal attacks](/rules#01), in public or in DMs.",
           "Discrimination based on gender, race, nationality, age, experience level, disability or religion.",
-          "Doxxing, sharing someone's personal information without consent.",
+          "[Doxxing](/rules#09), sharing someone's personal information without consent.",
           "Hate speech or content that dehumanizes people.",
-          "Spam, unsolicited self-promotion, or flooding channels.",
-          "Malicious links, malware, or phishing, inside the server or in DMs.",
+          "[Spam](/rules#07), [unsolicited self-promotion](/rules#08), or flooding channels.",
+          "[Malicious links, malware, or phishing](/rules#10), inside the server or in DMs.",
           "Sexual or explicit content in any form.",
           "Attempting to evade moderation through alt accounts or loopholes.",
         ],
@@ -450,12 +450,12 @@ export const pages: Page[] = [
       { type: "h2", text: "Enforcement" },
       {
         type: "p",
-        text: "Violations are handled by the mod team on a case-by-case basis. Depending on severity, responses range from a quiet word to a temporary mute to a permanent ban. Bans can be appealed, see the Moderation Guide.",
+        text: "Violations are handled by the [mod team](/pages/staff-roles) on a case-by-case basis. Depending on severity, responses range from a quiet word to a temporary mute to a permanent ban. Bans can be appealed, see the [Moderation Guide](/pages/moderation-guide).",
       },
       {
         type: "callout",
         variant: "info",
-        text: "To report something: Open a ticket or DM ModMail bot. If it's a single message, right click on it and select 'Report Message' under 'Apps' (Panda bot). All reports are handled confidentially.",
+        text: "To report something: Open a ticket or DM ModMail bot. If it's a single message, right click on it and select `Report Message` under `Apps` (Panda bot). All reports are handled confidentially.",
       },
       { type: "h2", text: "Good Faith" },
       {
@@ -548,7 +548,7 @@ export const pages: Page[] = [
     content: [
       {
         type: "p",
-        text: "DevHub's staff are volunteers. Understanding who does what helps you know who to contact for different situations.",
+        text: "[DevHub](/join)'s staff are volunteers. Understanding who does what helps you know who to contact for different situations.",
       },
       { type: "h2", text: "Admin" },
       {
@@ -611,7 +611,7 @@ export const pages: Page[] = [
       },
       {
         type: "p",
-        text: "Yes, in the right place. Use #project-showcase for projects you've built, #media for youtube or other media content, Promotional posts in the wrong channels, or DM spam, will get removed and the user may face further consequences.",
+        text: "Yes, in the right place. Use #project-showcase for projects you've built, #media for [youtube](htps://youtube.com) or other media content, Promotional posts in the wrong channels, or DM spam, will get removed and the user may face further consequences.",
       },
       { type: "h2", text: "How do I get roles?" },
       {
@@ -641,7 +641,7 @@ export const pages: Page[] = [
       { type: "h2", text: "Can I advertise my server/product/service?" },
       {
         type: "p",
-        text: "Not without staff approval. Unsolicited advertising or DM promotion is not allowed. If you have something you think the community would genuinely benefit from, reach out to the staff team with details and we'll consider it.",
+        text: "Not without staff approval. [Unsolicited advertising](/rules#08) or DM promotion is not allowed. If you have something you think the community would genuinely benefit from, reach out to the staff team with details and we'll consider it.",
       },
       { type: "h2", text: "Can I post job listings?" },
       {
@@ -651,17 +651,17 @@ export const pages: Page[] = [
       { type: "h2", text: "I got banned. Can I appeal?" },
       {
         type: "p",
-        text: "Yes. Use [appeal.gg](https://appeal.gg/s/1429026875946172459). See the Moderation Guide for the full process. Bans aren't always permanent, context and how you handle the appeal matters.",
+        text: "Yes. Use our dedicated [appeal.gg](https://appeal.gg/s/1429026875946172459) form. See the Moderation Guide for the full process. Bans aren't always permanent, context and how you handle the appeal matters.",
       },
       { type: "h2", text: "Who runs DevHub?" },
       {
         type: "p",
-        text: "DevHub was started by a small group of developers and is run by a volunteer team of moderators and admins. There's no company behind it. The community owns it in the sense that matters.",
+        text: "[DevHub](/join) was started by a small group of developers and is run by a volunteer team of moderators and admins. There's no company behind it. The community owns it in the sense that matters.",
       },
       { type: "h2", text: "How do I suggest a feature or channel?" },
       {
         type: "p",
-        text: "Use /suggest command form Panda bot, and it'll be posted in #suggestions. Good suggestions get more upvotes, and it'll be applied if it gets many upvotes and make sense for the community. We're genuinely open to input.",
+        text: "Use `/suggest` command form Panda bot, and it'll be posted in #suggestions. Good suggestions get more upvotes, and it'll be applied if it gets many upvotes and make sense for the community. We're genuinely open to input.",
       },
     ],
   },
@@ -676,7 +676,7 @@ export const pages: Page[] = [
     content: [
       {
         type: "p",
-        text: "DevHub exists because a lot of people chose to put time and energy into it. This page is for saying thank you clearly.",
+        text: "[DevHub](/join) exists because a lot of people chose to put time and energy into it. This page is for saying thank you clearly.",
       },
       { type: "h2", text: "The Mod Team" },
       {
@@ -686,27 +686,27 @@ export const pages: Page[] = [
       { type: "h2", text: "Open Source Maintainers" },
       {
         type: "p",
-        text: "Everyone who has opened a PR, reviewed someone else's code, filed a well-written issue, or improved documentation in a DevHub project. The projects exist because of you.",
+        text: "Everyone who has opened a PR, reviewed someone else's code, filed a well-written issue, or improved documentation in a DevHub project, thank you. The projects exist because of you.",
       },
       { type: "h2", text: "Tools We Use" },
       {
         type: "ul",
         items: [
-          "Discord, The platform the entire DevHub community runs on and communicates through.",
-          "Next.js, Powers the DevHub website with a modern and fast React framework.",
-          "Tailwind CSS, Used for building the site's clean, responsive, and customizable UI.",
-          "TypeScript, Helps keep the codebase scalable, maintainable, and type-safe.",
-          "Vercel, Hosts and deploys the DevHub website with seamless CI/CD integration.",
-          "GitHub, Hosts the source code and manages issues, pull requests, and contributions.",
-          "Node.js, Runs backend services, tooling, and development utilities across the project.",
-          "Discord.js, Powers DevHub bots and integrations within the Discord ecosystem.",
-          "ESLint & Prettier, Maintain consistent code quality and formatting across the project.",
+          "[Discord](https://discord.com), The platform the entire DevHub community runs on and communicates through.",
+          "[Next.js](/pages/moderation-guide#how-to-report-something), Powers the DevHub website with a modern and fast React framework.",
+          "[Tailwind CSS](https://tailwindcss.com/), Used for building the site's clean, responsive, and customizable UI.",
+          "[TypeScript](https://www.typescriptlang.org/), Helps keep the codebase scalable, maintainable, and type-safe.",
+          "[Vercel](https://vercel.com), Hosts and deploys the DevHub website with seamless CI/CD integration.",
+          "[GitHub](https://github.com), Hosts the source code and manages issues, pull requests, and contributions.",
+          "[Node.js](https://nodejs.org), Runs backend services, tooling, and development utilities across the project.",
+          "[Discord.js](https://discord.js.org), Powers DevHub bots and integrations within the Discord ecosystem.",
+          "[ESLint & Prettier](https://prettier.io), Maintain consistent code quality and formatting across the project.",
         ],
       },
       { type: "h2", text: "Inspiration" },
       {
         type: "p",
-        text: "Communities like The Programmer's Hangout, TCD, and The CodeVerse Hub showed what a good developer community can look like. We've learned from them.",
+        text: "Communities like [The Programmer's Hangout](https://theprogramminghangout.com), [TCD](https://tcd.one), and [The CodeVerse Hub](https://thecodeversehub.tech) showed what a good developer community can look like. We've learned from them.",
       },
       {
         type: "callout",
@@ -727,7 +727,7 @@ export const pages: Page[] = [
     content: [
       {
         type: "p",
-        text: "DevHub uses a small, deliberate set of bots, enough to keep things running smoothly without turning every command into a guessing game. Here's what's running and what each one does.",
+        text: "[DevHub](/join) uses a small, deliberate set of bots, enough to keep things running smoothly without turning every command into a guessing game. Here's what's running and what each one does.",
       },
       { type: "h2", text: "Active Bots" },
       { type: "h3", text: "Akinator" },
@@ -865,7 +865,7 @@ export const pages: Page[] = [
       { type: "h2", text: "Bot Commands" },
       {
         type: "p",
-        text: "Use bot commands in #terminal unless a command is specifically designed for another channel (e.g. /suggest works anywhere). Running commands in #dev-chat or #chat is fine occasionally, but if you're experimenting, take it to the right place.",
+        text: "Use bot commands in #terminal unless a command is specifically designed for another channel (e.g. `/suggest` works anywhere). Running commands in #dev-chat or #chat is fine occasionally, but if you're experimenting, take it to the right place.",
       },
       {
         type: "callout",
@@ -875,7 +875,7 @@ export const pages: Page[] = [
       { type: "h2", text: "Suggesting a New Bot" },
       {
         type: "p",
-        text: "See the Adding a Bot page for the proposal process. We review all bot suggestions carefully, security, permissions, and actual usefulness all factor into the decision.",
+        text: "See the [Adding a Bot](/pages/adding-a-bot) page for the proposal process. We review all bot suggestions carefully, security, permissions, and actual usefulness all factor into the decision.",
       },
     ],
   },
@@ -889,7 +889,7 @@ export const pages: Page[] = [
     content: [
       {
         type: "p",
-        text: "We're selective about which bots we run. Each bot is a potential security surface, a source of channel noise, and something the team has to maintain awareness of. That means we don't add bots casually.",
+        text: "We're selective about which [bots](/pages/bots) we run. Each bot is a potential security surface, a source of channel noise, and something the team has to maintain awareness of. That means we don't add bots casually.",
       },
       { type: "h2", text: "Before You Propose" },
       {
@@ -900,7 +900,7 @@ export const pages: Page[] = [
       {
         type: "ol",
         items: [
-          "Post in #suggestions (through /suggest command) with the bot name, a link to its documentation or source, and a clear explanation and/or image of what it does and why it's useful.",
+          "Post in #suggestions (through `/suggest` command) with the bot name, a link to its documentation or source, and a clear explanation and/or image of what it does and why it's useful.",
           "Community members can react and comment under the suggestion thread.",
           "The admin team reviews the proposal, checks permissions and security, and votes internally.",
           "If approved, the bot is added with non-dangerous permissions. The proposer is credited in the announcement.",
@@ -936,7 +936,7 @@ export const pages: Page[] = [
     content: [
       {
         type: "p",
-        text: "The DevHub GitHub org is where community members build things together. It's not a showcase of finished work, it's an active space where contributors open issues, review PRs, and ship real software.",
+        text: `The [DevHub GitHub org](${github}) is where community members build things together. It's not a showcase of finished work, it's an active space where contributors open issues, review PRs, and ship real software.`,
       },
       { type: "h2", text: "What We Build" },
       {
@@ -965,13 +965,13 @@ export const pages: Page[] = [
           "Fork and build",
           "Open issues",
           "Submit pull requests",
-          "Share ideas in Discord and GitHub Discussions",
+          "Share ideas in [Discord](/discord) and [GitHub Discussions](/discussions)",
         ],
       },
       { type: "h2", text: "Code Standards" },
       {
         type: "p",
-        text: "All projects use Prettier for formatting and ESLint (or the language equivalent) for linting. Run these before opening a PR. Tests live in the same repo, check the README for the test command.",
+        text: "All projects use [Prettier](https://prettier.io) for formatting and [ESLint](https://eslint.org) (or the language equivalent) for linting. Run these before opening a PR. Tests live in the same repo, check the README for the test command.",
       },
     ],
   },
@@ -987,17 +987,17 @@ export const pages: Page[] = [
     content: [
       {
         type: "p",
-        text: "DevHub runs on community contributions. Not just code, though we love that too, but answering questions, improving docs, running events, giving project feedback, and just showing up consistently. All of it matters.",
+        text: "[DevHub](/join) runs on community contributions. Not just code, though we love that too, but answering questions, improving docs, running events, giving project feedback, and just showing up consistently. All of it matters.",
       },
       { type: "h2", text: "Ways to Contribute" },
       {
         type: "ul",
         items: [
           "Answer questions asked in channels and threads",
-          "Review pull requests in our GitHub org",
+          `Review pull requests in our [GitHub org](${github})`,
           "Improve or add to our documentation",
           "Share resources, challenges, posts etc. in designated forum channels",
-          "Report bugs in open source projects (you will recieve 'Bug Hunter' role on our Discord server for doing this)",
+          "Report bugs in open source projects (you will recieve `Bug Hunter` role on our Discord server for doing this)",
           "Help new members get oriented",
           "Propose and run community events",
         ],
@@ -1005,7 +1005,7 @@ export const pages: Page[] = [
       { type: "h2", text: "Code Contributions" },
       {
         type: "p",
-        text: "All DevHub projects live in the GitHub org. To contribute code, fork the repo, make your changes on a feature branch, and open a PR. Include a clear description of what you changed and why.",
+        text: `All DevHub projects live in the [GitHub org](${github}). To contribute code, fork the repo, make your changes on a feature branch, and open a PR. Include a clear description of what you changed and why.`,
       },
       { type: "h3", text: "Getting Set Up" },
       {
@@ -1037,12 +1037,12 @@ export const pages: Page[] = [
       {
         type: "callout",
         variant: "info",
-        text: "All PRs require at least one review from a community maintainer before merging. First-time contributors: look for issues labeled 'good first issue'.",
+        text: "All PRs require at least one review from a community maintainer before merging. First-time contributors: look for issues labeled `good first issue`.",
       },
       { type: "h2", text: "Documentation Contributions" },
       {
         type: "p",
-        text: "Docs and resources are in the website repo. If you find something confusing, out of date, or just missing, fix it. Small improvements compound into something really good over time.",
+        text: `[Docs](/pages) and [resources](/resources) are in the [website repo](${github}/website). If you find something confusing, out of date, or just missing, fix it. Small improvements compound into something really good over time.`,
       },
       { type: "h2", text: "Non-Code Contributions" },
       {
@@ -1052,7 +1052,7 @@ export const pages: Page[] = [
       { type: "h2", text: "Recognition" },
       {
         type: "p",
-        text: "Contributors get the 'GitHub Contributor' and other roles on Discord, which are displayed separately from other online members.",
+        text: "Contributors get the `GitHub Contributor` and other roles on [Discord](/discord), which are displayed separately from other online members.",
       },
     ],
   },
@@ -1067,14 +1067,14 @@ export const pages: Page[] = [
     content: [
       {
         type: "p",
-        text: "These guidelines apply to all projects under the DevHub GitHub org. They're not bureaucracy, they're the things that make a project maintainable by multiple people over time.",
+        text: `These guidelines apply to all projects under the [DevHub GitHub org](${github}). They're not bureaucracy, they're the things that make a project maintainable by multiple people over time.`,
       },
       { type: "h2", text: "Required Files" },
       {
         type: "ul",
         items: [
           "README.md, What the project is, how to run it locally, and how to contribute. Keep it current.",
-          "LICENSE, MIT preferred. If you have a reason for a different license, document it.",
+          "LICENSE, [MIT](https://opensource.org/license/mit) preferred. If you have a reason for a different license, document it.",
           "CONTRIBUTING.md, How to contribute. Link to this guide.",
         ],
       },
@@ -1082,10 +1082,10 @@ export const pages: Page[] = [
       {
         type: "ul",
         items: [
-          "Prettier for formatting. No debates about style, just run it.",
-          "ESLint (JS/TS) or the equivalent linter for your language.",
+          "[Prettier](https://prettier.io) for formatting. No debates about style, just run it.",
+          "[ESLint](https://eslint.org) (JS/TS) or the equivalent linter for your language.",
           "Tests for core functionality. Not 100% coverage, test the things that matter.",
-          "JSDoc or equivalent for public APIs. If someone has to read source to understand how to use it, the docs aren't done.",
+          "[JSDoc](https://jsdoc.app/about-getting-started) or equivalent for public APIs. If someone has to read source to understand how to use it, the docs aren't done.",
         ],
       },
       { type: "h2", text: "Commit Messages" },
@@ -1100,7 +1100,7 @@ export const pages: Page[] = [
       { type: "h2", text: "Branching Strategy" },
       {
         type: "p",
-        text: "main is always deployable. develop is active work. feature/* branches are individual features or fixes. Open PRs from your feature branch into main.",
+        text: "main is always deployable. develop is active work. `feature/*` branches are individual features or fixes. Open PRs from your feature branch into main.",
       },
       {
         type: "callout",
@@ -1125,14 +1125,14 @@ export const pages: Page[] = [
     content: [
       {
         type: "p",
-        text: "Built something useful? We'd love to help it reach more people. There are a few different ways to get your project connected with the DevHub community.",
+        text: `Built something useful? We'd love to help it reach more people. There are a few different ways to get your project connected with the [DevHub community](${github}).`,
       },
       { type: "h2", text: "Options" },
       {
         type: "ul",
         items: [
           "Feature Listing, We promote your personal project in this website. You keep full ownership.",
-          "Org Transfer, Your project moves under the DevHub GitHub org, and you'll be given admin rights over it. Community maintainers help keep it active. Good for projects you want to outlive your direct involvement.",
+          `Org Transfer, Your project moves under the [DevHub GitHub org](${github}), and you'll be given admin rights over it (eg. [chorddb](${github}/chorddb) was built and transferred by [@imiakk](https://github.com/imiakk)). Community maintainers help keep it active. Good for projects you want to outlive your direct involvement.`,
         ],
       },
       { type: "h2", text: "What We Look For" },
@@ -1149,10 +1149,10 @@ export const pages: Page[] = [
       {
         type: "ol",
         items: [
-          "Post in #suggestions (through /suggest command from Panda) with the project name, a link to the repo, and a clear description of what it does and why it's useful.",
+          "Post in #suggestions (through  `/suggest` command from Panda) with the project name, a link to the repo, and a clear description of what it does and why it's useful.",
           "Community members can react and comment under the suggestion thread.",
           "The admin team reviews the proposal, checks the project against the criteria, and votes internally.",
-          "If approved, the project is added to the website and/or GitHub org. The submitter is credited in the announcement.",
+          `If approved, the project is added to the [website](/) and/or [GitHub org](${github}). The submitter is credited in the announcement.`,
         ],
       },
     ],
@@ -1169,7 +1169,7 @@ export const pages: Page[] = [
     content: [
       {
         type: "p",
-        text: "DevHub is a community, not a product. We don't have a business model that depends on your data, and we don't sell or share it with third parties. This document explains what we do collect and why.",
+        text: "[DevHub](/join) is a community, not a product. We don't have a business model that depends on your data, and we don't sell or share it with third parties. This document explains what we do collect and why.",
       },
       { type: "h2", text: "What We Collect" },
       {
@@ -1177,7 +1177,7 @@ export const pages: Page[] = [
         items: [
           "Discord user IDs and usernames, necessary to identify accounts.",
           "Moderation logs, warnings, mutes, and bans, stored by Discord and our moderation bot.",
-          "Bot interaction data, commands you run via Quill or other bots (query text, response, timestamp). Used to improve bot responses.",
+          "Bot interaction data, commands you run via [Quill](/quill) or other bots (query text, response, timestamp). Used to improve bot responses.",
           "ModMail and tickets you open with the mod team, stored securely and only accessible to mods.",
         ],
       },
@@ -1194,7 +1194,7 @@ export const pages: Page[] = [
       { type: "h2", text: "Third-Party Services" },
       {
         type: "p",
-        text: "DevHub runs on Discord. Discord's own privacy policy governs how Discord handles your data, we have no control over that. The bots we use (Wick, Sapphire, etc.) have their own privacy policies. Bot interaction data is processed by those services' servers.",
+        text: "[DevHub](/join) runs on [Discord](https://discord.com). Discord's own privacy policy governs how Discord handles your data, we have no control over that. The [bots](/pages/bots) we use (Wick, Sapphire, etc.) have their own privacy policies. Bot interaction data is processed by those services' servers.",
       },
       { type: "h2", text: "Data Retention" },
       {
@@ -1212,12 +1212,12 @@ export const pages: Page[] = [
       },
       {
         type: "p",
-        text: "To make a request, DM an admin or post in #mod-support. We'll respond within 7 days.",
+        text: "To make a request, DM an admin or open a ticket. We'll respond within 24 hours.",
       },
       { type: "h2", text: "Contact" },
       {
         type: "p",
-        text: `Questions about this policy can be directed to the admin team or via tickets or email at ${email}.`,
+        text: `Questions about this policy can be directed to the admin team or via tickets or email at [${email}](mailto:${email}).`,
       },
     ],
   },
@@ -1243,9 +1243,9 @@ export const pages: Page[] = [
       {
         type: "ul",
         items: [
-          `Email ${email} with the subject line 'Security Vulnerability: [project name]'.`,
-          "Or DM a server admin directly on Discord with a brief description.",
-          "GitHub's private security advisory feature is also supported on most DevHub repos.",
+          `Email [${email}](mailto:${email}) with the subject line \`Security Vulnerability: [project name]\`.`,
+          "Or DM a server admin directly on [Discord](/discord) with a brief description.",
+          "GitHub's private security advisory feature is also supported on many repos.",
         ],
       },
       { type: "h2", text: "What to Include" },
@@ -1262,21 +1262,21 @@ export const pages: Page[] = [
       {
         type: "ol",
         items: [
-          "We'll acknowledge your report within 48 hours.",
+          "We'll acknowledge your report within 24-72 hours.",
           "We'll investigate and confirm the vulnerability.",
           "We'll develop and test a fix.",
-          "We'll release the fix and credit you in the changelog, unless you prefer to remain anonymous.",
+          "We'll release the fix and credit you in the changelog and announcements, unless you prefer to remain anonymous.",
         ],
       },
       {
         type: "callout",
         variant: "warning",
-        text: "Please give us reasonable time to address a vulnerability before disclosing it publicly. We commit to resolving valid reports within 1-7 days of confirmation.",
+        text: "Please give us reasonable time to address a vulnerability before disclosing it publicly. We commit to resolving valid reports within 24 hours - 5 days of confirmation.",
       },
       { type: "h2", text: "Scope" },
       {
         type: "p",
-        text: "This policy covers all repositories under the DevHub GitHub org. It does not cover the Discord server itself (that's governed by Discord's own security processes) or third-party bots.",
+        text: `This policy covers all repositories under the [DevHub GitHub org](${github}). It does not cover the Discord server itself (that's governed by Discord's own security processes) or third-party bots.`,
       },
       { type: "h2", text: "Out of Scope" },
       {

@@ -3,6 +3,7 @@
 import ShinyText from "@/components/bits/ShinyText";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const rules = [
   {
@@ -39,7 +40,7 @@ const rules = [
     number: "06",
     title: "Format your code like you care",
     description:
-      "Triple backticks exist for a reason. Pasting a wall of unformatted code and asking why it's broken is a fast way to get ignored. Wrap it, label the language, and give people enough context to actually help you.",
+      "Triple backticks exist for a reason. Pasting a wall of unformatted code and asking why it's broken is a fast way to get ignored. Wrap it in code block, label the language, and give people enough context to actually help you.",
   },
   {
     number: "07",
@@ -110,6 +111,16 @@ const rules = [
 ];
 
 export default function RulesPage() {
+  const [activeRule, setActiveRule] = useState("");
+
+  useEffect(() => {
+    const hash = window.location.hash;
+
+    if (hash) {
+      const id = hash.replace("#", "");
+      setActiveRule(id);
+    }
+  }, []);
   return (
     <div className="min-h-screen relative" style={{ background: "#030305" }}>
       <div className="absolute inset-0 dot-bg opacity-50 pointer-events-none" />
@@ -239,7 +250,7 @@ export default function RulesPage() {
           {rules.map((rule, i) => (
             <motion.div
               key={rule.number}
-              id={`rule-${rule.number}`}
+              id={`${rule.number}`}
               variants={{
                 hidden: { opacity: 0, x: -20 },
                 visible: {
@@ -254,7 +265,10 @@ export default function RulesPage() {
                 className="relative p-6 md:p-8 overflow-hidden"
                 style={{
                   background: "rgba(7, 7, 15, 0.7)",
-                  border: "1px solid rgba(99,102,241,0.1)",
+                  border:
+                    rule.number == activeRule
+                      ? "1px solid rgba(99,102,241,0.7)"
+                      : "1px solid rgba(99,102,241,0.1)",
                 }}
               >
                 {/* Corner brackets */}
@@ -303,8 +317,9 @@ export default function RulesPage() {
 
                   {/* Content */}
                   <div className="flex-1">
-                    <h2
+                    <a
                       className="font-semibold text-lg md:text-xl mb-2"
+                      href={`#${rule.number}`}
                       style={{
                         fontFamily: "var(--font-geist-mono)",
                         color: "#e2e2f0",
@@ -317,7 +332,7 @@ export default function RulesPage() {
                         {">"}
                       </span>
                       {rule.title}
-                    </h2>
+                    </a>
                     <p
                       className="text-sm leading-relaxed"
                       style={{

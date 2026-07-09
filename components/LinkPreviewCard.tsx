@@ -13,9 +13,11 @@ const previewCache = new Map<string, PreviewData | null>();
 
 export function LinkPreviewCard({
   href,
+  newTab = true,
   children,
 }: {
   href: string;
+  newTab?: boolean;
   children: React.ReactNode;
 }) {
   const [hovering, setHovering] = useState(false);
@@ -110,7 +112,7 @@ export function LinkPreviewCard({
       <a
         ref={anchorRef}
         href={href}
-        target="_blank"
+        target={newTab ? "_blank" : "_self"}
         rel="noopener noreferrer"
         onMouseEnter={handleLinkEnter}
         onMouseLeave={handleLinkLeave}
@@ -183,7 +185,7 @@ export function LinkPreviewCard({
                   <div className={data?.image && !imgError ? "pr-16" : ""}>
                     <a
                       href={href}
-                      target="_blank"
+                      target={newTab ? "_blank" : "_self"}
                       rel="noopener noreferrer"
                       className="font-semibold text-sm hover:underline block mb-1"
                       style={{
