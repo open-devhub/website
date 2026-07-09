@@ -1,6 +1,7 @@
 "use client";
 
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { accent, background, indigo, text } from "@/lib/colors";
 import { hexToHslString } from "@/lib/utils";
 import { motion, useInView } from "framer-motion";
 import { Code as Code2, MessageCircle, Users } from "lucide-react";
@@ -8,20 +9,26 @@ import { useEffect, useRef, useState } from "react";
 import BorderGlow from "../bits/BorderGlow";
 
 const stats = [
-  { icon: Users, value: 500, label: "Members", suffix: "+", color: "#6366f1" },
+  {
+    icon: Users,
+    value: 500,
+    label: "Members",
+    suffix: "+",
+    color: accent.indigo,
+  },
   {
     icon: Code2,
     value: 10,
     label: "OSS Projects",
     suffix: "+",
-    color: "#8b5cf6",
+    color: accent.violet,
   },
   {
     icon: MessageCircle,
     value: 100,
     label: "Resources",
     suffix: "+",
-    color: "#818cf8",
+    color: accent.indigoLight,
   },
 ];
 
@@ -56,14 +63,13 @@ export default function StatsSection() {
   return (
     <section
       className="relative py-24 md:py-32 overflow-hidden"
-      style={{ background: "#030305" }}
+      style={{ background: background.primary }}
     >
       <div className="absolute inset-0 dot-bg opacity-50 pointer-events-none" />
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{
-          background:
-            "linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)",
+          background: `linear-gradient(90deg, transparent, ${indigo(0.2)}, transparent)`,
         }}
       />
 
@@ -81,7 +87,7 @@ export default function StatsSection() {
           >
             <span
               style={{
-                color: "rgba(99,102,241,0.5)",
+                color: indigo(0.5),
                 fontFamily: "var(--font-geist-mono)",
               }}
             >
@@ -89,13 +95,16 @@ export default function StatsSection() {
             </span>
             <span
               className="text-xs tracking-widest uppercase"
-              style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                color: accent.indigoLightest,
+              }}
             >
               By the Numbers
             </span>
             <span
               style={{
-                color: "rgba(99,102,241,0.5)",
+                color: indigo(0.5),
                 fontFamily: "var(--font-geist-mono)",
               }}
             >
@@ -112,8 +121,7 @@ export default function StatsSection() {
           >
             <span
               style={{
-                background:
-                  "linear-gradient(135deg, #e2e2f0 0%, #a5b4fc 50%, #8b5cf6 100%)",
+                background: `linear-gradient(135deg, ${text.primary} 0%, ${accent.indigoLightest} 50%, ${accent.violet} 100%)`,
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -122,7 +130,10 @@ export default function StatsSection() {
               A community that{" "}
               <span
                 className="cursor-target"
-                style={{ color: "#818cf8", WebkitTextFillColor: "#818cf8" }}
+                style={{
+                  color: accent.indigoLight,
+                  WebkitTextFillColor: accent.indigoLight,
+                }}
               >
                 ships
               </span>
@@ -149,7 +160,7 @@ export default function StatsSection() {
                   className="h-full w-full"
                   edgeSensitivity={30}
                   glowColor={hexToHslString(stat.color)}
-                  backgroundColor="#120F17"
+                  backgroundColor={background.borderGlow}
                   glowRadius={40}
                   glowIntensity={1}
                   coneSpread={25}
@@ -160,7 +171,7 @@ export default function StatsSection() {
                     className="p-8 text-center group relative overflow-hidden h-full w-full"
                     style={{
                       background: "rgba(7, 7, 15, 0.9)",
-                      border: "1px solid rgba(99,102,241,0.12)",
+                      border: `1px solid ${indigo(0.12)}`,
                     }}
                     whileHover={{
                       borderColor: `${stat.color}35`,
@@ -208,7 +219,7 @@ export default function StatsSection() {
                       className="text-sm"
                       style={{
                         fontFamily: "var(--font-geist-mono)",
-                        color: "#52525b",
+                        color: text.dim,
                       }}
                     >
                       {stat.label}
@@ -224,8 +235,7 @@ export default function StatsSection() {
       <div
         className="absolute bottom-0 left-0 right-0 h-px"
         style={{
-          background:
-            "linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)",
+          background: `linear-gradient(90deg, transparent, ${indigo(0.2)}, transparent)`,
         }}
       />
     </section>

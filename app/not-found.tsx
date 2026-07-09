@@ -2,6 +2,7 @@
 
 import FuzzyText from "@/components/bits/FuzzyText";
 import { fadeInUp } from "@/lib/animations";
+import { background, indigo, text } from "@/lib/colors";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
@@ -9,7 +10,7 @@ export default function NotFound() {
   return (
     <section
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: "#030305" }}
+      style={{ background: background.primary }}
     >
       {/* Circuit grid overlay */}
       <div className="absolute inset-0 circuit-bg opacity-60 pointer-events-none" />
@@ -18,16 +19,14 @@ export default function NotFound() {
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none"
         style={{
-          background:
-            "radial-gradient(ellipse, rgba(99,102,241,0.08) 0%, transparent 70%)",
+          background: `radial-gradient(ellipse, ${indigo(0.08)} 0%, transparent 70%)`,
         }}
       />
 
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] pointer-events-none"
         style={{
-          background:
-            "radial-gradient(ellipse, rgba(99,102,241,0.15) 0%, transparent 70%)",
+          background: `radial-gradient(ellipse, ${indigo(0.15)} 0%, transparent 70%)`,
         }}
       />
 
@@ -37,8 +36,8 @@ export default function NotFound() {
           style={{
             width: 40,
             height: 40,
-            borderTop: "2px solid rgba(99,102,241,0.4)",
-            borderLeft: "2px solid rgba(99,102,241,0.4)",
+            borderTop: `2px solid ${indigo(0.4)}`,
+            borderLeft: `2px solid ${indigo(0.4)}`,
           }}
         />
       </div>
@@ -47,8 +46,8 @@ export default function NotFound() {
           style={{
             width: 40,
             height: 40,
-            borderTop: "2px solid rgba(99,102,241,0.4)",
-            borderRight: "2px solid rgba(99,102,241,0.4)",
+            borderTop: `2px solid ${indigo(0.4)}`,
+            borderRight: `2px solid ${indigo(0.4)}`,
           }}
         />
       </div>
@@ -57,8 +56,8 @@ export default function NotFound() {
           style={{
             width: 40,
             height: 40,
-            borderBottom: "2px solid rgba(99,102,241,0.4)",
-            borderLeft: "2px solid rgba(99,102,241,0.4)",
+            borderBottom: `2px solid ${indigo(0.4)}`,
+            borderLeft: `2px solid ${indigo(0.4)}`,
           }}
         />
       </div>
@@ -67,8 +66,8 @@ export default function NotFound() {
           style={{
             width: 40,
             height: 40,
-            borderBottom: "2px solid rgba(99,102,241,0.4)",
-            borderRight: "2px solid rgba(99,102,241,0.4)",
+            borderBottom: `2px solid ${indigo(0.4)}`,
+            borderRight: `2px solid ${indigo(0.4)}`,
           }}
         />
       </div>
@@ -94,7 +93,7 @@ export default function NotFound() {
           className="text-base md:text-lg mb-10 max-w-md mx-auto leading-relaxed"
           style={{
             fontFamily: "var(--font-geist-mono), 'Geist Mono', monospace",
-            color: "#71717a",
+            color: text.muted,
           }}
         >
           This page doesn't exist, or it wandered off somewhere into the void.
@@ -114,11 +113,11 @@ export default function NotFound() {
             className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-mono font-semibold tracking-wider uppercase text-white cursor-target"
             style={{
               fontFamily: "var(--font-geist-mono)",
-              background: "rgba(99, 102, 241, 0.2)",
-              border: "1px solid rgba(99, 102, 241, 0.6)",
+              background: indigo(0.2),
+              border: `1px solid ${indigo(0.6)}`,
             }}
             whileHover={{
-              background: "rgba(99, 102, 241, 0.3)",
+              background: indigo(0.3),
               scale: 1.02,
             }}
             whileTap={{ scale: 0.97 }}
@@ -132,13 +131,13 @@ export default function NotFound() {
             className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-mono font-medium tracking-wider uppercase cursor-target"
             style={{
               fontFamily: "var(--font-geist-mono)",
-              color: "#71717a",
-              border: "1px solid rgba(99, 102, 241, 0.2)",
+              color: text.muted,
+              border: `1px solid ${indigo(0.2)}`,
             }}
             whileHover={{
-              color: "#c4c4cc",
-              borderColor: "rgba(99, 102, 241, 0.5)",
-              background: "rgba(99, 102, 241, 0.05)",
+              color: text.secondary,
+              borderColor: indigo(0.5),
+              background: indigo(0.05),
               scale: 1.02,
             }}
             whileTap={{ scale: 0.97 }}

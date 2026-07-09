@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { cyanGlow } from "@/lib/colors";
 import Link from "next/link";
 import { ReactNode } from "react";
 
@@ -39,19 +40,19 @@ export default function GlowButton({
 
   const glowStyles = {
     primary: {
-      rest: { boxShadow: "none", borderColor: "rgba(0, 245, 255, 0.5)" },
+      rest: { boxShadow: "none", borderColor: cyanGlow(0.5) },
       hover: {
-        boxShadow: "0 0 12px rgba(0, 245, 255, 0.2)",
+        boxShadow: `0 0 12px ${cyanGlow(0.2)}`,
         scale: 1.02,
-        borderColor: "rgba(0, 245, 255, 0.8)",
+        borderColor: cyanGlow(0.8),
       },
     },
     ghost: {
-      rest: { boxShadow: "none", borderColor: "rgba(0,245,255,0.3)" },
+      rest: { boxShadow: "none", borderColor: cyanGlow(0.3) },
       hover: {
         boxShadow: "0 0 0 0",
         scale: 1.02,
-        borderColor: "rgba(0,245,255,0.6)",
+        borderColor: cyanGlow(0.6),
       },
     },
     violet: {

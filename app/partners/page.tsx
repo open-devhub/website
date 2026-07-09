@@ -1,6 +1,16 @@
 "use client";
 
 import ShinyText from "@/components/bits/ShinyText";
+import {
+  accent,
+  background,
+  cyan,
+  indigo,
+  partner as partnerColors,
+  partnerLogoColors,
+  semantic,
+  text,
+} from "@/lib/colors";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { motion } from "framer-motion";
 import {
@@ -43,7 +53,7 @@ const partners: Partner[] = [
   },
   {
     inviteCode: "BGrCXccWDa",
-    banner: "#7F5C3D",
+    banner: partnerColors.bannerBrown,
     tags: ["Javaceans", "Coding", "DEV Support"],
     githubUrl: "https://github.com/drive-for-java",
   },
@@ -88,34 +98,6 @@ function hexToGradient(hex: string): string {
   return `linear-gradient(135deg, rgb(${dr},${dg},${db}) 0%, rgb(${r},${g},${b}) 45%, rgb(${lr},${lg},${lb}) 100%)`;
 }
 
-const logoColors = [
-  {
-    bg: "rgba(99,102,241,0.15)",
-    color: "#818cf8",
-    border: "rgba(99,102,241,0.4)",
-  },
-  {
-    bg: "rgba(139,92,246,0.15)",
-    color: "#a78bfa",
-    border: "rgba(139,92,246,0.4)",
-  },
-  {
-    bg: "rgba(99,102,241,0.12)",
-    color: "#6366f1",
-    border: "rgba(99,102,241,0.35)",
-  },
-  {
-    bg: "rgba(99,102,241,0.1)",
-    color: "#c4b5fd",
-    border: "rgba(165,180,252,0.35)",
-  },
-  {
-    bg: "rgba(109,40,217,0.15)",
-    color: "#a78bfa",
-    border: "rgba(109,40,217,0.4)",
-  },
-];
-
 function formatCount(n: number): string {
   if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, "") + "k";
   return n.toString();
@@ -138,17 +120,15 @@ function CornerBrackets() {
             left: pos.left,
             right: (pos as any).right,
             bottom: (pos as any).bottom,
-            borderTop: pos.borderTop
-              ? "1.5px solid rgba(99,102,241,0.2)"
-              : undefined,
+            borderTop: pos.borderTop ? `1.5px solid ${indigo(0.2)}` : undefined,
             borderLeft: pos.borderLeft
-              ? "1.5px solid rgba(99,102,241,0.2)"
+              ? `1.5px solid ${indigo(0.2)}`
               : undefined,
             borderBottom: (pos as any).borderBottom
-              ? "1.5px solid rgba(99,102,241,0.2)"
+              ? `1.5px solid ${indigo(0.2)}`
               : undefined,
             borderRight: (pos as any).borderRight
-              ? "1.5px solid rgba(99,102,241,0.2)"
+              ? `1.5px solid ${indigo(0.2)}`
               : undefined,
           }}
         />
@@ -167,7 +147,7 @@ function SkeletonBlock({
   return (
     <div
       className={`animate-pulse ${className ?? ""}`}
-      style={{ background: "rgba(99,102,241,0.08)", ...style }}
+      style={{ background: indigo(0.08), ...style }}
     />
   );
 }
@@ -183,8 +163,8 @@ function PartnerCardSkeleton({ index }: { index: number }) {
       }}
       className="relative overflow-hidden"
       style={{
-        background: "#06060E",
-        border: "1px solid rgba(99,102,241,0.12)",
+        background: background.card,
+        border: `1px solid ${indigo(0.12)}`,
       }}
     >
       <CornerBrackets />
@@ -233,7 +213,7 @@ function PartnerCard({
   discord: DiscordData | null;
   index: number;
 }) {
-  const logoStyle = logoColors[index % logoColors.length];
+  const logoStyle = partnerLogoColors[index % partnerLogoColors.length];
 
   const serverName = discord?.name ?? "Unknown Server";
 
@@ -277,8 +257,8 @@ function PartnerCard({
       }}
       className="relative overflow-hidden"
       style={{
-        background: "#06060E",
-        border: "1px solid rgba(99,102,241,0.12)",
+        background: background.card,
+        border: `1px solid ${indigo(0.12)}`,
       }}
     >
       <CornerBrackets />
@@ -304,8 +284,7 @@ function PartnerCard({
           <div
             className="absolute inset-0"
             style={{
-              background:
-                "linear-gradient(135deg, #0f0f2e 0%, #1a1040 40%, #0d0d1f 100%)",
+              background: `linear-gradient(135deg, ${partnerColors.fallbackGradientStart} 0%, ${partnerColors.fallbackGradientMid} 40%, ${partnerColors.fallbackGradientEnd} 100%)`,
             }}
           />
         )}
@@ -358,18 +337,18 @@ function PartnerCard({
                 <span className="flex items-center gap-1.5 text-xs">
                   <span
                     className="w-1.5 h-1.5"
-                    style={{ background: "#22c55e" }}
+                    style={{ background: semantic.success }}
                   />
-                  <span style={{ color: "#52525b" }}>
+                  <span style={{ color: text.dim }}>
                     {formatCount(discord.onlineCount)} online
                   </span>
                 </span>
                 <span className="flex items-center gap-1.5 text-xs">
                   <span
                     className="w-1.5 h-1.5"
-                    style={{ background: "#52525b" }}
+                    style={{ background: text.dim }}
                   />
-                  <span style={{ color: "#52525b" }}>
+                  <span style={{ color: text.dim }}>
                     {formatCount(discord.memberCount)} members
                   </span>
                 </span>
@@ -383,7 +362,7 @@ function PartnerCard({
           className="text-base font-semibold mb-1.5"
           style={{
             fontFamily: "var(--font-geist-mono)",
-            color: "#e2e2f0",
+            color: text.primary,
           }}
         >
           {serverName}
@@ -400,7 +379,7 @@ function PartnerCard({
                   className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 uppercase tracking-widest"
                   style={{
                     fontFamily: "var(--font-geist-mono)",
-                    color: "#60a5fa",
+                    color: cyan.blue400,
                     background: "rgba(59,130,246,0.08)",
                     border: "1px solid rgba(59,130,246,0.25)",
                   }}
@@ -418,7 +397,7 @@ function PartnerCard({
           className="text-xs leading-relaxed mb-4"
           style={{
             fontFamily: "var(--font-geist-mono)",
-            color: "#52525b",
+            color: text.dim,
           }}
         >
           {serverDescription}
@@ -432,9 +411,9 @@ function PartnerCard({
               className="text-[10px] px-2 py-0.5 uppercase tracking-widest"
               style={{
                 fontFamily: "var(--font-geist-mono)",
-                color: "#818cf8",
-                background: "rgba(99,102,241,0.08)",
-                border: "1px solid rgba(99,102,241,0.2)",
+                color: accent.indigoLight,
+                background: indigo(0.08),
+                border: `1px solid ${indigo(0.2)}`,
               }}
             >
               {tag}
@@ -451,11 +430,11 @@ function PartnerCard({
             className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono font-semibold tracking-wider uppercase text-white"
             style={{
               fontFamily: "var(--font-geist-mono)",
-              background: "rgba(99, 102, 241, 0.2)",
-              border: "1px solid rgba(99, 102, 241, 0.5)",
+              background: indigo(0.2),
+              border: `1px solid ${indigo(0.5)}`,
             }}
             whileHover={{
-              background: "rgba(99, 102, 241, 0.3)",
+              background: indigo(0.3),
               scale: 1.02,
             }}
             whileTap={{ scale: 0.97 }}
@@ -473,13 +452,13 @@ function PartnerCard({
               className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono font-medium tracking-wider uppercase"
               style={{
                 fontFamily: "var(--font-geist-mono)",
-                color: "#71717a",
-                border: "1px solid rgba(99, 102, 241, 0.2)",
+                color: text.muted,
+                border: `1px solid ${indigo(0.2)}`,
               }}
               whileHover={{
-                color: "#c4c4cc",
-                borderColor: "rgba(99, 102, 241, 0.45)",
-                background: "rgba(99, 102, 241, 0.05)",
+                color: text.secondary,
+                borderColor: indigo(0.45),
+                background: indigo(0.05),
                 scale: 1.02,
               }}
               whileTap={{ scale: 0.97 }}
@@ -497,13 +476,13 @@ function PartnerCard({
               className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono font-medium tracking-wider uppercase"
               style={{
                 fontFamily: "var(--font-geist-mono)",
-                color: "#71717a",
-                border: "1px solid rgba(99, 102, 241, 0.2)",
+                color: text.muted,
+                border: `1px solid ${indigo(0.2)}`,
               }}
               whileHover={{
-                color: "#c4c4cc",
-                borderColor: "rgba(99, 102, 241, 0.45)",
-                background: "rgba(99, 102, 241, 0.05)",
+                color: text.secondary,
+                borderColor: indigo(0.45),
+                background: indigo(0.05),
                 scale: 1.02,
               }}
               whileTap={{ scale: 0.97 }}
@@ -593,7 +572,10 @@ export default function PartnersPage() {
   }, []);
 
   return (
-    <div className="min-h-screen relative" style={{ background: "#030305" }}>
+    <div
+      className="min-h-screen relative"
+      style={{ background: background.primary }}
+    >
       {/* Dot grid */}
       <div className="absolute inset-0 dot-bg opacity-50 pointer-events-none" />
 
@@ -601,8 +583,7 @@ export default function PartnersPage() {
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] pointer-events-none"
         style={{
-          background:
-            "radial-gradient(ellipse, rgba(99,102,241,0.07) 0%, transparent 70%)",
+          background: `radial-gradient(ellipse, ${indigo(0.07)} 0%, transparent 70%)`,
         }}
       />
 
@@ -612,8 +593,8 @@ export default function PartnersPage() {
           style={{
             width: 40,
             height: 40,
-            borderTop: "1.5px solid rgba(99,102,241,0.4)",
-            borderLeft: "1.5px solid rgba(99,102,241,0.4)",
+            borderTop: `1.5px solid ${indigo(0.4)}`,
+            borderLeft: `1.5px solid ${indigo(0.4)}`,
           }}
         />
       </div>
@@ -622,8 +603,8 @@ export default function PartnersPage() {
           style={{
             width: 40,
             height: 40,
-            borderTop: "1.5px solid rgba(99,102,241,0.4)",
-            borderRight: "1.5px solid rgba(99,102,241,0.4)",
+            borderTop: `1.5px solid ${indigo(0.4)}`,
+            borderRight: `1.5px solid ${indigo(0.4)}`,
           }}
         />
       </div>
@@ -642,7 +623,7 @@ export default function PartnersPage() {
           >
             <span
               style={{
-                color: "rgba(99,102,241,0.5)",
+                color: indigo(0.5),
                 fontFamily: "var(--font-geist-mono)",
               }}
             >
@@ -650,13 +631,16 @@ export default function PartnersPage() {
             </span>
             <span
               className="text-xs tracking-widest uppercase"
-              style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                color: accent.indigoLightest,
+              }}
             >
               Trusted Communities
             </span>
             <span
               style={{
-                color: "rgba(99,102,241,0.5)",
+                color: indigo(0.5),
                 fontFamily: "var(--font-geist-mono)",
               }}
             >
@@ -675,8 +659,7 @@ export default function PartnersPage() {
           >
             <span
               style={{
-                background:
-                  "linear-gradient(135deg, #e2e2f0 0%, #c4c4cc 40%, #a5b4fc 70%, #8b5cf6 100%)",
+                background: `linear-gradient(135deg, ${text.primary} 0%, ${text.secondary} 40%, ${accent.indigoLightest} 70%, ${accent.violet} 100%)`,
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -684,14 +667,19 @@ export default function PartnersPage() {
             >
               Our{" "}
             </span>
-            <span style={{ color: "#818cf8", WebkitTextFillColor: "#818cf8" }}>
+            <span
+              style={{
+                color: accent.indigoLight,
+                WebkitTextFillColor: accent.indigoLight,
+              }}
+            >
               <ShinyText
                 text="Partner"
                 className="cursor-target"
                 speed={3.5}
                 delay={1}
-                color="#818cf8"
-                shineColor="#c7d2fe"
+                color={accent.indigoLight}
+                shineColor={accent.indigoShine}
                 spread={90}
                 direction="left"
                 yoyo={false}
@@ -701,8 +689,7 @@ export default function PartnersPage() {
             </span>
             <span
               style={{
-                background:
-                  "linear-gradient(135deg, #e2e2f0 0%, #c4c4cc 40%, #a5b4fc 70%, #8b5cf6 100%)",
+                background: `linear-gradient(135deg, ${text.primary} 0%, ${text.secondary} 40%, ${accent.indigoLightest} 70%, ${accent.violet} 100%)`,
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -718,7 +705,7 @@ export default function PartnersPage() {
             className="text-sm md:text-base max-w-xl mx-auto leading-relaxed"
             style={{
               fontFamily: "var(--font-geist-mono), 'Geist Mono', monospace",
-              color: "#52525b",
+              color: text.dim,
             }}
           >
             Communities we believe in. Each partner has been hand-picked for
@@ -732,8 +719,7 @@ export default function PartnersPage() {
             style={{
               height: "1px",
               maxWidth: 280,
-              background:
-                "linear-gradient(90deg, transparent, rgba(99,102,241,0.35), transparent)",
+              background: `linear-gradient(90deg, transparent, ${indigo(0.35)}, transparent)`,
             }}
           />
         </motion.div>
@@ -766,21 +752,20 @@ export default function PartnersPage() {
             style={{
               height: "1px",
               maxWidth: 280,
-              background:
-                "linear-gradient(90deg, transparent, rgba(99,102,241,0.25), transparent)",
+              background: `linear-gradient(90deg, transparent, ${indigo(0.25)}, transparent)`,
             }}
           />
           <p
             className="text-xs"
             style={{
               fontFamily: "var(--font-geist-mono)",
-              color: "#3f3f46",
+              color: text.veryDim,
             }}
           >
             Want to partner with DevHub?{" "}
             <a
               href="/discord"
-              style={{ color: "#6366f1", textDecoration: "none" }}
+              style={{ color: accent.indigo, textDecoration: "none" }}
             >
               Reach out →
             </a>
@@ -792,8 +777,7 @@ export default function PartnersPage() {
       <div
         className="absolute bottom-0 left-0 right-0 h-px"
         style={{
-          background:
-            "linear-gradient(90deg, transparent, rgba(99,102,241,0.3), transparent)",
+          background: `linear-gradient(90deg, transparent, ${indigo(0.3)}, transparent)`,
         }}
       />
     </div>

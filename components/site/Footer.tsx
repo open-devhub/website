@@ -1,5 +1,6 @@
 import data from "@/lib/staticdata.config";
 import Link from "next/link";
+import { background, text, accent, indigo } from "@/lib/colors";
 
 const { email } = data;
 
@@ -16,16 +17,15 @@ export default function Footer() {
     <footer
       className="relative border-t"
       style={{
-        background: "#030305",
-        borderColor: "rgba(99,102,241,0.12)",
+        background: background.primary,
+        borderColor: indigo(0.12),
       }}
     >
       {/* Top gradient line */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px"
         style={{
-          background:
-            "linear-gradient(90deg, transparent, rgba(99,102,241,0.4), transparent)",
+          background: `linear-gradient(90deg, transparent, ${indigo(0.4)}, transparent)`,
         }}
       />
 
@@ -47,12 +47,15 @@ export default function Footer() {
                 className="font-bold text-[#e2e2f0] text-sm tracking-widest uppercase"
                 style={{ fontFamily: "var(--font-geist-mono)" }}
               >
-                Dev<span style={{ color: "#6366f1" }}>Hub</span>
+                Dev<span style={{ color: accent.indigo }}>Hub</span>
               </span>
             </div>
             <p
               className="text-sm leading-relaxed max-w-xs"
-              style={{ fontFamily: "var(--font-geist-mono)", color: "#3f3f46" }}
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                color: text.veryDim,
+              }}
             >
               A collaborative Discord community where developers build,
               contribute and learn together.
@@ -63,7 +66,10 @@ export default function Footer() {
           <div>
             <h4
               className="text-xs uppercase tracking-widest mb-4"
-              style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                color: accent.indigoLightest,
+              }}
             >
               Navigate
             </h4>
@@ -76,7 +82,7 @@ export default function Footer() {
                       className="text-sm transition-colors hover:text-[#a5b4fc]"
                       style={{
                         fontFamily: "var(--font-geist-mono)",
-                        color: "#3f3f46",
+                        color: text.veryDim,
                       }}
                     >
                       {link.label}
@@ -91,7 +97,10 @@ export default function Footer() {
           <div>
             <h4
               className="text-xs uppercase tracking-widest mb-4"
-              style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                color: accent.indigoLightest,
+              }}
             >
               Community
             </h4>
@@ -102,9 +111,9 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="w-9 h-9 flex items-center justify-center transition-all hover:border-[rgba(99,102,241,0.5)]"
                 style={{
-                  background: "rgba(99,102,241,0.06)",
-                  border: "1px solid rgba(99,102,241,0.15)",
-                  color: "#52525b",
+                  background: indigo(0.06),
+                  border: `1px solid ${indigo(0.15)}`,
+                  color: text.dim,
                 }}
                 aria-label="Discord"
               >
@@ -123,9 +132,9 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="w-9 h-9 flex items-center justify-center transition-all hover:border-[rgba(99,102,241,0.5)]"
                 style={{
-                  background: "rgba(99,102,241,0.06)",
-                  border: "1px solid rgba(99,102,241,0.15)",
-                  color: "#52525b",
+                  background: indigo(0.06),
+                  border: `1px solid ${indigo(0.15)}`,
+                  color: text.dim,
                 }}
                 aria-label="GitHub"
               >
@@ -142,9 +151,9 @@ export default function Footer() {
                 href={`mailto:${email}`}
                 className="w-9 h-9 flex items-center justify-center transition-all hover:border-[rgba(99,102,241,0.5)]"
                 style={{
-                  background: "rgba(99,102,241,0.06)",
-                  border: "1px solid rgba(99,102,241,0.15)",
-                  color: "#52525b",
+                  background: indigo(0.06),
+                  border: `1px solid ${indigo(0.15)}`,
+                  color: text.dim,
                 }}
                 aria-label="Email"
               >
@@ -164,17 +173,23 @@ export default function Footer() {
         {/* Bottom */}
         <div
           className="border-t pt-8 flex flex-col md:flex-row items-center justify-between gap-4"
-          style={{ borderColor: "rgba(99,102,241,0.08)" }}
+          style={{ borderColor: indigo(0.08) }}
         >
           <p
             className="text-xs"
-            style={{ fontFamily: "var(--font-geist-mono)", color: "#3f3f46" }}
+            style={{
+              fontFamily: "var(--font-geist-mono)",
+              color: text.veryDim,
+            }}
           >
             &copy; {new Date().getFullYear()} DevHub. All rights reserved.
           </p>
           <p
             className="text-xs"
-            style={{ fontFamily: "var(--font-geist-mono)", color: "#3f3f46" }}
+            style={{
+              fontFamily: "var(--font-geist-mono)",
+              color: text.veryDim,
+            }}
           >
             Built with love by the community, for the community.
           </p>

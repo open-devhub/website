@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Color values in this file mirror the centralized color system in
+ * lib/colors.ts. CSS cannot import TypeScript, so these values are
+ * duplicated here intentionally. When changing a color, update both
+ * lib/colors.ts and the corresponding value below.
+ */
+
 :root {
   --bg-primary: #030305;
   --bg-secondary: #07070d;

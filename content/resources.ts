@@ -1,3 +1,5 @@
+import { accent } from "@/lib/colors";
+
 export type Language =
   | "TypeScript"
   | "JavaScript"
@@ -982,24 +984,24 @@ export const languages: Language[] = [
 ];
 
 export const languageColors: Record<Exclude<Language, "All">, string> = {
-  TypeScript: "#6366f1",
-  JavaScript: "#a5b4fc",
-  React: "#818cf8",
-  Python: "#8b5cf6",
-  Go: "#a78bfa",
-  Rust: "#c4b5fd",
-  C: "#7c3aed",
-  "C++": "#6d28d9",
-  Java: "#8b5cf6",
-  Kotlin: "#a78bfa",
-  Swift: "#c4b5fd",
-  PHP: "#818cf8",
-  Ruby: "#a5b4fc",
-  SQL: "#6366f1",
-  Design: "#8b5cf6",
-  "Full-Stack": "#6366f1",
-  Git: "#a5b4fc",
-  DevOps: "#818cf8",
+  TypeScript: accent.indigo,
+  JavaScript: accent.indigoLightest,
+  React: accent.indigoLight,
+  Python: accent.violet,
+  Go: accent.violet400,
+  Rust: accent.violet300,
+  C: accent.violet600,
+  "C++": accent.violet700,
+  Java: accent.violet,
+  Kotlin: accent.violet400,
+  Swift: accent.violet300,
+  PHP: accent.indigoLight,
+  Ruby: accent.indigoLightest,
+  SQL: accent.indigo,
+  Design: accent.violet,
+  "Full-Stack": accent.indigo,
+  Git: accent.indigoLightest,
+  DevOps: accent.indigoLight,
 };
 
 export const languageBadgeVariants: Record<

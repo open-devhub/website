@@ -1,6 +1,7 @@
 "use client";
 
-import { pageSections } from "@/content/pages";
+import { pageSections } from "@/content/pages-sections";
+import { accent, background, indigo, text } from "@/lib/colors";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -28,7 +29,7 @@ function SidebarSection({ section, currentSlug }: SidebarSectionProps) {
         className="w-full flex items-center justify-between px-3 py-2 text-xs font-semibold uppercase tracking-widest transition-colors"
         style={{
           fontFamily: "var(--font-geist-mono)",
-          color: "#3f3f46",
+          color: text.veryDim,
         }}
       >
         {section.title}
@@ -59,19 +60,17 @@ function SidebarSection({ section, currentSlug }: SidebarSectionProps) {
                       initial={false}
                       animate={{
                         backgroundColor: isActive
-                          ? "rgba(99,102,241,0.1)"
+                          ? indigo(0.1)
                           : "rgba(0,0,0,0)",
-                        color: isActive ? "#a5b4fc" : "#52525b",
-                        borderColor: isActive
-                          ? "rgba(99,102,241,0.3)"
-                          : "rgba(0,0,0,0)",
+                        color: isActive ? accent.indigoLightest : text.dim,
+                        borderColor: isActive ? indigo(0.3) : "rgba(0,0,0,0)",
                       }}
                       transition={{ duration: 0.15 }}
                       whileHover={{
                         x: 2,
-                        backgroundColor: "rgba(99,102,241,0.1)",
-                        borderColor: "rgba(99,102,241,0.3)",
-                        color: "#a5b4fc",
+                        backgroundColor: indigo(0.1),
+                        borderColor: indigo(0.3),
+                        color: accent.indigoLightest,
                       }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -97,7 +96,10 @@ export default function PagesLayout({
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="min-h-screen relative" style={{ background: "#030305" }}>
+    <div
+      className="min-h-screen relative"
+      style={{ background: background.primary }}
+    >
       <div className="absolute inset-0 dot-bg opacity-50 pointer-events-none" />
 
       {/* Mobile sidebar toggle */}
@@ -106,9 +108,9 @@ export default function PagesLayout({
           onClick={() => setMobileOpen(!mobileOpen)}
           className="w-10 h-10 flex items-center justify-center transition-all"
           style={{
-            background: "rgba(99,102,241,0.06)",
-            border: "1px solid rgba(99,102,241,0.15)",
-            color: "#52525b",
+            background: indigo(0.06),
+            border: `1px solid ${indigo(0.15)}`,
+            color: text.dim,
           }}
         >
           {mobileOpen ? (
@@ -130,7 +132,7 @@ export default function PagesLayout({
             className="fixed inset-y-0 left-0 w-72 z-30 pt-24 pb-8 px-4 overflow-y-auto"
             style={{
               background: "rgba(3, 3, 5, 0.98)",
-              borderRight: "1px solid rgba(99,102,241,0.1)",
+              borderRight: `1px solid ${indigo(0.1)}`,
               backdropFilter: "blur(20px)",
             }}
           >
@@ -160,7 +162,7 @@ function SidebarContent({ currentSlug }: { currentSlug: string | null }) {
       <div className="mb-6">
         <p
           className="text-xs uppercase tracking-widest px-3 mb-3"
-          style={{ fontFamily: "var(--font-geist-mono)", color: "#3f3f46" }}
+          style={{ fontFamily: "var(--font-geist-mono)", color: text.veryDim }}
         >
           Pages
         </p>

@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
+import { accent, indigo, text } from "@/lib/colors";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -117,7 +118,7 @@ export function LinkPreviewCard({
         onMouseEnter={handleLinkEnter}
         onMouseLeave={handleLinkLeave}
         className="hover:underline cursor-pointer hover:opacity-80 transition-opacity"
-        style={{ color: "#a5b4fc" }}
+        style={{ color: accent.indigoLightest }}
       >
         {children}
       </a>
@@ -137,36 +138,36 @@ export function LinkPreviewCard({
                   top: pos.top,
                   left: pos.left,
                   background: "rgba(7, 7, 15, 0.95)",
-                  border: "1px solid rgba(99,102,241,0.15)",
+                  border: `1px solid ${indigo(0.15)}`,
                   backdropFilter: "blur(8px)",
                 }}
               >
                 <div
                   className="absolute top-2 left-2 w-3 h-3"
                   style={{
-                    borderTop: "1.5px solid rgba(99,102,241,0.25)",
-                    borderLeft: "1.5px solid rgba(99,102,241,0.25)",
+                    borderTop: `1.5px solid ${indigo(0.25)}`,
+                    borderLeft: `1.5px solid ${indigo(0.25)}`,
                   }}
                 />
                 <div
                   className="absolute top-2 right-2 w-3 h-3"
                   style={{
-                    borderTop: "1.5px solid rgba(99,102,241,0.25)",
-                    borderRight: "1.5px solid rgba(99,102,241,0.25)",
+                    borderTop: `1.5px solid ${indigo(0.25)}`,
+                    borderRight: `1.5px solid ${indigo(0.25)}`,
                   }}
                 />
                 <div
                   className="absolute bottom-2 left-2 w-3 h-3"
                   style={{
-                    borderBottom: "1.5px solid rgba(99,102,241,0.25)",
-                    borderLeft: "1.5px solid rgba(99,102,241,0.25)",
+                    borderBottom: `1.5px solid ${indigo(0.25)}`,
+                    borderLeft: `1.5px solid ${indigo(0.25)}`,
                   }}
                 />
                 <div
                   className="absolute bottom-2 right-2 w-3 h-3"
                   style={{
-                    borderBottom: "1.5px solid rgba(99,102,241,0.25)",
-                    borderRight: "1.5px solid rgba(99,102,241,0.25)",
+                    borderBottom: `1.5px solid ${indigo(0.25)}`,
+                    borderRight: `1.5px solid ${indigo(0.25)}`,
                   }}
                 />
 
@@ -179,7 +180,7 @@ export function LinkPreviewCard({
                       referrerPolicy="no-referrer"
                       onError={() => setImgError(true)}
                       className="absolute top-0 right-0 w-14 h-14 object-cover"
-                      style={{ border: "1px solid rgba(99,102,241,0.12)" }}
+                      style={{ border: `1px solid ${indigo(0.12)}` }}
                     />
                   )}
                   <div className={data?.image && !imgError ? "pr-16" : ""}>
@@ -190,7 +191,7 @@ export function LinkPreviewCard({
                       className="font-semibold text-sm hover:underline block mb-1"
                       style={{
                         fontFamily: "var(--font-geist-mono)",
-                        color: "#a5b4fc",
+                        color: accent.indigoLightest,
                       }}
                     >
                       {data?.title || href}
@@ -200,7 +201,7 @@ export function LinkPreviewCard({
                         className="text-xs leading-relaxed"
                         style={{
                           fontFamily: "var(--font-geist-mono)",
-                          color: "#71717a",
+                          color: text.muted,
                           display: "-webkit-box",
                           WebkitLineClamp: 3,
                           WebkitBoxOrient: "vertical",

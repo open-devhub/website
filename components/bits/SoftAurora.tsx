@@ -1,5 +1,6 @@
 import { Mesh, Program, Renderer, Triangle } from "ogl";
 import { useEffect, useRef } from "react";
+import { decorative, pink } from "@/lib/colors";
 
 interface SoftAuroraProps {
   speed?: number;
@@ -179,8 +180,8 @@ export default function SoftAurora({
   speed = 0.6,
   scale = 1.5,
   brightness = 1.0,
-  color1 = "#f7f7f7",
-  color2 = "#e100ff",
+  color1 = decorative.auroraNearWhite,
+  color2 = pink.magenta,
   noiseFrequency = 2.5,
   noiseAmplitude = 1.0,
   bandHeight = 0.5,

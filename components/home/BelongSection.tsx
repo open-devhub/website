@@ -1,6 +1,7 @@
 "use client";
 
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { accent, background, decorative, indigo, text } from "@/lib/colors";
 import { motion } from "framer-motion";
 import SoftAurora from "../bits/SoftAurora";
 
@@ -26,15 +27,15 @@ export default function BelongSection() {
   return (
     <section
       className="relative py-24 md:py-32 overflow-hidden"
-      style={{ background: "#030305" }}
+      style={{ background: background.primary }}
     >
       <SoftAurora
         speed={0.6}
         scale={1.5}
         brightness={1}
         className="absolute opacity-10"
-        color1="#c0a7f7"
-        color2="#1274ff"
+        color1={decorative.auroraPaleViolet}
+        color2={decorative.auroraBlue2}
         noiseFrequency={3.5}
         noiseAmplitude={1}
         bandHeight={0.5}
@@ -49,8 +50,7 @@ export default function BelongSection() {
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{
-          background:
-            "linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)",
+          background: `linear-gradient(90deg, transparent, ${indigo(0.2)}, transparent)`,
         }}
       />
 
@@ -68,7 +68,7 @@ export default function BelongSection() {
           >
             <span
               style={{
-                color: "rgba(99,102,241,0.5)",
+                color: indigo(0.5),
                 fontFamily: "var(--font-geist-mono)",
               }}
             >
@@ -76,13 +76,16 @@ export default function BelongSection() {
             </span>
             <span
               className="text-xs tracking-widest uppercase"
-              style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                color: accent.indigoLightest,
+              }}
             >
               For Every Developer
             </span>
             <span
               style={{
-                color: "rgba(99,102,241,0.5)",
+                color: indigo(0.5),
                 fontFamily: "var(--font-geist-mono)",
               }}
             >
@@ -100,8 +103,7 @@ export default function BelongSection() {
           >
             <span
               style={{
-                background:
-                  "linear-gradient(135deg, #e2e2f0 0%, #a5b4fc 50%, #8b5cf6 100%)",
+                background: `linear-gradient(135deg, ${text.primary} 0%, ${accent.indigoLightest} 50%, ${accent.violet} 100%)`,
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -109,7 +111,10 @@ export default function BelongSection() {
             >
               A place for{" "}
               <span
-                style={{ color: "#818cf8", WebkitTextFillColor: "#818cf8" }}
+                style={{
+                  color: accent.indigoLight,
+                  WebkitTextFillColor: accent.indigoLight,
+                }}
               >
                 developers
               </span>{" "}
@@ -120,7 +125,7 @@ export default function BelongSection() {
           <motion.p
             variants={fadeInUp}
             className="mt-4 text-sm max-w-xl mx-auto leading-relaxed"
-            style={{ fontFamily: "var(--font-geist-mono)", color: "#52525b" }}
+            style={{ fontFamily: "var(--font-geist-mono)", color: text.dim }}
           >
             Whether you're making your first commit or building your next big
             project, DevHub is a community where you can learn, contribute, and
@@ -149,10 +154,10 @@ export default function BelongSection() {
               className="flex items-center gap-3 px-4 py-3 group cursor-default"
               style={{
                 background: "rgba(7, 7, 15, 0.7)",
-                border: "1px solid rgba(99,102,241,0.08)",
+                border: `1px solid ${indigo(0.08)}`,
               }}
               whileHover={{
-                borderColor: "rgba(99,102,241,0.25)",
+                borderColor: indigo(0.25),
                 background: "rgba(10, 10, 22, 0.9)",
                 x: 4,
                 transition: { duration: 0.2 },
@@ -162,7 +167,7 @@ export default function BelongSection() {
                 className="font-mono text-xs flex-shrink-0"
                 style={{
                   fontFamily: "var(--font-geist-mono)",
-                  color: "rgba(99,102,241,0.4)",
+                  color: indigo(0.4),
                 }}
               >
                 {">"}
@@ -171,7 +176,7 @@ export default function BelongSection() {
                 className="text-sm"
                 style={{
                   fontFamily: "var(--font-geist-mono)",
-                  color: "#52525b",
+                  color: text.dim,
                 }}
               >
                 {type}
@@ -184,8 +189,7 @@ export default function BelongSection() {
       <div
         className="absolute bottom-0 left-0 right-0 h-px"
         style={{
-          background:
-            "linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)",
+          background: `linear-gradient(90deg, transparent, ${indigo(0.2)}, transparent)`,
         }}
       />
     </section>
