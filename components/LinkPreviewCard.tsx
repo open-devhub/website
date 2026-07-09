@@ -1,5 +1,5 @@
-import { AnimatePresence, motion } from "framer-motion";
 import { accent, indigo, text } from "@/lib/colors";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -10,7 +10,38 @@ interface PreviewData {
   url: string;
 }
 
-const previewCache = new Map<string, PreviewData | null>();
+interface CachedPreview {
+  data: PreviewData | null;
+  cachedAt: number;
+}
+
+const CACHE_PREFIX = "link-preview:";
+const CACHE_TTL_MS = 60 * 60 * 1000;
+
+function readCache(href: string): PreviewData | null | undefined {
+  try {
+    const raw = window.localStorage.getItem(CACHE_PREFIX + href);
+    if (!raw) return undefined;
+    const parsed: CachedPreview = JSON.parse(raw);
+    if (Date.now() - parsed.cachedAt > CACHE_TTL_MS) {
+      window.localStorage.removeItem(CACHE_PREFIX + href);
+      return undefined;
+    }
+    return parsed.data;
+  } catch {
+    return undefined;
+  }
+}
+
+function writeCache(href: string, data: PreviewData | null) {
+  try {
+    if (data == null) return;
+    const entry: CachedPreview = { data, cachedAt: Date.now() };
+    window.localStorage.setItem(CACHE_PREFIX + href, JSON.stringify(entry));
+  } catch {
+    // storage unavailable or full, fall back to no persistence
+  }
+}
 
 export function LinkPreviewCard({
   href,
@@ -54,18 +85,19 @@ export function LinkPreviewCard({
   }, [hovering]);
 
   const fetchPreview = () => {
-    if (previewCache.has(href)) {
-      setData(previewCache.get(href) || null);
+    const cached = readCache(href);
+    if (cached !== undefined) {
+      setData(cached);
       return;
     }
     fetch(`/api/link-preview?url=${encodeURIComponent(href)}`)
       .then((res) => (res.ok ? res.json() : null))
       .then((json) => {
-        previewCache.set(href, json);
+        writeCache(href, json);
         setData(json);
       })
       .catch(() => {
-        previewCache.set(href, null);
+        writeCache(href, null);
         setData(null);
       });
   };

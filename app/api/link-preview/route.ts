@@ -61,7 +61,33 @@ function isSafeUrl(candidate: string): boolean {
   return !PRIVATE_HOSTNAME_PATTERNS.some((pattern) => pattern.test(hostname));
 }
 
+const ALLOWED_ORIGINS = [
+  "https://devhub.vercel.app",
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
+];
+
+function isAllowedOrigin(request: NextRequest): boolean {
+  const origin = request.headers.get("origin");
+  if (origin) {
+    return ALLOWED_ORIGINS.includes(origin);
+  }
+  const referer = request.headers.get("referer");
+  if (referer) {
+    try {
+      return ALLOWED_ORIGINS.includes(new URL(referer).origin);
+    } catch {
+      return false;
+    }
+  }
+  return false;
+}
+
 export async function GET(request: NextRequest) {
+  if (!isAllowedOrigin(request)) {
+    return NextResponse.json({ error: "forbidden" }, { status: 403 });
+  }
+
   const { searchParams } = new URL(request.url);
   const url = searchParams.get("url");
 

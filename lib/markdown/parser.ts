@@ -48,9 +48,10 @@ export interface ParsedMarkdown {
 
 // ─── Frontmatter extraction ──────────────────────────────────
 
-export function splitFrontmatter(
-  source: string,
-): { rawFrontmatter: string | null; body: string } {
+export function splitFrontmatter(source: string): {
+  rawFrontmatter: string | null;
+  body: string;
+} {
   const trimmed = source.replace(/^\uFEFF/, "");
   const match = trimmed.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
   if (!match) return { rawFrontmatter: null, body: trimmed };
@@ -135,7 +136,9 @@ export function parseBody(body: string): ContentBlock[] {
 
     // Callout block — case-insensitive variant matching
     // Syntax: > [!info], > [!NOTE], > [!Warning], etc.
-    const calloutMatch = trimmed.match(/^>\s*\[!(info|warning|danger|note|caution)\]\s*(.*)/i);
+    const calloutMatch = trimmed.match(
+      /^>\s*\[!(info|warning|danger|note|caution)\]\s*(.*)/i,
+    );
     if (calloutMatch) {
       flushParagraph();
       const rawVariant = calloutMatch[1].toLowerCase();
@@ -162,7 +165,11 @@ export function parseBody(body: string): ContentBlock[] {
     const imgMatch = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
     if (imgMatch) {
       flushParagraph();
-      blocks.push({ type: "img", text: imgMatch[1].trim(), src: imgMatch[2].trim() });
+      blocks.push({
+        type: "img",
+        text: imgMatch[1].trim(),
+        src: imgMatch[2].trim(),
+      });
       i++;
       continue;
     }

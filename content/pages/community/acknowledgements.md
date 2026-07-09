@@ -31,6 +31,6 @@ Everyone who has opened a PR, reviewed someone else's code, filed a well-written
 
 ## Inspiration
 
-Communities like [The Programmer's Hangout](https://theprogramminghangout.com), [TCD](https://tcd.one), and [The CodeVerse Hub](https://thecodeversehub.tech) showed what a good developer community can look like. We've learned from them.
+Communities like [The Programmer's Hangout](https://theprogrammershangout.com), [TCD](https://tcd.one), and [The CodeVerse Hub](https://thecodeversehub.tech) showed what a good developer community can look like. We've learned from them.
 
 > [!info] If you believe someone or something should be acknowledged here and isn't, open a PR on the website repo or let a repo maintainer know.
