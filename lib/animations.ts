@@ -1,4 +1,5 @@
 import { Variants } from "framer-motion";
+import { cyanGlow } from "@/lib/colors";
 
 export const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -97,10 +98,9 @@ export const cardHover = {
 };
 
 export const glowHover = {
-  rest: { boxShadow: "0 0 0px rgba(0, 245, 255, 0)" },
+  rest: { boxShadow: `0 0 0px ${cyanGlow(0)}` },
   hover: {
-    boxShadow:
-      "0 0 25px rgba(0, 245, 255, 0.3), 0 0 50px rgba(0, 245, 255, 0.15)",
+    boxShadow: `0 0 25px ${cyanGlow(0.3)}, 0 0 50px ${cyanGlow(0.15)}`,
   },
 };
 

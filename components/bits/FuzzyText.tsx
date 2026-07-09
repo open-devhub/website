@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { text } from "@/lib/colors";
 
 interface FuzzyTextProps {
   children: React.ReactNode;
@@ -27,7 +28,7 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
   fontSize = "clamp(2rem, 8vw, 8rem)",
   fontWeight = 900,
   fontFamily = "inherit",
-  color = "#fff",
+  color = text.white,
   enableHover = true,
   baseIntensity = 0.18,
   hoverIntensity = 0.5,

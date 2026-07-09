@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { indigo, shadow } from "@/lib/colors";
 
 const navLinks = [
   { href: "/", label: "HOME" },
@@ -50,12 +51,12 @@ export default function Navbar() {
             className="px-5 py-2.5 flex items-center justify-between"
             style={{
               background: "rgba(7, 7, 15, 0.88)",
-              border: "1px solid rgba(99, 102, 241, 0.25)",
+              border: `1px solid ${indigo(0.25)}`,
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
               boxShadow: scrolled
-                ? "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(99,102,241,0.1)"
-                : "0 4px 16px rgba(0,0,0,0.3)",
+                ? `0 8px 32px ${shadow.navbarScrolled}, 0 0 0 1px ${indigo(0.1)}`
+                : `0 4px 16px ${shadow.navbarRest}`,
             }}
           >
             {/* Logo */}
@@ -108,8 +109,8 @@ export default function Navbar() {
                           layoutId="nav-indicator"
                           className="absolute inset-0"
                           style={{
-                            background: "rgba(99,102,241,0.1)",
-                            border: "1px solid rgba(99,102,241,0.3)",
+                            background: indigo(0.1),
+                            border: `1px solid ${indigo(0.3)}`,
                           }}
                         />
                       )}
@@ -128,11 +129,11 @@ export default function Navbar() {
                 className="hidden md:inline-flex items-center gap-2 px-4 py-1.5 text-xs font-mono font-semibold tracking-wider uppercase text-white cursor-target"
                 style={{
                   fontFamily: "var(--font-geist-mono)",
-                  background: "rgba(99, 102, 241, 0.12)",
-                  border: "1px solid rgba(99, 102, 241, 0.45)",
+                  background: indigo(0.12),
+                  border: `1px solid ${indigo(0.45)}`,
                 }}
                 whileHover={{
-                  background: "rgba(99, 102, 241, 0.2)",
+                  background: indigo(0.2),
                   // boxShadow: "0 0 20px rgba(99, 102, 241, 0.3)",
                   scale: 1.02,
                 }}
@@ -216,8 +217,8 @@ export default function Navbar() {
                   className="inline-flex items-center gap-2 px-8 py-3 text-sm font-mono font-semibold tracking-wider uppercase text-white"
                   style={{
                     fontFamily: "var(--font-geist-mono)",
-                    background: "rgba(99, 102, 241, 0.15)",
-                    border: "1px solid rgba(99, 102, 241, 0.55)",
+                    background: indigo(0.15),
+                    border: `1px solid ${indigo(0.55)}`,
                   }}
                 >
                   <DiscordIcon />

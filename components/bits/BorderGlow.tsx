@@ -5,6 +5,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { accent, background, cyan, pink, shadow } from "@/lib/colors";
 
 interface BorderGlowProps {
   children?: ReactNode;
@@ -122,13 +123,13 @@ const BorderGlow: React.FC<BorderGlowProps> = ({
   className = "",
   edgeSensitivity = 30,
   glowColor = "40 80 80",
-  backgroundColor = "#120F17",
+  backgroundColor = background.borderGlow,
   borderRadius = 0,
   glowRadius = 40,
   glowIntensity = 1.0,
   coneSpread = 25,
   animated = false,
-  colors = ["#c084fc", "#f472b6", "#38bdf8"],
+  colors = [accent.purple400, pink[400], cyan.sky400],
   fillOpacity = 0.5,
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -267,8 +268,7 @@ const BorderGlow: React.FC<BorderGlowProps> = ({
         background: backgroundColor,
         borderRadius: `${borderRadius}px`,
         transform: "translate3d(0, 0, 0.01px)",
-        boxShadow:
-          "rgba(0,0,0,0.1) 0 1px 2px, rgba(0,0,0,0.1) 0 2px 4px, rgba(0,0,0,0.1) 0 4px 8px, rgba(0,0,0,0.1) 0 8px 16px, rgba(0,0,0,0.1) 0 16px 32px, rgba(0,0,0,0.1) 0 32px 64px",
+        boxShadow: `${shadow.sm} 0 1px 2px, ${shadow.sm} 0 2px 4px, ${shadow.sm} 0 4px 8px, ${shadow.sm} 0 8px 16px, ${shadow.sm} 0 16px 32px, ${shadow.sm} 0 32px 64px`,
       }}
     >
       {/* mesh gradient border */}

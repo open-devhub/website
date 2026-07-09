@@ -1,6 +1,16 @@
 "use client";
 
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import {
+  accent,
+  background,
+  cyan,
+  indigo,
+  lime,
+  pink,
+  semantic,
+  text,
+} from "@/lib/colors";
 import { hexToHslString } from "@/lib/utils";
 import { motion } from "framer-motion";
 import {
@@ -21,7 +31,7 @@ const features = [
     title: "Build Projects",
     description:
       "Launch side projects with support from a community that cares. Get feedback, find collaborators, and ship faster.",
-    color: "#6366f1",
+    color: accent.indigo,
   },
   {
     num: "02",
@@ -29,7 +39,7 @@ const features = [
     title: "Get Help",
     description:
       "Hit a bug? Get real help from developers who've probably dealt with it before.",
-    color: "#22d3ee",
+    color: cyan[400],
   },
   {
     num: "03",
@@ -37,7 +47,7 @@ const features = [
     title: "Share Feedback",
     description:
       "Give and receive honest, constructive feedback on projects, code, designs, and ideas.",
-    color: "#a3e635",
+    color: lime[400],
   },
   {
     num: "04",
@@ -45,7 +55,7 @@ const features = [
     title: "Creative Space",
     description:
       "A dedicated space for designers, engineers, and creative developers to share and inspire.",
-    color: "#f59e0b",
+    color: semantic.warning,
   },
   {
     num: "05",
@@ -53,7 +63,7 @@ const features = [
     title: "Learn & Teach",
     description:
       "Share tutorials, resources, and insights. Level up together with structured learning channels.",
-    color: "#8b5cf6",
+    color: accent.violet,
   },
   {
     num: "06",
@@ -61,7 +71,7 @@ const features = [
     title: "Find Collaborators",
     description:
       "Looking for a co-founder, open source contributor, or just someone to pair program with? Find them here.",
-    color: "#f472b6",
+    color: pink[400],
   },
 ];
 
@@ -69,14 +79,13 @@ export default function FeaturesSection() {
   return (
     <section
       className="relative py-24 md:py-32 overflow-hidden"
-      style={{ background: "#030305" }}
+      style={{ background: background.primary }}
     >
       <div className="absolute inset-0 dot-bg opacity-50 pointer-events-none" />
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{
-          background:
-            "linear-gradient(90deg, transparent, rgba(99,102,241,0.3), transparent)",
+          background: `linear-gradient(90deg, transparent, ${indigo(0.3)}, transparent)`,
         }}
       />
 
@@ -96,7 +105,7 @@ export default function FeaturesSection() {
           >
             <span
               style={{
-                color: "rgba(99,102,241,0.5)",
+                color: indigo(0.5),
                 fontFamily: "var(--font-geist-mono)",
                 fontSize: "1rem",
               }}
@@ -105,13 +114,16 @@ export default function FeaturesSection() {
             </span>
             <span
               className="text-xs tracking-widest uppercase"
-              style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                color: accent.indigoLightest,
+              }}
             >
               Community Pillars
             </span>
             <span
               style={{
-                color: "rgba(99,102,241,0.5)",
+                color: indigo(0.5),
                 fontFamily: "var(--font-geist-mono)",
                 fontSize: "1rem",
               }}
@@ -131,8 +143,7 @@ export default function FeaturesSection() {
           >
             <span
               style={{
-                background:
-                  "linear-gradient(135deg, #e2e2f0 0%, #a5b4fc 50%, #8b5cf6 100%)",
+                background: `linear-gradient(135deg, ${text.primary} 0%, ${accent.indigoLightest} 50%, ${accent.violet} 100%)`,
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -143,8 +154,7 @@ export default function FeaturesSection() {
             </span>
             <span
               style={{
-                background:
-                  "linear-gradient(135deg, #e2e2f0 0%, #a5b4fc 50%, #8b5cf6 100%)",
+                background: `linear-gradient(135deg, ${text.primary} 0%, ${accent.indigoLightest} 50%, ${accent.violet} 100%)`,
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -154,7 +164,10 @@ export default function FeaturesSection() {
               need to{" "}
               <span
                 className="cursor-target"
-                style={{ color: "#818cf8", WebkitTextFillColor: "#818cf8" }}
+                style={{
+                  color: accent.indigoLight,
+                  WebkitTextFillColor: accent.indigoLight,
+                }}
               >
                 level up
               </span>
@@ -164,7 +177,7 @@ export default function FeaturesSection() {
           <motion.p
             variants={fadeInUp}
             className="mt-4 text-sm max-w-xl mx-auto leading-relaxed"
-            style={{ fontFamily: "var(--font-geist-mono)", color: "#52525b" }}
+            style={{ fontFamily: "var(--font-geist-mono)", color: text.dim }}
           >
             Six pillars that make DevHub the best community for builders.
           </motion.p>
@@ -176,8 +189,8 @@ export default function FeaturesSection() {
                 style={{
                   width: 28,
                   height: 28,
-                  borderTop: "1.5px solid rgba(99,102,241,0.35)",
-                  borderLeft: "1.5px solid rgba(99,102,241,0.35)",
+                  borderTop: `1.5px solid ${indigo(0.35)}`,
+                  borderLeft: `1.5px solid ${indigo(0.35)}`,
                 }}
               />
             </div>
@@ -186,8 +199,8 @@ export default function FeaturesSection() {
                 style={{
                   width: 28,
                   height: 28,
-                  borderTop: "1.5px solid rgba(99,102,241,0.35)",
-                  borderRight: "1.5px solid rgba(99,102,241,0.35)",
+                  borderTop: `1.5px solid ${indigo(0.35)}`,
+                  borderRight: `1.5px solid ${indigo(0.35)}`,
                 }}
               />
             </div>
@@ -221,7 +234,7 @@ export default function FeaturesSection() {
                   className="h-full w-full"
                   edgeSensitivity={30}
                   glowColor={hexToHslString(feature.color)}
-                  backgroundColor="#120F17"
+                  backgroundColor={background.borderGlow}
                   borderRadius={0}
                   glowRadius={40}
                   glowIntensity={1}
@@ -232,8 +245,8 @@ export default function FeaturesSection() {
                   <motion.div
                     className="group relative p-6 cursor-default h-full w-full"
                     style={{
-                      background: "rgb(9,9,20)",
-                      border: "1px solid rgb(9,9,20)",
+                      background: background.featureInner,
+                      border: `1px solid ${background.featureInner}`,
                     }}
                     whileHover={{
                       borderColor: `${feature.color}30`,
@@ -246,7 +259,7 @@ export default function FeaturesSection() {
                       className="absolute top-4 left-5 text-xs font-mono font-semibold"
                       style={{
                         fontFamily: "var(--font-geist-mono)",
-                        color: "rgba(99,102,241,0.35)",
+                        color: indigo(0.35),
                       }}
                     >
                       {feature.num}
@@ -296,7 +309,7 @@ export default function FeaturesSection() {
                       className="text-sm leading-relaxed mb-4"
                       style={{
                         fontFamily: "var(--font-geist-mono)",
-                        color: "#52525b",
+                        color: text.dim,
                       }}
                     >
                       {feature.description}
@@ -305,7 +318,7 @@ export default function FeaturesSection() {
                     <div className="flex justify-end">
                       <ArrowRight
                         className="w-4 h-4 transition-transform group-hover:translate-x-1"
-                        style={{ color: "rgba(99,102,241,0.3)" }}
+                        style={{ color: indigo(0.3) }}
                       />
                     </div>
                   </motion.div>
@@ -320,8 +333,7 @@ export default function FeaturesSection() {
       <div
         className="absolute bottom-0 left-0 right-0 h-px"
         style={{
-          background:
-            "linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)",
+          background: `linear-gradient(90deg, transparent, ${indigo(0.2)}, transparent)`,
         }}
       />
     </section>

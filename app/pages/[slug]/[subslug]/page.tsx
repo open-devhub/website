@@ -1,4 +1,4 @@
-import { getAdjacentPages, getPage } from "@/content/pages";
+import { getAdjacentPages, getPage } from "@/content/pages-loader";
 import { notFound } from "next/navigation";
 import PageClient from "../PageClient";
 
@@ -16,7 +16,7 @@ export default function SubPageRoute({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-  const { pages } = await import("@/content/pages");
+  const { pages } = await import("@/content/pages-loader");
   return pages
     .filter((p) => p.slug.includes("/"))
     .map((p) => {

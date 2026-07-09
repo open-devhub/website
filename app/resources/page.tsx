@@ -18,6 +18,7 @@ import {
   resources,
 } from "@/content/resources";
 import { fadeInUp, scaleIn, staggerContainer } from "@/lib/animations";
+import { accent, background, indigo, text, white } from "@/lib/colors";
 import { AnimatePresence, motion } from "framer-motion";
 import { ExternalLink, SlidersHorizontal } from "lucide-react";
 import { useState } from "react";
@@ -31,13 +32,15 @@ export default function ResourcesPage() {
   );
 
   return (
-    <div className="min-h-screen relative" style={{ background: "#030305" }}>
+    <div
+      className="min-h-screen relative"
+      style={{ background: background.primary }}
+    >
       <div className="absolute inset-0 dot-bg opacity-50 pointer-events-none" />
       <div
         className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none"
         style={{
-          background:
-            "radial-gradient(ellipse, rgba(99,102,241,0.06) 0%, transparent 70%)",
+          background: `radial-gradient(ellipse, ${indigo(0.06)} 0%, transparent 70%)`,
         }}
       />
 
@@ -47,8 +50,8 @@ export default function ResourcesPage() {
           style={{
             width: 40,
             height: 40,
-            borderTop: "1.5px solid rgba(99,102,241,0.4)",
-            borderLeft: "1.5px solid rgba(99,102,241,0.4)",
+            borderTop: `1.5px solid ${indigo(0.4)}`,
+            borderLeft: `1.5px solid ${indigo(0.4)}`,
           }}
         />
       </div>
@@ -57,8 +60,8 @@ export default function ResourcesPage() {
           style={{
             width: 40,
             height: 40,
-            borderTop: "1.5px solid rgba(99,102,241,0.4)",
-            borderRight: "1.5px solid rgba(99,102,241,0.4)",
+            borderTop: `1.5px solid ${indigo(0.4)}`,
+            borderRight: `1.5px solid ${indigo(0.4)}`,
           }}
         />
       </div>
@@ -77,7 +80,7 @@ export default function ResourcesPage() {
           >
             <span
               style={{
-                color: "rgba(99,102,241,0.5)",
+                color: indigo(0.5),
                 fontFamily: "var(--font-geist-mono)",
               }}
             >
@@ -85,13 +88,16 @@ export default function ResourcesPage() {
             </span>
             <span
               className="text-xs tracking-widest uppercase"
-              style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                color: accent.indigoLightest,
+              }}
             >
               Community Curated
             </span>
             <span
               style={{
-                color: "rgba(99,102,241,0.5)",
+                color: indigo(0.5),
                 fontFamily: "var(--font-geist-mono)",
               }}
             >
@@ -109,8 +115,7 @@ export default function ResourcesPage() {
           >
             <span
               style={{
-                background:
-                  "linear-gradient(135deg, #e2e2f0 0%, #a5b4fc 50%, #8b5cf6 100%)",
+                background: `linear-gradient(135deg, ${text.primary} 0%, ${accent.indigoLightest} 50%, ${accent.violet} 100%)`,
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -118,15 +123,18 @@ export default function ResourcesPage() {
             >
               Resources to{" "}
               <span
-                style={{ color: "#818cf8", WebkitTextFillColor: "#818cf8" }}
+                style={{
+                  color: accent.indigoLight,
+                  WebkitTextFillColor: accent.indigoLight,
+                }}
               >
                 <ShinyText
                   text="Level Up"
                   className="cursor-target"
                   speed={3.5}
                   delay={1}
-                  color="#818cf8"
-                  shineColor="#c7d2fe"
+                  color={accent.indigoLight}
+                  shineColor={accent.indigoShine}
                   spread={90}
                   direction="left"
                   yoyo={false}
@@ -140,7 +148,7 @@ export default function ResourcesPage() {
           <motion.p
             variants={fadeInUp}
             className="mt-4 text-sm max-w-xl mx-auto"
-            style={{ fontFamily: "var(--font-geist-mono)", color: "#52525b" }}
+            style={{ fontFamily: "var(--font-geist-mono)", color: text.dim }}
           >
             Curated learning paths by programming language. Find exactly what
             you need to master any stack.
@@ -156,7 +164,7 @@ export default function ResourcesPage() {
                 className="text-xs uppercase tracking-widest mb-3"
                 style={{
                   fontFamily: "var(--font-geist-mono)",
-                  color: "#3f3f46",
+                  color: text.veryDim,
                 }}
               >
                 Languages
@@ -171,20 +179,16 @@ export default function ResourcesPage() {
                     style={{ fontFamily: "var(--font-geist-mono)" }}
                     initial={false}
                     animate={{
-                      backgroundColor: isActive
-                        ? "rgba(99,102,241,0.1)"
-                        : "rgba(0,0,0,0)",
-                      color: isActive ? "#a5b4fc" : "#52525b",
-                      borderColor: isActive
-                        ? "rgba(99,102,241,0.3)"
-                        : "rgba(0,0,0,0)",
+                      backgroundColor: isActive ? indigo(0.1) : "rgba(0,0,0,0)",
+                      color: isActive ? accent.indigoLightest : text.dim,
+                      borderColor: isActive ? indigo(0.3) : "rgba(0,0,0,0)",
                     }}
                     transition={{ duration: 0.15 }}
                     whileHover={{
                       x: 2,
-                      backgroundColor: "rgba(99,102,241,0.1)",
-                      borderColor: "rgba(99,102,241,0.3)",
-                      color: "#a5b4fc",
+                      backgroundColor: indigo(0.1),
+                      borderColor: indigo(0.3),
+                      color: accent.indigoLightest,
                     }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -205,25 +209,27 @@ export default function ResourcesPage() {
                     className="flex w-full items-center justify-between border px-4 py-3 text-sm"
                     style={{
                       fontFamily: "var(--font-geist-mono)",
-                      borderColor: "rgba(99,102,241,0.25)",
-                      backgroundColor: "rgba(99,102,241,0.06)",
-                      color: "#a5b4fc",
+                      borderColor: indigo(0.25),
+                      backgroundColor: indigo(0.06),
+                      color: accent.indigoLightest,
                     }}
                   >
                     <span className="flex items-center gap-2">
                       <SlidersHorizontal className="h-4 w-4" />
                       Language
                     </span>
-                    <span style={{ color: "#818cf8" }}>{activeLanguage}</span>
+                    <span style={{ color: accent.indigoLight }}>
+                      {activeLanguage}
+                    </span>
                   </button>
                 </DrawerTrigger>
-                <DrawerContent style={{ backgroundColor: "#0a0a12" }}>
+                <DrawerContent style={{ backgroundColor: background.drawer }}>
                   <DrawerHeader>
                     <DrawerTitle
                       className="text-xs uppercase tracking-widest"
                       style={{
                         fontFamily: "var(--font-geist-mono)",
-                        color: "#a5b4fc",
+                        color: accent.indigoLightest,
                       }}
                     >
                       Select Language
@@ -240,12 +246,12 @@ export default function ResourcesPage() {
                             style={{
                               fontFamily: "var(--font-geist-mono)",
                               backgroundColor: isActive
-                                ? "rgba(99,102,241,0.12)"
+                                ? indigo(0.12)
                                 : "rgba(0,0,0,0)",
-                              borderColor: isActive
-                                ? "rgba(99,102,241,0.3)"
-                                : "rgba(255,255,255,0.06)",
-                              color: isActive ? "#a5b4fc" : "#52525b",
+                              borderColor: isActive ? indigo(0.3) : white(0.06),
+                              color: isActive
+                                ? accent.indigoLightest
+                                : text.dim,
                             }}
                           >
                             {lang}
@@ -277,7 +283,7 @@ export default function ResourcesPage() {
                     <p
                       style={{
                         fontFamily: "var(--font-geist-mono)",
-                        color: "#3f3f46",
+                        color: text.veryDim,
                       }}
                     >
                       No resources for {activeLanguage}. Check another language!
@@ -288,7 +294,7 @@ export default function ResourcesPage() {
                     const langColor =
                       resource.languages.length > 0
                         ? languageColors[resource.languages[0]]
-                        : "#6366f1";
+                        : accent.indigo;
                     return (
                       <motion.a
                         key={resource.title}
@@ -304,7 +310,7 @@ export default function ResourcesPage() {
                         className="group block relative overflow-hidden"
                         style={{
                           background: "rgba(7, 7, 15, 0.7)",
-                          border: "1px solid rgba(99,102,241,0.1)",
+                          border: `1px solid ${indigo(0.1)}`,
                         }}
                         whileHover={{
                           y: -2,
@@ -315,29 +321,29 @@ export default function ResourcesPage() {
                         <div
                           className="absolute top-2 left-2 w-3 h-3"
                           style={{
-                            borderTop: "1.5px solid rgba(99,102,241,0.25)",
-                            borderLeft: "1.5px solid rgba(99,102,241,0.25)",
+                            borderTop: `1.5px solid ${indigo(0.25)}`,
+                            borderLeft: `1.5px solid ${indigo(0.25)}`,
                           }}
                         />
                         <div
                           className="absolute top-2 right-2 w-3 h-3"
                           style={{
-                            borderTop: "1.5px solid rgba(99,102,241,0.25)",
-                            borderRight: "1.5px solid rgba(99,102,241,0.25)",
+                            borderTop: `1.5px solid ${indigo(0.25)}`,
+                            borderRight: `1.5px solid ${indigo(0.25)}`,
                           }}
                         />
                         <div
                           className="absolute bottom-2 left-2 w-3 h-3"
                           style={{
-                            borderBottom: "1.5px solid rgba(99,102,241,0.25)",
-                            borderLeft: "1.5px solid rgba(99,102,241,0.25)",
+                            borderBottom: `1.5px solid ${indigo(0.25)}`,
+                            borderLeft: `1.5px solid ${indigo(0.25)}`,
                           }}
                         />
                         <div
                           className="absolute bottom-2 right-2 w-3 h-3"
                           style={{
-                            borderBottom: "1.5px solid rgba(99,102,241,0.25)",
-                            borderRight: "1.5px solid rgba(99,102,241,0.25)",
+                            borderBottom: `1.5px solid ${indigo(0.25)}`,
+                            borderRight: `1.5px solid ${indigo(0.25)}`,
                           }}
                         />
 
@@ -349,7 +355,7 @@ export default function ResourcesPage() {
                                 className="text-[9px] uppercase tracking-widest"
                                 style={{
                                   fontFamily: "var(--font-geist-mono)",
-                                  color: "#a5b4fc",
+                                  color: accent.indigoLightest,
                                 }}
                               >
                                 Featured
@@ -373,7 +379,7 @@ export default function ResourcesPage() {
                               className="text-xs"
                               style={{
                                 fontFamily: "var(--font-geist-mono)",
-                                color: "#52525b",
+                                color: text.dim,
                               }}
                             >
                               {resource.source}
@@ -385,7 +391,7 @@ export default function ResourcesPage() {
                             className="font-semibold text-sm mb-1.5 transition-colors"
                             style={{
                               fontFamily: "var(--font-geist-mono)",
-                              color: "#e2e2f0",
+                              color: text.primary,
                             }}
                           >
                             {resource.title}
@@ -396,7 +402,7 @@ export default function ResourcesPage() {
                             className="text-xs leading-relaxed mb-3"
                             style={{
                               fontFamily: "var(--font-geist-mono)",
-                              color: "#52525b",
+                              color: text.dim,
                             }}
                           >
                             {resource.description}
@@ -419,8 +425,8 @@ export default function ResourcesPage() {
                                 className="text-[9px] px-1.5 py-0.5 rounded"
                                 style={{
                                   fontFamily: "var(--font-geist-mono)",
-                                  color: "#3f3f46",
-                                  background: "rgba(99,102,241,0.06)",
+                                  color: text.veryDim,
+                                  background: indigo(0.06),
                                 }}
                               >
                                 {tag}
@@ -433,7 +439,7 @@ export default function ResourcesPage() {
                             className="flex items-center gap-1 text-[10px] transition-colors"
                             style={{
                               fontFamily: "var(--font-geist-mono)",
-                              color: "#3f3f46",
+                              color: text.veryDim,
                             }}
                           >
                             <ExternalLink className="w-3 h-3" />
@@ -453,8 +459,7 @@ export default function ResourcesPage() {
       <div
         className="absolute bottom-0 left-0 right-0 h-px"
         style={{
-          background:
-            "linear-gradient(90deg, transparent, rgba(99,102,241,0.3), transparent)",
+          background: `linear-gradient(90deg, transparent, ${indigo(0.3)}, transparent)`,
         }}
       />
     </div>

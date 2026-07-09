@@ -1,6 +1,7 @@
 "use client";
 
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { accent, background, indigo, text } from "@/lib/colors";
 import data from "@/lib/staticdata.config";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -11,14 +12,13 @@ export default function CTASection() {
   return (
     <section
       className="relative py-32 overflow-hidden"
-      style={{ background: "#030305" }}
+      style={{ background: background.primary }}
     >
       <div className="absolute inset-0 circuit-bg opacity-60 pointer-events-none" />
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] pointer-events-none"
         style={{
-          background:
-            "radial-gradient(ellipse, rgba(99,102,241,0.08) 0%, transparent 70%)",
+          background: `radial-gradient(ellipse, ${indigo(0.08)} 0%, transparent 70%)`,
         }}
       />
       {/* <div
@@ -35,8 +35,8 @@ export default function CTASection() {
           style={{
             width: 36,
             height: 36,
-            borderTop: "1.5px solid rgba(99,102,241,0.4)",
-            borderLeft: "1.5px solid rgba(99,102,241,0.4)",
+            borderTop: `1.5px solid ${indigo(0.4)}`,
+            borderLeft: `1.5px solid ${indigo(0.4)}`,
           }}
         />
       </div>
@@ -45,8 +45,8 @@ export default function CTASection() {
           style={{
             width: 36,
             height: 36,
-            borderTop: "1.5px solid rgba(99,102,241,0.4)",
-            borderRight: "1.5px solid rgba(99,102,241,0.4)",
+            borderTop: `1.5px solid ${indigo(0.4)}`,
+            borderRight: `1.5px solid ${indigo(0.4)}`,
           }}
         />
       </div>
@@ -55,8 +55,8 @@ export default function CTASection() {
           style={{
             width: 36,
             height: 36,
-            borderBottom: "1.5px solid rgba(99,102,241,0.4)",
-            borderLeft: "1.5px solid rgba(99,102,241,0.4)",
+            borderBottom: `1.5px solid ${indigo(0.4)}`,
+            borderLeft: `1.5px solid ${indigo(0.4)}`,
           }}
         />
       </div>
@@ -65,8 +65,8 @@ export default function CTASection() {
           style={{
             width: 36,
             height: 36,
-            borderBottom: "1.5px solid rgba(99,102,241,0.4)",
-            borderRight: "1.5px solid rgba(99,102,241,0.4)",
+            borderBottom: `1.5px solid ${indigo(0.4)}`,
+            borderRight: `1.5px solid ${indigo(0.4)}`,
           }}
         />
       </div>
@@ -84,7 +84,7 @@ export default function CTASection() {
           >
             <span
               style={{
-                color: "rgba(99,102,241,0.5)",
+                color: indigo(0.5),
                 fontFamily: "var(--font-geist-mono)",
               }}
             >
@@ -92,13 +92,16 @@ export default function CTASection() {
             </span>
             <span
               className="text-xs tracking-widest uppercase"
-              style={{ fontFamily: "var(--font-geist-mono)", color: "#a5b4fc" }}
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                color: accent.indigoLightest,
+              }}
             >
               Ready to Ship?
             </span>
             <span
               style={{
-                color: "rgba(99,102,241,0.5)",
+                color: indigo(0.5),
                 fontFamily: "var(--font-geist-mono)",
               }}
             >
@@ -116,8 +119,7 @@ export default function CTASection() {
           >
             <span
               style={{
-                background:
-                  "linear-gradient(135deg, #e2e2f0 0%, #a5b4fc 50%, #8b5cf6 100%)",
+                background: `linear-gradient(135deg, ${text.primary} 0%, ${accent.indigoLightest} 50%, ${accent.violet} 100%)`,
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -126,7 +128,10 @@ export default function CTASection() {
               Ready to ship something{" "}
               <span
                 className="cursor-target"
-                style={{ color: "#818cf8", WebkitTextFillColor: "#818cf8" }}
+                style={{
+                  color: accent.indigoLight,
+                  WebkitTextFillColor: accent.indigoLight,
+                }}
               >
                 great?
               </span>
@@ -136,7 +141,7 @@ export default function CTASection() {
           <motion.p
             variants={fadeInUp}
             className="mt-6 mb-10 text-sm max-w-lg mx-auto leading-relaxed"
-            style={{ fontFamily: "var(--font-geist-mono)", color: "#52525b" }}
+            style={{ fontFamily: "var(--font-geist-mono)", color: text.dim }}
           >
             Join {members}+ developers who build together, learn together, and
             ship together.
@@ -153,11 +158,11 @@ export default function CTASection() {
               className="inline-flex items-center gap-3 px-10 py-4 text-sm font-mono font-semibold tracking-wider uppercase text-white cursor-target"
               style={{
                 fontFamily: "var(--font-geist-mono)",
-                background: "rgba(99, 102, 241, 0.18)",
-                border: "1px solid rgba(99, 102, 241, 0.6)",
+                background: indigo(0.18),
+                border: `1px solid ${indigo(0.6)}`,
               }}
               whileHover={{
-                background: "rgba(99, 102, 241, 0.28)",
+                background: indigo(0.28),
                 // boxShadow: "0 0 30px rgba(99, 102, 241, 0.4)",
                 scale: 1.04,
               }}
@@ -179,7 +184,10 @@ export default function CTASection() {
           <motion.div
             variants={fadeInUp}
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 text-xs"
-            style={{ fontFamily: "var(--font-geist-mono)", color: "#3f3f46" }}
+            style={{
+              fontFamily: "var(--font-geist-mono)",
+              color: text.veryDim,
+            }}
           >
             <span className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-[#22d3ee]" />
@@ -200,8 +208,7 @@ export default function CTASection() {
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{
-          background:
-            "linear-gradient(90deg, transparent, rgba(99,102,241,0.3), transparent)",
+          background: `linear-gradient(90deg, transparent, ${indigo(0.3)}, transparent)`,
         }}
       />
     </section>

@@ -1,6 +1,7 @@
 "use client";
 
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { accent, background, decorative, indigo, text } from "@/lib/colors";
 import data from "@/lib/staticdata.config";
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight } from "lucide-react";
@@ -30,7 +31,13 @@ export default function HeroSection() {
       color: string;
     }[] = [];
 
-    const colors = ["#6366f1", "#8b5cf6", "#818cf8", "#a5b4fc", "#c4c4cc"];
+    const colors = [
+      accent.indigo,
+      accent.violet,
+      accent.indigoLight,
+      accent.indigoLightest,
+      text.secondary,
+    ];
 
     for (let i = 0; i < 100; i++) {
       particles.push({
@@ -77,7 +84,7 @@ export default function HeroSection() {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = "#6366f1";
+            ctx.strokeStyle = accent.indigo;
             ctx.globalAlpha = (1 - dist / 80) * 0.06;
             ctx.lineWidth = 0.5;
             ctx.stroke();
@@ -99,15 +106,15 @@ export default function HeroSection() {
   return (
     <section
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: "#030305" }}
+      style={{ background: background.primary }}
     >
       <SoftAurora
         speed={0.6}
         scale={1.5}
         brightness={1}
         className="absolute opacity-40"
-        color1="#a0f7f7"
-        color2="#1234ff"
+        color1={decorative.auroraPaleCyan}
+        color2={decorative.auroraBlue}
         noiseFrequency={2.5}
         noiseAmplitude={1}
         bandHeight={0.5}
@@ -131,16 +138,14 @@ export default function HeroSection() {
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none"
         style={{
-          background:
-            "radial-gradient(ellipse, rgba(99,102,241,0.06) 0%, transparent 70%)",
+          background: `radial-gradient(ellipse, ${indigo(0.06)} 0%, transparent 70%)`,
         }}
       />
 
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] pointer-events-none"
         style={{
-          background:
-            "radial-gradient(ellipse, rgba(99,102,241,0.15) 0%, transparent 70%)",
+          background: `radial-gradient(ellipse, ${indigo(0.15)} 0%, transparent 70%)`,
         }}
       />
 
@@ -150,8 +155,8 @@ export default function HeroSection() {
           style={{
             width: 40,
             height: 40,
-            borderTop: "2px solid rgba(99,102,241,0.4)",
-            borderLeft: "2px solid rgba(99,102,241,0.4)",
+            borderTop: `2px solid ${indigo(0.4)}`,
+            borderLeft: `2px solid ${indigo(0.4)}`,
           }}
         />
       </div>
@@ -161,8 +166,8 @@ export default function HeroSection() {
           style={{
             width: 40,
             height: 40,
-            borderTop: "2px solid rgba(99,102,241,0.4)",
-            borderRight: "2px solid rgba(99,102,241,0.4)",
+            borderTop: `2px solid ${indigo(0.4)}`,
+            borderRight: `2px solid ${indigo(0.4)}`,
           }}
         />
       </div>
@@ -172,8 +177,8 @@ export default function HeroSection() {
           style={{
             width: 40,
             height: 40,
-            borderBottom: "2px solid rgba(99,102,241,0.4)",
-            borderLeft: "2px solid rgba(99,102,241,0.4)",
+            borderBottom: `2px solid ${indigo(0.4)}`,
+            borderLeft: `2px solid ${indigo(0.4)}`,
           }}
         />
       </div>
@@ -183,8 +188,8 @@ export default function HeroSection() {
           style={{
             width: 40,
             height: 40,
-            borderBottom: "2px solid rgba(99,102,241,0.4)",
-            borderRight: "2px solid rgba(99,102,241,0.4)",
+            borderBottom: `2px solid ${indigo(0.4)}`,
+            borderRight: `2px solid ${indigo(0.4)}`,
           }}
         />
       </div>
@@ -197,8 +202,8 @@ export default function HeroSection() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="inline-flex items-center gap-2 px-4 py-2 mb-12"
           style={{
-            background: "rgba(99, 102, 241, 0.08)",
-            border: "1px solid rgba(99, 102, 241, 0.3)",
+            background: indigo(0.08),
+            border: `1px solid ${indigo(0.3)}`,
           }}
         >
           <span className="w-1.5 h-1.5 bg-[#6366f1] animate-pulse" />
@@ -226,8 +231,7 @@ export default function HeroSection() {
             variants={fadeInUp}
             className="block"
             style={{
-              background:
-                "linear-gradient(135deg, #e2e2f0 0%, #c4c4cc 40%, #a5b4fc 70%, #8b5cf6 100%)",
+              background: `linear-gradient(135deg, ${text.primary} 0%, ${text.secondary} 40%, ${accent.indigoLightest} 70%, ${accent.violet} 100%)`,
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -239,8 +243,8 @@ export default function HeroSection() {
               className="cursor-target"
               speed={3.5}
               delay={1}
-              color="#818cf8"
-              shineColor="#c7d2fe"
+              color={accent.indigoLight}
+              shineColor={accent.indigoShine}
               spread={90}
               direction="left"
               yoyo={false}
@@ -252,8 +256,7 @@ export default function HeroSection() {
             variants={fadeInUp}
             className="block"
             style={{
-              background:
-                "linear-gradient(135deg, #e2e2f0 0%, #c4c4cc 40%, #a5b4fc 70%, #8b5cf6 100%)",
+              background: `linear-gradient(135deg, ${text.primary} 0%, ${text.secondary} 40%, ${accent.indigoLightest} 70%, ${accent.violet} 100%)`,
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -264,8 +267,7 @@ export default function HeroSection() {
           <motion.span variants={fadeInUp} className="block">
             <span
               style={{
-                background:
-                  "linear-gradient(135deg, #e2e2f0 0%, #c4c4cc 40%, #a5b4fc 70%, #8b5cf6 100%)",
+                background: `linear-gradient(135deg, ${text.primary} 0%, ${text.secondary} 40%, ${accent.indigoLightest} 70%, ${accent.violet} 100%)`,
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -275,8 +277,8 @@ export default function HeroSection() {
             </span>
             <span
               style={{
-                color: "#818cf8",
-                WebkitTextFillColor: "#818cf8",
+                color: accent.indigoLight,
+                WebkitTextFillColor: accent.indigoLight,
               }}
             >
               Connect
@@ -293,7 +295,7 @@ export default function HeroSection() {
           className="text-base md:text-lg mb-10 max-w-2xl sm:mx-auto leading-relaxed"
           style={{
             fontFamily: "var(--font-geist-mono), 'Geist Mono', monospace",
-            color: "#71717a",
+            color: text.muted,
           }}
         >
           DevHub is a Discord community for developers and creators, a place to
@@ -316,11 +318,11 @@ export default function HeroSection() {
             className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-mono font-semibold tracking-wider uppercase text-white cursor-target"
             style={{
               fontFamily: "var(--font-geist-mono)",
-              background: "rgba(99, 102, 241, 0.2)",
-              border: "1px solid rgba(99, 102, 241, 0.6)",
+              background: indigo(0.2),
+              border: `1px solid ${indigo(0.6)}`,
             }}
             whileHover={{
-              background: "rgba(99, 102, 241, 0.3)",
+              background: indigo(0.3),
               // boxShadow: "0 0 25px rgba(99, 102, 241, 0.4)",
               scale: 1.02,
             }}
@@ -336,13 +338,13 @@ export default function HeroSection() {
             className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-mono font-medium tracking-wider uppercase cursor-target"
             style={{
               fontFamily: "var(--font-geist-mono)",
-              color: "#71717a",
-              border: "1px solid rgba(99, 102, 241, 0.2)",
+              color: text.muted,
+              border: `1px solid ${indigo(0.2)}`,
             }}
             whileHover={{
-              color: "#c4c4cc",
-              borderColor: "rgba(99, 102, 241, 0.5)",
-              background: "rgba(99, 102, 241, 0.05)",
+              color: text.secondary,
+              borderColor: indigo(0.5),
+              background: indigo(0.05),
               scale: 1.02,
             }}
             whileTap={{ scale: 0.97 }}
@@ -383,10 +385,7 @@ export default function HeroSection() {
             animate={{ y: [0, 6, 0] }}
             transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
           >
-            <ArrowDown
-              className="w-4 h-4"
-              style={{ color: "rgba(99,102,241,0.4)" }}
-            />
+            <ArrowDown className="w-4 h-4" style={{ color: indigo(0.4) }} />
           </motion.div>
         </motion.div>
       </div>

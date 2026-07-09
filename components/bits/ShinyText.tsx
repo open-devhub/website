@@ -5,6 +5,7 @@ import {
   useAnimationFrame,
   useTransform,
 } from "motion/react";
+import { text as textColors } from "@/lib/colors";
 
 interface ShinyTextProps {
   text: string;
@@ -25,8 +26,8 @@ const ShinyText: React.FC<ShinyTextProps> = ({
   disabled = false,
   speed = 2,
   className = "",
-  color = "#b5b5b5",
-  shineColor = "#ffffff",
+  color = textColors.shinyDefault,
+  shineColor = textColors.white,
   spread = 120,
   yoyo = false,
   pauseOnHover = false,

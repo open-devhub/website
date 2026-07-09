@@ -62,15 +62,14 @@ Open [http://localhost:3000](http://localhost:3000) and you're in.
 ├── 📁 .vscode
 │   └── 📄 settings.json
 ├── 📁 app
-│   ├── 📄 globals.css
-│   ├── 📄 layout.tsx
-│   ├── 📄 not-found.tsx
-│   ├── 📄 page.tsx
+│   ├── 📁 api
+│   │   └── 📁 link-preview
+│   │       └── 📄 route.ts
 │   ├── 📁 pages
 │   │   ├── 📁 [slug]
-│   │   │   ├── 📄 PageClient.tsx
 │   │   │   ├── 📁 [subslug]
 │   │   │   │   └── 📄 page.tsx
+│   │   │   ├── 📄 PageClient.tsx
 │   │   │   └── 📄 page.tsx
 │   │   ├── 📄 layout.tsx
 │   │   └── 📄 page.tsx
@@ -78,16 +77,19 @@ Open [http://localhost:3000](http://localhost:3000) and you're in.
 │   │   └── 📄 page.tsx
 │   ├── 📁 resources
 │   │   └── 📄 page.tsx
-│   └── 📁 rules
-│       └── 📄 page.tsx
+│   ├── 📁 rules
+│   │   └── 📄 page.tsx
+│   ├── 📄 globals.css
+│   ├── 📄 layout.tsx
+│   ├── 📄 not-found.tsx
+│   └── 📄 page.tsx
 ├── 📁 components
-│   ├── 📄 AnimatedText.tsx
-│   ├── 📄 Badge.tsx
-│   ├── 📄 BorderGlow.tsx
-│   ├── 📄 BorderGlowButton.tsx
-│   ├── 📄 Footer.tsx
-│   ├── 📄 FuzzyText.tsx
-│           ...
+│   ├── 📁 bits
+│   │   ├── 📄 BorderGlow.tsx
+│   │   ├── 📄 FuzzyText.tsx
+│   │   ├── 📄 ShinyText.tsx
+│   │   ├── 📄 SoftAurora.tsx
+│   │   └── 📄 TargetCursor.tsx
 │   ├── 📁 home
 │   │   ├── 📄 BelongSection.tsx
 │   │   ├── 📄 CTASection.tsx
@@ -95,26 +97,64 @@ Open [http://localhost:3000](http://localhost:3000) and you're in.
 │   │   ├── 📄 HeroSection.tsx
 │   │   ├── 📄 ShowcaseSection.tsx
 │   │   └── 📄 StatsSection.tsx
-│   └── 📁 ui
-│       ├── 📄 accordion.tsx
-│       ├── 📄 alert-dialog.tsx
-│       ├── 📄 alert.tsx
-│       ├── 📄 aspect-ratio.tsx
-│       ├── 📄 avatar.tsx
-│       ├── 📄 badge.tsx
-                ...
+│   ├── 📁 site
+│   │   ├── 📄 Footer.tsx
+│   │   ├── 📄 Navbar.tsx
+│   │   └── 📄 Section.tsx
+│   ├── 📁 ui
+│   │   ├── 📄 accordion.tsx
+│   │   ├── 📄 alert-dialog.tsx
+│   │   ├── 📄 alert.tsx
+│   │   ├── 📄 aspect-ratio.tsx
+│   │   ├── 📄 avatar.tsx
+│   │   ├── 📄 badge.tsx
+│   │   └── ... (40 more UI components)
+│   ├── 📄 AnimatedText.tsx
+│   ├── 📄 Badge.tsx
+│   ├── 📄 BorderGlowButton.tsx
+│   ├── 📄 GlowButton.tsx
+│   └── 📄 LinkPreviewCard.tsx
 ├── 📁 content
-│   └── 📄 pages.ts
+│   ├── 📁 pages
+│   │   ├── 📁 bots
+│   │   │   ├── 📄 adding-a-bot.md
+│   │   │   └── 📄 bots.md
+│   │   ├── 📁 community
+│   │   │   ├── 📄 acknowledgements.md
+│   │   │   ├── 📄 code-of-conduct.md
+│   │   │   ├── 📄 faq.md
+│   │   │   ├── 📄 getting-started.md
+│   │   │   ├── 📄 how-to-ask.md
+│   │   │   ├── 📄 how-to-help.md
+│   │   │   ├── 📄 join-guide.md
+│   │   │   ├── 📄 moderation-guide.md
+│   │   │   ├── 📄 server-info.md
+│   │   │   └── 📄 staff-roles.md
+│   │   ├── 📁 legal
+│   │   │   ├── 📄 privacy-policy.md
+│   │   │   └── 📄 security-notice.md
+│   │   └── 📁 open-source
+│   │       ├── 📄 contributing.md
+│   │       ├── 📄 github-org.md
+│   │       ├── 📄 project-guidelines.md
+│   │       └── 📄 submit-project.md
+│   ├── 📄 pages-loader.ts
+│   ├── 📄 pages-sections.ts
+│   ├── 📄 resources.ts
+│   └── 📄 rules.ts
 ├── 📁 hooks
 │   └── 📄 use-toast.ts
 ├── 📁 lib
+│   ├── 📁 markdown
+│   │   └── 📄 parser.ts
 │   ├── 📄 animations.ts
-│   ├── 📄 pages.config.ts
+│   ├── 📄 colors.ts
 │   ├── 📄 redirects.config.ts
 │   ├── 📄 staticdata.config.ts
 │   └── 📄 utils.ts
 ├── 📄 .eslintrc.json
 ├── 📄 .gitignore
+├── 📄 bun.lock
 ├── 📄 components.json
 ├── 📄 CONTRIBUTING.md
 ├── 📄 LICENSE
@@ -124,7 +164,8 @@ Open [http://localhost:3000](http://localhost:3000) and you're in.
 ├── 📄 postcss.config.js
 ├── 📄 README.md
 ├── 📄 tailwind.config.ts
-└── 📄 tsconfig.json
+├── 📄 tsconfig.json
+├── 📄 vercel.json
 ```
 
 ## Contributing

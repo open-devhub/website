@@ -8,6 +8,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { text } from "@/lib/colors";
 
 // A position: fixed element is positioned relative to the viewport UNLESS an
 // ancestor establishes a containing block (transform, perspective, filter,
@@ -59,7 +60,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
   hideDefaultCursor = true,
   hoverDuration = 0.2,
   parallaxOn = true,
-  cursorColor = "#ffffff",
+  cursorColor = text.white,
   cursorColorOnTarget,
 }) => {
   const cursorRef = useRef<HTMLDivElement>(null);
