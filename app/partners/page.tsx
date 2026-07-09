@@ -3,13 +3,22 @@
 import ShinyText from "@/components/bits/ShinyText";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { motion } from "framer-motion";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import {
+  ArrowRight,
+  BadgeCheck,
+  Compass,
+  ExternalLink,
+  Github,
+  ShieldCheck,
+  Users,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 
 type Partner = {
   inviteCode: string;
   tags?: string[];
   websiteUrl?: string;
+  githubUrl?: string;
 
   // Optional fallback if Discord has no banner
   banner?: string;
@@ -20,6 +29,7 @@ const partners: Partner[] = [
     inviteCode: "3xKFvKhuGR",
     tags: ["Coding", "Programming", "Developer", "Python", "Community"],
     websiteUrl: "https://thecodeversehub.tech",
+    githubUrl: "https://github.com/TheCodeVerseHub",
   },
   {
     inviteCode: "F6Z27BMBhE",
@@ -35,6 +45,7 @@ const partners: Partner[] = [
     inviteCode: "BGrCXccWDa",
     banner: "#7F5C3D",
     tags: ["Javaceans", "Coding", "DEV Support"],
+    githubUrl: "https://github.com/drive-for-java",
   },
 ];
 
@@ -49,7 +60,17 @@ type DiscordData = {
 
   iconUrl: string | null;
   bannerUrl: string | null;
+
+  traits: string[];
 };
+
+const TRAIT_LABELS: Record<string, { label: string; icon: typeof BadgeCheck }> =
+  {
+    VERIFIED: { label: "Verified", icon: BadgeCheck },
+    PARTNERED: { label: "Partnered", icon: ShieldCheck },
+    COMMUNITY: { label: "Community", icon: Users },
+    DISCOVERABLE: { label: "Discoverable", icon: Compass },
+  };
 
 function hexToGradient(hex: string): string {
   // Parse hex and create two shifted colours for the gradient
@@ -100,63 +121,475 @@ function formatCount(n: number): string {
   return n.toString();
 }
 
+function CornerBrackets() {
+  return (
+    <>
+      {[
+        { top: 8, left: 8, borderTop: true, borderLeft: true },
+        { top: 8, right: 8, borderTop: true, borderRight: true },
+        { bottom: 8, left: 8, borderBottom: true, borderLeft: true },
+        { bottom: 8, right: 8, borderBottom: true, borderRight: true },
+      ].map((pos, j) => (
+        <div
+          key={j}
+          className="absolute w-3 h-3 z-10 pointer-events-none"
+          style={{
+            top: pos.top,
+            left: pos.left,
+            right: (pos as any).right,
+            bottom: (pos as any).bottom,
+            borderTop: pos.borderTop
+              ? "1.5px solid rgba(99,102,241,0.2)"
+              : undefined,
+            borderLeft: pos.borderLeft
+              ? "1.5px solid rgba(99,102,241,0.2)"
+              : undefined,
+            borderBottom: (pos as any).borderBottom
+              ? "1.5px solid rgba(99,102,241,0.2)"
+              : undefined,
+            borderRight: (pos as any).borderRight
+              ? "1.5px solid rgba(99,102,241,0.2)"
+              : undefined,
+          }}
+        />
+      ))}
+    </>
+  );
+}
+
+function SkeletonBlock({
+  className,
+  style,
+}: {
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <div
+      className={`animate-pulse ${className ?? ""}`}
+      style={{ background: "rgba(99,102,241,0.08)", ...style }}
+    />
+  );
+}
+
+function PartnerCardSkeleton({ index }: { index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        transition: { delay: index * 0.08 + 0.3, duration: 0.5 },
+      }}
+      className="relative overflow-hidden"
+      style={{
+        background: "#06060E",
+        border: "1px solid rgba(99,102,241,0.12)",
+      }}
+    >
+      <CornerBrackets />
+
+      <div
+        className="relative w-full overflow-hidden"
+        style={{ aspectRatio: "4 / 1", minHeight: 150, maxHeight: 200 }}
+      >
+        <SkeletonBlock className="absolute inset-0" />
+      </div>
+
+      <div className="px-5 pb-5">
+        <div className="flex items-end justify-between -mt-8 mb-4">
+          <SkeletonBlock className="relative w-20 h-20 z-10 flex-shrink-0" />
+          <div className="flex items-center gap-4 pb-1">
+            <SkeletonBlock className="w-16 h-3" />
+            <SkeletonBlock className="w-20 h-3" />
+          </div>
+        </div>
+
+        <SkeletonBlock className="w-40 h-4 mb-2" />
+        <SkeletonBlock className="w-full h-3 mb-1.5" />
+        <SkeletonBlock className="w-2/3 h-3 mb-4" />
+
+        <div className="flex flex-wrap gap-1.5 mb-5">
+          <SkeletonBlock className="w-16 h-5" />
+          <SkeletonBlock className="w-20 h-5" />
+          <SkeletonBlock className="w-14 h-5" />
+        </div>
+
+        <div className="flex flex-wrap gap-3">
+          <SkeletonBlock className="w-32 h-9" />
+          <SkeletonBlock className="w-28 h-9" />
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function PartnerCard({
+  partner,
+  discord,
+  index,
+}: {
+  partner: Partner;
+  discord: DiscordData | null;
+  index: number;
+}) {
+  const logoStyle = logoColors[index % logoColors.length];
+
+  const serverName = discord?.name ?? "Unknown Server";
+
+  const serverDescription =
+    discord?.description ?? "No server description available.";
+
+  const tags = partner.tags ?? [];
+
+  const traits = (discord?.traits ?? []).filter((t) => TRAIT_LABELS[t]);
+
+  const fallbackBanner = partner.banner;
+
+  const isImageBanner = fallbackBanner?.startsWith("https://") ?? false;
+
+  // Prefer Discord banner
+  const showImageBanner =
+    discord?.bannerUrl ?? (isImageBanner ? fallbackBanner : null);
+
+  const showColourBanner =
+    !showImageBanner && fallbackBanner && !isImageBanner
+      ? fallbackBanner
+      : null;
+
+  // Prefer Discord icon
+  const logoSrc = discord?.iconUrl ?? null;
+
+  const logoInitials = serverName
+    .split(/\s+/)
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        transition: { delay: index * 0.08 + 0.3, duration: 0.5 },
+      }}
+      className="relative overflow-hidden"
+      style={{
+        background: "#06060E",
+        border: "1px solid rgba(99,102,241,0.12)",
+      }}
+    >
+      <CornerBrackets />
+
+      {/* ── Banner ── */}
+      <div
+        className="relative w-full overflow-hidden"
+        style={{ aspectRatio: "4 / 1", minHeight: 150, maxHeight: 200 }}
+      >
+        {showImageBanner ? (
+          <img
+            src={showImageBanner}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : showColourBanner ? (
+          <div
+            className="absolute inset-0"
+            style={{ background: hexToGradient(showColourBanner) }}
+          />
+        ) : (
+          // fallback dark gradient if nothing provided
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(135deg, #0f0f2e 0%, #1a1040 40%, #0d0d1f 100%)",
+            }}
+          />
+        )}
+
+        {/* Circuit noise overlay */}
+        <div className="absolute inset-0 circuit-bg opacity-20 pointer-events-none" />
+
+        {/* Bottom fade */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-12 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to bottom, transparent, rgba(7,7,15,0.98))",
+          }}
+        />
+      </div>
+
+      {/* ── Body ── */}
+      <div className="px-5 pb-5">
+        {/* Logo + stats row */}
+        <div className="flex items-end justify-between -mt-8 mb-4">
+          {/* Server logo */}
+          <div
+            className="relative w-20 h-20 flex items-center justify-center text-sm font-bold z-10 overflow-hidden flex-shrink-0"
+            style={{
+              background: logoSrc ? "transparent" : logoStyle.bg,
+              fontFamily: "var(--font-geist-mono)",
+              color: logoStyle.color,
+              letterSpacing: "0.05em",
+            }}
+          >
+            {logoSrc ? (
+              <img
+                src={logoSrc}
+                alt={serverName}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              logoInitials
+            )}
+          </div>
+
+          {/* Live stats from Discord */}
+          <div
+            className="flex items-center gap-4 pb-1"
+            style={{ fontFamily: "var(--font-geist-mono)" }}
+          >
+            {discord ? (
+              <>
+                <span className="flex items-center gap-1.5 text-xs">
+                  <span
+                    className="w-1.5 h-1.5"
+                    style={{ background: "#22c55e" }}
+                  />
+                  <span style={{ color: "#52525b" }}>
+                    {formatCount(discord.onlineCount)} online
+                  </span>
+                </span>
+                <span className="flex items-center gap-1.5 text-xs">
+                  <span
+                    className="w-1.5 h-1.5"
+                    style={{ background: "#52525b" }}
+                  />
+                  <span style={{ color: "#52525b" }}>
+                    {formatCount(discord.memberCount)} members
+                  </span>
+                </span>
+              </>
+            ) : null}
+          </div>
+        </div>
+
+        {/* Name */}
+        <h2
+          className="text-base font-semibold mb-1.5"
+          style={{
+            fontFamily: "var(--font-geist-mono)",
+            color: "#e2e2f0",
+          }}
+        >
+          {serverName}
+        </h2>
+
+        {/* Traits */}
+        {traits.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-2.5">
+            {traits.map((trait) => {
+              const { label, icon: Icon } = TRAIT_LABELS[trait];
+              return (
+                <span
+                  key={trait}
+                  className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 uppercase tracking-widest"
+                  style={{
+                    fontFamily: "var(--font-geist-mono)",
+                    color: "#60a5fa",
+                    background: "rgba(59,130,246,0.08)",
+                    border: "1px solid rgba(59,130,246,0.25)",
+                  }}
+                >
+                  <Icon className="w-3 h-3" />
+                  {label}
+                </span>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Description */}
+        <p
+          className="text-xs leading-relaxed mb-4"
+          style={{
+            fontFamily: "var(--font-geist-mono)",
+            color: "#52525b",
+          }}
+        >
+          {serverDescription}
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1.5 mb-5">
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[10px] px-2 py-0.5 uppercase tracking-widest"
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                color: "#818cf8",
+                background: "rgba(99,102,241,0.08)",
+                border: "1px solid rgba(99,102,241,0.2)",
+              }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Buttons */}
+        <div className="flex flex-wrap gap-3">
+          <motion.a
+            href={`https://discord.gg/${partner.inviteCode}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono font-semibold tracking-wider uppercase text-white"
+            style={{
+              fontFamily: "var(--font-geist-mono)",
+              background: "rgba(99, 102, 241, 0.2)",
+              border: "1px solid rgba(99, 102, 241, 0.5)",
+            }}
+            whileHover={{
+              background: "rgba(99, 102, 241, 0.3)",
+              scale: 1.02,
+            }}
+            whileTap={{ scale: 0.97 }}
+          >
+            <DiscordIcon />
+            Join Server
+            <ArrowRight className="w-3 h-3" />
+          </motion.a>
+
+          {partner.websiteUrl && (
+            <motion.a
+              href={partner.websiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono font-medium tracking-wider uppercase"
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                color: "#71717a",
+                border: "1px solid rgba(99, 102, 241, 0.2)",
+              }}
+              whileHover={{
+                color: "#c4c4cc",
+                borderColor: "rgba(99, 102, 241, 0.45)",
+                background: "rgba(99, 102, 241, 0.05)",
+                scale: 1.02,
+              }}
+              whileTap={{ scale: 0.97 }}
+            >
+              <ExternalLink className="w-3 h-3" />
+              Website
+            </motion.a>
+          )}
+
+          {partner.githubUrl && (
+            <motion.a
+              href={partner.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono font-medium tracking-wider uppercase"
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                color: "#71717a",
+                border: "1px solid rgba(99, 102, 241, 0.2)",
+              }}
+              whileHover={{
+                color: "#c4c4cc",
+                borderColor: "rgba(99, 102, 241, 0.45)",
+                background: "rgba(99, 102, 241, 0.05)",
+                scale: 1.02,
+              }}
+              whileTap={{ scale: 0.97 }}
+            >
+              <Github className="w-3 h-3" />
+              GitHub
+            </motion.a>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function PartnersPage() {
   const [discordData, setDiscordData] = useState<
     Record<string, DiscordData | null>
   >({});
-  const [loading, setLoading] = useState(true);
+  const [loadingMap, setLoadingMap] = useState<Record<string, boolean>>(() =>
+    Object.fromEntries(partners.map((p) => [p.inviteCode, true])),
+  );
 
   useEffect(() => {
-    async function fetchAll() {
-      const results = await Promise.allSettled(
-        partners.map((p) =>
-          fetch(
-            `https://discord.com/api/v10/invites/${p.inviteCode}?with_counts=true`,
-          ).then((r) => r.json()),
-        ),
+    const controller = new AbortController();
+
+    const fetchPartnerData = async () => {
+      await Promise.all(
+        partners.map(async (p) => {
+          try {
+            const res = await fetch(
+              `https://discord.com/api/v10/invites/${p.inviteCode}?with_counts=true`,
+              { signal: controller.signal },
+            );
+
+            if (!res.ok) {
+              setDiscordData((prev) => ({ ...prev, [p.inviteCode]: null }));
+              return;
+            }
+
+            const data = await res.json();
+            const guild = data.guild;
+
+            if (!guild) {
+              setDiscordData((prev) => ({ ...prev, [p.inviteCode]: null }));
+              return;
+            }
+
+            setDiscordData((prev) => ({
+              ...prev,
+              [p.inviteCode]: {
+                guildId: guild.id,
+
+                name: guild.name,
+                description: guild.description ?? null,
+
+                memberCount: data.approximate_member_count ?? 0,
+                onlineCount: data.approximate_presence_count ?? 0,
+
+                iconUrl: guild.icon
+                  ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128`
+                  : null,
+
+                bannerUrl: guild.banner
+                  ? `https://cdn.discordapp.com/banners/${guild.id}/${guild.banner}.png?size=1024`
+                  : null,
+
+                traits: guild.features ?? [],
+              },
+            }));
+          } catch (error) {
+            const aborted =
+              error instanceof DOMException && error.name === "AbortError";
+            if (!aborted) {
+              setDiscordData((prev) => ({ ...prev, [p.inviteCode]: null }));
+            }
+          } finally {
+            if (!controller.signal.aborted) {
+              setLoadingMap((prev) => ({ ...prev, [p.inviteCode]: false }));
+            }
+          }
+        }),
       );
+    };
 
-      const map: Record<string, DiscordData | null> = {};
-      results.forEach((result, i) => {
-        const code = partners[i].inviteCode;
-
-        if (result.status !== "fulfilled") {
-          map[code] = null;
-          return;
-        }
-
-        const data = result.value;
-        const guild = data.guild;
-
-        if (!guild) {
-          map[code] = null;
-          return;
-        }
-
-        map[code] = {
-          guildId: guild.id,
-
-          name: guild.name,
-          description: guild.description ?? null,
-
-          memberCount: data.approximate_member_count ?? 0,
-          onlineCount: data.approximate_presence_count ?? 0,
-
-          iconUrl: guild.icon
-            ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128`
-            : null,
-
-          bannerUrl: guild.banner
-            ? `https://cdn.discordapp.com/banners/${guild.id}/${guild.banner}.png?size=1024`
-            : null,
-        };
-      });
-
-      setDiscordData(map);
-      setLoading(false);
-    }
-
-    fetchAll();
+    fetchPartnerData();
+    return () => controller.abort();
   }, []);
 
   return (
@@ -307,290 +740,18 @@ export default function PartnersPage() {
 
         {/* ─── Cards ─── */}
         <div className="flex flex-col gap-6">
-          {partners.map((partner, i) => {
-            const discord = discordData[partner.inviteCode];
-            const logoStyle = logoColors[i % logoColors.length];
-
-            const serverName = discord?.name ?? "Unknown Server";
-
-            const serverDescription =
-              discord?.description ?? "No server description available.";
-
-            const tags = partner.tags ?? [];
-
-            const fallbackBanner = partner.banner;
-
-            const isImageBanner =
-              fallbackBanner?.startsWith("https://") ?? false;
-
-            // Prefer Discord banner
-            const showImageBanner =
-              discord?.bannerUrl ?? (isImageBanner ? fallbackBanner : null);
-
-            const showColourBanner =
-              !showImageBanner && fallbackBanner && !isImageBanner
-                ? fallbackBanner
-                : null;
-
-            // Prefer Discord icon
-            const logoSrc = discord?.iconUrl ?? null;
-
-            const logoInitials = serverName
-              .split(/\s+/)
-              .map((w) => w[0])
-              .slice(0, 2)
-              .join("")
-              .toUpperCase();
-
-            return (
-              <motion.div
+          {partners.map((partner, i) =>
+            loadingMap[partner.inviteCode] ? (
+              <PartnerCardSkeleton key={partner.inviteCode} index={i} />
+            ) : (
+              <PartnerCard
                 key={partner.inviteCode}
-                initial={{ opacity: 0, y: 24 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  transition: { delay: i * 0.08 + 0.3, duration: 0.5 },
-                }}
-                className="relative overflow-hidden"
-                style={{
-                  background: "#06060E",
-                  border: "1px solid rgba(99,102,241,0.12)",
-                }}
-              >
-                {/* Corner brackets */}
-                {[
-                  { top: 8, left: 8, borderTop: true, borderLeft: true },
-                  { top: 8, right: 8, borderTop: true, borderRight: true },
-                  { bottom: 8, left: 8, borderBottom: true, borderLeft: true },
-                  {
-                    bottom: 8,
-                    right: 8,
-                    borderBottom: true,
-                    borderRight: true,
-                  },
-                ].map((pos, j) => (
-                  <div
-                    key={j}
-                    className="absolute w-3 h-3 z-10 pointer-events-none"
-                    style={{
-                      top: pos.top,
-                      left: pos.left,
-                      right: (pos as any).right,
-                      bottom: (pos as any).bottom,
-                      borderTop: pos.borderTop
-                        ? "1.5px solid rgba(99,102,241,0.2)"
-                        : undefined,
-                      borderLeft: pos.borderLeft
-                        ? "1.5px solid rgba(99,102,241,0.2)"
-                        : undefined,
-                      borderBottom: (pos as any).borderBottom
-                        ? "1.5px solid rgba(99,102,241,0.2)"
-                        : undefined,
-                      borderRight: (pos as any).borderRight
-                        ? "1.5px solid rgba(99,102,241,0.2)"
-                        : undefined,
-                    }}
-                  />
-                ))}
-
-                {/* ── Banner ── */}
-                <div
-                  className="relative w-full overflow-hidden"
-                  style={{
-                    aspectRatio: "4 / 1",
-                    minHeight: 150,
-                    maxHeight: 200,
-                  }}
-                >
-                  {showImageBanner ? (
-                    <img
-                      src={showImageBanner}
-                      alt=""
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                  ) : showColourBanner ? (
-                    <div
-                      className="absolute inset-0"
-                      style={{ background: hexToGradient(showColourBanner) }}
-                    />
-                  ) : (
-                    // fallback dark gradient if nothing provided
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, #0f0f2e 0%, #1a1040 40%, #0d0d1f 100%)",
-                      }}
-                    />
-                  )}
-
-                  {/* Circuit noise overlay */}
-                  <div className="absolute inset-0 circuit-bg opacity-20 pointer-events-none" />
-
-                  {/* Bottom fade */}
-                  <div
-                    className="absolute bottom-0 left-0 right-0 h-12 pointer-events-none"
-                    style={{
-                      background:
-                        "linear-gradient(to bottom, transparent, rgba(7,7,15,0.98))",
-                    }}
-                  />
-                </div>
-
-                {/* ── Body ── */}
-                <div className="px-5 pb-5">
-                  {/* Logo + stats row */}
-                  <div className="flex items-end justify-between -mt-8 mb-4">
-                    {/* Server logo */}
-                    <div
-                      className="relative w-20 h-20 flex items-center justify-center text-sm font-bold z-10 overflow-hidden flex-shrink-0"
-                      style={{
-                        background: logoSrc ? "transparent" : logoStyle.bg,
-                        // border: `2px solid ${logoStyle.border}`,
-                        fontFamily: "var(--font-geist-mono)",
-                        color: logoStyle.color,
-                        letterSpacing: "0.05em",
-                      }}
-                    >
-                      {logoSrc ? (
-                        <img
-                          src={logoSrc}
-                          alt={serverName}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        logoInitials
-                      )}
-                    </div>
-
-                    {/* Live stats from Discord */}
-                    <div
-                      className="flex items-center gap-4 pb-1"
-                      style={{ fontFamily: "var(--font-geist-mono)" }}
-                    >
-                      {loading ? (
-                        <span
-                          className="text-xs animate-pulse"
-                          style={{ color: "#3f3f46" }}
-                        >
-                          loading...
-                        </span>
-                      ) : discord ? (
-                        <>
-                          <span className="flex items-center gap-1.5 text-xs">
-                            <span
-                              className="w-1.5 h-1.5"
-                              style={{ background: "#22c55e" }}
-                            />
-                            <span style={{ color: "#52525b" }}>
-                              {formatCount(discord.onlineCount)} online
-                            </span>
-                          </span>
-                          <span className="flex items-center gap-1.5 text-xs">
-                            <span
-                              className="w-1.5 h-1.5"
-                              style={{ background: "#52525b" }}
-                            />
-                            <span style={{ color: "#52525b" }}>
-                              {formatCount(discord.memberCount)} members
-                            </span>
-                          </span>
-                        </>
-                      ) : null}
-                    </div>
-                  </div>
-
-                  {/* Name */}
-                  <h2
-                    className="text-base font-semibold mb-1.5"
-                    style={{
-                      fontFamily: "var(--font-geist-mono)",
-                      color: "#e2e2f0",
-                    }}
-                  >
-                    {serverName}
-                  </h2>
-
-                  {/* Description */}
-                  <p
-                    className="text-xs leading-relaxed mb-4"
-                    style={{
-                      fontFamily: "var(--font-geist-mono)",
-                      color: "#52525b",
-                    }}
-                  >
-                    {serverDescription}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-5">
-                    {tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[10px] px-2 py-0.5 uppercase tracking-widest"
-                        style={{
-                          fontFamily: "var(--font-geist-mono)",
-                          color: "#818cf8",
-                          background: "rgba(99,102,241,0.08)",
-                          border: "1px solid rgba(99,102,241,0.2)",
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Buttons */}
-                  <div className="flex flex-wrap gap-3">
-                    <motion.a
-                      href={`https://discord.gg/${partner.inviteCode}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono font-semibold tracking-wider uppercase text-white"
-                      style={{
-                        fontFamily: "var(--font-geist-mono)",
-                        background: "rgba(99, 102, 241, 0.2)",
-                        border: "1px solid rgba(99, 102, 241, 0.5)",
-                      }}
-                      whileHover={{
-                        background: "rgba(99, 102, 241, 0.3)",
-                        scale: 1.02,
-                      }}
-                      whileTap={{ scale: 0.97 }}
-                    >
-                      <DiscordIcon />
-                      Join Server
-                      <ArrowRight className="w-3 h-3" />
-                    </motion.a>
-
-                    {partner.websiteUrl && (
-                      <motion.a
-                        href={partner.websiteUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono font-medium tracking-wider uppercase"
-                        style={{
-                          fontFamily: "var(--font-geist-mono)",
-                          color: "#71717a",
-                          border: "1px solid rgba(99, 102, 241, 0.2)",
-                        }}
-                        whileHover={{
-                          color: "#c4c4cc",
-                          borderColor: "rgba(99, 102, 241, 0.45)",
-                          background: "rgba(99, 102, 241, 0.05)",
-                          scale: 1.02,
-                        }}
-                        whileTap={{ scale: 0.97 }}
-                      >
-                        <ExternalLink className="w-3 h-3" />
-                        Website
-                      </motion.a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+                partner={partner}
+                discord={discordData[partner.inviteCode] ?? null}
+                index={i}
+              />
+            ),
+          )}
         </div>
 
         {/* ─── Footer note ─── */}
