@@ -25,6 +25,7 @@ import {
   Info,
   Tag,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import redirects from "../../../lib/redirects.config";
@@ -316,14 +317,17 @@ function ContentBlock({
     case "img":
       return (
         <figure className="mb-6 mt-6">
-          <img
-            src={block.src}
+          <Image
+            src={block.src || ""}
             alt={block.text || ""}
+            width={800}
+            height={480}
             className="w-full object-cover"
             style={{
               maxHeight: "480px",
               border: `1px solid ${indigo(0.12)}`,
             }}
+            unoptimized={block.src?.startsWith("http")}
           />
           {block.text && (
             <figcaption
@@ -393,11 +397,13 @@ export default function ArticleClient({ article, previews }: Props) {
             className="relative w-full overflow-hidden rounded-lg"
             style={{ maxHeight: "260px" }}
           >
-            <img
+            <Image
               src={article.banner}
               alt={article.title}
-              className="w-full px-6 object-cover"
+              fill
+              className="object-cover px-6"
               style={{ maxHeight: "260px" }}
+              unoptimized={article.banner.startsWith("http")}
             />
             {/* Dark gradient overlay at bottom for text legibility */}
             <div

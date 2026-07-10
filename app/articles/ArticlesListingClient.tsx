@@ -9,6 +9,7 @@ import {
 import { accent, background, indigo, text } from "@/lib/colors";
 import { motion } from "framer-motion";
 import { Calendar, Clock, Tag } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 // Article type (must match articles-loader but client-safe — no fs)
@@ -215,10 +216,12 @@ export default function ArticlesListingClient({ articles }: Props) {
                     >
                       {article.banner ? (
                         <>
-                          <img
+                          <Image
                             src={article.banner}
                             alt={article.title}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            unoptimized={article.banner.startsWith("http")}
                           />
                           <div
                             className="absolute inset-0"

@@ -74,7 +74,7 @@ const HARDCODED_PREVIEWS: Record<string, PreviewData> = {
 
   // GitHub
   "/r/website": {
-    title: "DevHub Homepage",
+    title: "Website",
     description: "The official website for the DevHub developer community",
     image: COMMON_IMAGES.github,
   },

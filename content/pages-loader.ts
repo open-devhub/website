@@ -9,9 +9,10 @@
  * which re-exports the same data without the `fs` dependency.
  */
 
+import { pageSections as sidebarPageSections } from "@/content/pages-sections";
+import { parseMarkdown, type ContentBlock } from "@/lib/markdown/parser";
 import fs from "fs";
 import path from "path";
-import { parseMarkdown, type ContentBlock } from "@/lib/markdown/parser";
 
 export interface Page {
   slug: string;
@@ -83,12 +84,37 @@ function buildPages(): Page[] {
     loadPageFromFile(sectionDir, filePath),
   );
 
+  const pageOrder = new Map<string, number>();
+  sidebarPageSections.forEach((section, sectionIndex) => {
+    section.pages.forEach((page, pageIndex) => {
+      pageOrder.set(
+        `${section.title}:${page.slug}`,
+        sectionIndex * 1000 + pageIndex,
+      );
+    });
+  });
+
   pages.sort((a, b) => {
     const aIdx = SECTION_ORDER.indexOf(a.section);
     const bIdx = SECTION_ORDER.indexOf(b.section);
     const aOrder = aIdx === -1 ? SECTION_ORDER.length : aIdx;
     const bOrder = bIdx === -1 ? SECTION_ORDER.length : bIdx;
-    if (aOrder !== bOrder) return aOrder - bOrder;
+    if (aOrder !== bOrder) {
+      return aOrder - bOrder;
+    }
+
+    const aKey = `${a.section}:${a.slug}`;
+    const bKey = `${b.section}:${b.slug}`;
+    const aPosition = pageOrder.get(aKey);
+    const bPosition = pageOrder.get(bKey);
+
+    if (aPosition !== undefined && bPosition !== undefined) {
+      return aPosition - bPosition;
+    }
+
+    if (aPosition !== undefined) return -1;
+    if (bPosition !== undefined) return 1;
+
     return a.slug.localeCompare(b.slug);
   });
 
