@@ -2,6 +2,7 @@
 
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { accent, background, indigo, text } from "@/lib/colors";
+import data from "@/lib/staticdata.config";
 import { hexToHslString } from "@/lib/utils";
 import { motion, useInView } from "framer-motion";
 import { Code as Code2, MessageCircle, Users } from "lucide-react";
@@ -11,7 +12,7 @@ import BorderGlow from "../bits/BorderGlow";
 const stats = [
   {
     icon: Users,
-    value: 500,
+    value: data.members,
     label: "Members",
     suffix: "+",
     color: accent.indigo,

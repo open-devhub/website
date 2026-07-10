@@ -1,24 +1,24 @@
-import { AnimatePresence, motion } from "framer-motion";
 import { accent, indigo, text } from "@/lib/colors";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
-interface PreviewData {
+export interface PreviewData {
   title: string | null;
   description: string | null;
-  image: string | null;
-  url: string;
+  image?: string | null;
+  // url: string;
 }
-
-const previewCache = new Map<string, PreviewData | null>();
 
 export function LinkPreviewCard({
   href,
   newTab = true,
+  previews,
   children,
 }: {
   href: string;
   newTab?: boolean;
+  previews?: Record<string, PreviewData>;
   children: React.ReactNode;
 }) {
   const [hovering, setHovering] = useState(false);
@@ -54,18 +54,26 @@ export function LinkPreviewCard({
   }, [hovering]);
 
   const fetchPreview = () => {
-    if (previewCache.has(href)) {
-      setData(previewCache.get(href) || null);
+    const normalizedHref = (() => {
+      try {
+        return new URL(href, window.location.origin).pathname;
+      } catch {
+        return href;
+      }
+    })();
+
+    const preview = previews?.[href] ?? previews?.[normalizedHref];
+    if (preview) {
+      setData(preview);
       return;
     }
+
     fetch(`/api/link-preview?url=${encodeURIComponent(href)}`)
       .then((res) => (res.ok ? res.json() : null))
       .then((json) => {
-        previewCache.set(href, json);
         setData(json);
       })
       .catch(() => {
-        previewCache.set(href, null);
         setData(null);
       });
   };
@@ -106,7 +114,7 @@ export function LinkPreviewCard({
     scheduleHide();
   };
 
-  const hasContent = Boolean(data?.description);
+  const hasContent = Boolean(data?.title || data?.description || data?.image);
 
   return (
     <>

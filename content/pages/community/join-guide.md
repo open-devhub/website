@@ -19,7 +19,7 @@ Anyone who builds things with code. Beginners figuring out their first project, 
 - Project showcase and feedback.
 - Language and framework-specific channels
 - Career and job hunting channels.
-- An active [open source org](https://github.com/open-devhub) on GitHub.
+- An active [open source org](/github) on GitHub.
 - Some [bots](/pages/bots) to help get things done faster.
 
 ## Your First 5 Minutes

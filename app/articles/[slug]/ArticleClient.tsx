@@ -2,10 +2,11 @@
 
 import type { PreviewData } from "@/components/LinkPreviewCard";
 import { LinkPreviewCard } from "@/components/LinkPreviewCard";
-import { Page } from "@/content/pages-loader";
+import type { Article } from "@/content/articles-loader";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import {
   accent,
+  background,
   danger,
   indigo,
   semantic,
@@ -19,21 +20,22 @@ import {
   OctagonAlert as AlertOctagon,
   TriangleAlert as AlertTriangle,
   Calendar,
-  ChevronLeft,
-  ChevronRight,
   Clock,
+  Github,
   Info,
+  Tag,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import redirects from "../../../lib/redirects.config";
 
 interface Props {
-  page: Page;
-  prev?: Page;
-  next?: Page;
+  article: Article;
   previews?: Record<string, PreviewData>;
 }
+
+// ─── Inline formatter (identical to PageClient's ApplySpecialClass) ──────────
 
 function ApplySpecialClass({
   text,
@@ -43,7 +45,7 @@ function ApplySpecialClass({
   previews?: Record<string, PreviewData>;
 }) {
   const regex =
-    /(`[^`]+`)|(\[[^\]]+\]\([^)]+\))|(#[\w-]+)|(\*\*\*(.+?)\*\*\*|___(.+?)___)|((?<!\*)\*\*(?!\*)(.+?)(?<!\*)\*\*(?!\*)|(?<!_)__(?!_)(.+?)(?<!_)__(?!_))|(\*(.+?)\*|_(.+?)_)/g;
+    /(`[^`]+`)|(\[[^\]]+\]\([^)]+\))|(#[\w-]+)|(\*\*\*[^*]+\*\*\*|___[^_]+___)|(\*\*[^*]+\*\*|__[^_]+__)|(\*[^*]+\*|_[^_]+_)/g;
   const parts: React.ReactNode[] = [];
   let lastIndex = 0;
   let key = 0;
@@ -125,6 +127,8 @@ function ApplySpecialClass({
   if (lastIndex < text.length) parts.push(text.slice(lastIndex));
   return <>{parts}</>;
 }
+
+// ─── Block renderer ───────────────────────────────────────────
 
 function ContentBlock({
   block,
@@ -228,7 +232,6 @@ function ContentBlock({
             border: `1px solid ${indigo(0.12)}`,
           }}
         >
-          {/* Corner brackets */}
           <div
             className="absolute top-2 left-2 w-3 h-3"
             style={{
@@ -273,19 +276,19 @@ function ContentBlock({
         info: {
           bg: indigo(0.05),
           border: indigo(0.15),
-          text: accent.indigoLightest,
+          color: accent.indigoLightest,
           Icon: Info,
         },
         warning: {
           bg: warning(0.05),
           border: warning(0.15),
-          text: semantic.warning,
+          color: semantic.warning,
           Icon: AlertTriangle,
         },
         danger: {
           bg: danger(0.05),
           border: danger(0.15),
-          text: semantic.danger,
+          color: semantic.danger,
           Icon: AlertOctagon,
         },
       };
@@ -297,7 +300,7 @@ function ContentBlock({
         >
           <s.Icon
             className="w-4 h-4 flex-shrink-0 mt-0.5"
-            style={{ color: s.text }}
+            style={{ color: s.color }}
           />
           <p
             className="text-sm"
@@ -311,10 +314,40 @@ function ContentBlock({
         </div>
       );
     }
+    case "img":
+      return (
+        <figure className="mb-6 mt-6">
+          <Image
+            src={block.src || ""}
+            alt={block.text || ""}
+            width={800}
+            height={480}
+            className="w-full object-cover"
+            style={{
+              maxHeight: "480px",
+              border: `1px solid ${indigo(0.12)}`,
+            }}
+            unoptimized={block.src?.startsWith("http")}
+          />
+          {block.text && (
+            <figcaption
+              className="text-xs mt-2 text-center"
+              style={{
+                fontFamily: "var(--font-geist-mono)",
+                color: textColors.dim,
+              }}
+            >
+              {block.text}
+            </figcaption>
+          )}
+        </figure>
+      );
     default:
       return null;
   }
 }
+
+// ─── Table of contents ────────────────────────────────────────
 
 function TableOfContents({ content }: { content: ContentBlockType[] }) {
   const headings = content.filter((b) => b.type === "h2" && b.text);
@@ -352,209 +385,190 @@ function TableOfContents({ content }: { content: ContentBlockType[] }) {
   );
 }
 
-export default function PageClient({ page, prev, next, previews }: Props) {
+// ─── Main component ───────────────────────────────────────────
+
+export default function ArticleClient({ article, previews }: Props) {
   return (
-    <div className="flex gap-12">
-      <motion.article
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-        className="flex-1 min-w-0"
-      >
-        {/* Header */}
-        <motion.div variants={fadeInUp} className="mb-10">
-          <div className="flex items-center gap-2 mb-4">
-            <span
-              className="text-xs"
-              style={{
-                fontFamily: "var(--font-geist-mono)",
-                color: textColors.veryDim,
-              }}
-            >
-              {page.section}
-            </span>
-            <span style={{ color: textColors.veryDim }}>/</span>
-            <span
-              className="text-xs"
-              style={{
-                fontFamily: "var(--font-geist-mono)",
-                color: textColors.dim,
-              }}
-            >
-              {page.title}
-            </span>
-          </div>
-
-          <h1
-            style={{
-              fontFamily: "var(--font-pixelify), 'Pixelify Sans', monospace",
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              lineHeight: 1.2,
-            }}
-          >
-            <span
-              style={{
-                background: `linear-gradient(135deg, ${textColors.primary} 0%, ${accent.indigoLightest} 50%, ${accent.violet} 100%)`,
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              {page.title}
-            </span>
-          </h1>
-
-          <p
-            className="mt-4 text-sm mb-6"
-            style={{
-              fontFamily: "var(--font-geist-mono)",
-              color: textColors.dim,
-            }}
-          >
-            {page.description}
-          </p>
-
+    <div className="min-h-screen" style={{ background: background.primary }}>
+      <div className="max-w-6xl mx-auto px-6 pt-20">
+        {/* Banner */}
+        {article.banner && (
           <div
-            className="flex items-center gap-4 text-xs"
-            style={{
-              fontFamily: "var(--font-geist-mono)",
-              color: textColors.veryDim,
-            }}
+            className="relative w-full overflow-hidden rounded-lg"
+            style={{ maxHeight: "260px" }}
           >
-            <span className="flex items-center gap-1.5">
-              <Calendar className="w-3 h-3" />
-              Updated {page.lastUpdated}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Clock className="w-3 h-3" />
-              {page.readingTime}
-            </span>
+            <Image
+              src={article.banner}
+              alt={article.title}
+              fill
+              className="object-cover px-6"
+              style={{ maxHeight: "260px" }}
+              unoptimized={article.banner.startsWith("http")}
+            />
+            {/* Dark gradient overlay at bottom for text legibility */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `linear-gradient(to bottom, transparent 40%, ${background.primary} 100%)`,
+              }}
+            />
           </div>
+        )}
+      </div>
 
-          <div
-            className="mt-6 h-px"
-            style={{
-              background: `linear-gradient(90deg, ${indigo(0.4)}, ${violet(0.2)}, transparent)`,
-            }}
-          />
-        </motion.div>
-
-        {/* Content */}
-        <motion.div variants={fadeInUp}>
-          {page.content.map((block, i) => (
-            <ContentBlock key={i} block={block} previews={previews} />
-          ))}
-        </motion.div>
-
-        {/* Prev/Next */}
-        <motion.div
-          variants={fadeInUp}
-          className="mt-16 pt-8 grid grid-cols-2 gap-4"
-          style={{ borderTop: `1px solid ${indigo(0.1)}` }}
-        >
-          {prev ? (
-            <Link href={`/pages/${prev.slug}`} className="group block">
-              <motion.div
-                className="relative p-4 overflow-hidden"
+      <div className="max-w-6xl mx-auto px-6 py-12">
+        <div className="flex gap-12">
+          <motion.article
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+            className="flex-1 min-w-0 max-w-3xl mx-auto"
+          >
+            {/* Header */}
+            <motion.div variants={fadeInUp} className="mb-10">
+              {/* Back link */}
+              <Link
+                href="/articles"
+                className="inline-flex items-center gap-1.5 text-xs mb-6 transition-colors hover:text-[#a5b4fc]"
                 style={{
-                  background: "rgba(7, 7, 15, 0.6)",
-                  border: `1px solid ${indigo(0.1)}`,
+                  fontFamily: "var(--font-geist-mono)",
+                  color: textColors.dim,
                 }}
-                whileHover={{ x: -2 }}
               >
-                {/* Corner brackets */}
-                <div
-                  className="absolute top-2 left-2 w-3 h-3"
-                  style={{
-                    borderTop: `1.5px solid ${indigo(0.25)}`,
-                    borderLeft: `1.5px solid ${indigo(0.25)}`,
-                  }}
-                />
-                <div
-                  className="absolute bottom-2 right-2 w-3 h-3"
-                  style={{
-                    borderBottom: `1.5px solid ${indigo(0.25)}`,
-                    borderRight: `1.5px solid ${indigo(0.25)}`,
-                  }}
-                />
+                ← Back to Articles
+              </Link>
 
-                <div
-                  className="flex items-center gap-2 text-xs mb-1"
-                  style={{ color: textColors.veryDim }}
-                >
-                  <ChevronLeft className="w-3 h-3" />
-                  Previous
+              {/* Tags */}
+              {article.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {article.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="inline-flex items-center gap-1 px-2 py-0.5 text-xs"
+                      style={{
+                        fontFamily: "var(--font-geist-mono)",
+                        background: indigo(0.08),
+                        border: `1px solid ${indigo(0.2)}`,
+                        color: accent.indigoLightest,
+                      }}
+                    >
+                      <Tag className="w-2.5 h-2.5" />
+                      {tag}
+                    </span>
+                  ))}
                 </div>
-                <p
-                  className="font-medium transition-colors text-sm"
-                  style={{
-                    fontFamily: "var(--font-geist-mono)",
-                    color: textColors.muted,
-                  }}
-                >
-                  <span className="group-hover:text-[#a5b4fc]">
-                    {prev.title}
-                  </span>
-                </p>
-              </motion.div>
-            </Link>
-          ) : (
-            <div />
-          )}
+              )}
 
-          {next ? (
-            <Link href={`/pages/${next.slug}`} className="group block">
-              <motion.div
-                className="relative p-4 text-right overflow-hidden"
+              {/* Title */}
+              <h1
                 style={{
-                  background: "rgba(7, 7, 15, 0.6)",
-                  border: `1px solid ${indigo(0.1)}`,
+                  fontFamily:
+                    "var(--font-pixelify), 'Pixelify Sans', monospace",
+                  fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
+                  lineHeight: 1.2,
                 }}
-                whileHover={{ x: 2 }}
               >
-                {/* Corner brackets */}
-                <div
-                  className="absolute top-2 right-2 w-3 h-3"
+                <span
                   style={{
-                    borderTop: `1.5px solid ${indigo(0.25)}`,
-                    borderRight: `1.5px solid ${indigo(0.25)}`,
-                  }}
-                />
-                <div
-                  className="absolute bottom-2 left-2 w-3 h-3"
-                  style={{
-                    borderBottom: `1.5px solid ${indigo(0.25)}`,
-                    borderLeft: `1.5px solid ${indigo(0.25)}`,
-                  }}
-                />
-
-                <div
-                  className="flex items-center justify-end gap-2 text-xs mb-1"
-                  style={{ color: textColors.veryDim }}
-                >
-                  Next
-                  <ChevronRight className="w-3 h-3" />
-                </div>
-                <p
-                  className="font-medium transition-colors text-sm"
-                  style={{
-                    fontFamily: "var(--font-geist-mono)",
-                    color: textColors.muted,
+                    background: `linear-gradient(135deg, ${textColors.primary} 0%, ${accent.indigoLightest} 50%, ${accent.violet} 100%)`,
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
                   }}
                 >
-                  <span className="group-hover:text-[#a5b4fc]">
-                    {next.title}
-                  </span>
-                </p>
-              </motion.div>
-            </Link>
-          ) : (
-            <div />
-          )}
-        </motion.div>
-      </motion.article>
+                  {article.title}
+                </span>
+              </h1>
 
-      <TableOfContents content={page.content} />
+              <p
+                className="mt-4 text-sm mb-6 leading-relaxed"
+                style={{
+                  fontFamily: "var(--font-geist-mono)",
+                  color: textColors.dim,
+                }}
+              >
+                {article.description}
+              </p>
+
+              {/* Meta row */}
+              <div
+                className="flex flex-wrap items-center gap-4 text-xs"
+                style={{
+                  fontFamily: "var(--font-geist-mono)",
+                  color: textColors.veryDim,
+                }}
+              >
+                <a
+                  href={article.authorGithub}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 transition-colors hover:text-[#a5b4fc]"
+                >
+                  <Github className="w-3 h-3" />
+                  {article.author}
+                </a>
+                <span className="flex items-center gap-1.5">
+                  <Calendar className="w-3 h-3" />
+                  {article.date}
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Clock className="w-3 h-3" />
+                  {article.readingTime}
+                </span>
+              </div>
+
+              <div
+                className="mt-6 h-px"
+                style={{
+                  background: `linear-gradient(90deg, ${indigo(0.4)}, ${violet(0.2)}, transparent)`,
+                }}
+              />
+            </motion.div>
+
+            {/* Body */}
+            <motion.div variants={fadeInUp}>
+              {article.content.map((block, i) => (
+                <ContentBlock key={i} block={block} previews={previews} />
+              ))}
+            </motion.div>
+
+            {/* Footer */}
+            <motion.div
+              variants={fadeInUp}
+              className="mt-16 pt-8 flex items-center justify-between"
+              style={{ borderTop: `1px solid ${indigo(0.1)}` }}
+            >
+              <Link
+                href="/articles"
+                className="inline-flex items-center gap-2 px-4 py-2 text-xs transition-all"
+                style={{
+                  fontFamily: "var(--font-geist-mono)",
+                  background: indigo(0.06),
+                  border: `1px solid ${indigo(0.2)}`,
+                  color: textColors.muted,
+                }}
+              >
+                ← All Articles
+              </Link>
+              <a
+                href={article.authorGithub}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-xs transition-colors hover:text-[#a5b4fc]"
+                style={{
+                  fontFamily: "var(--font-geist-mono)",
+                  color: textColors.dim,
+                }}
+              >
+                <Github className="w-3.5 h-3.5" />
+                Written by {article.author}
+              </a>
+            </motion.div>
+          </motion.article>
+
+          <TableOfContents content={article.content} />
+        </div>
+      </div>
     </div>
   );
 }

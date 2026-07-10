@@ -25,7 +25,7 @@ These aren't rigid steps we go through in order. A first offense can result in a
 
 ## How to Report Something
 
-- PandaBot's report command (context menu), Works in any channel. Sends an alert to the mod team.
+- Panda's `Report Message` command (context menu), Works in any channel. Sends an alert to the mod team.
 - Open a ticket, For more detailed reports or if you want to stay anonymous.
 - DM ModMail bot, Similar to opening a ticket but through DMs.
 

@@ -7,12 +7,12 @@ lastUpdated: May 17, 2026
 readingTime: 4 min read
 ---
 
-Built something useful? We'd love to help it reach more people. There are a few different ways to get your project connected with the [DevHub community](https://github.com/open-devhub).
+Built something useful? We'd love to help it reach more people. There are a few different ways to get your project connected with the [DevHub community](/github).
 
 ## Options
 
 - Feature Listing, We promote your personal project in this website. You keep full ownership.
-- Org Transfer, Your project moves under the [DevHub GitHub org](https://github.com/open-devhub), and you'll be given admin rights over it (eg. [chorddb](https://github.com/open-devhub/chorddb) was built and transferred by [@imiakk](https://github.com/imiakk)). Community maintainers help keep it active. Good for projects you want to outlive your direct involvement.
+- Org Transfer, Your project moves under the [DevHub GitHub org](/github), and you'll be given admin rights over it (eg. [chorddb](/r/chorddb) was built and transferred by [@imiakk](https://github.com/imiakk)). Community maintainers help keep it active. Good for projects you want to outlive your direct involvement.
 
 ## What We Look For
 
@@ -26,4 +26,4 @@ Built something useful? We'd love to help it reach more people. There are a few 
 1. Post in #suggestions (through `/suggest` command from Panda) with the project name, a link to the repo, and a clear description of what it does and why it's useful.
 2. Community members can react and comment under the suggestion thread.
 3. The admin team reviews the proposal, checks the project against the criteria, and votes internally.
-4. If approved, the project is added to the [website](/) and/or [GitHub org](https://github.com/open-devhub). The submitter is credited in the announcement.
+4. If approved, the project is added to the [website](/) and/or [GitHub org](/github). The submitter is credited in the announcement.

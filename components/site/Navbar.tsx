@@ -1,17 +1,19 @@
 "use client";
 
 import { menuItem, menuOverlay } from "@/lib/animations";
+import { indigo, shadow } from "@/lib/colors";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { indigo, shadow } from "@/lib/colors";
 
 const navLinks = [
   { href: "/", label: "HOME" },
   { href: "/rules", label: "RULES" },
   { href: "/resources", label: "RESOURCES" },
   { href: "/pages/getting-started", label: "PAGES" },
+  // { href: "/articles", label: "ARTICLES" },
+  { href: "/partners", label: "PARTNERS" },
 ];
 
 export default function Navbar() {
@@ -45,7 +47,7 @@ export default function Navbar() {
         className="fixed top-4 left-0 right-0 z-50"
       >
         <div
-          className={`mx-auto px-4 transition-all duration-300 ${scrolled ? "max-w-3xl" : "max-w-4xl"}`}
+          className={`mx-auto px-4 transition-all duration-300 ${scrolled ? "max-w-4xl" : "max-w-5xl"}`}
         >
           <div
             className="px-5 py-2.5 flex items-center justify-between"
@@ -96,7 +98,7 @@ export default function Navbar() {
                 return (
                   <Link key={link.href} href={link.href}>
                     <motion.span
-                      className={`relative px-4 py-1.5 text-xs font-mono font-medium tracking-widest transition-colors cursor-pointer ${
+                      className={`relative px-3 py-1.5 text-xs font-mono font-medium tracking-widest transition-colors cursor-pointer ${
                         isActive
                           ? "text-[#a5b4fc]"
                           : "text-[#52525b] hover:text-[#c4c4cc]"
@@ -134,7 +136,6 @@ export default function Navbar() {
                 }}
                 whileHover={{
                   background: indigo(0.2),
-                  // boxShadow: "0 0 20px rgba(99, 102, 241, 0.3)",
                   scale: 1.02,
                 }}
                 whileTap={{ scale: 0.97 }}

@@ -35,7 +35,7 @@ Do not open a public GitHub issue for security vulnerabilities. Instead:
 
 ## Scope
 
-This policy covers all repositories under the [DevHub GitHub org](https://github.com/open-devhub). It does not cover the Discord server itself (that's governed by Discord's own security processes) or third-party bots.
+This policy covers all repositories under the [DevHub GitHub org](/github). It does not cover the Discord server itself (that's governed by Discord's own security processes) or third-party bots.
 
 ## Out of Scope
 

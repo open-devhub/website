@@ -12,7 +12,7 @@ readingTime: 6 min read
 ## Ways to Contribute
 
 - Answer questions asked in channels and threads
-- Review pull requests in our [GitHub org](https://github.com/open-devhub)
+- Review pull requests in our [GitHub org](/github)
 - Improve or add to our documentation
 - Share resources, challenges, posts etc. in designated forum channels
 - Report bugs in open source projects (you will recieve `Bug Hunter` role on our Discord server for doing this)
@@ -21,7 +21,7 @@ readingTime: 6 min read
 
 ## Code Contributions
 
-All DevHub projects live in the [GitHub org](https://github.com/open-devhub). To contribute code, fork the repo, make your changes on a feature branch, and open a PR. Include a clear description of what you changed and why.
+All DevHub projects live in the [GitHub org](/github). To contribute code, fork the repo, make your changes on a feature branch, and open a PR. Include a clear description of what you changed and why.
 
 ### Getting Set Up
 
@@ -54,7 +54,7 @@ PRs that fail linting or tests take longer to review. Catching it yourself first
 
 ## Documentation Contributions
 
-[Docs](/pages) and [resources](/resources) are in the [website repo](https://github.com/open-devhub/website). If you find something confusing, out of date, or just missing, fix it. Small improvements compound into something really good over time.
+[Docs](/pages) and [resources](/resources) are in the [website repo](/r/website). If you find something confusing, out of date, or just missing, fix it. Small improvements compound into something really good over time.
 
 ## Non-Code Contributions
 
