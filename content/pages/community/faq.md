@@ -7,7 +7,7 @@ lastUpdated: May 17, 2026
 readingTime: 5 min read
 ---
 
-Answers to the questions we see most often. If yours isn't here, ask in #chat or open a general support ticket.
+Answers to the questions we see most often. If yours isn't here, open a general support ticket.
 
 ## Do I need to be experienced to join?
 
@@ -15,7 +15,7 @@ Absolutely not. We have members who wrote their first line of code last week and
 
 ## Can I share my project / portfolio / YouTube channel?
 
-Yes, in the right place. Use #project-showcase for projects you've built, #media for [youtube](https://youtube.com) or other media content, Promotional posts in the wrong channels, or DM spam, will get removed and the user may face further consequences.
+Yes, in the right place. Use #project-showcase for projects you've built, #media for [YouTube](https://youtube.com) or other media content, Promotional posts in the wrong channels, or DM spam, will get removed and the user may face further consequences.
 
 ## How do I get roles?
 

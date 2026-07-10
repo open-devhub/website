@@ -1,4 +1,5 @@
 import { getAdjacentPages, getPage } from "@/content/pages-loader";
+import { PREVIEWS } from "@/lib/previews";
 import { notFound } from "next/navigation";
 import PageClient from "../PageClient";
 
@@ -12,7 +13,7 @@ export default function SubPageRoute({ params }: Props) {
   if (!page) notFound();
 
   const { prev, next } = getAdjacentPages(fullSlug);
-  return <PageClient page={page} prev={prev} next={next} />;
+  return <PageClient page={page} prev={prev} next={next} previews={PREVIEWS} />;
 }
 
 export async function generateStaticParams() {

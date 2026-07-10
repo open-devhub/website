@@ -2,7 +2,7 @@
 slug: staff-roles
 title: Staff Roles
 section: Community
-description: Who does what on the DevHub team.
+description: Who does what on the DevHub mod team.
 lastUpdated: May 17, 2026
 readingTime: 3 min read
 ---
@@ -15,7 +15,7 @@ Manages the mod team, handles escalated appeals, makes decisions on bans, and ta
 
 ## Moderators
 
-Day-to-day enforcement of community rules. Handles reports, issues warnings, and manages mutes. Your first point of contact for most situations. All mods can be reached via DM or the /report command.
+Day-to-day enforcement of community rules. Handles reports, issues warnings, and manages mutes. Your first point of contact for most situations. All mods can be reached via DM or Tickets/ModMail.
 
 ## Staff
 

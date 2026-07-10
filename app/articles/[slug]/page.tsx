@@ -1,4 +1,5 @@
 import { articles } from "@/content/articles-loader";
+import { PREVIEWS } from "@/lib/previews";
 import { notFound } from "next/navigation";
 import ArticleClient from "./ArticleClient";
 
@@ -10,7 +11,7 @@ export default async function ArticleRoute({ params }: Props) {
   const { slug } = (await params) as { slug: string };
   const article = articles.find((a) => a.slug === slug);
   if (!article) notFound();
-  return <ArticleClient article={article} />;
+  return <ArticleClient article={article} previews={PREVIEWS} />;
 }
 
 export async function generateStaticParams() {

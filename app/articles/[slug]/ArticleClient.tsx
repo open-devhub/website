@@ -1,5 +1,6 @@
 "use client";
 
+import type { PreviewData } from "@/components/LinkPreviewCard";
 import { LinkPreviewCard } from "@/components/LinkPreviewCard";
 import type { Article } from "@/content/articles-loader";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
@@ -30,11 +31,18 @@ import redirects from "../../../lib/redirects.config";
 
 interface Props {
   article: Article;
+  previews?: Record<string, PreviewData>;
 }
 
 // ─── Inline formatter (identical to PageClient's ApplySpecialClass) ──────────
 
-function ApplySpecialClass({ text }: { text: string }) {
+function ApplySpecialClass({
+  text,
+  previews,
+}: {
+  text: string;
+  previews?: Record<string, PreviewData>;
+}) {
   const regex =
     /(`[^`]+`)|(\[[^\]]+\]\([^)]+\))|(#[\w-]+)|(\*\*\*[^*]+\*\*\*|___[^_]+___)|(\*\*[^*]+\*\*|__[^_]+__)|(\*[^*]+\*|_[^_]+_)/g;
   const parts: React.ReactNode[] = [];
@@ -70,6 +78,7 @@ function ApplySpecialClass({ text }: { text: string }) {
           <LinkPreviewCard
             key={key++}
             href={linkMatch[2]}
+            previews={previews}
             newTab={
               linkMatch[2].startsWith("https") ||
               redirects[0].sources.includes(linkMatch[2])
@@ -120,7 +129,13 @@ function ApplySpecialClass({ text }: { text: string }) {
 
 // ─── Block renderer ───────────────────────────────────────────
 
-function ContentBlock({ block }: { block: ContentBlockType }) {
+function ContentBlock({
+  block,
+  previews,
+}: {
+  block: ContentBlockType;
+  previews?: Record<string, PreviewData>;
+}) {
   switch (block.type) {
     case "h2":
       return (
@@ -132,7 +147,7 @@ function ContentBlock({ block }: { block: ContentBlockType }) {
             color: textColors.primary,
           }}
         >
-          <ApplySpecialClass text={block.text || ""} />
+          <ApplySpecialClass text={block.text || ""} previews={previews} />
         </h2>
       );
     case "h3":
@@ -144,7 +159,7 @@ function ContentBlock({ block }: { block: ContentBlockType }) {
             color: textColors.primary,
           }}
         >
-          <ApplySpecialClass text={block.text || ""} />
+          <ApplySpecialClass text={block.text || ""} previews={previews} />
         </h3>
       );
     case "p":
@@ -156,7 +171,7 @@ function ContentBlock({ block }: { block: ContentBlockType }) {
             color: textColors.muted,
           }}
         >
-          <ApplySpecialClass text={block.text || ""} />
+          <ApplySpecialClass text={block.text || ""} previews={previews} />
         </p>
       );
     case "ul":
@@ -176,7 +191,7 @@ function ContentBlock({ block }: { block: ContentBlockType }) {
                 style={{ background: indigo(0.5) }}
               />
               <span>
-                <ApplySpecialClass text={item} />
+                <ApplySpecialClass text={item} previews={previews} />
               </span>
             </li>
           ))}
@@ -201,7 +216,7 @@ function ContentBlock({ block }: { block: ContentBlockType }) {
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span>
-                <ApplySpecialClass text={item} />
+                <ApplySpecialClass text={item} previews={previews} />
               </span>
             </li>
           ))}
@@ -293,7 +308,7 @@ function ContentBlock({ block }: { block: ContentBlockType }) {
               color: textColors.muted,
             }}
           >
-            <ApplySpecialClass text={block.text || ""} />
+            <ApplySpecialClass text={block.text || ""} previews={previews} />
           </p>
         </div>
       );
@@ -368,7 +383,7 @@ function TableOfContents({ content }: { content: ContentBlockType[] }) {
 
 // ─── Main component ───────────────────────────────────────────
 
-export default function ArticleClient({ article }: Props) {
+export default function ArticleClient({ article, previews }: Props) {
   return (
     <div className="min-h-screen" style={{ background: background.primary }}>
       <div className="max-w-6xl mx-auto px-6 pt-20">
@@ -507,7 +522,7 @@ export default function ArticleClient({ article }: Props) {
             {/* Body */}
             <motion.div variants={fadeInUp}>
               {article.content.map((block, i) => (
-                <ContentBlock key={i} block={block} />
+                <ContentBlock key={i} block={block} previews={previews} />
               ))}
             </motion.div>
 

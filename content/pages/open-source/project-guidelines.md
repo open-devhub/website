@@ -7,7 +7,7 @@ lastUpdated: May 17, 2026
 readingTime: 5 min read
 ---
 
-These guidelines apply to all projects under the [DevHub GitHub org](https://github.com/open-devhub). They're not bureaucracy, they're the things that make a project maintainable by multiple people over time.
+These guidelines apply to all projects under the [DevHub GitHub org](/github). They're not bureaucracy, they're the things that make a project maintainable by multiple people over time.
 
 ## Required Files
 

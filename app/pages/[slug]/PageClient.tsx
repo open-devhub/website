@@ -1,5 +1,6 @@
 "use client";
 
+import type { PreviewData } from "@/components/LinkPreviewCard";
 import { LinkPreviewCard } from "@/components/LinkPreviewCard";
 import { Page } from "@/content/pages-loader";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
@@ -31,9 +32,16 @@ interface Props {
   page: Page;
   prev?: Page;
   next?: Page;
+  previews?: Record<string, PreviewData>;
 }
 
-function ApplySpecialClass({ text }: { text: string }) {
+function ApplySpecialClass({
+  text,
+  previews,
+}: {
+  text: string;
+  previews?: Record<string, PreviewData>;
+}) {
   const regex =
     /(`[^`]+`)|(\[[^\]]+\]\([^)]+\))|(#[\w-]+)|(\*\*\*[^*]+\*\*\*|___[^_]+___)|(\*\*[^*]+\*\*|__[^_]+__)|(\*[^*]+\*|_[^_]+_)/g;
   const parts: React.ReactNode[] = [];
@@ -69,6 +77,7 @@ function ApplySpecialClass({ text }: { text: string }) {
           <LinkPreviewCard
             key={key++}
             href={linkMatch[2]}
+            previews={previews}
             newTab={
               linkMatch[2].startsWith("https") ||
               redirects[0].sources.includes(linkMatch[2])
@@ -117,7 +126,13 @@ function ApplySpecialClass({ text }: { text: string }) {
   return <>{parts}</>;
 }
 
-function ContentBlock({ block }: { block: ContentBlockType }) {
+function ContentBlock({
+  block,
+  previews,
+}: {
+  block: ContentBlockType;
+  previews?: Record<string, PreviewData>;
+}) {
   switch (block.type) {
     case "h2":
       return (
@@ -129,7 +144,7 @@ function ContentBlock({ block }: { block: ContentBlockType }) {
             color: textColors.primary,
           }}
         >
-          <ApplySpecialClass text={block.text || ""} />
+          <ApplySpecialClass text={block.text || ""} previews={previews} />
         </h2>
       );
     case "h3":
@@ -141,7 +156,7 @@ function ContentBlock({ block }: { block: ContentBlockType }) {
             color: textColors.primary,
           }}
         >
-          <ApplySpecialClass text={block.text || ""} />
+          <ApplySpecialClass text={block.text || ""} previews={previews} />
         </h3>
       );
     case "p":
@@ -153,7 +168,7 @@ function ContentBlock({ block }: { block: ContentBlockType }) {
             color: textColors.muted,
           }}
         >
-          <ApplySpecialClass text={block.text || ""} />
+          <ApplySpecialClass text={block.text || ""} previews={previews} />
         </p>
       );
     case "ul":
@@ -173,7 +188,7 @@ function ContentBlock({ block }: { block: ContentBlockType }) {
                 style={{ background: indigo(0.5) }}
               />
               <span>
-                <ApplySpecialClass text={item} />
+                <ApplySpecialClass text={item} previews={previews} />
               </span>
             </li>
           ))}
@@ -198,7 +213,7 @@ function ContentBlock({ block }: { block: ContentBlockType }) {
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span>
-                <ApplySpecialClass text={item} />
+                <ApplySpecialClass text={item} previews={previews} />
               </span>
             </li>
           ))}
@@ -291,7 +306,7 @@ function ContentBlock({ block }: { block: ContentBlockType }) {
               color: textColors.muted,
             }}
           >
-            <ApplySpecialClass text={block.text || ""} />
+            <ApplySpecialClass text={block.text || ""} previews={previews} />
           </p>
         </div>
       );
@@ -337,7 +352,7 @@ function TableOfContents({ content }: { content: ContentBlockType[] }) {
   );
 }
 
-export default function PageClient({ page, prev, next }: Props) {
+export default function PageClient({ page, prev, next, previews }: Props) {
   return (
     <div className="flex gap-12">
       <motion.article
@@ -427,7 +442,7 @@ export default function PageClient({ page, prev, next }: Props) {
         {/* Content */}
         <motion.div variants={fadeInUp}>
           {page.content.map((block, i) => (
-            <ContentBlock key={i} block={block} />
+            <ContentBlock key={i} block={block} previews={previews} />
           ))}
         </motion.div>
 

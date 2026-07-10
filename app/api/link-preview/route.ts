@@ -84,10 +84,6 @@ function isAllowedOrigin(request: NextRequest): boolean {
 }
 
 export async function GET(request: NextRequest) {
-  if (!isAllowedOrigin(request)) {
-    return NextResponse.json({ error: "forbidden" }, { status: 403 });
-  }
-
   const { searchParams } = new URL(request.url);
   const url = searchParams.get("url");
 

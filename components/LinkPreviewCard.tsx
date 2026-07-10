@@ -3,53 +3,22 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
-interface PreviewData {
+export interface PreviewData {
   title: string | null;
   description: string | null;
-  image: string | null;
-  url: string;
-}
-
-interface CachedPreview {
-  data: PreviewData | null;
-  cachedAt: number;
-}
-
-const CACHE_PREFIX = "link-preview:";
-const CACHE_TTL_MS = 60 * 60 * 1000;
-
-function readCache(href: string): PreviewData | null | undefined {
-  try {
-    const raw = window.localStorage.getItem(CACHE_PREFIX + href);
-    if (!raw) return undefined;
-    const parsed: CachedPreview = JSON.parse(raw);
-    if (Date.now() - parsed.cachedAt > CACHE_TTL_MS) {
-      window.localStorage.removeItem(CACHE_PREFIX + href);
-      return undefined;
-    }
-    return parsed.data;
-  } catch {
-    return undefined;
-  }
-}
-
-function writeCache(href: string, data: PreviewData | null) {
-  try {
-    if (data == null) return;
-    const entry: CachedPreview = { data, cachedAt: Date.now() };
-    window.localStorage.setItem(CACHE_PREFIX + href, JSON.stringify(entry));
-  } catch {
-    // storage unavailable or full, fall back to no persistence
-  }
+  image?: string | null;
+  // url: string;
 }
 
 export function LinkPreviewCard({
   href,
   newTab = true,
+  previews,
   children,
 }: {
   href: string;
   newTab?: boolean;
+  previews?: Record<string, PreviewData>;
   children: React.ReactNode;
 }) {
   const [hovering, setHovering] = useState(false);
@@ -85,19 +54,26 @@ export function LinkPreviewCard({
   }, [hovering]);
 
   const fetchPreview = () => {
-    const cached = readCache(href);
-    if (cached !== undefined) {
-      setData(cached);
+    const normalizedHref = (() => {
+      try {
+        return new URL(href, window.location.origin).pathname;
+      } catch {
+        return href;
+      }
+    })();
+
+    const preview = previews?.[href] ?? previews?.[normalizedHref];
+    if (preview) {
+      setData(preview);
       return;
     }
+
     fetch(`/api/link-preview?url=${encodeURIComponent(href)}`)
       .then((res) => (res.ok ? res.json() : null))
       .then((json) => {
-        writeCache(href, json);
         setData(json);
       })
       .catch(() => {
-        writeCache(href, null);
         setData(null);
       });
   };
@@ -138,7 +114,7 @@ export function LinkPreviewCard({
     scheduleHide();
   };
 
-  const hasContent = Boolean(data?.description);
+  const hasContent = Boolean(data?.title || data?.description || data?.image);
 
   return (
     <>

@@ -7,7 +7,7 @@ lastUpdated: May 17, 2026
 readingTime: 4 min read
 ---
 
-The [DevHub GitHub org](https://github.com/open-devhub) is where community members build things together. It's not a showcase of finished work, it's an active space where contributors open issues, review PRs, and ship real software.
+The [DevHub GitHub org](/github) is where community members build things together. It's not a showcase of finished work, it's an active space where contributors open issues, review PRs, and ship real software.
 
 ## What We Build
 
