@@ -397,13 +397,11 @@ export default function ArticleClient({ article, previews }: Props) {
             className="relative w-full overflow-hidden rounded-lg"
             style={{ maxHeight: "260px" }}
           >
-            <Image
+            <img
               src={article.banner}
               alt={article.title}
-              fill
-              className="object-cover px-6"
+              className="w-full h-full object-cover"
               style={{ maxHeight: "260px" }}
-              unoptimized={article.banner.startsWith("http")}
             />
             {/* Dark gradient overlay at bottom for text legibility */}
             <div
