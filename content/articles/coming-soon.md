@@ -1,19 +1,19 @@
 ---
-slug: more-coming-soon
-title: More Articles Coming Soon
-description: The first article's up — more are on the way.
+slug: coming-soon
+title: Coming Soon
+description: Articles are coming soon!!
 banner: https://shorturl.at/DWs97
 author: Caleb
 authorGithub: https://github.com/calebephrem
 date: July 10, 2026
-tags: [more, coming, soon]
+tags: [coming, soon]
 ---
 
-The Articles section is officially live — you just read (or skipped past) the first one. More are on the way.
+We're just getting the Articles section up and running here on DevHub. Nothing's published yet — but that will change soon.
 
 ## What to expect
 
-Going forward, you can look forward to write-ups covering:
+Once things kick off, you can look forward to write-ups covering:
 
 - **Discord and Discord.js/Discord.py updates** — breakdowns of new releases, breaking changes, and migration tips
 - **Community guides** — practical walkthroughs for setting up bots, moderation, and server tooling
@@ -27,4 +27,4 @@ A lot of useful knowledge about building on Discord ends up scattered across ran
 
 ![Under Construction](https://shorturl.at/CEn66)
 
-Check back soon — the next few articles are already in the works.
+Check back soon — the first few articles are already in the works.
