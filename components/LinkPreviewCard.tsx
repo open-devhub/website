@@ -68,7 +68,7 @@ export function LinkPreviewCard({
       return;
     }
 
-    fetch(`/api/link-preview?url=${encodeURIComponent(href)}`)
+    fetch(`/api/preview?url=${encodeURIComponent(href)}`)
       .then((res) => (res.ok ? res.json() : null))
       .then((json) => {
         setData(json);
