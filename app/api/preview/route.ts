@@ -63,8 +63,8 @@ function isSafeUrl(candidate: string): boolean {
 
 const ALLOWED_ORIGINS = [
   "https://devhub.vercel.app",
-  "http://localhost:3000",
-  "http://127.0.0.1:3000",
+  // "http://localhost:3000",
+  // "http://127.0.0.1",
 ];
 
 function isAllowedOrigin(request: NextRequest): boolean {
@@ -84,6 +84,11 @@ function isAllowedOrigin(request: NextRequest): boolean {
 }
 
 export async function GET(request: NextRequest) {
+  if (!isAllowedOrigin(request)) {
+    // console.log(request.url);
+    return NextResponse.json({ error: "forbidden" }, { status: 403 });
+  }
+
   const { searchParams } = new URL(request.url);
   const url = searchParams.get("url");
 
