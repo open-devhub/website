@@ -17,12 +17,6 @@ const COMMON_IMAGES = {
 
 const HARDCODED_PREVIEWS: Record<string, PreviewData> = {
   // General
-  "/": {
-    title: "DevHub",
-    description:
-      "DevHub is a Discord community for developers and creators, a place to share projects, get help, exchange feedback, and meet people who enjoy building things.",
-    image: COMMON_IMAGES.devhub,
-  },
   "/join": {
     title: "Join DevHub",
     description: `Join ${members}+ developers who build together, learn together, and ship together.`,
