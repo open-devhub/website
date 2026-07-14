@@ -1,6 +1,8 @@
 "use client";
 
 import ShinyText from "@/components/bits/ShinyText";
+import { Partner, partners } from "@/content/partners";
+import { fadeInUp, staggerContainer } from "@/lib/animations";
 import {
   accent,
   background,
@@ -11,7 +13,6 @@ import {
   semantic,
   text,
 } from "@/lib/colors";
-import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -23,41 +24,6 @@ import {
   Users,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-
-type Partner = {
-  inviteCode: string;
-  tags?: string[];
-  websiteUrl?: string;
-  githubUrl?: string;
-
-  // Optional fallback if Discord has no banner
-  banner?: string;
-};
-
-const partners: Partner[] = [
-  {
-    inviteCode: "3xKFvKhuGR",
-    tags: ["Coding", "Programming", "Developer", "Python", "Community"],
-    websiteUrl: "https://thecodeversehub.tech",
-    githubUrl: "https://github.com/TheCodeVerseHub",
-  },
-  {
-    inviteCode: "F6Z27BMBhE",
-    tags: [
-      "Coding",
-      "Programming",
-      "Developing",
-      "Games and fun",
-      "Server Not Found",
-    ],
-  },
-  {
-    inviteCode: "BGrCXccWDa",
-    banner: partnerColors.bannerBrown,
-    tags: ["Javaceans", "Coding", "DEV Support"],
-    githubUrl: "https://github.com/drive-for-java",
-  },
-];
 
 type DiscordData = {
   guildId: string;
