@@ -1,5 +1,5 @@
 import { getAdjacentPages, getPage } from "@/content/pages-loader";
-import { PREVIEWS } from "@/lib/previews";
+import { PREVIEWS } from "@/content/previews";
 import { notFound } from "next/navigation";
 import PageClient from "../PageClient";
 
