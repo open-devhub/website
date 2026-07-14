@@ -9,7 +9,7 @@ export interface PreviewData {
   image?: string | null;
 }
 
-function truncate(desc: string, maxLength = 300) {
+function truncate(desc: string, maxLength = 200) {
   if (desc.length <= maxLength) return desc;
   const cut = desc.slice(0, maxLength);
   const lastSpace = cut.lastIndexOf(" ");
