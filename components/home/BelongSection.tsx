@@ -1,9 +1,8 @@
 "use client";
 
 import { fadeInUp, staggerContainer } from "@/lib/animations";
-import { accent, background, decorative, indigo, text } from "@/lib/colors";
+import { accent, background, indigo, text } from "@/lib/colors";
 import { motion } from "framer-motion";
-import SoftAurora from "../bits/SoftAurora";
 
 const memberTypes = [
   "Solo founders figuring it out as they go",
@@ -29,7 +28,7 @@ export default function BelongSection() {
       className="relative py-24 md:py-32 overflow-hidden"
       style={{ background: background.primary }}
     >
-      <SoftAurora
+      {/* <SoftAurora
         speed={0.6}
         scale={1.5}
         brightness={1}
@@ -45,7 +44,7 @@ export default function BelongSection() {
         colorSpeed={1}
         enableMouseInteraction
         mouseInfluence={0.25}
-      />
+      /> */}
       <div className="absolute inset-0 dot-bg opacity-40 pointer-events-none" />
       <div
         className="absolute top-0 left-0 right-0 h-px"
