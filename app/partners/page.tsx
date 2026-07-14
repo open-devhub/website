@@ -1,6 +1,8 @@
 "use client";
 
 import ShinyText from "@/components/bits/ShinyText";
+import { Partner, partners } from "@/content/partners";
+import { fadeInUp, staggerContainer } from "@/lib/animations";
 import {
   accent,
   background,
@@ -11,7 +13,6 @@ import {
   semantic,
   text,
 } from "@/lib/colors";
-import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -23,41 +24,6 @@ import {
   Users,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-
-type Partner = {
-  inviteCode: string;
-  tags?: string[];
-  websiteUrl?: string;
-  githubUrl?: string;
-
-  // Optional fallback if Discord has no banner
-  banner?: string;
-};
-
-const partners: Partner[] = [
-  {
-    inviteCode: "3xKFvKhuGR",
-    tags: ["Coding", "Programming", "Developer", "Python", "Community"],
-    websiteUrl: "https://thecodeversehub.tech",
-    githubUrl: "https://github.com/TheCodeVerseHub",
-  },
-  {
-    inviteCode: "F6Z27BMBhE",
-    tags: [
-      "Coding",
-      "Programming",
-      "Developing",
-      "Games and fun",
-      "Server Not Found",
-    ],
-  },
-  {
-    inviteCode: "BGrCXccWDa",
-    banner: partnerColors.bannerBrown,
-    tags: ["Javaceans", "Coding", "DEV Support"],
-    githubUrl: "https://github.com/drive-for-java",
-  },
-];
 
 type DiscordData = {
   guildId: string;
@@ -71,7 +37,8 @@ type DiscordData = {
   iconUrl: string | null;
   bannerUrl: string | null;
 
-  traits: string[];
+  traits: { label: string }[];
+  features: string[];
 };
 
 const TRAIT_LABELS: Record<string, { label: string; icon: typeof BadgeCheck }> =
@@ -220,9 +187,9 @@ function PartnerCard({
   const serverDescription =
     discord?.description ?? "No server description available.";
 
-  const tags = partner.tags ?? [];
+  const features = (discord?.features ?? []).filter((t) => TRAIT_LABELS[t]);
 
-  const traits = (discord?.traits ?? []).filter((t) => TRAIT_LABELS[t]);
+  const traits = (discord?.traits ?? []).filter((t) => t.label);
 
   const fallbackBanner = partner.banner;
 
@@ -359,7 +326,7 @@ function PartnerCard({
 
         {/* Name */}
         <h2
-          className="text-base font-semibold mb-1.5"
+          className="text-base font-semibold mb-3"
           style={{
             fontFamily: "var(--font-geist-mono)",
             color: text.primary,
@@ -368,14 +335,14 @@ function PartnerCard({
           {serverName}
         </h2>
 
-        {/* Traits */}
-        {traits.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-2.5">
-            {traits.map((trait) => {
-              const { label, icon: Icon } = TRAIT_LABELS[trait];
+        {/* Features */}
+        {features.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-4">
+            {features.map((feature) => {
+              const { label, icon: Icon } = TRAIT_LABELS[feature];
               return (
                 <span
-                  key={trait}
+                  key={feature}
                   className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 uppercase tracking-widest"
                   style={{
                     fontFamily: "var(--font-geist-mono)",
@@ -403,11 +370,11 @@ function PartnerCard({
           {serverDescription}
         </p>
 
-        {/* Tags */}
+        {/* Traits */}
         <div className="flex flex-wrap gap-1.5 mb-5">
-          {tags.map((tag) => (
+          {traits.map((trait) => (
             <span
-              key={tag}
+              key={trait.label}
               className="text-[10px] px-2 py-0.5 uppercase tracking-widest"
               style={{
                 fontFamily: "var(--font-geist-mono)",
@@ -416,7 +383,7 @@ function PartnerCard({
                 border: `1px solid ${indigo(0.2)}`,
               }}
             >
-              {tag}
+              {trait.label}
             </span>
           ))}
         </div>
@@ -424,7 +391,7 @@ function PartnerCard({
         {/* Buttons */}
         <div className="flex flex-wrap gap-3">
           <motion.a
-            href={`https://discord.gg/${partner.inviteCode}`}
+            href={`https://discord.gg/${partner.code}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono font-semibold tracking-wider uppercase text-white"
@@ -502,7 +469,7 @@ export default function PartnersPage() {
     Record<string, DiscordData | null>
   >({});
   const [loadingMap, setLoadingMap] = useState<Record<string, boolean>>(() =>
-    Object.fromEntries(partners.map((p) => [p.inviteCode, true])),
+    Object.fromEntries(partners.map((p) => [p.code, true])),
   );
 
   useEffect(() => {
@@ -513,26 +480,27 @@ export default function PartnersPage() {
         partners.map(async (p) => {
           try {
             const res = await fetch(
-              `https://discord.com/api/v10/invites/${p.inviteCode}?with_counts=true`,
+              `https://discord.com/api/v10/invites/${p.code}?with_counts=true`,
               { signal: controller.signal },
             );
 
             if (!res.ok) {
-              setDiscordData((prev) => ({ ...prev, [p.inviteCode]: null }));
+              setDiscordData((prev) => ({ ...prev, [p.code]: null }));
               return;
             }
 
             const data = await res.json();
             const guild = data.guild;
+            const profile = data.profile;
 
             if (!guild) {
-              setDiscordData((prev) => ({ ...prev, [p.inviteCode]: null }));
+              setDiscordData((prev) => ({ ...prev, [p.code]: null }));
               return;
             }
 
             setDiscordData((prev) => ({
               ...prev,
-              [p.inviteCode]: {
+              [p.code]: {
                 guildId: guild.id,
 
                 name: guild.name,
@@ -549,18 +517,19 @@ export default function PartnersPage() {
                   ? `https://cdn.discordapp.com/banners/${guild.id}/${guild.banner}.png?size=1024`
                   : null,
 
-                traits: guild.features ?? [],
+                features: guild.features ?? [],
+                traits: profile.traits ?? [],
               },
             }));
           } catch (error) {
             const aborted =
               error instanceof DOMException && error.name === "AbortError";
             if (!aborted) {
-              setDiscordData((prev) => ({ ...prev, [p.inviteCode]: null }));
+              setDiscordData((prev) => ({ ...prev, [p.code]: null }));
             }
           } finally {
             if (!controller.signal.aborted) {
-              setLoadingMap((prev) => ({ ...prev, [p.inviteCode]: false }));
+              setLoadingMap((prev) => ({ ...prev, [p.code]: false }));
             }
           }
         }),
@@ -727,13 +696,13 @@ export default function PartnersPage() {
         {/* ─── Cards ─── */}
         <div className="flex flex-col gap-6">
           {partners.map((partner, i) =>
-            loadingMap[partner.inviteCode] ? (
-              <PartnerCardSkeleton key={partner.inviteCode} index={i} />
+            loadingMap[partner.code] ? (
+              <PartnerCardSkeleton key={partner.code} index={i} />
             ) : (
               <PartnerCard
-                key={partner.inviteCode}
+                key={partner.code}
                 partner={partner}
-                discord={discordData[partner.inviteCode] ?? null}
+                discord={discordData[partner.code] ?? null}
                 index={i}
               />
             ),

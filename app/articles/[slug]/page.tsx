@@ -1,5 +1,5 @@
 import { articles } from "@/content/articles-loader";
-import { PREVIEWS } from "@/lib/previews";
+import { PREVIEWS } from "@/content/previews";
 import { notFound } from "next/navigation";
 import ArticleClient from "./ArticleClient";
 
