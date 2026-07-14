@@ -7,7 +7,13 @@ export interface PreviewData {
   title: string | null;
   description: string | null;
   image?: string | null;
-  // url: string;
+}
+
+function truncate(desc: string, maxLength = 300) {
+  if (desc.length <= maxLength) return desc;
+  const cut = desc.slice(0, maxLength);
+  const lastSpace = cut.lastIndexOf(" ");
+  return `${cut.slice(0, lastSpace > 0 ? lastSpace : maxLength)}…`;
 }
 
 export function LinkPreviewCard({
@@ -141,7 +147,7 @@ export function LinkPreviewCard({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 4 }}
                 transition={{ duration: 0.15 }}
-                className="fixed z-50 w-80 p-4 overflow-hidden"
+                className="fixed z-50 w-[22rem] p-4 overflow-hidden"
                 style={{
                   top: pos.top,
                   left: pos.left,
@@ -187,11 +193,11 @@ export function LinkPreviewCard({
                       loading="lazy"
                       referrerPolicy="no-referrer"
                       onError={() => setImgError(true)}
-                      className="absolute top-0 right-0 w-14 h-14 object-cover"
+                      className="float-right ml-3 w-[4.5rem] h-[4.5rem] object-cover shrink-0"
                       style={{ border: `1px solid ${indigo(0.12)}` }}
                     />
                   )}
-                  <div className={data?.image && !imgError ? "pr-16" : ""}>
+                  <div className="min-w-0">
                     <a
                       href={href}
                       target={newTab ? "_blank" : "_self"}
@@ -210,13 +216,9 @@ export function LinkPreviewCard({
                         style={{
                           fontFamily: "var(--font-geist-mono)",
                           color: text.muted,
-                          display: "-webkit-box",
-                          WebkitLineClamp: 3,
-                          WebkitBoxOrient: "vertical",
-                          overflow: "hidden",
                         }}
                       >
-                        {data.description}
+                        {truncate(data.description)}
                       </p>
                     )}
                   </div>
