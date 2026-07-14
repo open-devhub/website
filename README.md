@@ -4,12 +4,11 @@ The official website for the DevHub developer community. Built with Next.js, Typ
 
 ## What's in here
 
-- Community docs and guides
-  - rules
-  - getting started
-  - how-to's
+- Landing page
+- Community guides
 - Resource library, curated tools and learning materials
-- Documentations:
+- Partners page
+- DevHub Pages:
   - Getting Started
   - Join Guide
   - Server Info
@@ -20,6 +19,7 @@ The official website for the DevHub developer community. Built with Next.js, Typ
   - Moderation Guide
   - Staff Roles
   - FAQ
+  - and many many more
 
 ## Tech Stack
 
@@ -27,6 +27,7 @@ The official website for the DevHub developer community. Built with Next.js, Typ
 - **Language** - TypeScript
 - **Styling** - Tailwind CSS
 - **Animation Libriary** - GSAP and Framer Motion
+- **Component Libriary** - React Bits
 - **Icons** - Lucide
 - **Deployment** - Vercel
 
@@ -35,14 +36,14 @@ The official website for the DevHub developer community. Built with Next.js, Typ
 ### Prerequisites
 
 - Node.js 18+
-- npm, yarn, or pnpm
+- bun, npm, yarn, or pnpm
 
 ### Setup
 
 ```bash
 # Clone the repo
 git clone https://github.com/open-devhub/website
-cd devhub-website
+cd website
 
 # Install dependencies
 npm install
@@ -63,7 +64,7 @@ Open [http://localhost:3000](http://localhost:3000) and you're in.
 │   └── 📄 settings.json
 ├── 📁 app
 │   ├── 📁 api
-│   │   └── 📁 link-preview
+│   │   └── 📁 preview
 │   │       └── 📄 route.ts
 │   ├── 📁 pages
 │   │   ├── 📁 [slug]
@@ -72,6 +73,12 @@ Open [http://localhost:3000](http://localhost:3000) and you're in.
 │   │   │   ├── 📄 PageClient.tsx
 │   │   │   └── 📄 page.tsx
 │   │   ├── 📄 layout.tsx
+│   │   └── 📄 page.tsx
+│   ├── 📁 articles
+│   │   ├── 📁 [slug]
+│   │   │   ├── 📄 ArticleClient.tsx
+│   │   │   └── 📄 page.tsx
+│   │   ├── 📄 ArticlesListingClient.tsx
 │   │   └── 📄 page.tsx
 │   ├── 📁 partners
 │   │   └── 📄 page.tsx
@@ -116,28 +123,9 @@ Open [http://localhost:3000](http://localhost:3000) and you're in.
 │   └── 📄 LinkPreviewCard.tsx
 ├── 📁 content
 │   ├── 📁 pages
-│   │   ├── 📁 bots
-│   │   │   ├── 📄 adding-a-bot.md
-│   │   │   └── 📄 bots.md
-│   │   ├── 📁 community
-│   │   │   ├── 📄 acknowledgements.md
-│   │   │   ├── 📄 code-of-conduct.md
-│   │   │   ├── 📄 faq.md
-│   │   │   ├── 📄 getting-started.md
-│   │   │   ├── 📄 how-to-ask.md
-│   │   │   ├── 📄 how-to-help.md
-│   │   │   ├── 📄 join-guide.md
-│   │   │   ├── 📄 moderation-guide.md
-│   │   │   ├── 📄 server-info.md
-│   │   │   └── 📄 staff-roles.md
-│   │   ├── 📁 legal
-│   │   │   ├── 📄 privacy-policy.md
-│   │   │   └── 📄 security-notice.md
-│   │   └── 📁 open-source
-│   │       ├── 📄 contributing.md
-│   │       ├── 📄 github-org.md
-│   │       ├── 📄 project-guidelines.md
-│   │       └── 📄 submit-project.md
+│   │   └── ...
+│   ├── 📁 articles
+│   │   └── ...
 │   ├── 📄 pages-loader.ts
 │   ├── 📄 pages-sections.ts
 │   ├── 📄 resources.ts
@@ -180,7 +168,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full guide. The short version:
 4. Run `npm run lint`
 5. Open a PR with a clear description
 
-First time contributing to open source? Look for issues tagged [`good first issue`](https://github.com/devhub-community/devhub-website/issues?q=is%3Aopen+label%3A%22good+first+issue%22).
+First time contributing to open source? Look for issues tagged [`good first issue`](https://github.com/open-devhub/website/issues?q=is%3Aopen+label%3A%22good+first+issue%22).
 
 ## Scripts
 
