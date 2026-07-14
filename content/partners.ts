@@ -1,7 +1,7 @@
 import { partner as partnerColors } from "@/lib/colors";
 
 export type Partner = {
-  inviteCode: string;
+  code: string;
   tags?: string[];
   websiteUrl?: string;
   githubUrl?: string;
@@ -12,25 +12,16 @@ export type Partner = {
 
 export const partners: Partner[] = [
   {
-    inviteCode: "3xKFvKhuGR",
-    tags: ["Coding", "Programming", "Developer", "Python", "Community"],
+    code: "3xKFvKhuGR",
     websiteUrl: "https://thecodeversehub.tech",
     githubUrl: "https://github.com/TheCodeVerseHub",
   },
   {
-    inviteCode: "F6Z27BMBhE",
-    tags: [
-      "Coding",
-      "Programming",
-      "Developing",
-      "Games and fun",
-      "Server Not Found",
-    ],
+    code: "F6Z27BMBhE",
   },
   {
-    inviteCode: "BGrCXccWDa",
+    code: "BGrCXccWDa",
     banner: partnerColors.bannerBrown,
-    tags: ["Javaceans", "Coding", "DEV Support"],
     githubUrl: "https://github.com/drive-for-java",
   },
 ];

@@ -65,7 +65,7 @@ const HARDCODED_PREVIEWS: Record<string, PreviewData> = {
     description:
       "The Codeverse Hub is a developer community and open-source organization. We build real projects, review each other's code, and help developers grow — from first commit to production maintainer.",
     image:
-      "https://cdn.discordapp.com/icons/1263067254153805905/be135eaf9deb55ef9a4c0b52648de511.webp?size=96&amp;quality=lossless",
+      "https://cdn.discordapp.com/icons/1263067254153805905/be135eaf9deb55ef9a4c0b52648de511.webp?size=96&quality=lossless",
   },
 
   // GitHub
