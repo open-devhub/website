@@ -9,7 +9,7 @@ export interface PreviewData {
   image?: string | null;
 }
 
-function truncate(desc: string, maxLength = 200) {
+function truncate(desc: string, maxLength = 260) {
   if (desc.length <= maxLength) return desc;
   const cut = desc.slice(0, maxLength);
   const lastSpace = cut.lastIndexOf(" ");
@@ -33,6 +33,7 @@ export function LinkPreviewCard({
   const [pos, setPos] = useState({ top: 0, left: 0 });
   const [mounted, setMounted] = useState(false);
   const anchorRef = useRef<HTMLAnchorElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const hideTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const fetchTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -100,7 +101,14 @@ export function LinkPreviewCard({
     cancelHide();
     const rect = anchorRef.current?.getBoundingClientRect();
     if (rect) {
-      setPos({ top: rect.bottom + 8, left: rect.left });
+      const cardWidth = 416;
+      let left = rect.left;
+
+      if (left + cardWidth > window.innerWidth) {
+        left = window.innerWidth - cardWidth - 16;
+      }
+
+      setPos({ top: rect.bottom + 8 + window.scrollY, left });
     }
     setHovering(true);
     setImgError(false);
@@ -121,6 +129,11 @@ export function LinkPreviewCard({
   };
 
   const hasContent = Boolean(data?.title || data?.description || data?.image);
+  const showImage = data?.image && !imgError;
+
+  // Determine if the description is short or missing
+  const isDescriptionShort =
+    !data?.description || data.description.length < 100;
 
   return (
     <>
@@ -131,7 +144,7 @@ export function LinkPreviewCard({
         rel="noopener noreferrer"
         onMouseEnter={handleLinkEnter}
         onMouseLeave={handleLinkLeave}
-        className="hover:underline cursor-pointer hover:opacity-80 transition-opacity"
+        className="hover:underline cursor-pointer hover:opacity-80 transition-opacity inline-block"
         style={{ color: accent.indigoLightest }}
       >
         {children}
@@ -141,68 +154,62 @@ export function LinkPreviewCard({
           <AnimatePresence>
             {hovering && hasContent && (
               <motion.div
+                ref={cardRef}
                 onMouseEnter={handleCardEnter}
                 onMouseLeave={handleCardLeave}
                 initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 4 }}
-                transition={{ duration: 0.15 }}
-                className="fixed z-50 w-[22rem] p-4 overflow-hidden"
+                transition={{ duration: 0.12 }}
+                className="absolute z-50 w-[26rem] p-5 overflow-hidden select-none pointer-events-auto"
                 style={{
                   top: pos.top,
                   left: pos.left,
-                  background: "rgba(7, 7, 15, 0.95)",
+                  background: "rgba(7, 7, 15, 0.96)",
                   border: `1px solid ${indigo(0.15)}`,
-                  backdropFilter: "blur(8px)",
+                  backdropFilter: "blur(12px)",
+                  boxShadow: "0 12px 40px -12px rgba(0,0,0,0.8)",
                 }}
               >
                 <div
-                  className="absolute top-2 left-2 w-3 h-3"
+                  className="absolute top-2.5 left-2.5 w-3.5 h-3.5 pointer-events-none"
                   style={{
-                    borderTop: `1.5px solid ${indigo(0.25)}`,
-                    borderLeft: `1.5px solid ${indigo(0.25)}`,
+                    borderTop: `1.5px solid ${indigo(0.3)}`,
+                    borderLeft: `1.5px solid ${indigo(0.3)}`,
                   }}
                 />
                 <div
-                  className="absolute top-2 right-2 w-3 h-3"
+                  className="absolute top-2.5 right-2.5 w-3.5 h-3.5 pointer-events-none"
                   style={{
-                    borderTop: `1.5px solid ${indigo(0.25)}`,
-                    borderRight: `1.5px solid ${indigo(0.25)}`,
+                    borderTop: `1.5px solid ${indigo(0.3)}`,
+                    borderRight: `1.5px solid ${indigo(0.3)}`,
                   }}
                 />
                 <div
-                  className="absolute bottom-2 left-2 w-3 h-3"
+                  className="absolute bottom-2.5 left-2.5 w-3.5 h-3.5 pointer-events-none"
                   style={{
-                    borderBottom: `1.5px solid ${indigo(0.25)}`,
-                    borderLeft: `1.5px solid ${indigo(0.25)}`,
+                    borderBottom: `1.5px solid ${indigo(0.3)}`,
+                    borderLeft: `1.5px solid ${indigo(0.3)}`,
                   }}
                 />
                 <div
-                  className="absolute bottom-2 right-2 w-3 h-3"
+                  className="absolute bottom-2.5 right-2.5 w-3.5 h-3.5 pointer-events-none"
                   style={{
-                    borderBottom: `1.5px solid ${indigo(0.25)}`,
-                    borderRight: `1.5px solid ${indigo(0.25)}`,
+                    borderBottom: `1.5px solid ${indigo(0.3)}`,
+                    borderRight: `1.5px solid ${indigo(0.3)}`,
                   }}
                 />
 
-                <div className="relative">
-                  {data?.image && !imgError && (
-                    <img
-                      src={data.image}
-                      alt=""
-                      loading="lazy"
-                      referrerPolicy="no-referrer"
-                      onError={() => setImgError(true)}
-                      className="float-right ml-3 w-[4.5rem] h-[4.5rem] object-cover shrink-0"
-                      style={{ border: `1px solid ${indigo(0.12)}` }}
-                    />
-                  )}
-                  <div className="min-w-0">
+                <div className="flex gap-5 items-start relative h-full">
+                  <div className="flex-1 min-w-0">
                     <a
                       href={href}
                       target={newTab ? "_blank" : "_self"}
                       rel="noopener noreferrer"
-                      className="font-semibold text-sm hover:underline block mb-1"
+                      // conditional truncation
+                      className={`font-semibold text-sm hover:underline block mb-2 leading-snug ${
+                        isDescriptionShort ? "break-words" : "truncate"
+                      }`}
                       style={{
                         fontFamily: "var(--font-geist-mono)",
                         color: accent.indigoLightest,
@@ -212,7 +219,7 @@ export function LinkPreviewCard({
                     </a>
                     {data?.description && (
                       <p
-                        className="text-xs leading-relaxed"
+                        className="text-xs leading-relaxed line-clamp-4 overflow-hidden text-ellipsis"
                         style={{
                           fontFamily: "var(--font-geist-mono)",
                           color: text.muted,
@@ -222,6 +229,20 @@ export function LinkPreviewCard({
                       </p>
                     )}
                   </div>
+
+                  {showImage && (
+                    <div className="shrink-0">
+                      <img
+                        src={data.image!}
+                        alt=""
+                        loading="lazy"
+                        referrerPolicy="no-referrer"
+                        onError={() => setImgError(true)}
+                        className="w-[6rem] h-[6rem] object-cover aspect-square transition-all duration-300 hover:scale-105"
+                        style={{ border: `1px solid ${indigo(0.18)}` }}
+                      />
+                    </div>
+                  )}
                 </div>
               </motion.div>
             )}
