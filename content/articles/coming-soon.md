@@ -1,7 +1,7 @@
 ---
 slug: more-coming-soon
 title: More Articles Coming Soon
-description: The first article's up — more are on the way.
+description: The first few article's are up — more are on the way.
 banner: https://shorturl.at/DWs97
 author: Caleb
 authorGithub: https://github.com/calebephrem
@@ -9,7 +9,7 @@ date: July 10, 2026
 tags: [more, coming, soon]
 ---
 
-The Articles section is officially live — you just read (or skipped past) the first one. More are on the way.
+The Articles section is officially live — you just read (or skipped past) the first ones. More are on the way.
 
 ## What to expect
 
@@ -26,5 +26,3 @@ Going forward, you can look forward to write-ups covering:
 A lot of useful knowledge about building on Discord ends up scattered across random threads, outdated docs, and tribal knowledge passed around in DMs. The goal here is to put that knowledge somewhere permanent, searchable, and easy to point people to.
 
 ![Under Construction](https://shorturl.at/CEn66)
-
-Check back soon — the next few articles are already in the works.

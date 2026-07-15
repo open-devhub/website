@@ -107,6 +107,13 @@ const HARDCODED_PREVIEWS: Record<string, PreviewData> = {
       "When asking a debugging question, people will be better able to provide help if you provide code as text in your question that prospective answerers can easily understand and use to reproduce the problem.",
     image: COMMON_IMAGES.stackOverflow,
   },
+
+  // Articles
+  "https://www.ic3.gov/": {
+    title: "Internet Crime Complaint Center (IC3)",
+    description:
+      "The Internet Crime Complaint Center (IC3) is the central hub for reporting cyber-enabled crime. It is run by the FBI, the lead federal agency for investigating crime.",
+  },
 };
 
 const DEFAULT_PAGE_IMAGE =

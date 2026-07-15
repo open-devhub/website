@@ -12,7 +12,7 @@ const navLinks = [
   { href: "/rules", label: "RULES" },
   { href: "/resources", label: "RESOURCES" },
   { href: "/pages/getting-started", label: "PAGES" },
-  // { href: "/articles", label: "ARTICLES" },
+  { href: "/articles", label: "ARTICLES" },
   { href: "/partners", label: "PARTNERS" },
 ];
 
