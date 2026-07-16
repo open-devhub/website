@@ -322,10 +322,10 @@ function ContentBlock({
             alt={block.text || ""}
             width={800}
             height={480}
-            className="w-full object-cover"
+            className="w-full object-contain"
             style={{
               maxHeight: "480px",
-              border: `1px solid ${indigo(0.12)}`,
+              // border: `1px solid ${indigo(0.12)}`,
             }}
             unoptimized={block.src?.startsWith("http")}
           />

@@ -57,15 +57,13 @@ const HARDCODED_PREVIEWS: Record<string, PreviewData> = {
     title: "The Programmers Hangout",
     description:
       "The Programmer's Hangout (TPH) is a discord community geared towards programming. The use of the word \"geared\" here is important because more accurately it's a discord for programmers of all kinds. If you're a green noob with 5 lines of code under your belt, or if you're a veteran with 15 years of industry experience, TPH has a place for you.",
-    image:
-      "https://theprogrammershangout.com/favicon-32x32.png?v=24d4e15abfd3bdcb306d3cb2d344aa67",
+    image: "https://avatars.githubusercontent.com/u/45722368",
   },
   "https://thecodeversehub.tech": {
     title: "The CodeVerse Hub",
     description:
       "The Codeverse Hub is a developer community and open-source organization. We build real projects, review each other's code, and help developers grow — from first commit to production maintainer.",
-    image:
-      "https://cdn.discordapp.com/icons/1263067254153805905/be135eaf9deb55ef9a4c0b52648de511.webp?size=96&quality=lossless",
+    image: "https://avatars.githubusercontent.com/u/234775876",
   },
 
   // GitHub
