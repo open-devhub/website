@@ -11,9 +11,10 @@ import { useState } from "react";
 interface SidebarSectionProps {
   section: (typeof pageSections)[0];
   currentSlug: string | null;
+  onNavigate?: () => void;
 }
 
-function SidebarSection({ section, currentSlug }: SidebarSectionProps) {
+function SidebarSection({ section,currentSlug,onNavigate}: SidebarSectionProps) {
   const [open, setOpen] = useState(
     !!currentSlug?.startsWith("/pages") ||
       section.pages.some(
@@ -53,7 +54,7 @@ function SidebarSection({ section, currentSlug }: SidebarSectionProps) {
               {section.pages.map((page) => {
                 const isActive = currentSlug === `/pages/${page.slug}`;
                 return (
-                  <Link key={page.slug} href={`/pages/${page.slug}`}>
+                  <Link onClick={() => onNavigate?.()} key={page.slug} href={`/pages/${page.slug}`}>
                     <motion.span
                       className="block px-3 py-2 text-sm cursor-pointer"
                       style={{ fontFamily: "var(--font-geist-mono)" }}
@@ -136,7 +137,7 @@ export default function PagesLayout({
               backdropFilter: "blur(20px)",
             }}
           >
-            <SidebarContent currentSlug={pathname} />
+            <SidebarContent currentSlug={pathname} onNavigate={() => setMobileOpen(false)}/>
           </motion.div>
         )}
       </AnimatePresence>
@@ -156,7 +157,7 @@ export default function PagesLayout({
   );
 }
 
-function SidebarContent({ currentSlug }: { currentSlug: string | null }) {
+function SidebarContent({ currentSlug, onNavigate,}: { currentSlug: string | null; onNavigate?: () => void}) {
   return (
     <nav>
       <div className="mb-6">
@@ -172,6 +173,7 @@ function SidebarContent({ currentSlug }: { currentSlug: string | null }) {
           key={section.title}
           section={section}
           currentSlug={currentSlug}
+          onNavigate={onNavigate}
         />
       ))}
     </nav>
