@@ -54,7 +54,7 @@ function SidebarSection({ section,currentSlug,onNavigate}: SidebarSectionProps) 
               {section.pages.map((page) => {
                 const isActive = currentSlug === `/pages/${page.slug}`;
                 return (
-                  <Link onClick={onNavigate} key={page.slug} href={`/pages/${page.slug}`}>
+                  <Link onClick={() => onNavigate?.()} key={page.slug} href={`/pages/${page.slug}`}>
                     <motion.span
                       className="block px-3 py-2 text-sm cursor-pointer"
                       style={{ fontFamily: "var(--font-geist-mono)" }}
