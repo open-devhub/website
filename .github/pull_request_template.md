@@ -23,10 +23,11 @@ List any issues that are linked to this pull request (e.g., `Closes #123`).
 ## Checklist
 
 - [ ] I've tested this change locally and it works as expected
-- [ ] `bun run build` or `npm run build` completes without errors
-- [ ] My commit messages follow [Conventional Commits](https://www.conventionalcommits.org/) (e.g. `fix: ...`, `feat: ...`, `chore: ...`)
-- [ ] I've updated relevant docs (README, comments, etc.) if this change needs it
-- [ ] No leftover `console.log` or debug code
+- [ ] `bun run lint` or `npm run lint` completes without warnings or errors
+- [ ] `bun run build` or `npm run build` completes successfully
+- [ ] My commit messages follow [Conventional Commits](https://www.conventionalcommits.org/) (e.g. `feat: ...`, `fix: ...`, `chore: ...`)
+- [ ] I've updated relevant documentation (README, comments, etc.) if needed
+- [ ] I've removed any temporary debugging code (e.g. `console.log`)
 
 ## Screenshots / recordings (if applicable)
 

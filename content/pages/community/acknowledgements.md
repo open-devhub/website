@@ -27,7 +27,7 @@ Everyone who has opened a PR, reviewed someone else's code, filed a well-written
 - [GitHub](https://github.com), Hosts the source code and manages issues, pull requests, and contributions.
 - [Node.js](https://nodejs.org), Runs backend services, tooling, and development utilities across the project.
 - [Discord.js](https://discord.js.org), Powers DevHub bots and integrations within the Discord ecosystem.
-- [ESLint & Prettier](https://prettier.io), Maintain consistent code quality and formatting across the project.
+- [ESLint & Prettier](https://eslint.org), Maintain consistent code quality and formatting across the project.
 
 ## Inspiration
 

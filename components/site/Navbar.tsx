@@ -3,6 +3,7 @@
 import { menuItem, menuOverlay } from "@/lib/animations";
 import { indigo, shadow } from "@/lib/colors";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -71,9 +72,11 @@ export default function Navbar() {
                 className="font-bold text-[#6366f1] text-lg"
                 style={{ fontFamily: "var(--font-geist-mono)" }}
               >
-                <img
+                <Image
                   src="https://raw.githubusercontent.com/open-devhub/.github/refs/heads/main/assets/icon_darker.png"
-                  width="30"
+                  alt="Open DevHub logo"
+                  width={30}
+                  height={30}
                 />
               </span>
               <span

@@ -1,7 +1,7 @@
 import data from "./staticdata.config.ts";
 const { invite, github, quillbot } = data;
 
-export default [
+const redirectConfig = [
   {
     sources: ["/join", "/invite", "/discord", "/chat"],
     destination: invite,
@@ -40,3 +40,5 @@ export default [
     permanent: false,
   },
 ];
+
+export default redirectConfig;
