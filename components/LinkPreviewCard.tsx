@@ -16,6 +16,12 @@ function truncate(desc: string, maxLength = 260) {
   return `${cut.slice(0, lastSpace > 0 ? lastSpace : maxLength)}…`;
 }
 
+function decodeHtmlEntities(value: string) {
+  const textarea = document.createElement("textarea");
+  textarea.innerHTML = value;
+  return textarea.value;
+}
+
 export function LinkPreviewCard({
   href,
   newTab = true,
@@ -130,10 +136,13 @@ export function LinkPreviewCard({
 
   const hasContent = Boolean(data?.title || data?.description || data?.image);
   const showImage = data?.image && !imgError;
+  const title = data?.title ? decodeHtmlEntities(data.title) : href;
+  const description = data?.description
+    ? decodeHtmlEntities(data.description)
+    : null;
 
   // Determine if the description is short or missing
-  const isDescriptionShort =
-    !data?.description || data.description.length < 100;
+  const isDescriptionShort = !description || description.length < 100;
 
   return (
     <>
@@ -215,9 +224,9 @@ export function LinkPreviewCard({
                         color: accent.indigoLightest,
                       }}
                     >
-                      {data?.title || href}
+                      {title}
                     </a>
-                    {data?.description && (
+                    {description && (
                       <p
                         className="text-xs leading-relaxed line-clamp-4 overflow-hidden text-ellipsis"
                         style={{
@@ -225,7 +234,7 @@ export function LinkPreviewCard({
                           color: text.muted,
                         }}
                       >
-                        {truncate(data.description)}
+                        {truncate(description)}
                       </p>
                     )}
                   </div>
