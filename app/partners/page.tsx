@@ -23,6 +23,7 @@ import {
   ShieldCheck,
   Users,
 } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 type DiscordData = {
@@ -236,10 +237,11 @@ function PartnerCard({
         style={{ aspectRatio: "4 / 1", minHeight: 150, maxHeight: 200 }}
       >
         {showImageBanner ? (
-          <img
+          <Image
             src={showImageBanner}
             alt=""
-            className="absolute inset-0 w-full h-full object-cover"
+            fill
+            className="absolute inset-0 object-cover"
           />
         ) : showColourBanner ? (
           <div
@@ -284,10 +286,11 @@ function PartnerCard({
             }}
           >
             {logoSrc ? (
-              <img
+              <Image
                 src={logoSrc}
                 alt={serverName}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
             ) : (
               logoInitials

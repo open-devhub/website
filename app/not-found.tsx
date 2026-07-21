@@ -96,8 +96,9 @@ export default function NotFound() {
             color: text.muted,
           }}
         >
-          This page doesn't exist, or it wandered off somewhere into the void.
-          Let's get you back on track.
+          {
+            "This page doesn't exist, or it wandered off somewhere into the void. Let's get you back on track."
+          }
         </motion.p>
 
         {/* CTA buttons */}

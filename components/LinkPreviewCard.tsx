@@ -1,5 +1,6 @@
 import { accent, indigo, text } from "@/lib/colors";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -240,15 +241,17 @@ export function LinkPreviewCard({
                   </div>
 
                   {showImage && (
-                    <div className="shrink-0">
-                      <img
-                        src={data.image!}
-                        alt=""
-                        loading="lazy"
+                    <div
+                      className="relative w-[6rem] h-[6rem]"
+                      style={{ border: `1px solid ${indigo(0.18)}` }}
+                    >
+                      <Image
+                        src={data.image || ""}
+                        alt="Preview"
+                        fill
                         referrerPolicy="no-referrer"
                         onError={() => setImgError(true)}
-                        className="w-[6rem] h-[6rem] object-cover aspect-square transition-all duration-300 hover:scale-105"
-                        style={{ border: `1px solid ${indigo(0.18)}` }}
+                        className="object-cover aspect-square transition-all duration-300 hover:scale-105"
                       />
                     </div>
                   )}

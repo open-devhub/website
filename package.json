@@ -1,5 +1,5 @@
 {
-  "name": "wesite",
+  "name": "website",
   "version": "1.0.0",
   "private": true,
   "license": "GPL-3.0-only",
@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write ."
   },
@@ -48,7 +48,7 @@
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.3.0",
     "framer-motion": "^12.38.0",
-    "gsap": "^3.15.0",
+    "gsap": "^3.13.0",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.446.0",
     "motion": "^12.40.0",

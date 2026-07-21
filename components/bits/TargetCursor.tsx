@@ -1,5 +1,6 @@
 "use client";
 
+import { text } from "@/lib/colors";
 import { gsap } from "gsap";
 import React, {
   useCallback,
@@ -8,7 +9,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { text } from "@/lib/colors";
 
 // A position: fixed element is positioned relative to the viewport UNLESS an
 // ancestor establishes a containing block (transform, perspective, filter,
@@ -114,6 +114,8 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
   useEffect(() => {
     if (!mounted || isMobile || !cursorRef.current) return;
 
+    const activeStrength = activeStrengthRef.current;
+
     const originalCursor = document.body.style.cursor;
     if (hideDefaultCursor) {
       document.body.style.cursor = "none";
@@ -168,7 +170,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       ) {
         return;
       }
-      const strength = activeStrengthRef.current.current;
+      const strength = activeStrength.current;
       if (strength === 0) return;
       const cursorX = gsap.getProperty(cursorRef.current, "x") as number;
       const cursorY = gsap.getProperty(cursorRef.current, "y") as number;
@@ -301,7 +303,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       isActiveRef.current = true;
       gsap.ticker.add(tickerFnRef.current!);
 
-      gsap.to(activeStrengthRef.current, {
+      gsap.to(activeStrength, {
         current: 1,
         duration: hoverDuration,
         ease: "power2.out",
@@ -320,7 +322,10 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
         gsap.ticker.remove(tickerFnRef.current!);
         isActiveRef.current = false;
         targetCornerPositionsRef.current = null;
-        gsap.set(activeStrengthRef.current, { current: 0, overwrite: true });
+        gsap.set(activeStrength, {
+          current: 0,
+          overwrite: true,
+        });
         activeTarget = null;
 
         if (cursorColorOnTarget && cornersRef.current) {
@@ -418,7 +423,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       document.body.style.cursor = originalCursor;
       isActiveRef.current = false;
       targetCornerPositionsRef.current = null;
-      activeStrengthRef.current.current = 0;
+      activeStrength.current = 0;
     };
   }, [
     mounted,

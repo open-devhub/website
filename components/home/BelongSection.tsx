@@ -126,9 +126,9 @@ export default function BelongSection() {
             className="mt-4 text-sm max-w-xl mx-auto leading-relaxed"
             style={{ fontFamily: "var(--font-geist-mono)", color: text.dim }}
           >
-            Whether you're making your first commit or building your next big
-            project, DevHub is a community where you can learn, contribute, and
-            learn together.
+            {
+              "Whether you're making your first commit or building your next big project, DevHub is a community where you can learn, contribute, and learn together."
+            }
           </motion.p>
         </motion.div>
 

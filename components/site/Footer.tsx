@@ -1,5 +1,6 @@
 import { accent, background, indigo, text } from "@/lib/colors";
 import data from "@/lib/staticdata.config";
+import Image from "next/image";
 import Link from "next/link";
 
 const { email } = data;
@@ -39,9 +40,11 @@ export default function Footer() {
                 className="font-bold text-[#6366f1] text-lg"
                 style={{ fontFamily: "var(--font-geist-mono)" }}
               >
-                <img
+                <Image
                   src="https://raw.githubusercontent.com/open-devhub/.github/refs/heads/main/assets/icon_darker.png"
-                  width="30"
+                  alt="Open DevHub logo"
+                  width={30}
+                  height={30}
                 />
               </span>
               <span
