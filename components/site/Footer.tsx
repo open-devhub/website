@@ -16,36 +16,44 @@ const footerLinks = [
 
 const highlightItems = [
   {
-    label: "Getting started guide",
-    href: "/pages/getting-started",
+    label: "Privacy Policy",
+    href: "/pages/privacy-policy",
     icon: (
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+        <path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5z" />
+        <path d="M12 8v4" />
+        <circle cx="12" cy="15" r="0.6" fill="currentColor" stroke="none" />
       </svg>
     ),
   },
   {
-    label: "10+ languages supported",
-    href: "/resources",
+    label: "Security Notice",
+    href: "/pages/security-notice",
     icon: (
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M2 12h20" />
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+        <path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5z" />
+        <path d="m9 12 2 2 4-4" />
       </svg>
     ),
   },
   {
-    label: "Contribute to open-source",
-    href: "/partners",
+    label: "Code of Conduct",
+    href: "/pages/code-of-conduct",
     icon: (
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="6" cy="6" r="2.5" />
-        <circle cx="6" cy="18" r="2.5" />
-        <circle cx="18" cy="9" r="2.5" />
-        <path d="M6 8.5v7" />
-        <path d="M6 15.5c0-3 3-4.5 6-4.5h4" />
+        <circle cx="8" cy="8" r="3" />
+        <circle cx="17" cy="9" r="2.5" />
+        <path d="M2.5 20c0-3.5 2.7-6 5.5-6s5.5 2.5 5.5 6" />
+        <path d="M14.5 20c.3-2.6 1.9-4.6 4-4.9" />
+      </svg>
+    ),
+  },
+  {
+    label: "Acknowledgements",
+    href: "/pages/acknowledgements",
+    icon: (
+       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0L12 5.34l-.77-.76a5.4 5.4 0 1 0-7.65 7.65L12 20l8.42-7.77a5.4 5.4 0 0 0 0-7.65z" />
       </svg>
     ),
   },
@@ -309,7 +317,7 @@ export default function Footer() {
             }}
           >
             Built with ❤️ by the community, for the community.
-
+            
           </p>
         </div>
       </div>
