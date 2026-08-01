@@ -1,6 +1,25 @@
-# DevHub
+# DevHub Website
 
-The official website for the DevHub developer community. Built with Next.js, TypeScript, and Tailwind CSS.
+Welcome to the official website for the DevHub developer community! 👋
+
+This repository contains the source code for the DevHub website, built using **Next.js**, **TypeScript**, and **Tailwind CSS**. The website serves as a central place where developers can discover learning resources, read community guides, explore articles, and stay connected with everything happening in the DevHub community.
+
+Whether you're a beginner exploring modern web development or someone making your first open-source contribution, this repository is a great place to learn how a modern Next.js project is organized and make your first contribution with confidence.
+
+## About DevHub
+
+DevHub is a developer community focused on helping programmers learn, collaborate, and grow together.
+
+The website brings together community resources in one place, including:
+
+- 📚 Learning guides for developers
+- 🛠️ Curated tools and useful resources
+- 📖 Articles and tutorials
+- 🤝 Community information and onboarding guides
+- 📜 Rules, FAQs, and moderation guides
+- ❤️ Open-source contribution opportunities
+
+If you're new to open source, this project is a great place to start because documentation improvements, bug fixes, and feature enhancements are all welcome.
 
 ## What's in here
 
@@ -23,38 +42,97 @@ The official website for the DevHub developer community. Built with Next.js, Typ
 
 ## Tech Stack
 
-- **Framework** - Next.js
-- **Language** - TypeScript
-- **Styling** - Tailwind CSS
-- **Animation Libriary** - GSAP and Framer Motion
-- **Component Libriary** - React Bits
-- **Icons** - Lucide
-- **Deployment** - Vercel
+| Technology | Purpose |
+|------------|---------|
+| Next.js | React framework used to build the website |
+| TypeScript | Adds static typing to JavaScript |
+| Tailwind CSS | Utility-first CSS framework for styling |
+| GSAP & Framer Motion | Animation libraries |
+| React Bits | UI component library |
+| Lucide | Icon library |
+| Vercel | Deployment platform |
 
 ## Getting Started
 
+Follow the steps below to run the project on your own computer.
+
+Don't worry if you've never worked with a Next.js project before—each step is explained.
+
 ### Prerequisites
 
-- Node.js 18+
-- bun, npm, yarn, or pnpm
+Before you begin, make sure you have the following installed:
 
-### Setup
+- **Node.js 18 or later**
+- A package manager such as **npm**, **bun**, **pnpm**, or **yarn**
+- **Git**
+
+> **Note:** This guide uses **npm** for all examples. If you prefer **bun**, **pnpm**, or **yarn**, you can use the equivalent commands instead.
+
+You can verify your installation by running:
 
 ```bash
-# Clone the repo
-git clone https://github.com/open-devhub/website
+node -v
+npm -v
+git --version
+```
+
+### Step 1: Clone the repository
+
+Clone the project from GitHub:
+
+```bash
+git clone https://github.com/open-devhub/website.git
+```
+
+Move into the project directory:
+
+```bash
 cd website
+```
 
-# Install dependencies
+### Step 2: Install dependencies
+
+This project depends on several external packages. Install them using:
+
+```bash
 npm install
+```
 
-# Start the dev server
+This may take a few minutes the first time.
+
+### Step 3: Start the development server
+
+Run:
+
+```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) and you're in.
+The development server will start locally.
+
+Open your browser and visit:
+
+```
+http://localhost:3000
+```
+
+Whenever you save changes to the code, the browser automatically refreshes so you can instantly see your updates.
+
+### Step 4: Verify Everything Works
+
+Once the development server is running, open your browser and visit:
+
+```
+http://localhost:3000
+```
+
+You should see the DevHub homepage. Try navigating to a few pages to make sure everything loads correctly.
+
+If you've made changes, save your files and verify that the browser updates automatically.
 
 ## Project Structure
+
+Below is an overview of the repository structure to help you locate important files and folders.
 
 ```
 ├── 📁 .github
@@ -156,36 +234,130 @@ Open [http://localhost:3000](http://localhost:3000) and you're in.
 ├── 📄 vercel.json
 ```
 
+## Understanding the Project Structure
+
+The project contains several folders, but you only need to know a few to get started.
+
+| Folder | Purpose |
+|---------|---------|
+| `app/` | Contains the application's pages and routing. |
+| `components/` | Reusable React components used throughout the website. |
+| `content/` | Markdown files, guides, articles, and other website content. |
+| `lib/` | Helper functions and utility code. |
+| `hooks/` | Custom React hooks used across the application. |
+| `.github/` | GitHub workflows such as automated linting. |
+
+As you contribute, you'll mostly work inside the **app**, **components**, or **content** folders.
+
 ## Contributing
 
-We welcome contributions of all kinds: bug fixes, new features, documentation improvements, and design feedback.
+We welcome contributions from developers of all experience levels, including first-time contributors!
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full guide. The short version:
+A typical contribution workflow looks like this:
 
-1. Fork the repo
-2. Create a branch (`git checkout -b feature/your-cool-feature`)
-3. Make your changes
-4. Run `npm run lint`
-5. Open a PR with a clear description
-
-First time contributing to open source? Look for issues tagged [`good first issue`](https://github.com/open-devhub/website/issues?q=is%3Aopen+label%3A%22good+first+issue%22).
-
-## Scripts
+1. Fork this repository to your GitHub account.
+2. Clone your fork locally.
+3. Create a new branch.
 
 ```bash
-npm run dev        # Start development server
-npm run build      # Production build
-npm run start      # Start production server
-npm run lint       # Run ESLint
-npm run format     # Run Prettier
+git checkout -b feature/my-new-feature
+```
+
+4. Make your changes.
+5. Test your changes locally.
+6. Run the linter:
+
+```bash
+npm run lint
+```
+
+7. Commit your changes.
+
+```bash
+git commit -m "feat: add awesome feature"
+```
+
+8. Push your branch.
+
+```bash
+git push origin feature/my-new-feature
+```
+
+9. Open a Pull Request describing what you changed and why.
+
+If you're contributing for the first time, check out issues labelled **good first issue**.
+
+For a more detailed contribution guide, coding standards, and pull request expectations, please see [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+## Useful Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Starts the local development server. |
+| `npm run build` | Creates an optimized production build. |
+| `npm run start` | Runs the production build locally. |
+| `npm run lint` | Checks your code for linting issues. |
+| `npm run format` | Formats the project using Prettier. |
+
+## Testing Your Changes
+
+Before opening a Pull Request, make sure your changes work as expected.
+
+Run the linter:
+
+```bash
+npm run lint
+```
+
+Then start the development server:
+
+```bash
+npm run dev
+```
+
+Open the website in your browser and verify that your changes appear correctly and don't introduce any issues.
+
+If the project adds automated tests in the future, be sure to run those as well before submitting your contribution.
+
+## Troubleshooting
+
+### `npm install` fails
+
+Make sure you're using **Node.js 18 or later**.
+
+### Port 3000 is already in use
+
+Run the development server on another port:
+
+```bash
+npm run dev -- -p 3001
+```
+
+### Module not found
+
+Delete the `node_modules` folder and reinstall dependencies:
+
+```bash
+rm -rf node_modules
+npm install
 ```
 
 ## Community
 
-- **Discord** - [devhub.vercel.app/join](https://devhub.vercel.app/join)
-- **GitHub Org** - [github.com/open-devhub](https://github.com/open-devhub)
-- **Email** - open-devhub@outlook.com
+Want to get involved? We'd love to have you!
+
+- **Discord:** [Join DevHub](https://devhub.vercel.app/join) – Ask questions, connect with other developers, and stay up to date with the community.
+- **GitHub:** [open-devhub](https://github.com/open-devhub) – Explore our projects and contribute.
+- **Email:** open-devhub@outlook.com – Reach out for general inquiries or support.
 
 ## License
 
 Licensed under the GNU GPL v3.0 License. See the [LICENSE](./LICENSE) file for details.
+
+## ❤️ Our Contributors
+
+A huge thank you to everyone who has contributed to making DevHub better!
+
+<a href="https://github.com/open-devhub/website/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=open-devhub/website" />
+</a>
