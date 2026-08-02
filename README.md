@@ -1,10 +1,8 @@
-# DevHub Website
+# DevHub
 
-Welcome to the official website for the DevHub developer community! 👋
+The official website for DevHub, a developer community focused on helping people learn, build, and connect with other developers. This repository contains the source code for the website, including the landing page, community rules, guides, resource library, articles, and partners page.
 
-This repository contains the source code for the DevHub website, built using **Next.js**, **TypeScript**, and **Tailwind CSS**. The website serves as a central place where developers can discover learning resources, read community guides, explore articles, and stay connected with everything happening in the DevHub community.
-
-Whether you're a beginner exploring modern web development or someone making your first open-source contribution, this repository is a great place to learn how a modern Next.js project is organized and make your first contribution with confidence.
+If you're new here, welcome! This README is designed to guide you from cloning the repository to making your first contribution, even if you've never worked with this codebase before.
 
 ## About DevHub
 
@@ -23,22 +21,12 @@ If you're new to open source, this project is a great place to start because doc
 
 ## What's in here
 
-- Landing page
-- Community guides
-- Resource library, curated tools and learning materials
-- Partners page
-- DevHub Pages:
-  - Getting Started
-  - Join Guide
-  - Server Info
-  - How to Ask
-  - How to Help
-  - Code of Conduct
-  - Contributing
-  - Moderation Guide
-  - Staff Roles
-  - FAQ
-  - and many many more
+- Landing page: introduction to DevHub and what the community offers
+- Pages: guides like Getting Started, How to Ask, How to Help, Code of Conduct, Contributing, Moderation Guide, Staff Roles, FAQ, and more
+- Resource library: curated tools and learning materials
+- Articles: write-ups from the community
+- Rules: the server and community rules in one place
+- Partners: communities and projects DevHub partners with
 
 ## Tech Stack
 
@@ -51,6 +39,8 @@ If you're new to open source, this project is a great place to start because doc
 | React Bits | UI component library |
 | Lucide | Icon library |
 | Vercel | Deployment platform |
+
+You don't need to know all of these before contributing. Most changes only touch one or two of them at a time.
 
 ## Getting Started
 
@@ -285,7 +275,7 @@ git push origin feature/my-new-feature
 
 9. Open a Pull Request describing what you changed and why.
 
-If you're contributing for the first time, check out issues labelled **good first issue**.
+New to open source? Look for issues tagged [`good first issue`](https://github.com/open-devhub/website/issues?q=is%3Aopen+label%3A%22good+first+issue%22). These are picked specifically to be approachable for first-time contributors.
 
 For a more detailed contribution guide, coding standards, and pull request expectations, please see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
@@ -297,6 +287,7 @@ For a more detailed contribution guide, coding standards, and pull request expec
 | `npm run build` | Creates an optimized production build. |
 | `npm run start` | Runs the production build locally. |
 | `npm run lint` | Checks your code for linting issues. |
+| `npm run typecheck` | Check for type errors. |
 | `npm run format` | Formats the project using Prettier. |
 
 ## Testing Your Changes
@@ -346,6 +337,7 @@ npm install
 
 Want to get involved? We'd love to have you!
 
+- **Website:** [devhub.vercel.app](https://devhub.vercel.app)
 - **Discord:** [Join DevHub](https://devhub.vercel.app/join) – Ask questions, connect with other developers, and stay up to date with the community.
 - **GitHub:** [open-devhub](https://github.com/open-devhub) – Explore our projects and contribute.
 - **Email:** open-devhub@outlook.com – Reach out for general inquiries or support.
@@ -354,9 +346,9 @@ Want to get involved? We'd love to have you!
 
 Licensed under the GNU GPL v3.0 License. See the [LICENSE](./LICENSE) file for details.
 
-## ❤️ Our Contributors
+## Contributors
 
-A huge thank you to everyone who has contributed to making DevHub better!
+Thanks to everyone who has contributed to this repository.
 
 <a href="https://github.com/open-devhub/website/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=open-devhub/website" />
