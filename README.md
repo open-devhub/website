@@ -30,15 +30,15 @@ If you're new to open source, this project is a great place to start because doc
 
 ## Tech Stack
 
-| Technology | Purpose |
-|------------|---------|
-| Next.js | React framework used to build the website |
-| TypeScript | Adds static typing to JavaScript |
-| Tailwind CSS | Utility-first CSS framework for styling |
-| GSAP & Framer Motion | Animation libraries |
-| React Bits | UI component library |
-| Lucide | Icon library |
-| Vercel | Deployment platform |
+| Technology           | Purpose                                   |
+| -------------------- | ----------------------------------------- |
+| Next.js              | React framework used to build the website |
+| TypeScript           | Adds static typing to JavaScript          |
+| Tailwind CSS         | Utility-first CSS framework for styling   |
+| GSAP & Framer Motion | Animation libraries                       |
+| React Bits           | UI component library                      |
+| Lucide               | Icon library                              |
+| Vercel               | Deployment platform                       |
 
 You don't need to know all of these before contributing. Most changes only touch one or two of them at a time.
 
@@ -228,14 +228,14 @@ Below is an overview of the repository structure to help you locate important fi
 
 The project contains several folders, but you only need to know a few to get started.
 
-| Folder | Purpose |
-|---------|---------|
-| `app/` | Contains the application's pages and routing. |
-| `components/` | Reusable React components used throughout the website. |
-| `content/` | Markdown files, guides, articles, and other website content. |
-| `lib/` | Helper functions and utility code. |
-| `hooks/` | Custom React hooks used across the application. |
-| `.github/` | GitHub workflows such as automated linting. |
+| Folder        | Purpose                                                      |
+| ------------- | ------------------------------------------------------------ |
+| `app/`        | Contains the application's pages and routing.                |
+| `components/` | Reusable React components used throughout the website.       |
+| `content/`    | Markdown files, guides, articles, and other website content. |
+| `lib/`        | Helper functions and utility code.                           |
+| `hooks/`      | Custom React hooks used across the application.              |
+| `.github/`    | GitHub workflows such as automated linting.                  |
 
 As you contribute, you'll mostly work inside the **app**, **components**, or **content** folders.
 
@@ -281,14 +281,14 @@ For a more detailed contribution guide, coding standards, and pull request expec
 
 ## Useful Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Starts the local development server. |
-| `npm run build` | Creates an optimized production build. |
-| `npm run start` | Runs the production build locally. |
-| `npm run lint` | Checks your code for linting issues. |
-| `npm run typecheck` | Check for type errors. |
-| `npm run format` | Formats the project using Prettier. |
+| Command             | Description                            |
+| ------------------- | -------------------------------------- |
+| `npm run dev`       | Starts the local development server.   |
+| `npm run build`     | Creates an optimized production build. |
+| `npm run start`     | Runs the production build locally.     |
+| `npm run lint`      | Checks your code for linting issues.   |
+| `npm run typecheck` | Check for type errors.                 |
+| `npm run format`    | Formats the project using Prettier.    |
 
 ## Testing Your Changes
 
