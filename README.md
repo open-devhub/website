@@ -208,16 +208,6 @@ Below is an overview of the repository structure to help you locate important fi
 │   ├── 📄 redirects.config.ts
 │   ├── 📄 staticdata.config.ts
 │   └── 📄 utils.ts
-├── 📄 .eslintrc.json
-├── 📄 .gitignore
-├── 📄 bun.lock
-├── 📄 components.json
-├── 📄 CONTRIBUTING.md
-├── 📄 LICENSE
-├── 📄 next.config.js
-├── 📄 package-lock.json
-├── 📄 package.json
-├── 📄 postcss.config.js
 ├── app/                  → Pages of the site (Next.js App Router)
 │   ├── api/              → API routes (e.g. link previews)
 │   ├── pages/            → Renders the guide pages (Getting Started, FAQ, etc.)
