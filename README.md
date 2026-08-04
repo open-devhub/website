@@ -218,26 +218,30 @@ Below is an overview of the repository structure to help you locate important fi
 ├── 📄 package-lock.json
 ├── 📄 package.json
 ├── 📄 postcss.config.js
-├── 📄 README.md
-├── 📄 tailwind.config.ts
-├── 📄 tsconfig.json
-├── 📄 vercel.json
+├── app/                  → Pages of the site (Next.js App Router)
+│   ├── api/              → API routes (e.g. link previews)
+│   ├── pages/            → Renders the guide pages (Getting Started, FAQ, etc.)
+│   ├── articles/         → Article listing + individual article pages
+│   ├── partners/         → Partners page
+│   ├── resources/        → Resource library page
+│   └── rules/            → Community rules page
+├── components/           → Reusable React components
+│   ├── home/             → Landing page sections (Hero, Features, Stats, etc.)
+│   ├── site/             → Shared layout pieces (Navbar, Footer, Section)
+│   ├── ui/               → Generic building blocks (buttons, dialogs, badges…)
+│   └── bits/             → Visual/animation effects (glow, fuzzy text, cursor)
+├── content/              → Site copy and structured data
+│   ├── pages/            → Content for the guide pages
+│   ├── articles/         → Article content
+│   ├── resources.ts      → Resource library data
+│   └── rules.ts          → Community rules data
+├── lib/                  → Shared utility code
+│   ├── markdown/         → Markdown parser used for articles/pages
+│   ├── animations.ts     → Shared animation configs
+│   ├── colors.ts         → Color system used across the site
+│   └── utils.ts          → General helper functions
+└── hooks/                → Custom React hooks
 ```
-
-## Understanding the Project Structure
-
-The project contains several folders, but you only need to know a few to get started.
-
-| Folder        | Purpose                                                      |
-| ------------- | ------------------------------------------------------------ |
-| `app/`        | Contains the application's pages and routing.                |
-| `components/` | Reusable React components used throughout the website.       |
-| `content/`    | Markdown files, guides, articles, and other website content. |
-| `lib/`        | Helper functions and utility code.                           |
-| `hooks/`      | Custom React hooks used across the application.              |
-| `.github/`    | GitHub workflows such as automated linting.                  |
-
-As you contribute, you'll mostly work inside the **app**, **components**, or **content** folders.
 
 ## Contributing
 
