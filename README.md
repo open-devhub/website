@@ -125,89 +125,6 @@ If you've made changes, save your files and verify that the browser updates auto
 Below is an overview of the repository structure to help you locate important files and folders.
 
 ```
-├── 📁 .github
-│   └── 📁 workflows
-│       └── 📄 linter.yaml
-├── 📁 .vscode
-│   └── 📄 settings.json
-├── 📁 app
-│   ├── 📁 api
-│   │   └── 📁 preview
-│   │       └── 📄 route.ts
-│   ├── 📁 pages
-│   │   ├── 📁 [slug]
-│   │   │   ├── 📁 [subslug]
-│   │   │   │   └── 📄 page.tsx
-│   │   │   ├── 📄 PageClient.tsx
-│   │   │   └── 📄 page.tsx
-│   │   ├── 📄 layout.tsx
-│   │   └── 📄 page.tsx
-│   ├── 📁 articles
-│   │   ├── 📁 [slug]
-│   │   │   ├── 📄 ArticleClient.tsx
-│   │   │   └── 📄 page.tsx
-│   │   ├── 📄 ArticlesListingClient.tsx
-│   │   └── 📄 page.tsx
-│   ├── 📁 partners
-│   │   └── 📄 page.tsx
-│   ├── 📁 resources
-│   │   └── 📄 page.tsx
-│   ├── 📁 rules
-│   │   └── 📄 page.tsx
-│   ├── 📄 globals.css
-│   ├── 📄 layout.tsx
-│   ├── 📄 not-found.tsx
-│   └── 📄 page.tsx
-├── 📁 components
-│   ├── 📁 bits
-│   │   ├── 📄 BorderGlow.tsx
-│   │   ├── 📄 FuzzyText.tsx
-│   │   ├── 📄 ShinyText.tsx
-│   │   ├── 📄 SoftAurora.tsx
-│   │   └── 📄 TargetCursor.tsx
-│   ├── 📁 home
-│   │   ├── 📄 BelongSection.tsx
-│   │   ├── 📄 CTASection.tsx
-│   │   ├── 📄 FeaturesSection.tsx
-│   │   ├── 📄 HeroSection.tsx
-│   │   ├── 📄 ShowcaseSection.tsx
-│   │   └── 📄 StatsSection.tsx
-│   ├── 📁 site
-│   │   ├── 📄 Footer.tsx
-│   │   ├── 📄 Navbar.tsx
-│   │   └── 📄 Section.tsx
-│   ├── 📁 ui
-│   │   ├── 📄 accordion.tsx
-│   │   ├── 📄 alert-dialog.tsx
-│   │   ├── 📄 alert.tsx
-│   │   ├── 📄 aspect-ratio.tsx
-│   │   ├── 📄 avatar.tsx
-│   │   ├── 📄 badge.tsx
-│   │   └── ... (40 more UI components)
-│   ├── 📄 AnimatedText.tsx
-│   ├── 📄 Badge.tsx
-│   ├── 📄 BorderGlowButton.tsx
-│   ├── 📄 GlowButton.tsx
-│   └── 📄 LinkPreviewCard.tsx
-├── 📁 content
-│   ├── 📁 pages
-│   │   └── ...
-│   ├── 📁 articles
-│   │   └── ...
-│   ├── 📄 pages-loader.ts
-│   ├── 📄 pages-sections.ts
-│   ├── 📄 resources.ts
-│   └── 📄 rules.ts
-├── 📁 hooks
-│   └── 📄 use-toast.ts
-├── 📁 lib
-│   ├── 📁 markdown
-│   │   └── 📄 parser.ts
-│   ├── 📄 animations.ts
-│   ├── 📄 colors.ts
-│   ├── 📄 redirects.config.ts
-│   ├── 📄 staticdata.config.ts
-│   └── 📄 utils.ts
 ├── app/                  → Pages of the site (Next.js App Router)
 │   ├── api/              → API routes (e.g. link previews)
 │   ├── pages/            → Renders the guide pages (Getting Started, FAQ, etc.)
@@ -342,7 +259,7 @@ Licensed under the GNU GPL v3.0 License. See the [LICENSE](./LICENSE) file for d
 
 ## Contributors
 
-Thanks to everyone who has contributed to this repository.
+Thanks to everyone who has contributed to this repository!
 
 <a href="https://github.com/open-devhub/website/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=open-devhub/website" />
