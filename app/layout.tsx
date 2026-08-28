@@ -1,40 +1,29 @@
 import Footer from "@/components/site/Footer";
-import Navbar from "@/components/site/Navbar";
+import Header from "@/components/site/Header";
+import { Theme } from "@/components/site/Theme";
 import { Analytics } from "@vercel/analytics/next";
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Pixelify_Sans } from "next/font/google";
+import ReactLenis from "lenis/react";
+import { Bricolage_Grotesque, Fira_Code, Inter } from "next/font/google";
 import "./globals.css";
+export { metadata } from "@/lib/metadata";
 
-const geist = Geist({
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-geist",
+  variable: "--font-bricolage",
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-geist-mono",
+  variable: "--font-inter",
   display: "swap",
 });
 
-const pixelifySans = Pixelify_Sans({
+const fira = Fira_Code({
   subsets: ["latin"],
-  variable: "--font-pixelify",
+  variable: "--font-code",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
 });
-
-export const metadata: Metadata = {
-  metadataBase: new URL("https://devhub.vercel.app"),
-  title: "DevHub | Code. Create. Collaborate.",
-  description:
-    "A collaborative Discord community for developers and creators. Build projects, get help, share feedback, and find your people.",
-  openGraph: {
-    title: "DevHub | Code. Create. Collaborate.",
-    description:
-      "A collaborative Discord community for developers and creators.",
-  },
-};
 
 export default function RootLayout({
   children,
@@ -44,13 +33,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geist.variable} ${geistMono.variable} ${pixelifySans.variable}`}
+      className={`${bricolage.variable} ${inter.variable} ${fira.variable}`}
     >
-      <body className="bg-[#030305] text-[#c4c4cc]" cz-shortcut-listen="true">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <Analytics />
+      <body className="antialiased">
+        <ReactLenis root options={{ autoRaf: true }}>
+          <Theme />
+          <Header />
+          {/*<main className="pt-8 min-h-screen">Test page</main>*/}
+          <main className="pt-8 min-h-screen">{children}</main>
+          <Footer />
+          <Analytics />
+        </ReactLenis>
       </body>
     </html>
   );

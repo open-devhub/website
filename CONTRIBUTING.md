@@ -30,15 +30,18 @@ Not everything requires writing code:
 
 ### Prerequisites
 
-- Node.js 18 or higher
-- npm, yarn, or pnpm
-- Git
+- **Node.js 18 or later / Bun v1 or later**
+- A package manager such as **npm**, **bun**, **pnpm**, or **yarn**
+- **Git**
+
+> [!NOTE]
+> This guide uses **bun** for all examples. If you prefer **npm**, **pnpm**, or **yarn**, you can use the equivalent commands instead.
 
 ### Fork and Clone
 
 ```bash
 # Fork the repo on GitHub first, then:
-git clone https://github.com/YOUR_USERNAME/website
+git clone https://github.com/<your username>/website
 cd website
 
 # Add the upstream remote
@@ -48,8 +51,8 @@ git remote add upstream https://github.com/open-devhub/website
 ### Install and Run
 
 ```bash
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
 The site will be at [http://localhost:3000](http://localhost:3000).
@@ -80,8 +83,9 @@ Keep changes focused. One feature or fix per branch makes review faster and keep
 ### 4. Test your changes
 
 ```bash
-npm run lint      # Fix any linting errors before opening a PR
-npm run dev       # Verify that your changes are working with no errors
+bun run dev       # Verify that your changes are working with no errors
+bun run lint      # Find and fix any linting errors before opening a PR
+bun run format    # Format your code with prettier
 ```
 
 ### 5. Commit with a clear message
@@ -94,7 +98,7 @@ See [Commit Messages](#commit-messages) below.
 git push origin feature/your-branch-name
 ```
 
-Then open a pull request on GitHub against the `develop` branch (not `main`).
+Then open a pull request on GitHub against the `main` branch.
 
 ## Pull Request Guidelines
 
@@ -102,17 +106,14 @@ A good PR makes it easy for a reviewer to understand what you changed and why.
 
 ### Before Opening
 
-- [ ] `npm run format` passes with no errors
-- [ ] `npm run build` succeeds locally
+- [ ] `bun run format` passes/formats files with no errors
+- [ ] `bun run lint` passs with no errors
+- [ ] `bun run build` succeeds locally
 - [ ] You've tested your changes in the browser, not just in code
 
 ### PR Description
 
-Fill out the PR template. At minimum, include:
-
-- **What** - What does this PR change?
-- **Why** - Why is this change needed?
-- **Screenshots** (optional) - For any UI changes, before and after screenshots go a long way
+Fill out the PR template.
 
 ### Review Process
 
@@ -126,29 +127,15 @@ If your work is in progress but you want early feedback, open a draft PR. Just m
 
 ## Code Standards
 
-### TypeScript
+### Linting
 
-- Use TypeScript for all new files. Avoid `any` - if you're reaching for it, the type probably needs to be defined properly.
-- Use `interface` for object shapes, `type` for unions and utility types.
-
-### Components
-
-- Keep components small and focused. If a component is doing too many things, split it.
-- Co-locate component-specific styles and logic. Don't reach into another component's internals.
-
-### Styling
-
-- Tailwind utility classes for everything. No custom CSS unless there's a specific reason.
+We use Eslint with the project's config. Run `bun run lint` before committing.
 
 ### Formatting
 
-We use Prettier with the project's config. Run it before committing:
+We use Prettier with the project's config. Run `bun run format` before committing.
 
-```bash
-npm run format
-```
-
-Or set up your editor to format on save - the `.vscode` in the repo will be picked up automatically if you're using vscode.
+Or set up your editor to format on save - the `.vscode`/`.zed` in the repo will be picked up automatically if you're using vscode/zed.
 
 ## Commit Messages
 
@@ -178,7 +165,7 @@ Optional longer description if needed.
 feat(resources): add Rust learning resources section
 fix(nav): correct active state on nested doc pages
 docs(contributing): add environment variable table
-chore: update Next.js to 15.2
+chore: update Next.js to v15.2
 ```
 
 Keep the subject line under 72 characters. If you need more context, put it in the body.

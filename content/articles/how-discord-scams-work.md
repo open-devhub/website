@@ -1,12 +1,11 @@
 ---
-slug: how-discord-scams-work
 title: "The Discord Scam Playbook: Every Major Scam, How It Works, and What To Do If You Fell For One"
 description: A breakdown of the scams running on Discord right now, from Nitro phishing to sextortion, and what to do if you got hit.
-banner: https://i.pinimg.com/originals/f4/91/63/f49163ee46433121e83fb3eb5eff2123.jpg
-author: Caleb
-authorGithub: https://github.com/calebephrem
+authors: [Caleb, Josh]
 date: July 15, 2026
 tags: [discord, security, scams, safety]
+# TODO: uncomment the next line (`featured: true`) when the next article's up, and remove this line of comment
+# featured: true
 ---
 
 Discord has hundreds of millions of monthly users, which also makes it one of the most efficient scam delivery systems on the internet. Not because Discord is uniquely unsafe, but because it has everything scammers want in one place: DMs that bypass spam filters if you share a server, a culture of trading skins/accounts/currency, a friend-of-a-friend trust model, and a login token that hands over your entire account without needing your password if it's stolen.
