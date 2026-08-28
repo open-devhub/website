@@ -186,7 +186,11 @@ export default function Home() {
                   <div className="flex flex-col justify-between h-full">
                     <div className="flex flex-col gap-sm">
                       <div className="flex items-center justify-between">
-                        <Link href={`${staticData.github}/${repo.repo}`}>
+                        <Link
+                          href={`/r/${repo.repo}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <h3 className="text-lg">{repo.repo}</h3>
                         </Link>
                         <div className="flex items-center gap-md text-text-secondary">

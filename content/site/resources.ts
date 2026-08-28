@@ -4,6 +4,7 @@ export const languages = [
   "HTML",
   "CSS",
   "React",
+  "Design",
   "Python",
   "Go",
   "Rust",
@@ -14,8 +15,7 @@ export const languages = [
   "Swift",
   "PHP",
   "Ruby",
-  "SQL",
-  "Design",
+  "Database",
   "Full-Stack",
   "Git",
   "DevOps",
@@ -97,7 +97,7 @@ export const resources: Resource[] = [
     description:
       "A free, open-source curriculum that takes you from zero to full-stack without charging you a dime. Project-based, community-supported, genuinely excellent.",
     url: "https://theodinproject.com",
-    languages: ["JavaScript", "Full-Stack"],
+    languages: ["JavaScript", "Ruby", "HTML", "CSS", "Full-Stack"],
     source: "Open Source",
     tags: ["Beginner", "HTML", "CSS"],
     featured: true,
@@ -107,16 +107,25 @@ export const resources: Resource[] = [
     description:
       "Thousands of hours of free curriculum, certifications, and projects. The JavaScript algorithms section alone is worth bookmarking.",
     url: "https://freecodecamp.org",
-    languages: ["JavaScript", "Python", "Full-Stack"],
+    languages: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "Full-Stack",
+      "React",
+    ],
     source: "Nonprofit",
     tags: ["Beginner", "Certification", "Projects"],
+    featured: true,
   },
   {
     title: "30 Seconds of Code",
     description:
       "Bite-sized JavaScript (and other languages) snippets you can actually use. Great for filling gaps in your knowledge or finding a pattern you half-remember.",
     url: "https://www.30secondsofcode.org",
-    languages: ["JavaScript", "TypeScript", "React"],
+    languages: ["JavaScript", "TypeScript", "HTML", "CSS", "Git"],
     source: "Open Source",
     tags: ["Snippets", "Reference", "Quick Tips"],
   },
@@ -196,7 +205,7 @@ export const resources: Resource[] = [
     description:
       "Not a component library, it's components you own. Copy-paste Radix primitives with Tailwind styling. The ecosystem around this grew fast for good reason.",
     url: "https://ui.shadcn.com",
-    languages: ["React", "TypeScript"],
+    languages: ["Design"],
     source: "Open Source",
     tags: ["Components", "Tailwind", "Accessible"],
     featured: true,
@@ -444,7 +453,7 @@ export const resources: Resource[] = [
     description:
       "Harvard's legendary intro CS course. Teaches C first, then Python and web. Brutal in the best way, free on edX.",
     url: "https://cs50.harvard.edu/x",
-    languages: ["C", "Python", "JavaScript"],
+    languages: ["C", "Python", "JavaScript", "HTML", "CSS"],
     source: "Harvard",
     tags: ["Beginner", "Course", "Algorithms"],
   },
@@ -633,7 +642,7 @@ export const resources: Resource[] = [
     description:
       "Interactive SQL tutorials that run in the browser. Start from SELECT basics and work up to window functions. No setup required.",
     url: "https://sqlzoo.net",
-    languages: ["SQL"],
+    languages: ["Database"],
     source: "Community",
     tags: ["Beginner", "Interactive", "Exercises"],
     featured: true,
@@ -643,7 +652,7 @@ export const resources: Resource[] = [
     description:
       "The PostgreSQL manual is famously excellent. Detailed, accurate, and searchable. If you're using Postgres, bookmark this before anything else.",
     url: "https://www.postgresql.org/docs",
-    languages: ["SQL"],
+    languages: ["Database"],
     source: "PostgreSQL Global Group",
     tags: ["Reference", "Advanced", "Database"],
   },
@@ -652,7 +661,7 @@ export const resources: Resource[] = [
     description:
       "A free guide to SQL performance and indexing that explains why your queries are slow and how to fix them. Vendor-neutral and genuinely practical.",
     url: "https://use-the-index-luke.com",
-    languages: ["SQL"],
+    languages: ["Database"],
     source: "Community",
     tags: ["Performance", "Indexing", "Advanced"],
   },
@@ -661,7 +670,7 @@ export const resources: Resource[] = [
     description:
       "Type-safe ORM for TypeScript and JavaScript. The Prisma docs include a great intro to database concepts alongside the API reference.",
     url: "https://www.prisma.io/docs",
-    languages: ["TypeScript", "JavaScript"],
+    languages: ["Database"],
     source: "Prisma",
     tags: ["ORM", "Database", "TypeScript"],
   },
@@ -670,7 +679,7 @@ export const resources: Resource[] = [
     description:
       "Official MongoDB documentation. Covers CRUD, aggregation pipelines, indexing, and Atlas. Comprehensive and well-organized.",
     url: "https://www.mongodb.com/docs",
-    languages: ["JavaScript", "Python"],
+    languages: ["Database"],
     source: "MongoDB",
     tags: ["NoSQL", "Database", "Reference"],
   },
@@ -681,7 +690,7 @@ export const resources: Resource[] = [
     description:
       "Utility-first CSS that either clicks immediately or confuses you at first, either way, the docs will sort you out. Best-in-class search and examples.",
     url: "https://tailwindcss.com/docs",
-    languages: ["Design", "React"],
+    languages: ["Design", "React", "CSS"],
     source: "Tailwind Labs",
     tags: ["CSS", "Utilities", "Styling"],
     featured: true,
@@ -691,7 +700,7 @@ export const resources: Resource[] = [
     description:
       "Years of CSS deep dives, guides, and almanac entries. The Flexbox and Grid guides here are some of the best on the internet.",
     url: "https://css-tricks.com",
-    languages: ["Design"],
+    languages: ["Design", "CSS"],
     source: "Community",
     tags: ["CSS", "Layout", "Reference"],
   },
@@ -710,7 +719,7 @@ export const resources: Resource[] = [
     description:
       "Unstyled, accessible component primitives for React. If you're building a custom design system, this is where you start.",
     url: "https://www.radix-ui.com",
-    languages: ["React", "TypeScript"],
+    languages: ["React", "Design"],
     source: "WorkOS",
     tags: ["Components", "Accessible", "Headless"],
   },
@@ -740,6 +749,15 @@ export const resources: Resource[] = [
     languages: ["Design", "React"],
     source: "Open Source",
     tags: ["Icons", "SVG", "Components"],
+  },
+  {
+    title: "Reicon",
+    description:
+      "Open‑source vector icons, illustrations & brand logos for React, Vue, Svelte, Flutter, Figma, and AI agents.",
+    url: "https://reicon.dev/",
+    languages: ["Design"],
+    source: "Open Source",
+    tags: ["Icons", "Illustrations", "SVG"],
   },
 
   // DevOps & Cloud
@@ -844,7 +862,20 @@ export const resources: Resource[] = [
     description:
       "The standard platform for practicing algorithmic problems. If you're prepping for technical interviews, you'll end up here, better to come voluntarily.",
     url: "https://leetcode.com",
-    languages: ["JavaScript", "Python", "Java", "C++"],
+    languages: [
+      "Python",
+      "Java",
+      "C++",
+      "C",
+      "JavaScript",
+      "TypeScript",
+      "Go",
+      "Rust",
+      "Swift",
+      "Kotlin",
+      "Ruby",
+      "PHP",
+    ],
     source: "Community",
     tags: ["Algorithms", "Interviews", "Practice"],
     featured: true,
@@ -854,7 +885,7 @@ export const resources: Resource[] = [
     description:
       "Structured roadmap through LeetCode with video explanations. The curated problem list cuts through the noise of thousands of LeetCode problems.",
     url: "https://neetcode.io",
-    languages: ["Python", "JavaScript"],
+    languages: ["Python", "JavaScript", "Java", "C++"],
     source: "Community",
     tags: ["Algorithms", "Interviews", "Roadmap"],
   },
@@ -872,16 +903,27 @@ export const resources: Resource[] = [
     description:
       "Community-driven roadmaps for frontend, backend, DevOps, and more. Useful for identifying gaps in your knowledge and figuring out what to learn next.",
     url: "https://roadmap.sh",
-    languages: ["JavaScript", "Python", "Full-Stack", "DevOps"],
+    languages: [
+      "JavaScript",
+      "Python",
+      "TypeScript",
+      "Java",
+      "C++",
+      "Rust",
+      "Go",
+      "Full-Stack",
+      "DevOps",
+    ],
     source: "Open Source",
     tags: ["Learning Path", "Roadmap", "Career"],
+    featured: true,
   },
   {
     title: "Teach Yourself CS",
     description:
       "A self-study guide to the core computer science curriculum, with the best freely available books and videos for each subject.",
     url: "https://teachyourselfcs.com",
-    languages: ["C", "Python"],
+    languages: ["C", "Python", "Database"],
     source: "Community",
     tags: ["CS Fundamentals", "Curriculum", "Self-Study"],
   },

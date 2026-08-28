@@ -65,7 +65,7 @@ async function ArticleContent({ slug }: { slug: string }) {
               <PenLine size={16} />
               <div className="flex items-center gap-xs">
                 <div className="flex items-center gap-xs text-sm">
-                  {article.metadata.authors.map((author, i, arr) => {
+                  {article.metadata.authors.map((author, i) => {
                     const pfp = article.metadata.authorsAvatar?.[i];
                     const link = article.metadata.authorsLink?.[i];
                     // const isLast = i === arr.length - 1;
