@@ -47,12 +47,6 @@ export const metadata: Metadata = {
         height: 630,
         alt: "DevHub Community Banner",
       },
-      {
-        url: "https://raw.githubusercontent.com/open-devhub/.github/main/assets/org_icon.png",
-        width: 500,
-        height: 500,
-        alt: "DevHub Organization Logo",
-      },
     ],
   },
 
