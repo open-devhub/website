@@ -1,4 +1,17 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+/* lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+html {
+  scrollbar-gutter: stable;
+}
 
 /* vars */
 :root {

@@ -33,17 +33,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bricolage.variable} ${inter.variable} ${fira}`}
+      className={`${bricolage.variable} ${inter.variable} ${fira.variable}`}
     >
-      <ReactLenis root>
-        <body className="antialiased">
+      <body className="antialiased">
+        <ReactLenis root options={{ autoRaf: true }}>
           <Theme />
           <Header />
+          {/*<main className="pt-8 min-h-screen">Test page</main>*/}
           <main className="pt-8 min-h-screen">{children}</main>
           <Footer />
           <Analytics />
-        </body>
-      </ReactLenis>
+        </ReactLenis>
+      </body>
     </html>
   );
 }

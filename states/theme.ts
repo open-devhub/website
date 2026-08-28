@@ -12,23 +12,34 @@ type ThemeState = {
 
 export const useTheme = create<ThemeState>((set, get) => ({
   theme: "light",
+
   loadTheme: () => {
-    const theme = localStorage.getItem(key);
+    if (typeof window === "undefined") return;
 
-    if (!theme || !["dark", "light"].includes(theme)) {
-      return document.documentElement.setAttribute("data-theme", get().theme);
+    const savedTheme = localStorage.getItem(key) as Theme | null;
+    const initialTheme =
+      savedTheme && ["dark", "light"].includes(savedTheme)
+        ? savedTheme
+        : "light";
+
+    requestAnimationFrame(() => {
+      document.documentElement.setAttribute("data-theme", initialTheme);
+    });
+
+    if (get().theme !== initialTheme) {
+      set({ theme: initialTheme });
     }
-
-    document.documentElement.setAttribute("data-theme", theme);
-
-    set({ theme } as { theme: Theme });
   },
+
   toggleTheme: () => {
     const current = get().theme;
     const nextTheme = current === "dark" ? "light" : "dark";
 
-    document.documentElement.setAttribute("data-theme", nextTheme);
-    localStorage.setItem("theme", nextTheme);
+    requestAnimationFrame(() => {
+      document.documentElement.setAttribute("data-theme", nextTheme);
+    });
+
+    localStorage.setItem(key, nextTheme);
 
     set({ theme: nextTheme });
   },
