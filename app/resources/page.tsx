@@ -1,467 +1,161 @@
 "use client";
 
-import Badge from "@/components/Badge";
-import ShinyText from "@/components/bits/ShinyText";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
-import {
-  Language,
-  languageBadgeVariants,
-  languageColors,
-  languages,
-  resources,
-} from "@/content/resources";
-import { fadeInUp, scaleIn, staggerContainer } from "@/lib/animations";
-import { accent, background, indigo, text, white } from "@/lib/colors";
-import { AnimatePresence, motion } from "framer-motion";
-import { ExternalLink, SlidersHorizontal } from "lucide-react";
-import { useState } from "react";
+import Button from "@/components/ui/Button";
+import ShinyText from "@/components/ui/ShinyText";
+import { Language, languages, resources } from "@/content/site/resources";
+import { layoutResourcesBento } from "@/lib/layout";
+import staticData from "@/lib/staticdata";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { ArrowRightUp, Edit, Tag3 } from "reicon-react";
 
-export default function ResourcesPage() {
-  const [activeLanguage, setActiveLanguage] = useState<Language>("TypeScript");
-  const [drawerOpen, setDrawerOpen] = useState(false);
+export default function Resources() {
+  const [filter, setFilter] = useState<Language>(languages[0]);
 
-  const filtered = resources.filter((r) =>
-    r.languages.includes(activeLanguage as Exclude<Language, "All">),
-  );
+  // /resources#typescript -> TypeScript - selects the language on load, from the url hash (/resources#foo)
+  useEffect(() => {
+    const syncHashWithFilter = () => {
+      const hash = decodeURIComponent(
+        window.location.hash.replace("#", "").toLowerCase(),
+      );
+
+      if (!hash) return;
+
+      const match = languages.find((lang) => lang.toLowerCase() === hash);
+
+      if (match) {
+        setFilter(match);
+      }
+    };
+
+    const handle = requestAnimationFrame(syncHashWithFilter);
+
+    window.addEventListener("hashchange", syncHashWithFilter);
+
+    return () => {
+      cancelAnimationFrame(handle);
+      window.removeEventListener("hashchange", syncHashWithFilter);
+    };
+  }, []);
+
+  // Python -> /resources#python - changes the url
+  const changeFilter = (lang: Language) => {
+    setFilter(lang);
+    window.history.pushState(null, "", `#${lang.toLowerCase()}`);
+  };
 
   return (
-    <div
-      className="min-h-screen relative"
-      style={{ background: background.primary }}
-    >
-      <div className="absolute inset-0 dot-bg opacity-50 pointer-events-none" />
-      <div
-        className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none"
-        style={{
-          background: `radial-gradient(ellipse, ${indigo(0.06)} 0%, transparent 70%)`,
-        }}
-      />
-
-      {/* Corner brackets */}
-      <div className="absolute top-20 left-8 hidden md:block">
-        <div
-          style={{
-            width: 40,
-            height: 40,
-            borderTop: `1.5px solid ${indigo(0.4)}`,
-            borderLeft: `1.5px solid ${indigo(0.4)}`,
-          }}
-        />
-      </div>
-      <div className="absolute top-20 right-8 hidden md:block">
-        <div
-          style={{
-            width: 40,
-            height: 40,
-            borderTop: `1.5px solid ${indigo(0.4)}`,
-            borderRight: `1.5px solid ${indigo(0.4)}`,
-          }}
-        />
+    <div className="flex flex-col gap-md items-center py-lg">
+      <h1 className="text-gradient font-bold text-4xl lg:text-5xl">
+        Resources to <ShinyText>Level Up</ShinyText>
+      </h1>
+      <div className="flex flex-col items-center gap-xxs text-text-secondary whitespace-nowrap text-sm md:text-md lg:text-lg">
+        <span>
+          Curated learning paths by programming language. Find exactly what
+        </span>
+        <span>you need to master any stack.</span>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24">
-        {/* Hero */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-          className="mb-14 text-center"
-        >
-          <motion.div
-            variants={fadeInUp}
-            className="flex items-center justify-center gap-3 mb-4"
-          >
-            <span
-              style={{
-                color: indigo(0.5),
-                fontFamily: "var(--font-geist-mono)",
-              }}
-            >
-              {"{"}
-            </span>
-            <span
-              className="text-xs tracking-widest uppercase"
-              style={{
-                fontFamily: "var(--font-geist-mono)",
-                color: accent.indigoLightest,
-              }}
-            >
-              Community Curated
-            </span>
-            <span
-              style={{
-                color: indigo(0.5),
-                fontFamily: "var(--font-geist-mono)",
-              }}
-            >
-              {"}"}
-            </span>
-          </motion.div>
+      <Link
+        target="_blank"
+        rel="noopener noreferrer"
+        href={`${staticData.github}/website/edit/main/content/site/resources.ts`}
+      >
+        <Button icon={Edit}>Edit this page</Button>
+      </Link>
 
-          <motion.h1
-            variants={fadeInUp}
-            style={{
-              fontFamily: "var(--font-pixelify), 'Pixelify Sans', monospace",
-              fontSize: "clamp(2rem, 5vw, 3.5rem)",
-              lineHeight: 1.2,
-            }}
-          >
-            <span
-              style={{
-                background: `linear-gradient(135deg, ${text.primary} 0%, ${accent.indigoLightest} 50%, ${accent.violet} 100%)`,
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              Resources to{" "}
-              <span
-                style={{
-                  color: accent.indigoLight,
-                  WebkitTextFillColor: accent.indigoLight,
-                }}
+      <div className="max-w-7xl w-full flex flex-col sm:flex-row gap-md px-md py-lg">
+        <div className="sm:w-48 flex flex-row overflow-x-auto w-full sm:flex-col gap-xs shrink-0">
+          <span className="text-xl mb-sm px-xs tracking-wider hidden sm:block">
+            Languages
+          </span>
+          {/* languages (sidebar, on top if on mobile) */}
+          {languages.map((lang) => {
+            const isActive = filter === lang;
+
+            return (
+              <button
+                key={lang}
+                onClick={() => changeFilter(lang)}
+                className={`text-left px-sm py-xs rounded-md whitespace-nowrap text-md transition-colors cursor-pointer ${
+                  isActive
+                    ? "bg-bg-secondary text-accent"
+                    : "text-text-secondary hover:text-text hover:bg-bg-secondary"
+                }`}
               >
-                <ShinyText
-                  text="Level Up"
-                  className="cursor-target"
-                  speed={3.5}
-                  delay={1}
-                  color={accent.indigoLight}
-                  shineColor={accent.indigoShine}
-                  spread={90}
-                  direction="left"
-                  yoyo={false}
-                  pauseOnHover={false}
-                  disabled={false}
-                />
-              </span>
-            </span>
-          </motion.h1>
+                {lang}
+              </button>
+            );
+          })}
+        </div>
 
-          <motion.p
-            variants={fadeInUp}
-            className="mt-4 text-sm max-w-xl mx-auto"
-            style={{ fontFamily: "var(--font-geist-mono)", color: text.dim }}
-          >
-            Curated learning paths by programming language. Find exactly what
-            you need to master any stack.
-          </motion.p>
-        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-md flex-1">
+          {/* resource cards (bento grid, 2 col for featured cards) */}
+          {(() => {
+            let filteredResources = resources.filter((res) =>
+              res.languages.includes(filter),
+            );
 
-        {/* Two-column layout: Sidebar + Grid */}
-        <div className="flex gap-8">
-          {/* Sidebar (desktop) */}
-          <aside className="hidden md:block w-40 flex-shrink-0">
-            <div className="sticky top-32 space-y-1">
-              <p
-                className="text-xs uppercase tracking-widest mb-3"
-                style={{
-                  fontFamily: "var(--font-geist-mono)",
-                  color: text.veryDim,
-                }}
-              >
-                Languages
-              </p>
-              {languages.map((lang) => {
-                const isActive = activeLanguage === lang;
-                return (
-                  <motion.button
-                    key={lang}
-                    onClick={() => setActiveLanguage(lang)}
-                    className="w-full text-left px-3 py-2 text-sm"
-                    style={{ fontFamily: "var(--font-geist-mono)" }}
-                    initial={false}
-                    animate={{
-                      backgroundColor: isActive ? indigo(0.1) : "rgba(0,0,0,0)",
-                      color: isActive ? accent.indigoLightest : text.dim,
-                      borderColor: isActive ? indigo(0.3) : "rgba(0,0,0,0)",
-                    }}
-                    transition={{ duration: 0.15 }}
-                    whileHover={{
-                      x: 2,
-                      backgroundColor: indigo(0.1),
-                      borderColor: indigo(0.3),
-                      color: accent.indigoLightest,
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    {lang}
-                  </motion.button>
-                );
-              })}
-            </div>
-          </aside>
+            filteredResources = layoutResourcesBento(filteredResources);
 
-          {/* Resources grid */}
-          <div className="flex-1">
-            {/* Mobile filter bar */}
-            <div className="md:hidden mb-6">
-              <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
-                <DrawerTrigger asChild>
-                  <button
-                    className="flex w-full items-center justify-between border px-4 py-3 text-sm"
-                    style={{
-                      fontFamily: "var(--font-geist-mono)",
-                      borderColor: indigo(0.25),
-                      backgroundColor: indigo(0.06),
-                      color: accent.indigoLightest,
-                    }}
-                  >
-                    <span className="flex items-center gap-2">
-                      <SlidersHorizontal className="h-4 w-4" />
-                      Language
-                    </span>
-                    <span style={{ color: accent.indigoLight }}>
-                      {activeLanguage}
-                    </span>
-                  </button>
-                </DrawerTrigger>
-                <DrawerContent style={{ backgroundColor: background.drawer }}>
-                  <DrawerHeader>
-                    <DrawerTitle
-                      className="text-xs uppercase tracking-widest"
-                      style={{
-                        fontFamily: "var(--font-geist-mono)",
-                        color: accent.indigoLightest,
-                      }}
-                    >
-                      Select Language
-                    </DrawerTitle>
-                  </DrawerHeader>
-                  <div className="grid grid-cols-2 gap-2 px-4 pb-8">
-                    {languages.map((lang) => {
-                      const isActive = activeLanguage === lang;
-                      return (
-                        <DrawerClose asChild key={lang}>
-                          <button
-                            onClick={() => setActiveLanguage(lang)}
-                            className="w-full text-left px-3 py-2.5 text-sm border"
-                            style={{
-                              fontFamily: "var(--font-geist-mono)",
-                              backgroundColor: isActive
-                                ? indigo(0.12)
-                                : "rgba(0,0,0,0)",
-                              borderColor: isActive ? indigo(0.3) : white(0.06),
-                              color: isActive
-                                ? accent.indigoLightest
-                                : text.dim,
-                            }}
-                          >
-                            {lang}
-                          </button>
-                        </DrawerClose>
-                      );
-                    })}
-                  </div>
-                </DrawerContent>
-              </Drawer>
-            </div>
+            if (filteredResources.length > 0) {
+              return filteredResources.map((res) => (
+                <div
+                  key={res.url}
+                  className={`${
+                    res.featured ? "md:col-span-2" : "md:col-span-1"
+                  } flex flex-col justify-between bg-bg-secondary gap-sm p-md rounded-md`}
+                >
+                  <div className="flex flex-col gap-sm">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-text-secondary">{res.source}</span>
+                      {res.featured && (
+                        <span className="bg-accent-muted text-text-primary px-xs py-xxs rounded-md text-xs">
+                          Featured
+                        </span>
+                      )}
+                    </div>
 
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeLanguage}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
-              >
-                {filtered.length === 0 ? (
-                  <motion.div
-                    variants={scaleIn}
-                    initial="hidden"
-                    animate="visible"
-                    className="col-span-full text-center py-20"
-                  >
-                    <p
-                      style={{
-                        fontFamily: "var(--font-geist-mono)",
-                        color: text.veryDim,
-                      }}
-                    >
-                      No resources for {activeLanguage}. Check another language!
-                    </p>
-                  </motion.div>
-                ) : (
-                  filtered.map((resource, i) => {
-                    const langColor =
-                      resource.languages.length > 0
-                        ? languageColors[resource.languages[0]]
-                        : accent.indigo;
-                    return (
-                      <motion.a
-                        key={resource.title}
-                        href={resource.url}
+                    <h2 className="text-2xl">
+                      <Link
+                        href={res.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{
-                          opacity: 1,
-                          y: 0,
-                          transition: { delay: i * 0.04, duration: 0.4 },
-                        }}
-                        className="group block relative overflow-hidden"
-                        style={{
-                          background: "rgba(7, 7, 15, 0.7)",
-                          border: `1px solid ${indigo(0.1)}`,
-                        }}
-                        whileHover={{
-                          y: -2,
-                          transition: { duration: 0.2 },
-                        }}
+                        className="text-text-primary"
                       >
-                        {/* Corner brackets */}
-                        <div
-                          className="absolute top-2 left-2 w-3 h-3"
-                          style={{
-                            borderTop: `1.5px solid ${indigo(0.25)}`,
-                            borderLeft: `1.5px solid ${indigo(0.25)}`,
-                          }}
-                        />
-                        <div
-                          className="absolute top-2 right-2 w-3 h-3"
-                          style={{
-                            borderTop: `1.5px solid ${indigo(0.25)}`,
-                            borderRight: `1.5px solid ${indigo(0.25)}`,
-                          }}
-                        />
-                        <div
-                          className="absolute bottom-2 left-2 w-3 h-3"
-                          style={{
-                            borderBottom: `1.5px solid ${indigo(0.25)}`,
-                            borderLeft: `1.5px solid ${indigo(0.25)}`,
-                          }}
-                        />
-                        <div
-                          className="absolute bottom-2 right-2 w-3 h-3"
-                          style={{
-                            borderBottom: `1.5px solid ${indigo(0.25)}`,
-                            borderRight: `1.5px solid ${indigo(0.25)}`,
-                          }}
-                        />
+                        {res.title}
+                        <ArrowRightUp className="inline-block align-middle ml-xxs" />
+                      </Link>
+                    </h2>
 
-                        <div className="p-4 relative">
-                          {/* Featured indicator */}
-                          {resource.featured && (
-                            <div className="absolute top-3 right-3">
-                              <span
-                                className="text-[9px] uppercase tracking-widest"
-                                style={{
-                                  fontFamily: "var(--font-geist-mono)",
-                                  color: accent.indigoLightest,
-                                }}
-                              >
-                                Featured
-                              </span>
-                            </div>
-                          )}
+                    <p className="text-text-secondary text-md">
+                      {res.description}
+                    </p>
+                  </div>
 
-                          {/* Header: source + primary language */}
-                          <div className="flex items-center gap-2 mb-2">
-                            <div
-                              className="w-6 h-6 flex items-center justify-center text-[9px] font-bold"
-                              style={{
-                                background: `${langColor}20`,
-                                color: langColor,
-                                border: `1px solid ${langColor}40`,
-                              }}
-                            >
-                              {resource.source.slice(0, 1).toUpperCase()}
-                            </div>
-                            <span
-                              className="text-xs"
-                              style={{
-                                fontFamily: "var(--font-geist-mono)",
-                                color: text.dim,
-                              }}
-                            >
-                              {resource.source}
-                            </span>
-                          </div>
-
-                          {/* Title */}
-                          <h3
-                            className="font-semibold text-sm mb-1.5 transition-colors"
-                            style={{
-                              fontFamily: "var(--font-geist-mono)",
-                              color: text.primary,
-                            }}
-                          >
-                            {resource.title}
-                          </h3>
-
-                          {/* Description */}
-                          <p
-                            className="text-xs leading-relaxed mb-3"
-                            style={{
-                              fontFamily: "var(--font-geist-mono)",
-                              color: text.dim,
-                            }}
-                          >
-                            {resource.description}
-                          </p>
-
-                          {/* Languages + Tags */}
-                          <div className="flex flex-wrap gap-1 mb-3">
-                            {resource.languages.slice(0, 2).map((lang) => (
-                              <Badge
-                                key={lang}
-                                variant={languageBadgeVariants[lang]}
-                                size="sm"
-                              >
-                                {lang}
-                              </Badge>
-                            ))}
-                            {resource.tags.slice(0, 1).map((tag) => (
-                              <span
-                                key={tag}
-                                className="text-[9px] px-1.5 py-0.5 rounded"
-                                style={{
-                                  fontFamily: "var(--font-geist-mono)",
-                                  color: text.veryDim,
-                                  background: indigo(0.06),
-                                }}
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-
-                          {/* Link */}
-                          <div
-                            className="flex items-center gap-1 text-[10px] transition-colors"
-                            style={{
-                              fontFamily: "var(--font-geist-mono)",
-                              color: text.veryDim,
-                            }}
-                          >
-                            <ExternalLink className="w-3 h-3" />
-                            Visit
-                          </div>
-                        </div>
-                      </motion.a>
-                    );
-                  })
-                )}
-              </motion.div>
-            </AnimatePresence>
-          </div>
+                  <div className="flex flex-wrap gap-xxs">
+                    {res.tags.map((tag) => (
+                      <div
+                        key={tag}
+                        className="text-xs flex gap-xxs items-center text-text-secondary px-xs py-xxs"
+                      >
+                        <Tag3 size={12} />
+                        <span>{tag}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ));
+            } else {
+              return (
+                <div className="md:col-span-3 p-lg text-center text-text-secondary bg-bg-secondary rounded-md">
+                  No resources found for &quot;{filter}&quot;.
+                </div>
+              );
+            }
+          })()}
         </div>
       </div>
-
-      <div
-        className="absolute bottom-0 left-0 right-0 h-px"
-        style={{
-          background: `linear-gradient(90deg, transparent, ${indigo(0.3)}, transparent)`,
-        }}
-      />
     </div>
   );
 }

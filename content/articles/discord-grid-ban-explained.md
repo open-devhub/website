@@ -1,10 +1,7 @@
 ---
-slug: discord-grid-ban-explained
 title: "The Discord 'Grid Ban': Why Minecraft Inventories and Spreadsheets Got People Banned"
 description: A breakdown of the July 2026 Discord ban wave, why grid-pattern screenshots got flagged as CSAM, and what actually broke behind the scenes.
-banner: https://preview.redd.it/upgrade-to-minecrafts-inventory-with-pictures-v0-j4wgo2n4x5g91.png?width=1080&crop=smart&auto=webp&s=db58bf266a1b9e759e949e35f8ea57481a46bd3a
-author: Caleb
-authorGithub: https://github.com/calebephrem
+authors: [Caleb]
 date: July 11, 2026
 tags: [discord, moderation, vulnerability]
 ---

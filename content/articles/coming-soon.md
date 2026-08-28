@@ -1,15 +1,12 @@
 ---
-slug: more-coming-soon
 title: More Articles Coming Soon
-description: The first few article's are up — more are on the way.
-banner: https://shorturl.at/DWs97
-author: Caleb
-authorGithub: https://github.com/calebephrem
+description: The first few article's are up, more are on the way.
+authors: [Caleb]
 date: July 10, 2026
 tags: [more, coming, soon]
 ---
 
-The Articles section is officially live — you just read (or skipped past) the first ones. More are on the way.
+The Articles section is officially live, you just read (or skipped past) the first ones. More are on the way.
 
 ## What to expect
 

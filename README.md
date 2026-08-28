@@ -30,15 +30,13 @@ If you're new to open source, this project is a great place to start because doc
 
 ## Tech Stack
 
-| Technology           | Purpose                                   |
-| -------------------- | ----------------------------------------- |
-| Next.js              | React framework used to build the website |
-| TypeScript           | Adds static typing to JavaScript          |
-| Tailwind CSS         | Utility-first CSS framework for styling   |
-| GSAP & Framer Motion | Animation libraries                       |
-| React Bits           | UI component library                      |
-| Lucide               | Icon library                              |
-| Vercel               | Deployment platform                       |
+| Technology   | Purpose                                   |
+| ------------ | ----------------------------------------- |
+| Next.js      | React framework used to build the website |
+| TypeScript   | Adds static typing to JavaScript          |
+| Tailwind CSS | Utility-first CSS framework for styling   |
+| Reicon React | Icon library                              |
+| Vercel       | Deployment platform                       |
 
 You don't need to know all of these before contributing. Most changes only touch one or two of them at a time.
 
@@ -52,19 +50,12 @@ Don't worry if you've never worked with a Next.js project before—each step is 
 
 Before you begin, make sure you have the following installed:
 
-- **Node.js 18 or later**
+- **Node.js 18 or later / Bun v1 or later**
 - A package manager such as **npm**, **bun**, **pnpm**, or **yarn**
 - **Git**
 
-> **Note:** This guide uses **npm** for all examples. If you prefer **bun**, **pnpm**, or **yarn**, you can use the equivalent commands instead.
-
-You can verify your installation by running:
-
-```bash
-node -v
-npm -v
-git --version
-```
+> [!NOTE]
+> This guide uses **bun** for all examples. If you prefer **npm**, **pnpm**, or **yarn**, you can use the equivalent commands instead.
 
 ### Step 1: Clone the repository
 
@@ -85,7 +76,7 @@ cd website
 This project depends on several external packages. Install them using:
 
 ```bash
-npm install
+bun install
 ```
 
 This may take a few minutes the first time.
@@ -95,18 +86,14 @@ This may take a few minutes the first time.
 Run:
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 The development server will start locally.
 
-Open your browser and visit:
+Open your browser and visit `http://localhost:3000`
 
-```
-http://localhost:3000
-```
-
-Whenever you save changes to the code, the browser automatically refreshes so you can instantly see your updates.
+Whenever you save changes to the code, the browser automatically reloads so you can instantly see your updates.
 
 ### Step 4: Verify Everything Works
 
@@ -126,28 +113,20 @@ Below is an overview of the repository structure to help you locate important fi
 
 ```
 ├── app/                  → Pages of the site (Next.js App Router)
-│   ├── api/              → API routes (e.g. link previews)
 │   ├── pages/            → Renders the guide pages (Getting Started, FAQ, etc.)
 │   ├── articles/         → Article listing + individual article pages
 │   ├── partners/         → Partners page
 │   ├── resources/        → Resource library page
 │   └── rules/            → Community rules page
 ├── components/           → Reusable React components
-│   ├── home/             → Landing page sections (Hero, Features, Stats, etc.)
-│   ├── site/             → Shared layout pieces (Navbar, Footer, Section)
-│   ├── ui/               → Generic building blocks (buttons, dialogs, badges…)
-│   └── bits/             → Visual/animation effects (glow, fuzzy text, cursor)
 ├── content/              → Site copy and structured data
 │   ├── pages/            → Content for the guide pages
 │   ├── articles/         → Article content
 │   ├── resources.ts      → Resource library data
 │   └── rules.ts          → Community rules data
+│   └── partners.ts       → DevHub partners data
 ├── lib/                  → Shared utility code
-│   ├── markdown/         → Markdown parser used for articles/pages
-│   ├── animations.ts     → Shared animation configs
-│   ├── colors.ts         → Color system used across the site
-│   └── utils.ts          → General helper functions
-└── hooks/                → Custom React hooks
+└── states/               → React states (zustand)
 ```
 
 ## Contributing
@@ -166,10 +145,11 @@ git checkout -b feature/my-new-feature
 
 4. Make your changes.
 5. Test your changes locally.
-6. Run the linter:
+6. Code quality check:
 
 ```bash
-npm run lint
+bun run lint
+bun run format
 ```
 
 7. Commit your changes.
@@ -184,65 +164,11 @@ git commit -m "feat: add awesome feature"
 git push origin feature/my-new-feature
 ```
 
-9. Open a Pull Request describing what you changed and why.
+9. Open a Pull Request against the `main` branch describing what you changed and why.
 
 New to open source? Look for issues tagged [`good first issue`](https://github.com/open-devhub/website/issues?q=is%3Aopen+label%3A%22good+first+issue%22). These are picked specifically to be approachable for first-time contributors.
 
 For a more detailed contribution guide, coding standards, and pull request expectations, please see [CONTRIBUTING.md](./CONTRIBUTING.md).
-
-## Useful Scripts
-
-| Command             | Description                            |
-| ------------------- | -------------------------------------- |
-| `npm run dev`       | Starts the local development server.   |
-| `npm run build`     | Creates an optimized production build. |
-| `npm run start`     | Runs the production build locally.     |
-| `npm run lint`      | Checks your code for linting issues.   |
-| `npm run typecheck` | Check for type errors.                 |
-| `npm run format`    | Formats the project using Prettier.    |
-
-## Testing Your Changes
-
-Before opening a Pull Request, make sure your changes work as expected.
-
-Run the linter:
-
-```bash
-npm run lint
-```
-
-Then start the development server:
-
-```bash
-npm run dev
-```
-
-Open the website in your browser and verify that your changes appear correctly and don't introduce any issues.
-
-If the project adds automated tests in the future, be sure to run those as well before submitting your contribution.
-
-## Troubleshooting
-
-### `npm install` fails
-
-Make sure you're using **Node.js 18 or later**.
-
-### Port 3000 is already in use
-
-Run the development server on another port:
-
-```bash
-npm run dev -- -p 3001
-```
-
-### Module not found
-
-Delete the `node_modules` folder and reinstall dependencies:
-
-```bash
-rm -rf node_modules
-npm install
-```
 
 ## Community
 
@@ -251,7 +177,7 @@ Want to get involved? We'd love to have you!
 - **Website:** [devhub.vercel.app](https://devhub.vercel.app)
 - **Discord:** [Join DevHub](https://devhub.vercel.app/join) – Ask questions, connect with other developers, and stay up to date with the community.
 - **GitHub:** [open-devhub](https://github.com/open-devhub) – Explore our projects and contribute.
-- **Email:** open-devhub@outlook.com – Reach out for general inquiries or support.
+- **Email:** [open-devhub@outlook.com](mailto:open-devhub@outlook.com) – Reach out for general inquiries or support.
 
 ## License
 

@@ -1,10 +1,7 @@
 ---
-slug: android-developer-verification
 title: "Android Developer Verification: What's Changing, When, and Why Everyone's Arguing About It"
 description: Google now ties every Android app to a verified developer identity. Here's what it actually does, with real dates and the arguments on both sides.
-banner: https://w0.peakpx.com/wallpaper/40/718/HD-wallpaper-android-logo-black-background-android-green-neon-logo-android-emblem-android.jpg
-author: Caleb
-authorGithub: https://github.com/calebephrem
+authors: [Caleb]
 date: July 19, 2026
 tags: [android, google, security, open-source]
 ---
