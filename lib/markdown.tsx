@@ -1,3 +1,4 @@
+import React, { ReactNode } from "react";
 import { Components } from "react-markdown";
 
 interface ASTNode {
@@ -72,55 +73,37 @@ function slugify(text: string): string {
     .replace(/(^-|-$)/g, "");
 }
 
+function extractTextFromChildren(children: ReactNode): string {
+  if (typeof children === "string") return children;
+  if (typeof children === "number") return String(children);
+  if (Array.isArray(children)) {
+    return children.map(extractTextFromChildren).join("");
+  }
+  if (React.isValidElement<{ children?: ReactNode }>(children)) {
+    return extractTextFromChildren(children.props.children);
+  }
+  return "";
+}
+
+const createHeading = (Tag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") => {
+  const HeadingComponent: Components[typeof Tag] = ({ children, ...props }) => {
+    const id = slugify(extractTextFromChildren(children));
+    return (
+      <Tag id={id} {...props}>
+        {children}
+      </Tag>
+    );
+  };
+  return HeadingComponent;
+};
+
 export const headingComponents: Components = {
-  h1: ({ children, ...props }) => {
-    const id = slugify(String(children));
-    return (
-      <h1 id={id} {...props}>
-        {children}
-      </h1>
-    );
-  },
-  h2: ({ children, ...props }) => {
-    const id = slugify(String(children));
-    return (
-      <h2 id={id} {...props}>
-        {children}
-      </h2>
-    );
-  },
-  h3: ({ children, ...props }) => {
-    const id = slugify(String(children));
-    return (
-      <h3 id={id} {...props}>
-        {children}
-      </h3>
-    );
-  },
-  h4: ({ children, ...props }) => {
-    const id = slugify(String(children));
-    return (
-      <h4 id={id} {...props}>
-        {children}
-      </h4>
-    );
-  },
-  h5: ({ children, ...props }) => {
-    const id = slugify(String(children));
-    return (
-      <h5 id={id} {...props}>
-        {children}
-      </h5>
-    );
-  },
-  h6: ({ children, ...props }) => {
-    const id = slugify(String(children));
-    return (
-      <h6 id={id} {...props}>
-        {children}
-      </h6>
-    );
-  },
+  h1: createHeading("h1"),
+  h2: createHeading("h2"),
+  h3: createHeading("h3"),
+  h4: createHeading("h4"),
+  h5: createHeading("h5"),
+  h6: createHeading("h6"),
 };
 
 export interface TocItem {
