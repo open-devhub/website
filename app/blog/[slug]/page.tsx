@@ -1,6 +1,6 @@
 import Button from "@/components/ui/Button";
 import Skeleton from "@/components/ui/Skeleton";
-import { remarkCustomAlerts } from "@/lib/markdown";
+import { getTOC, headingComponents, remarkCustomAlerts } from "@/lib/markdown";
 import staticData from "@/lib/staticdata";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,8 +18,31 @@ import {
   Tag3,
 } from "reicon-react";
 import remarkGfm from "remark-gfm";
-import { getBlogs } from "../loader";
+import { getBlogBySlug, getBlogs } from "../loader";
 import { BlogCard } from "../page";
+
+async function SideBar({ activeSlug }: { activeSlug: string }) {
+  const blog = await getBlogBySlug(activeSlug);
+  const toc = getTOC(blog?.content || "");
+
+  return (
+    <div className="sm:w-64 mt-xl py-sm hidden lg:flex flex-row overflow-x-auto w-full sm:flex-col gap-xs shrink-0">
+      <span className="text-xl mb-sm px-xs tracking-wider hidden sm:block whitespace-nowrap">
+        Table of contents
+      </span>
+      {/* toc */}
+      {toc?.map(async (item) => (
+        <Link
+          key={item.id}
+          href={`#${item.id}`}
+          className={`text-left px-sm text-sm py-xs rounded-md w-full undecorated text-md transition-colors cursor-pointer text-text-secondary hover:text-text hover:bg-bg-secondary`}
+        >
+          {item.text}
+        </Link>
+      ))}
+    </div>
+  );
+}
 
 async function BlogContent({ slug }: { slug: string }) {
   // await new Promise((resolve) => setTimeout(resolve, 375));
@@ -118,7 +141,10 @@ async function BlogContent({ slug }: { slug: string }) {
 
       {/* blog content (markdown) */}
       <article className="markdown">
-        <Markdown remarkPlugins={[remarkCustomAlerts, remarkGfm]}>
+        <Markdown
+          remarkPlugins={[remarkCustomAlerts, remarkGfm]}
+          components={headingComponents}
+        >
           {blog.content}
         </Markdown>
       </article>
@@ -167,9 +193,10 @@ export default async function Blog({
 
   return (
     <div className="w-full flex justify-center py-md">
-      <div className="max-w-5xl w-full flex justify-center flex-col sm:flex-row gap-md px-lg">
+      <div className="max-w-6xl w-full flex justify-center flex-col sm:flex-row gap-md px-lg">
         <Suspense key={slug} fallback={<BlogSkeleton />}>
           <BlogContent slug={slug} />
+          <SideBar activeSlug={slug} />
         </Suspense>
       </div>
     </div>
