@@ -139,7 +139,7 @@ async function PageContent({ slug }: { slug: string }) {
 function PageSkeleton() {
   return (
     <div className="w-full flex gap-sm">
-      <div className="w-full h-screen flex-1">
+      <div className="w-full h-screen hidden sm:flex flex-1">
         <Skeleton />
       </div>
       <div className="flex flex-col gap-sm w-full h-screen flex-4">

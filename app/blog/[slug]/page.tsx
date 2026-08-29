@@ -31,7 +31,7 @@ async function SideBar({ activeSlug }: { activeSlug: string }) {
         Table of contents
       </span>
       {/* toc */}
-      {toc?.map(async (item) => (
+      {toc?.map((item) => (
         <Link
           key={item.id}
           href={`#${item.id}`}
@@ -175,10 +175,23 @@ async function BlogContent({ slug }: { slug: string }) {
 
 function BlogSkeleton() {
   return (
-    <div className="flex flex-col gap-sm w-full h-screen">
-      <Skeleton className="flex-1" />
-      <Skeleton className="flex-5" />
+    <div className="w-full flex gap-sm">
+      <div className="flex flex-col gap-sm w-full h-screen flex-4">
+        <Skeleton className="flex-1" />
+        <Skeleton className="flex-2" />
+      </div>
+      <div className="w-full h-screen hidden lg:flex flex-1">
+        <Skeleton />
+      </div>
     </div>
+  );
+}
+async function BlogPageContent({ slug }: { slug: string }) {
+  return (
+    <>
+      <BlogContent slug={slug} />
+      <SideBar activeSlug={slug} />
+    </>
   );
 }
 
@@ -195,8 +208,7 @@ export default async function Blog({
     <div className="w-full flex justify-center py-md">
       <div className="max-w-6xl w-full flex justify-center flex-col sm:flex-row gap-md px-lg">
         <Suspense key={slug} fallback={<BlogSkeleton />}>
-          <BlogContent slug={slug} />
-          <SideBar activeSlug={slug} />
+          <BlogPageContent slug={slug} />
         </Suspense>
       </div>
     </div>

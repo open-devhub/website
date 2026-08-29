@@ -287,7 +287,7 @@ export default function Home() {
             {
               member: "Li Productions",
               avatar:
-                "https://cdn.discordapp.com/avatars/1064125371366264862/4e84e439ce0d3dfd00c61675262479fa.png",
+                "https://cdn.discordapp.com/avatars/1064125371366264862/32b095c1acbc77c86fd1bccc099bf00a.webp",
               review:
                 "i enjoy hanging out in this server its so nice and welcoming and chill here",
               stars: 5,
