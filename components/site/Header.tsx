@@ -36,7 +36,7 @@ export default function Header() {
             { label: "Rules", href: "/rules" },
             { label: "Resources", href: "/resources" },
             { label: "Pages", href: "/pages" },
-            { label: "Articles", href: "/articles" },
+            { label: "Blog", href: "/blog" },
             { label: "Partners", href: "/partners" },
           ].map((item) => (
             <Link

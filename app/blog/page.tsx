@@ -4,24 +4,24 @@ import staticData from "@/lib/staticdata";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightUp, Calendar, Edit } from "reicon-react";
-import { type ArticleData, getArticles } from "./loader";
+import { type BlogData, getBlogs } from "./loader";
 
-export function ArticleCard({ article }: { article: ArticleData }) {
-  const isFeatured = article.metadata.featured;
+export function BlogCard({ blog }: { blog: BlogData }) {
+  const isFeatured = blog.metadata.featured;
 
   return (
     <div
-      key={article.slug || article.metadata.title}
+      key={blog.slug || blog.metadata.title}
       className={`${
         isFeatured ? "md:col-span-2" : "md:col-span-1"
       } flex flex-col justify-between bg-bg-secondary gap-sm p-md rounded-md`}
     >
       <div className="flex flex-col gap-sm">
         <div className="flex items-center justify-between text-xs">
-          {article.metadata.date && (
+          {blog.metadata.date && (
             <div className="flex items-center gap-xxs text-text-secondary">
               <Calendar size={14} />
-              <span>{article.metadata.date}</span>
+              <span>{blog.metadata.date}</span>
             </div>
           )}
 
@@ -33,27 +33,24 @@ export function ArticleCard({ article }: { article: ArticleData }) {
         </div>
 
         <h2 className="text-2xl">
-          <Link
-            href={`/articles/${article.slug}`}
-            className="text-text-primary"
-          >
-            {article.metadata.title}
+          <Link href={`/blog/${blog.slug}`} className="text-text-primary">
+            {blog.metadata.title}
             <ArrowRightUp className="inline-block align-middle ml-xxs" />
           </Link>
         </h2>
 
-        {article.metadata.description && (
+        {blog.metadata.description && (
           <p className="text-text-secondary text-md">
-            {article.metadata.description}
+            {blog.metadata.description}
           </p>
         )}
       </div>
 
-      {article.metadata.authorsAvatar && (
+      {blog.metadata.authorsAvatar && (
         <div className="flex w-fit items-center gap-xxs bg-bg-tertiary py-xxs px-xs rounded-md">
-          {article.metadata.authorsAvatar.map((avatar, i) => {
-            const authorName = article.metadata.authors?.[i] || "";
-            const authorLink = article.metadata.authorsLink?.[i];
+          {blog.metadata.authorsAvatar.map((avatar, i) => {
+            const authorName = blog.metadata.authors?.[i] || "";
+            const authorLink = blog.metadata.authorsLink?.[i];
 
             const AvatarImage = (
               <Image
@@ -88,30 +85,30 @@ export function ArticleCard({ article }: { article: ArticleData }) {
   );
 }
 
-export default async function Articles() {
-  const articles = await getArticles();
+export default async function Blog() {
+  const blogs = await getBlogs();
 
   return (
     <div className="flex flex-col gap-md items-center py-lg">
       <h1 className="text-gradient font-bold text-4xl lg:text-5xl">
-        Community <ShinyText>Articles</ShinyText>
+        Community <ShinyText>Blog</ShinyText>
       </h1>
       <div className="text-text-secondary text-sm md:text-md lg:text-lg">
-        Guides, releases, and deep dives written by the DevHub community.
+        Guides, releases, news, and deep dives written by the DevHub community.
       </div>
 
       <Link
         target="_blank"
         rel="noopener noreferrer"
-        href={`${staticData.github}/website/edit/main/content/articles`}
+        href={`${staticData.github}/website/edit/main/content/blog`}
       >
         <Button icon={Edit}>Write one</Button>
       </Link>
 
       <div className="max-w-7xl w-full px-md py-lg">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-md grid-flow-dense">
-          {articles.map((article) => (
-            <ArticleCard key={article.metadata.title} article={article} />
+          {blogs.map((blog) => (
+            <BlogCard key={blog.metadata.title} blog={blog} />
           ))}
         </div>
       </div>

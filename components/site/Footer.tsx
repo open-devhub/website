@@ -26,7 +26,7 @@ export default function Footer() {
               { label: "Rules", href: "/rules" },
               { label: "Resources", href: "/resources" },
               { label: "Pages", href: "/pages" },
-              { label: "Articles", href: "/articles" },
+              { label: "Blog", href: "/blog" },
               { label: "Partners", href: "/partners" },
             ].map((nav) => (
               <Link

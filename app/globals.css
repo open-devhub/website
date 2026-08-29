@@ -161,7 +161,7 @@ html {
     background-clip: text;
   }
 
-  /* markdown (pages and articles) */
+  /* markdown (pages and blog) */
   .markdown {
     @apply flex flex-col gap-md text-text-secondary;
 

@@ -6,7 +6,7 @@ date: July 19, 2026
 tags: [android, google, security, open-source]
 ---
 
-If you've seen headlines saying Google is "locking down Android," this article breaks down what's actually happening, backed by [Google's own documentation](https://developer.android.com/developer-verification) and the groups pushing back against it.
+If you've seen headlines saying Google is "locking down Android," this blog post breaks down what's actually happening, backed by [Google's own documentation](https://developer.android.com/developer-verification) and the groups pushing back against it.
 
 Whatever you build, this is about who gets to decide what software runs on a device you paid for, and that's worth understanding regardless of which platform you ship to.
 
@@ -110,7 +110,7 @@ If you're a solo or hobbyist developer distributing outside the Play Store, an i
 - Verification happens through the [Android Developer Console](https://developer.android.com/developer-verification), and can take time if documents need review
 - A free student/hobbyist tier exists alongside the paid commercial tier, with a lower install cap
 - Package name conflicts are resolved in favor of whoever already has more installs
-- F-Droid and the EFF have both published statements laying out the specific risk to pseudonymous and privacy-focused projects, linked earlier in this article
+- F-Droid and the EFF have both published statements laying out the specific risk to pseudonymous and privacy-focused projects, linked earlier in this blog
 
 If you only don't build mobile applications for android, this might not touch you directly. But if your community includes Android developers, or you rely on sideloaded tools yourself, it's worth understanding before September 2026.
 
