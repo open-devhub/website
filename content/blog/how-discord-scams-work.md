@@ -4,7 +4,7 @@ description: A breakdown of the scams running on Discord right now, from Nitro p
 authors: [Caleb, Josh]
 date: July 15, 2026
 tags: [discord, security, scams, safety]
-# TODO: uncomment the next line (`featured: true`) when the next article's up, and remove this line of comment
+# TODO: uncomment the next line (`featured: true`) when the next blog's up, and remove this line of comment
 # featured: true
 ---
 
@@ -13,7 +13,7 @@ Discord has hundreds of millions of monthly users, which also makes it one of th
 This isn't a "here's 3 tips" post. This is every major scam category currently running on Discord, broken down the same way: how it works, the red flags, what to do if you already fell for it, and how to avoid it going forward.
 
 > [!NOTE]
-> A lot of the groundwork for the "already fallen for it" sections in this article comes from [NoTextToSpeech's scam list](https://notexttospeech.com/scams), a community-maintained reference that's worth bookmarking on its own.
+> A lot of the groundwork for the "already fallen for it" sections in this blog post comes from [NoTextToSpeech's scam list](https://notexttospeech.com/scams), a community-maintained reference that's worth bookmarking on its own.
 
 ## Why These Scams Keep Working
 

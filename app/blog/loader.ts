@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import path from "path";
 import readingTime from "reading-time";
 
-export type ArticleData = {
+export type BlogData = {
   slug: string;
   metadata: Partial<{
     title: string;
@@ -21,14 +21,14 @@ export type ArticleData = {
   content: string;
 };
 
-export async function getArticles(): Promise<ArticleData[]> {
-  const articlesDir = path.join(process.cwd(), "content", "articles");
-  const files = await fs.readdir(articlesDir);
+export async function getBlogs(): Promise<BlogData[]> {
+  const blogDir = path.join(process.cwd(), "content", "blog");
+  const files = await fs.readdir(blogDir);
 
-  const articles: ArticleData[] = await Promise.all(
-    files.map(async (file): Promise<ArticleData> => {
+  const blogs: BlogData[] = await Promise.all(
+    files.map(async (file): Promise<BlogData> => {
       const slug = path.basename(file, path.extname(file));
-      const filePath = path.join(articlesDir, file);
+      const filePath = path.join(blogDir, file);
       const fileContent = await fs.readFile(filePath, "utf-8");
       const { data, content } = matter(fileContent);
       const rt = readingTime(fileContent).text;
@@ -36,17 +36,17 @@ export async function getArticles(): Promise<ArticleData[]> {
         ? data.authors
         : [];
       const matchedAuthors = rawAuthorNames
-        .map((name) => authorsData.find((a) => a.name === name))
-        .filter((a): a is NonNullable<typeof a> => Boolean(a));
+        .map((name) => authorsData.find((b) => b.name === name))
+        .filter((b): b is NonNullable<typeof b> => Boolean(b));
 
-      const authors = matchedAuthors.map((a) => a.name);
-      const authorsLink = matchedAuthors.map((a) => a.social);
-      const authorsAvatar = matchedAuthors.map((a) => a.avatar);
+      const authors = matchedAuthors.map((b) => b.name);
+      const authorsLink = matchedAuthors.map((b) => b.social);
+      const authorsAvatar = matchedAuthors.map((b) => b.avatar);
 
       return {
         slug,
         metadata: {
-          ...(data as ArticleData["metadata"]),
+          ...(data as BlogData["metadata"]),
           authors,
           authorsLink,
           authorsAvatar,
@@ -57,7 +57,7 @@ export async function getArticles(): Promise<ArticleData[]> {
     }),
   );
 
-  return articles.sort((a, b) => {
+  return blogs.sort((a, b) => {
     const dateA = a.metadata.date ? new Date(a.metadata.date).getTime() : 0;
     const dateB = b.metadata.date ? new Date(b.metadata.date).getTime() : 0;
 
@@ -65,10 +65,10 @@ export async function getArticles(): Promise<ArticleData[]> {
   });
 }
 
-export async function getArticleBySlug(
+export async function getBlogBySlug(
   slug: string,
-): Promise<ArticleData | undefined> {
-  const articles = await getArticles();
+): Promise<BlogData | undefined> {
+  const blogs = await getBlogs();
 
-  return articles.find((a) => a.slug === slug);
+  return blogs.find((b) => b.slug === slug);
 }

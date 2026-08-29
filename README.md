@@ -1,6 +1,6 @@
 # DevHub
 
-The official website for DevHub, a developer community focused on helping people learn, build, and connect with other developers. This repository contains the source code for the website, including the landing page, community rules, guides, resource library, articles, and partners page.
+The official website for DevHub, a developer community focused on helping people learn, build, and connect with other developers. This repository contains the source code for the website, including the landing page, community rules, guides, resource library, blog, and partners page.
 
 If you're new here, welcome! This README is designed to guide you from cloning the repository to making your first contribution, even if you've never worked with this codebase before.
 
@@ -12,7 +12,7 @@ The website brings together community resources in one place, including:
 
 - 📚 Learning guides for developers
 - 🛠️ Curated tools and useful resources
-- 📖 Articles and tutorials
+- 📖 Blog posts and tutorials
 - 🤝 Community information and onboarding guides
 - 📜 Rules, FAQs, and moderation guides
 - ❤️ Open-source contribution opportunities
@@ -24,7 +24,7 @@ If you're new to open source, this project is a great place to start because doc
 - Landing page: introduction to DevHub and what the community offers
 - Pages: guides like Getting Started, How to Ask, How to Help, Code of Conduct, Contributing, Moderation Guide, Staff Roles, FAQ, and more
 - Resource library: curated tools and learning materials
-- Articles: write-ups from the community
+- Blog: write-ups from the community
 - Rules: the server and community rules in one place
 - Partners: communities and projects DevHub partners with
 
@@ -114,14 +114,14 @@ Below is an overview of the repository structure to help you locate important fi
 ```
 ├── app/                  → Pages of the site (Next.js App Router)
 │   ├── pages/            → Renders the guide pages (Getting Started, FAQ, etc.)
-│   ├── articles/         → Article listing + individual article pages
+│   ├── blog/             → Blog listing + individual blog pages
 │   ├── partners/         → Partners page
 │   ├── resources/        → Resource library page
 │   └── rules/            → Community rules page
 ├── components/           → Reusable React components
 ├── content/              → Site copy and structured data
 │   ├── pages/            → Content for the guide pages
-│   ├── articles/         → Article content
+│   ├── blog/             → Blog content
 │   ├── resources.ts      → Resource library data
 │   └── rules.ts          → Community rules data
 │   └── partners.ts       → DevHub partners data

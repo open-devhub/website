@@ -1,6 +1,6 @@
 ---
-title: More Articles Coming Soon
-description: The first few article's are up, more are on the way.
+title: More Coming Soon
+description: The first few blog posts are up, more are on the way.
 authors: [Caleb]
 date: July 10, 2026
 tags: [more, coming, soon]
@@ -16,7 +16,8 @@ Going forward, you can look forward to write-ups covering:
 - **Community guides** — practical walkthroughs for setting up bots, moderation, and server tooling
 - **Dev culture stuff** — takes on tools, workflows, and things happening in the wider Discord dev ecosystem
 
-> [!NOTE] Got a topic you want covered? Use the `/suggest` command in Panda to send it our way. Or if you'd rather write it yourself, fork [open-devhub/website](/r/website), add your article under `/content/articles/`, and open a PR — articles here are written by the people building DevHub, so community input actually shapes what gets published.
+> [!NOTE]
+> Got a topic you want covered? Use the `/suggest` command in Panda to send it our way. Or if you'd rather write it yourself, fork [open-devhub/website](/r/website), add your blog post under `/content/blog/`, and open a PR, blogs here are written by the people building DevHub, so community input actually shapes what gets published.
 
 ## Why we're doing this
 

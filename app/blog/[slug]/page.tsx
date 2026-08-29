@@ -18,17 +18,17 @@ import {
   Tag3,
 } from "reicon-react";
 import remarkGfm from "remark-gfm";
-import { getArticles } from "../loader";
-import { ArticleCard } from "../page";
+import { getBlogs } from "../loader";
+import { BlogCard } from "../page";
 
-async function ArticleContent({ slug }: { slug: string }) {
+async function BlogContent({ slug }: { slug: string }) {
   // await new Promise((resolve) => setTimeout(resolve, 375));
 
-  const articles = await getArticles();
+  const blogs = await getBlogs();
 
-  const article = articles.find((a) => a.slug === slug);
+  const blog = blogs.find((b) => b.slug === slug);
 
-  if (!article) {
+  if (!blog) {
     notFound();
   }
 
@@ -36,14 +36,14 @@ async function ArticleContent({ slug }: { slug: string }) {
     <div className="flex flex-col gap-md">
       <div className="flex flex-col gap-md sm:border-b border-accent-muted py-sm">
         <Link
-          href="/articles"
+          href="/blog"
           className="flex items-center gap-sm text-sm text-text-tertiary w-fit"
         >
           <ArrowLeft size={16} />
-          <span>Back to Articles</span>
+          <span>Back to Blog</span>
         </Link>
         <div className="flex gap-sm">
-          {article.metadata.tags?.map((tag) => (
+          {blog.metadata.tags?.map((tag) => (
             <div
               key={tag}
               className="bg-bg-secondary py-xxs px-xs text-sm rounded-md flex items-center gap-xs"
@@ -54,20 +54,18 @@ async function ArticleContent({ slug }: { slug: string }) {
           ))}
         </div>
         <h1 className="text-gradient flex flex-col font-bold text-4xl">
-          {article.metadata.title}
+          {blog.metadata.title}
         </h1>
-        <span className="text-text-secondary">
-          {article.metadata.description}
-        </span>
+        <span className="text-text-secondary">{blog.metadata.description}</span>
         <div className="flex items-center gap-md text-text-tertiary whitespace-nowrap overflow-x-auto">
-          {article.metadata.authors && (
+          {blog.metadata.authors && (
             <div className="flex items-center justify-center gap-sm">
               <PenLine size={16} />
               <div className="flex items-center gap-xs">
                 <div className="flex items-center gap-xs text-sm">
-                  {article.metadata.authors.map((author, i) => {
-                    const pfp = article.metadata.authorsAvatar?.[i];
-                    const link = article.metadata.authorsLink?.[i];
+                  {blog.metadata.authors.map((author, i) => {
+                    const pfp = blog.metadata.authorsAvatar?.[i];
+                    const link = blog.metadata.authorsLink?.[i];
                     // const isLast = i === arr.length - 1;
 
                     return (
@@ -100,28 +98,28 @@ async function ArticleContent({ slug }: { slug: string }) {
           )}
           <div className="flex items-center justify-center gap-xxs">
             <Calendar size={16} />
-            <span className="text-sm">{article.metadata.date}</span>
+            <span className="text-sm">{blog.metadata.date}</span>
           </div>
           <div className="flex items-center justify-center gap-xxs">
             <Clock size={16} />
-            <span className="text-sm">{article.metadata.readingTime}</span>
+            <span className="text-sm">{blog.metadata.readingTime}</span>
           </div>{" "}
           <Link
             target="_blank"
             rel="noopener noreferrer"
-            href={`${staticData.github}/website/edit/main/content/articles/${slug}.md`}
+            href={`${staticData.github}/website/edit/main/content/blog/${slug}.md`}
           >
             <Button icon={Edit} iconSize={16} className="px-sm py-xxs text-sm">
-              Edit this article
+              Edit this blog
             </Button>
           </Link>
         </div>
       </div>
 
-      {/* article content (markdown) */}
+      {/* blog content (markdown) */}
       <article className="markdown">
         <Markdown remarkPlugins={[remarkCustomAlerts, remarkGfm]}>
-          {article.content}
+          {blog.content}
         </Markdown>
       </article>
 
@@ -131,17 +129,17 @@ async function ArticleContent({ slug }: { slug: string }) {
             <span>More like this</span>
             <ArrowDown size={16} />
           </h3>
-          <Link href="/articles" className="text-lg flex items-center gap-sm">
+          <Link href="/blog" className="text-lg flex items-center gap-sm">
             <span>All posts</span>
             <ArrowRight size={16} />
           </Link>
         </div>
         <div className="flex gap-md">
-          {articles
-            .filter((a) => article !== a)
+          {blogs
+            .filter((b) => blog !== b)
             .slice(0, 2)
-            .map((article) => (
-              <ArticleCard key={article.metadata.title} article={article} />
+            .map((blog) => (
+              <BlogCard key={blog.metadata.title} blog={blog} />
             ))}
         </div>
       </div>
@@ -149,7 +147,7 @@ async function ArticleContent({ slug }: { slug: string }) {
   );
 }
 
-function ArticleSkeleton() {
+function BlogSkeleton() {
   return (
     <div className="flex flex-col gap-sm w-full h-screen">
       <Skeleton className="flex-1" />
@@ -158,7 +156,7 @@ function ArticleSkeleton() {
   );
 }
 
-export default async function Article({
+export default async function Blog({
   params,
 }: {
   params: Promise<{
@@ -170,8 +168,8 @@ export default async function Article({
   return (
     <div className="w-full flex justify-center py-md">
       <div className="max-w-5xl w-full flex justify-center flex-col sm:flex-row gap-md px-lg">
-        <Suspense key={slug} fallback={<ArticleSkeleton />}>
-          <ArticleContent slug={slug} />
+        <Suspense key={slug} fallback={<BlogSkeleton />}>
+          <BlogContent slug={slug} />
         </Suspense>
       </div>
     </div>

@@ -6,12 +6,12 @@ type RedirectType = { sources: string[]; destination: string };
 const redirectConfig: RedirectType[] = [
   // site
   {
-    sources: ["/blog"],
-    destination: "/articles",
+    sources: ["/articles"],
+    destination: "/blog",
   },
   {
-    sources: ["/blog/:path*"],
-    destination: "/articles/:path*",
+    sources: ["/articles/:path*"],
+    destination: "/blog/:path*",
   },
 
   // Discord
