@@ -358,6 +358,13 @@ export default function Home() {
             </div>
           ))}
         </div>
+        <Link
+          href="https://top.gg/discord/servers/787361847361966080"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button variant="primary">View sources</Button>
+        </Link>
       </div>
 
       {/* CTA  section */}
