@@ -13,6 +13,7 @@ import {
   ArrowUpRightCircle,
   BookOpen,
   ChatDots,
+  CircleArrowRightUp,
   CircleHalfDottedCheck,
   Code2,
   ForkKnife,
@@ -363,7 +364,9 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Button variant="primary">View sources</Button>
+          <Button variant="primary" icon={CircleArrowRightUp}>
+            View sources
+          </Button>
         </Link>
       </div>
 
