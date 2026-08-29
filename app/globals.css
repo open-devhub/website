@@ -18,8 +18,8 @@ html {
   /* colors (light mode) */
   --accent: #5060df;
   --accent-muted: #5060df75;
-  --bg-primary: #f0f0f0;
-  --bg-secondary: #e4e4f4;
+  --bg-primary: #f0f0f5;
+  --bg-secondary: #e4e4fa;
   --bg-tertiary: #d8d8e8;
   --text-primary: #101010;
   --text-secondary: #404050;
@@ -56,9 +56,9 @@ html {
 [data-theme="dark"] {
   --accent: #90a0ff;
   --accent-muted: #90a0ff75;
-  --bg-primary: #050505;
+  --bg-primary: #05050a;
   --bg-secondary: #080818;
-  --bg-tertiary: #0f0f2f;
+  --bg-tertiary: #0f0f32;
   --text-primary: #e0e0e0;
   --text-secondary: #ccccd0;
   --text-tertiary: #8a8aaf;
