@@ -1,7 +1,7 @@
 import Button from "@/components/ui/Button";
 import ShinyText from "@/components/ui/ShinyText";
 import Skeleton from "@/components/ui/Skeleton";
-import { remarkCustomAlerts } from "@/lib/markdown";
+import { headingComponents, remarkCustomAlerts } from "@/lib/markdown";
 import staticData from "@/lib/staticdata";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -90,7 +90,10 @@ async function PageContent({ slug }: { slug: string }) {
       </div>
       {/* page content (markdown) */}
       <article className="markdown">
-        <Markdown remarkPlugins={[remarkCustomAlerts, remarkGfm]}>
+        <Markdown
+          remarkPlugins={[remarkCustomAlerts, remarkGfm]}
+          components={headingComponents}
+        >
           {page.content}
         </Markdown>
       </article>
@@ -136,7 +139,7 @@ async function PageContent({ slug }: { slug: string }) {
 function PageSkeleton() {
   return (
     <div className="w-full flex gap-sm">
-      <div className="w-full h-screen flex-1">
+      <div className="w-full h-screen hidden sm:flex flex-1">
         <Skeleton />
       </div>
       <div className="flex flex-col gap-sm w-full h-screen flex-4">

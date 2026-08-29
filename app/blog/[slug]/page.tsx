@@ -1,6 +1,6 @@
 import Button from "@/components/ui/Button";
 import Skeleton from "@/components/ui/Skeleton";
-import { remarkCustomAlerts } from "@/lib/markdown";
+import { getTOC, headingComponents, remarkCustomAlerts } from "@/lib/markdown";
 import staticData from "@/lib/staticdata";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,12 +14,69 @@ import {
   Calendar,
   Clock,
   Edit,
+  Link as LinkIcon,
   PenLine,
   Tag3,
 } from "reicon-react";
 import remarkGfm from "remark-gfm";
-import { getBlogs } from "../loader";
+import CopyLink from "../CopyLink";
+import { getBlogBySlug, getBlogs } from "../loader";
 import { BlogCard } from "../page";
+
+async function SideBar({ slug }: { slug: string }) {
+  const blog = await getBlogBySlug(slug);
+  const toc = getTOC(blog?.content || "");
+
+  return (
+    <div className="sm:w-64 mt-xl py-sm hidden lg:flex flex-row overflow-x-auto w-full sm:flex-col gap-md shrink-0">
+      {/* action row */}
+      <div className="flex gap-xs px-xs">
+        {[
+          {
+            icon: Edit,
+            link: `${staticData.github}/website/edit/main/content/blog/${slug}.md`,
+          },
+          {
+            text: "𝕏",
+            link: `https://x.com/intent/post?text=${encodeURIComponent(
+              `${blog?.metadata.title ?? ""}\n\n${blog?.metadata.description ?? ""}\n\n${staticData.linkShort}/blog/${slug}`,
+            )}`,
+          },
+        ].map(({ icon, link, text }) => (
+          <Link
+            href={link}
+            key={link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className="px-xs py-sm h-md" icon={icon}>
+              {text}
+            </Button>
+          </Link>
+        ))}
+
+        <CopyLink link={`${staticData.linkShort}/blog/${slug}`}>
+          <Button className="px-xs py-sm h-md" icon={LinkIcon} />
+        </CopyLink>
+      </div>
+      <div className="flex flex-col gap-xs">
+        <span className="text-xl mb-sm px-xs tracking-wider hidden sm:block whitespace-nowrap">
+          Table of contents
+        </span>
+        {/* toc */}
+        {toc?.map((item) => (
+          <Link
+            key={item.id}
+            href={`#${item.id}`}
+            className={`text-left px-sm text-sm py-xs rounded-md w-full undecorated text-md transition-colors cursor-pointer text-text-secondary hover:text-text hover:bg-bg-secondary`}
+          >
+            {item.text}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 async function BlogContent({ slug }: { slug: string }) {
   // await new Promise((resolve) => setTimeout(resolve, 375));
@@ -118,7 +175,10 @@ async function BlogContent({ slug }: { slug: string }) {
 
       {/* blog content (markdown) */}
       <article className="markdown">
-        <Markdown remarkPlugins={[remarkCustomAlerts, remarkGfm]}>
+        <Markdown
+          remarkPlugins={[remarkCustomAlerts, remarkGfm]}
+          components={headingComponents}
+        >
           {blog.content}
         </Markdown>
       </article>
@@ -149,10 +209,23 @@ async function BlogContent({ slug }: { slug: string }) {
 
 function BlogSkeleton() {
   return (
-    <div className="flex flex-col gap-sm w-full h-screen">
-      <Skeleton className="flex-1" />
-      <Skeleton className="flex-5" />
+    <div className="w-full flex gap-sm">
+      <div className="flex flex-col gap-sm w-full h-screen flex-4">
+        <Skeleton className="flex-1" />
+        <Skeleton className="flex-2" />
+      </div>
+      <div className="w-full h-screen hidden lg:flex flex-1">
+        <Skeleton />
+      </div>
     </div>
+  );
+}
+async function BlogPageContent({ slug }: { slug: string }) {
+  return (
+    <>
+      <BlogContent slug={slug} />
+      <SideBar slug={slug} />
+    </>
   );
 }
 
@@ -167,9 +240,9 @@ export default async function Blog({
 
   return (
     <div className="w-full flex justify-center py-md">
-      <div className="max-w-5xl w-full flex justify-center flex-col sm:flex-row gap-md px-lg">
+      <div className="max-w-6xl w-full flex justify-center flex-col sm:flex-row gap-md px-lg">
         <Suspense key={slug} fallback={<BlogSkeleton />}>
-          <BlogContent slug={slug} />
+          <BlogPageContent slug={slug} />
         </Suspense>
       </div>
     </div>
