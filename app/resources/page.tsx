@@ -50,10 +50,8 @@ export default function Resources() {
         Resources to <ShinyText>Level Up</ShinyText>
       </h1>
       <div className="flex flex-col items-center gap-xxs text-text-secondary whitespace-nowrap text-sm md:text-md lg:text-lg">
-        <span>
-          Curated learning paths by programming language. Find exactly what
-        </span>
-        <span>you need to master any stack.</span>
+        <span>Curated learning paths by programming language.</span>
+        <span>Find exactly what you need to master any stack.</span>
       </div>
 
       <Link

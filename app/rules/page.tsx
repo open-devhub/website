@@ -25,16 +25,14 @@ export default function Rules() {
       <h1 className="text-gradient font-bold text-4xl lg:text-5xl">
         Community <ShinyText>Rules</ShinyText>
       </h1>
-      <div className="flex flex-col items-center gap-xxs text-text-secondary whitespace-nowrap text-sm md:text-md lg:text-lg">
+      <div className="flex flex-col items-center gap-xxs text-text-secondary whitespace-nowrap text-xs sm:text-sm md:text-md lg:text-lg">
         <span>
           DevHub is built on trust, respect, and a shared love of building.
-          These rules
         </span>
         <span>
-          exist to keep it that way. Everyone is welcome here, as long as
-          everyone feels
+          These rules exist to keep it that way. Everyone is welcome here,
         </span>
-        <span>welcome here</span>
+        <span>as long as everyone feels welcome here</span>
       </div>
 
       {/* rule cards */}

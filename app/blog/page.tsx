@@ -93,8 +93,9 @@ export default async function Blog() {
       <h1 className="text-gradient font-bold text-4xl lg:text-5xl">
         Community <ShinyText>Blog</ShinyText>
       </h1>
-      <div className="text-text-secondary text-sm md:text-md lg:text-lg">
-        Guides, releases, news, and deep dives written by the DevHub community.
+      <div className="text-text-secondary flex flex-col items-center text-sm md:text-md lg:text-lg">
+        <span>Guides, releases, news, and deep dives</span>
+        <span>written by the DevHub community.</span>
       </div>
 
       <Link
