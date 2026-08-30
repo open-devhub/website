@@ -16,7 +16,7 @@ There’s something here for everyone, whether you’re looking to learn somethi
 
 [sindresorhus/awesome](https://github.com/sindresorhus/awesome) is basically a huge collection of useful stuff for developers. It contains links to hundreds of carefully picked resources covering programming languages, tools, learning materials, software, and much much more. Think of it as a giant index of interesting things on the internet, all organized in one GitHub repository.
 
-<a class="card" href="https://github.com/sindresorhus/awesome">
+<a class="card" href="https://github.com/sindresorhus/awesome" target="_blank" rel="noopener noreferrer">
     <div>
         <h1>Awesome</h1>
         <p>😎 Awesome lists about all kinds of interesting topics</p>
@@ -29,7 +29,7 @@ There’s something here for everyone, whether you’re looking to learn somethi
 
 [The Algorithms](https://github.com/thealgorithms) is a collection of open-source repositories that implement algorithms and data structures in different programming languages. It’s a great place to browse through real implementations, understand how algorithms work, and see how the same ideas are written across different languages.
 
-<a class="card" href="https://github.com/thealgorithms">
+<a class="card" href="https://github.com/thealgorithms" target="_blank" rel="noopener noreferrer">
     <div>
         <h1>The Algorithms</h1>
         <p>Open Source resource for learning Data Structures & Algorithms and their implementation in any Programming Language</p>
@@ -42,7 +42,7 @@ There’s something here for everyone, whether you’re looking to learn somethi
 
 [codecrafters-io/build-your-own-x](https://github.com/codecrafters-io/build-your-own-x) is a collection of guides that show you how to build things from scratch. It covers projects like databases, operating systems, programming languages, web servers, and other software, making it a great place to learn by actually building your favorite tools and technologies yourself.
 
-<a class="card" href="https://github.com/codecrafters-io/build-your-own-x">
+<a class="card" href="https://github.com/codecrafters-io/build-your-own-x" target="_blank" rel="noopener noreferrer">
     <div>
         <h1>Build Your Own X</h1>
         <p>Master programming by recreating your favorite technologies from scratch.</p>
@@ -55,7 +55,7 @@ There’s something here for everyone, whether you’re looking to learn somethi
 
 [ripienaar/free-for-dev](https://github.com/ripienaar/free-for-dev) is a huge list of free services and resources for developers. It covers everything from hosting and databases to APIs, monitoring, testing, and other tools, making it a handy place to look when you need something without spending money.
 
-<a class="card" href="https://github.com/ripienaar/free-for-dev">
+<a class="card" href="https://github.com/ripienaar/free-for-dev" target="_blank" rel="noopener noreferrer">
     <div>
         <h1>Free For Dev</h1>
         <p>A list of SaaS, PaaS and IaaS offerings that have free tiers of interest to devops and infradev</p>
@@ -68,7 +68,7 @@ There’s something here for everyone, whether you’re looking to learn somethi
 
 [EbookFoundation/free-programming-books](https://github.com/EbookFoundation/free-programming-books) is a massive collection of free programming books and learning resources. It covers a wide range of programming languages and topics, making it an easy place to find something to learn without having to pay for a course or book.
 
-<a class="card" href="https://github.com/EbookFoundation/free-programming-books">
+<a class="card" href="https://github.com/EbookFoundation/free-programming-books" target="_blank" rel="noopener noreferrer">
     <div>
         <h1>Free Programming Books</h1>
         <p>📚 Freely available programming books</p>
@@ -81,7 +81,7 @@ There’s something here for everyone, whether you’re looking to learn somethi
 
 [nilbuild/developer-roadmap](https://github.com/nilbuild/developer-roadmap) is a collection of roadmaps, guides, and educational content that help you figure out what to learn and in what order, with interactive visual roadmaps. It covers everything from frontend and backend development to DevOps, AI, databases, and more, making it useful when you’re not sure what to learn next.
 
-<a class="card" href="https://github.com/nilbuild/developer-roadmap">
+<a class="card" href="https://github.com/nilbuild/developer-roadmap" target="_blank" rel="noopener noreferrer">
     <div>
         <h1>roadmap.sh</h1>
         <p>Interactive roadmaps, guides and other educational content to help developers grow in their careers.</p>
@@ -94,7 +94,7 @@ There’s something here for everyone, whether you’re looking to learn somethi
 
 [ossu/computer-science](https://github.com/ossu/computer-science) is a complete, self-guided computer science curriculum made from free online courses and resources. It covers topics like programming, algorithms, computer systems, and theory, giving you a structured way to learn computer science on your own.
 
-<a class="card" href="https://github.com/ossu/computer-science">
+<a class="card" href="https://github.com/ossu/computer-science" target="_blank" rel="noopener noreferrer">
     <div>
         <h1>Computer Science</h1>
         <p>🎓 Path to a free self-taught education in Computer Science!</p>
@@ -107,7 +107,7 @@ There’s something here for everyone, whether you’re looking to learn somethi
 
 [kilimchoi/engineering-blogs](https://github.com/kilimchoi/engineering-blogs) is a collection of engineering blogs from companies and developers around the world. It’s a great place to discover how real teams build, scale, and solve problems, while learning from their experiences along the way.
 
-<a class="card" href="https://github.com/kilimchoi/engineering-blogs">
+<a class="card" href="https://github.com/kilimchoi/engineering-blogs" target="_blank" rel="noopener noreferrer">
     <div>
         <h1>Engineering Blogs</h1>
         <p>A curated list of engineering blogs</p>
@@ -120,7 +120,7 @@ There’s something here for everyone, whether you’re looking to learn somethi
 
 [donnemartin/system-design-primer](https://github.com/donnemartin/system-design-primer) is a collection of resources for learning system design and understanding how large-scale systems work. It covers topics like scalability, databases, caching, networking, and architecture, making it a useful resource for anyone wanting to get better at designing real-world systems.
 
-<a class="card" href="https://github.com/donnemartin/system-design-primer">
+<a class="card" href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener noreferrer">
     <div>
         <h1>The System Design Primer</h1>
         <p>Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards.</p>
@@ -133,7 +133,7 @@ There’s something here for everyone, whether you’re looking to learn somethi
 
 [public-apis/public-apis](https://github.com/public-apis/public-apis) is a huge collection of public APIs that you can use in your own projects. It covers all kinds of things, from games and weather to finance, animals, and more, making it a great place to find an API when you need one.
 
-<a class="card" href="https://github.com/public-apis/public-apis">
+<a class="card" href="https://github.com/public-apis/public-apis" target="_blank" rel="noopener noreferrer">
     <div>
         <h1>Public APIs</h1>
         <p>A collective list of free APIs</p>
@@ -146,7 +146,7 @@ There’s something here for everyone, whether you’re looking to learn somethi
 
 [btw-so/open-source-alternatives](https://github.com/btw-so/open-source-alternatives) is a collection of open-source alternatives to popular software and services. It helps you discover free and open-source tools that can replace many of the apps and services you already use.
 
-<a class="card" href="https://github.com/btw-so/open-source-alternatives">
+<a class="card" href="https://github.com/btw-so/open-source-alternatives" target="_blank" rel="noopener noreferrer">
     <div>
         <h1>Open Source Alternatives</h1>
         <p>List of open-source alternatives to everyday SaaS products.</p>
@@ -159,7 +159,7 @@ There’s something here for everyone, whether you’re looking to learn somethi
 
 [papers-we-love/papers-we-love](https://github.com/papers-we-love/papers-we-love) is a collection of interesting computer science research papers, organized by topic. It’s a great place to discover papers about things like programming, algorithms, machine learning, security, and many other areas of computing.
 
-<a class="card" href="https://github.com/papers-we-love/papers-we-love">
+<a class="card" href="https://github.com/papers-we-love/papers-we-love" target="_blank" rel="noopener noreferrer">
     <div>
         <h1>Papers We Love</h1>
         <p>Papers from the computer science community to read and discuss.</p>
@@ -175,7 +175,7 @@ There’s something here for everyone, whether you’re looking to learn somethi
 
 [sdmg15/Best-websites-a-programmer-should-visit](https://github.com/sdmg15/Best-websites-a-programmer-should-visit) is a collection of useful websites for programmers. It covers everything from learning and coding to finding tools, resources, jobs, and communities, making it a handy list to explore when you’re looking for something useful.
 
-<a class="card" href="https://github.com/sdmg15/Best-websites-a-programmer-should-visit">
+<a class="card" href="https://github.com/sdmg15/Best-websites-a-programmer-should-visit" target="_blank" rel="noopener noreferrer">
     <div>
         <h1>Best Websites A Programmer Should Visit</h1>
         <p>🔗 Some useful websites for programmers.</p>
@@ -188,7 +188,7 @@ There’s something here for everyone, whether you’re looking to learn somethi
 
 [rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch) is a hands-on guide to building large language models from scratch. It walks through the main ideas behind LLMs step by step, helping you understand what’s happening under the hood instead of just using them as a black box.
 
-<a class="card" href="https://github.com/rasbt/LLMs-from-scratch">
+<a class="card" href="https://github.com/rasbt/LLMs-from-scratch" target="_blank" rel="noopener noreferrer">
     <div>
         <h1>LLMs From Scratch</h1>
         <p>Implement a ChatGPT-like LLM in PyTorch from scratch, step by step</p>
@@ -201,7 +201,7 @@ There’s something here for everyone, whether you’re looking to learn somethi
 
 [eriklindernoren/ML-From-Scratch](https://github.com/eriklindernoren/ML-From-Scratch) is a collection of machine learning algorithms implemented from scratch using Python. It lets you see how common ML techniques actually work under the hood, making it a great resource for learning the fundamentals without relying on ready-made libraries.
 
-<a class="card" href="https://github.com/eriklindernoren/ML-From-Scratch">
+<a class="card" href="https://github.com/eriklindernoren/ML-From-Scratch" target="_blank" rel="noopener noreferrer">
     <div>
         <h1>ML From Scratch</h1>
         <p>Machine Learning From Scratch. Bare bones NumPy implementations of machine learning models and algorithms with a focus on accessibility. Aims to cover everything from linear regression to deep learning.</p>

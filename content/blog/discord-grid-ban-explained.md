@@ -28,7 +28,7 @@ Starting around the July 4th weekend, users began posting screenshots of ban not
 
 A creator called [Tall Cow](https://x.com/tallcowyt/status/2073904860182008174) was one of the first to call it out publicly, warning that Discord's moderation system appeared to be treating any square grid image as flagged material and telling people to hold off on sending images until it was fixed. Other users piled on with their own stories, including a game director who said his account got nuked over a game texture screenshot mid-conversation with his own dev team, as [TechCrunch reported](https://techcrunch.com/2026/07/07/discord-admits-ai-moderation-bug-wrongfully-banned-users-over-harmless-images/).
 
-<a class="card" href="https://x.com/tallcowyt/status/2073904860182008174">
+<a class="card" href="https://x.com/tallcowyt/status/2073904860182008174" target="_blank" rel="noopener noreferrer">
     <div>
         <h1>Tall Cow (@tallcowyt) on X</h1>
         <p>There’s currently a vulnerability in Discord’s AI moderation that detects any and all square grid images, such as spreadsheets, chessboards, Minecraft inventories, white &amp; gray transparent backgrounds… as CSAM and will permanently ban your account.</p>
