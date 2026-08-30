@@ -16,14 +16,14 @@ html {
 /* vars */
 :root {
   /* colors (light mode) */
-  --accent: #5060df;
-  --accent-muted: #5060df75;
-  --bg-primary: #f0f0f5;
-  --bg-secondary: #e4e4fa;
-  --bg-tertiary: #dfdfff;
-  --text-primary: #101010;
-  --text-secondary: #404050;
-  --text-tertiary: #70708f;
+  --accent: #90a0ff;
+  --accent-muted: #90a0ff75;
+  --bg-primary: #05050a;
+  --bg-secondary: #080818;
+  --bg-tertiary: #0f0f32;
+  --text-primary: #e0e0e0;
+  --text-secondary: #ccccd0;
+  --text-tertiary: #8a8aaf;
 
   /* fonts */
   --font-display: "Bricolage Grotesque", sans-serif;
@@ -42,18 +42,18 @@ html {
 /* js theme override (light mode, default) */
 /* see `:root` above */
 /*-------*/
-/*[data-theme="light"] {
+[data-theme="light"] {
   --accent: #5060df;
-  --accent-muted: #5060d075;
-  --bg-primary: #f0f0f0;
-  --bg-secondary: #e4e4f0;
-  --bg-tertiary: #d8d8e8;
+  --accent-muted: #5060df75;
+  --bg-primary: #f0f0f5;
+  --bg-secondary: #e4e4fa;
+  --bg-tertiary: #dfdfff;
   --text-primary: #101010;
   --text-secondary: #404050;
   --text-tertiary: #70708f;
-}*/
+}
 /* js theme override (dark mode) */
-[data-theme="dark"] {
+/*[data-theme="dark"] {
   --accent: #90a0ff;
   --accent-muted: #90a0ff75;
   --bg-primary: #05050a;
@@ -62,7 +62,7 @@ html {
   --text-primary: #e0e0e0;
   --text-secondary: #ccccd0;
   --text-tertiary: #8a8aaf;
-}
+}*/
 /*-------*/
 
 /* theme mapping */

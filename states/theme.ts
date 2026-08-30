@@ -11,7 +11,7 @@ type ThemeState = {
 };
 
 export const useTheme = create<ThemeState>((set, get) => ({
-  theme: "light",
+  theme: "dark",
 
   loadTheme: () => {
     if (typeof window === "undefined") return;
@@ -20,7 +20,7 @@ export const useTheme = create<ThemeState>((set, get) => ({
     const initialTheme =
       savedTheme && ["dark", "light"].includes(savedTheme)
         ? savedTheme
-        : "light";
+        : get().theme;
 
     requestAnimationFrame(() => {
       document.documentElement.setAttribute("data-theme", initialTheme);
