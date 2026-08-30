@@ -25,7 +25,7 @@ export default function Partners() {
         {partners.map((partner) => (
           <div
             key={partner.name}
-            className={`flex gap-md bg-bg-secondary p-md rounded-md border-2 border-transparent ${partner.featured && "spin-border"}`}
+            className={`flex flex-col sm:flex-row gap-md bg-bg-secondary p-md rounded-md border-2 border-transparent ${partner.featured && "spin-border"}`}
           >
             {partner.banner && (
               <div className="flex">

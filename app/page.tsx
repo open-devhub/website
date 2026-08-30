@@ -62,13 +62,9 @@ export default function Home() {
 
         {/* description */}
         <div className="flex flex-col items-center gap-xss whitespace-nowrap text-text-secondary text-sm md:text-md lg:text-lg">
-          <span>
-            DevHub is a Discord community for developers and creators, a
-          </span>
-          <span>
-            place to share projects, get help, exchange feedback, and meet
-          </span>
-          <span>people who enjoy building things</span>
+          <span>DevHub is a Discord community for developers and creators</span>
+          <span>a place to share projects, get help, exchange feedback</span>
+          <span>and meet people who enjoy building things</span>
         </div>
 
         {/* action row */}
@@ -373,12 +369,16 @@ export default function Home() {
       {/* CTA  section */}
       <div className="min-h-[50vh] flex flex-col gap-md items-center justify-center">
         <h1 className="text-gradient flex flex-col items-center font-bold text-4xl lg:text-5xl">
-          <span className="text-nowrap">Ready to ship something</span>
-          <ShinyText>great?</ShinyText>
+          <span className="text-nowrap">Ready to ship</span>
+          <span>
+            something <ShinyText>great?</ShinyText>
+          </span>
         </h1>
-        <span className="text-text-secondary text-sm md:text-md lg:text-lg">
-          Join {staticData.memberCount}+ developers who build together, learn
-          together, and ship together
+        <span className="text-text-secondary flex flex-col items-center text-sm md:text-md lg:text-lg">
+          <span>
+            Join {staticData.memberCount}+ developers who build together,
+          </span>
+          <span>learn together, and ship together</span>
         </span>
 
         <Button variant="primary" icon={ArrowRight} className="m-lg">
