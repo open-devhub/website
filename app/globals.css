@@ -194,7 +194,7 @@ html {
     }
 
     a.card {
-      @apply flex items-center w-full justify-between gap-md bg-bg-secondary rounded-md p-md max-h-52;
+      @apply flex flex-col md:flex-row md:items-center w-full justify-between gap-md bg-bg-secondary rounded-md p-md;
 
       div {
         @apply flex flex-col gap-sm;
