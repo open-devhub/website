@@ -7,6 +7,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Markdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import {
   ArrowDown,
   ArrowLeft,
@@ -181,6 +182,7 @@ async function BlogContent({ slug }: { slug: string }) {
         <Markdown
           remarkPlugins={[remarkCustomAlerts, remarkGfm]}
           components={headingComponents}
+          rehypePlugins={[rehypeRaw]}
         >
           {blog.content}
         </Markdown>

@@ -20,7 +20,7 @@ html {
   --accent-muted: #5060df75;
   --bg-primary: #f0f0f5;
   --bg-secondary: #e4e4fa;
-  --bg-tertiary: #d8d8e8;
+  --bg-tertiary: #dfdfff;
   --text-primary: #101010;
   --text-secondary: #404050;
   --text-tertiary: #70708f;
@@ -134,7 +134,7 @@ html {
     @apply cursor-pointer;
   }
 
-  a:not(:has(button)):not(.undecorated) {
+  a:not(:has(button)):not(.undecorated):not(a.card) {
     @apply text-accent w-fit inline;
     background-image: linear-gradient(var(--accent), var(--accent));
     background-position: 0 100%;
@@ -193,12 +193,32 @@ html {
       @apply block p-sm;
     }
 
+    a.card {
+      @apply flex items-center w-full justify-between gap-md bg-bg-secondary rounded-md p-md max-h-52;
+
+      div {
+        @apply flex flex-col gap-sm;
+      }
+
+      img {
+        @apply max-w-64 max-h-48 m-0 rounded-md object-cover shrink-0;
+      }
+
+      footer {
+        @apply text-text-tertiary text-sm;
+      }
+
+      &:hover {
+        @apply bg-bg-tertiary;
+      }
+    }
+
     blockquote {
-      @apply flex flex-col gap-xxs border-l-5 border-accent-muted p-sm rounded-md bg-bg-secondary;
+      @apply flex flex-col gap-xxs border-l-5 border-accent-muted px-sm py-md rounded-md bg-bg-secondary;
     }
 
     .markdown-alert {
-      @apply flex flex-col gap-xxs border-l-5 border-accent-muted p-sm rounded-md bg-bg-secondary;
+      @apply flex flex-col gap-xxs border-l-5 border-accent-muted px-sm py-md rounded-md bg-bg-secondary;
 
       .markdown-alert-title {
         @apply text-xl font-display;
@@ -211,6 +231,7 @@ html {
           @apply text-red-500;
         }
       }
+
       &.markdown-alert-warning {
         @apply border-orange-400 bg-orange-400/10;
 

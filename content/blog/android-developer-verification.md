@@ -8,6 +8,15 @@ tags: [android, google, security, open-source]
 
 If you've seen headlines saying Google is "locking down Android," this blog post breaks down what's actually happening, backed by [Google's own documentation](https://developer.android.com/developer-verification) and the groups pushing back against it.
 
+<a class="card" href="https://developer.android.com/developer-verification">
+    <div>
+        <h1>Android developer verification</h1>
+        <p>By making Android safer, we're protecting an environment for developers and users to confidently create and connect. This extra layer of security helps deter bad actors and makes it harder for them to repeatedly spread harm.</p>
+        <footer>developer.android.com</footer>
+    </div>
+    <img src="https://developer.android.com/static/images/social/android-developers.png" alt="android-developers" />
+</a>
+
 Whatever you build, this is about who gets to decide what software runs on a device you paid for, and that's worth understanding regardless of which platform you ship to.
 
 # The One-Sentence Version
