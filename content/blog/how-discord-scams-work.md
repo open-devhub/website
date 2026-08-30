@@ -4,8 +4,7 @@ description: A breakdown of the scams running on Discord right now, from Nitro p
 authors: [Caleb, Josh]
 date: July 15, 2026
 tags: [discord, security, scams, safety]
-# TODO: uncomment the next line (`featured: true`) when the next blog's up, and remove this line of comment
-# featured: true
+featured: true
 ---
 
 Discord has hundreds of millions of monthly users, which also makes it one of the most efficient scam delivery systems on the internet. Not because Discord is uniquely unsafe, but because it has everything scammers want in one place: DMs that bypass spam filters if you share a server, a culture of trading skins/accounts/currency, a friend-of-a-friend trust model, and a login token that hands over your entire account without needing your password if it's stolen.

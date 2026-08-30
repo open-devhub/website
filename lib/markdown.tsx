@@ -67,10 +67,14 @@ export function remarkCustomAlerts() {
 }
 
 function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
+  return (
+    text
+      // [foobar](https://foobar.com) -> foobar
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "")
+  );
 }
 
 function extractTextFromChildren(children: ReactNode): string {
