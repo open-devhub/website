@@ -7,6 +7,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Markdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import { ArrowLeft, ArrowRight, Calendar, Clock, Edit } from "reicon-react";
 import remarkGfm from "remark-gfm";
 import { getPageBySlug, getPages } from "../loader";
@@ -93,6 +94,7 @@ async function PageContent({ slug }: { slug: string }) {
         <Markdown
           remarkPlugins={[remarkCustomAlerts, remarkGfm]}
           components={headingComponents}
+          rehypePlugins={[rehypeRaw]}
         >
           {page.content}
         </Markdown>

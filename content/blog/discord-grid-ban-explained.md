@@ -13,7 +13,7 @@ That's not a joke. That's actually what happened. Here's the full story, in plai
 > [!NOTE]
 > If you want a more visual walkthrough of this instead of reading, [this YouTube video](https://www.youtube.com/watch?v=kBkHLYaEkCI) covers the same incident and goes over how it likely happened.
 
-## What people were noticing
+# What people were noticing
 
 Starting around the July 4th weekend, users began posting screenshots of ban notices citing child safety violations. The images behind those bans were completely ordinary:
 
@@ -28,7 +28,16 @@ Starting around the July 4th weekend, users began posting screenshots of ban not
 
 A creator called [Tall Cow](https://x.com/tallcowyt/status/2073904860182008174) was one of the first to call it out publicly, warning that Discord's moderation system appeared to be treating any square grid image as flagged material and telling people to hold off on sending images until it was fixed. Other users piled on with their own stories, including a game director who said his account got nuked over a game texture screenshot mid-conversation with his own dev team, as [TechCrunch reported](https://techcrunch.com/2026/07/07/discord-admits-ai-moderation-bug-wrongfully-banned-users-over-harmless-images/).
 
-## Discord's response
+<a class="card" href="https://x.com/tallcowyt/status/2073904860182008174">
+    <div>
+        <h1>Tall Cow (@tallcowyt) on X</h1>
+        <p>There’s currently a vulnerability in Discord’s AI moderation that detects any and all square grid images, such as spreadsheets, chessboards, Minecraft inventories, white &amp; gray transparent backgrounds… as CSAM and will permanently ban your account.</p>
+        <!--<footer></footer>-->
+    </div>
+    <img src="https://pbs.twimg.com/media/HMf9ehtWkAAGzdq.jpg:small" alt="tallcow" />
+</a>
+
+# Discord's response
 
 A Discord platform developer going by [advaith](https://x.com/advaithj1/status/2073931556973162731) first pushed back on the framing, saying this wasn't really an "AI" problem — it was a false positive match, and flagged accounts were only supposed to get a temporary hold until a human reviewed them. A day later he confirmed the team had found the bad match and pulled it.
 
@@ -40,7 +49,7 @@ The next day, [Discord's official support account](https://twitter.com/discord_s
 
 According to [Engadget's coverage](https://www.engadget.com/2209819/a-bug-in-discords-safety-systems-incorrectly-banned-accounts-since-may/), Discord admitted the explanation wouldn't feel satisfying if it was your account, and that they should have caught it sooner. Discord co-founder and CTO Stanislav Vishnevskiy also confirmed the two underlying bugs publicly, which [The Verge covered](https://tech.yahoo.com/social-media/articles/discord-banned-8-000-users-170518016.html) alongside the rest of the timeline.
 
-## So why did a chessboard get flagged as CSAM?
+# So why did a chessboard get flagged as CSAM?
 
 To catch known illegal images without a human staring at every single upload, platforms like Discord (and Meta, Microsoft, Dropbox, and others) use something called **perceptual hashing**, a concept [PetaPixel breaks down well](https://petapixel.com/2026/07/07/discord-banned-around-8200-users-for-posting-inoffensive-images-of-grids/). It's different from a normal file hash.
 
@@ -58,7 +67,7 @@ Here's the problem: a chessboard, a Minecraft inventory grid, and a checkerboard
 
 There's a theory going around, repeated in outlets like [TheGamer](https://www.thegamer.com/thousands-banned-on-discord-as-minecraft-screenshots-flagged-as-csam/), that this happened because bad actors have historically overlaid grid patterns on illegal images specifically to break detection systems, and that this trained the system into treating grids themselves as suspicious. Discord hasn't confirmed that specific explanation — advaith described it as one bad hash entry that got found and removed, not a systemic retraining issue. Either way, the practical result was the same: ordinary grid images were matching against harmful-content fingerprints.
 
-## The part that made it so much worse
+# The part that made it so much worse
 
 A false positive from an automated filter isn't supposed to end in an instant, permanent ban. Discord's normal process, as [Dexerto laid out](https://www.dexerto.com/entertainment/discord-dev-responds-after-users-report-child-safety-bans-over-grid-images-3383677/), looks like this:
 
@@ -74,7 +83,7 @@ Two separate bugs broke that safety net:
 
 That second bug is why this dragged on quietly for two months before it blew up — people weren't just getting banned, their appeals were silently going nowhere even when Discord's own staff had already cleared them.
 
-## Why this matters beyond one bad weekend
+# Why this matters beyond one bad weekend
 
 A few things are worth sitting with here:
 
@@ -82,7 +91,7 @@ A few things are worth sitting with here:
 - **Automated enforcement plus a broken safety net equals a bad time.** The false positive wasn't the real disaster here. The disaster was the human-review step silently failing on both ends — the ban happened automatically, and the appeal clearing didn't apply automatically either.
 - **This hits developers and community builders hardest.** If you run your dev team, playtesting group, or support pipeline through Discord, a sudden account termination doesn't just lock you out of chat — it can cut you off from your own project's communication overnight, with no warning and (until this got fixed) no reliable appeal path.
 
-## The takeaway
+# The takeaway
 
 Discord says the specific bad hash has been pulled, all 8,200+ affected accounts are restored, and they're working on changes so a ban can't quietly stick around after a human has already cleared it. That's a reasonable fix for this specific incident.
 

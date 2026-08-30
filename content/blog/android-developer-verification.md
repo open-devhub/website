@@ -8,13 +8,22 @@ tags: [android, google, security, open-source]
 
 If you've seen headlines saying Google is "locking down Android," this blog post breaks down what's actually happening, backed by [Google's own documentation](https://developer.android.com/developer-verification) and the groups pushing back against it.
 
+<a class="card" href="https://developer.android.com/developer-verification">
+    <div>
+        <h1>Android developer verification</h1>
+        <p>By making Android safer, we're protecting an environment for developers and users to confidently create and connect. This extra layer of security helps deter bad actors and makes it harder for them to repeatedly spread harm.</p>
+        <footer>developer.android.com</footer>
+    </div>
+    <img src="https://developer.android.com/static/images/social/android-developers.png" alt="android-developers" />
+</a>
+
 Whatever you build, this is about who gets to decide what software runs on a device you paid for, and that's worth understanding regardless of which platform you ship to.
 
-## The One-Sentence Version
+# The One-Sentence Version
 
 Starting later in **2026**, and going worldwide in **2027**, Google will require every Android app installed on most phones to be linked to a developer who has proven their real identity to Google, even for apps installed outside the Google Play Store.
 
-## What "Developer Verification" Actually Means
+# What "Developer Verification" Actually Means
 
 Right now, anyone can write an Android app and share the file (an `.apk`) with someone else. That person can install it directly, no store needed. This is usually called "sideloading."
 
@@ -32,7 +41,7 @@ To register, a developer has to:
 
 This is a one-time process Google says takes about _ten minutes_ if you already have your documents ready.
 
-## Wait, Does This Cost Money?
+# Wait, Does This Cost Money?
 
 Sometimes. There's a **$25 one-time fee**, the same fee that's existed for Play Console accounts for years.
 
@@ -40,7 +49,7 @@ But Google has also created a **free student/hobbyist tier** with lighter requir
 
 So the _$25 and government ID_ version of this that circulates online is accurate for commercial developers, but not entirely accurate for hobbyists, who get a lighter, free path.
 
-## The Actual Timeline
+# The Actual Timeline
 
 - **August 2025**: Google [announces the program](https://techcrunch.com/2025/08/25/google-will-require-developer-verification-for-android-apps-outside-the-play-store/)
 - **Early to mid 2026**: Registration opens to all developers, verification tools roll out ahead of any user-facing changes
@@ -50,7 +59,7 @@ So the _$25 and government ID_ version of this that circulates online is accurat
 > [!NOTE]
 > That **September 2026** date is a regional pilot, not a worldwide switch. The global rollout is what's scheduled for **2027**.
 
-## Whose Phones Does This Actually Affect?
+# Whose Phones Does This Actually Affect?
 
 This is the part that gets simplified the most online, so it's worth being precise.
 
@@ -62,7 +71,7 @@ The rule only applies to _certified_ Android devices: phones that ship with Goog
 
 So "_every Android device worldwide_" isn't quite right. It's every Google-certified Android device, still the vast majority of phones people actually use, but a meaningfully different claim.
 
-## Can You Still Install Unverified Apps? The "Advanced Flow"
+# Can You Still Install Unverified Apps? The "Advanced Flow"
 
 Yes, but Google made it **deliberately difficult**. This is the part critics call a trap door, and it's worth walking through exactly what it involves, since both sides describe the same steps very differently.
 
@@ -80,11 +89,11 @@ Critics' response: _a 24-hour wait, plus multiple warning screens, plus a mode b
 
 Separately, installing apps over ADB (Android Debug Bridge, a tool developers already use) continues to work as another way around the restriction, and isn't going away.
 
-## Why Google Says This Is Necessary
+# Why Google Says This Is Necessary
 
 Google's stated reasoning centers on one statistic: it says its [own analysis found more than 90 times more malware coming from sideloaded apps than from Google Play](https://android-developers.googleblog.com/2026/03/android-developer-verification-rolling-out-to-all-developers.html). The idea is that anonymous distribution makes it easy for a scammer to get banned and simply come back under a new name with a new app, with no consequence. Tying an app to a real identity, Google argues, makes that much harder, since a banned developer stays banned.
 
-## Why Critics Disagree
+# Why Critics Disagree
 
 The pushback isn't coming from a random advocacy group. Over 70 organizations have signed [an open letter opposing this](https://f-droid.org/en/2026/02/24/open-letter-opposing-developer-verification.html), **including F-Droid, the Electronic Frontier Foundation, the Free Software Foundation, GrapheneOS, the Tor Project, KDE, GNOME, Proton, Brave, and Nextcloud**, among others.
 
@@ -97,13 +106,13 @@ Their core arguments:
 
 Google, for its part, says it built the advanced flow specifically in response to this feedback, describing it as an attempt to balance safety with keeping the platform open for power users.
 
-## Is This "The Same As Apple"?
+# Is This "The Same As Apple"?
 
 Not exactly, and both sides make a point of the difference. Apple has required app review and, until regulatory pressure in places like the EU, effectively didn't allow sideloading at all. Android historically allowed installing anything from anywhere, no permission needed.
 
 This change moves Android's default closer to Apple's model, which is exactly why people who chose Android specifically because it wasn't like Apple are unhappy about it. It's a fair comparison to make, but the two platforms aren't starting from the same baseline.
 
-## What This Means If You Build for Android
+# What This Means If You Build for Android
 
 If you're a solo or hobbyist developer distributing outside the Play Store, an internal tool, an F-Droid app, something you share with friends, a few things are worth knowing:
 
@@ -114,7 +123,7 @@ If you're a solo or hobbyist developer distributing outside the Play Store, an i
 
 If you only don't build mobile applications for android, this might not touch you directly. But if your community includes Android developers, or you rely on sideloaded tools yourself, it's worth understanding before September 2026.
 
-## The Takeaway
+# The Takeaway
 
 The core, verified facts: Google will require developer identity verification to install apps on certified Android devices, rolling out **regionally from September 2026** and **globally in 2027**, with a deliberately high-friction bypass for power users.
 

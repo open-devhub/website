@@ -8,7 +8,7 @@ tags: [more, coming, soon]
 
 The Articles section is officially live, you just read (or skipped past) the first ones. More are on the way.
 
-## What to expect
+# What to expect
 
 Going forward, you can look forward to write-ups covering:
 
@@ -19,7 +19,7 @@ Going forward, you can look forward to write-ups covering:
 > [!NOTE]
 > Got a topic you want covered? Use the `/suggest` command in Panda to send it our way. Or if you'd rather write it yourself, fork [open-devhub/website](/r/website), add your blog post under `/content/blog/`, and open a PR, blogs here are written by the people building DevHub, so community input actually shapes what gets published.
 
-## Why we're doing this
+# Why we're doing this
 
 A lot of useful knowledge about building on Discord ends up scattered across random threads, outdated docs, and tribal knowledge passed around in DMs. The goal here is to put that knowledge somewhere permanent, searchable, and easy to point people to.
 

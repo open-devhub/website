@@ -7,6 +7,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Markdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import {
   ArrowDown,
   ArrowLeft,
@@ -28,7 +29,7 @@ async function SideBar({ slug }: { slug: string }) {
   const toc = getTOC(blog?.content || "");
 
   return (
-    <div className="sm:w-64 mt-xl py-sm hidden lg:flex flex-row overflow-x-auto w-full sm:flex-col gap-md shrink-0">
+    <div className="sm:w-64 mt-xl py-sm hidden lg:flex flex-row w-full sm:flex-col gap-md shrink-0">
       {/* action row */}
       <div className="flex gap-xs px-xs">
         {[
@@ -68,9 +69,12 @@ async function SideBar({ slug }: { slug: string }) {
           <Link
             key={item.id}
             href={`#${item.id}`}
-            className={`text-left px-sm text-sm py-xs rounded-md w-full undecorated text-md transition-colors cursor-pointer text-text-secondary hover:text-text hover:bg-bg-secondary`}
+            className={`text-left px-sm text-sm py-xs rounded-md w-full undecorated text-md transition-colors cursor-pointer text-text-secondary hover:text-text hover:bg-bg-secondary ${item.level === 2 && "ml-sm text-xs"}`}
           >
-            {item.text}
+            {/* disallow a tags to avoid hydration errors */}
+            <Markdown disallowedElements={["a"]} unwrapDisallowed={true}>
+              {item.text}
+            </Markdown>
           </Link>
         ))}
       </div>
@@ -178,6 +182,7 @@ async function BlogContent({ slug }: { slug: string }) {
         <Markdown
           remarkPlugins={[remarkCustomAlerts, remarkGfm]}
           components={headingComponents}
+          rehypePlugins={[rehypeRaw]}
         >
           {blog.content}
         </Markdown>
