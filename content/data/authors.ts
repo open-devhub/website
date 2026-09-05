@@ -15,4 +15,9 @@ export const authors: Author[] = [
     social: "https://github.com/joshdegr8",
     avatar: "https://avatars.githubusercontent.com/u/237527158?s=64&v=4",
   },
+  {
+    name: "SpideY",
+    social: "https://github.com/spideythedev",
+    avatar: "https://avatars.githubusercontent.com/u/221688867?v=4",
+  },
 ];
