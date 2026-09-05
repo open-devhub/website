@@ -1,7 +1,7 @@
 ---
 title: "What Happens When You Type google.com?"
 description: "A journey through DNS, TCP, TLS, HTTP, Google's infrastructure, and browser rendering — from a URL to the pixels on your screen."
-author: "DevHub "
+author: "DevHub"
 date: "2026-09-01"
 category: "Web"
 tags:
