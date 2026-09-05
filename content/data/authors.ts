@@ -1,5 +1,3 @@
-// Here!
-
 export type Author = {
   name: string;
   social: string;
