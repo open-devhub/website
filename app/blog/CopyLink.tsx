@@ -1,17 +1,14 @@
 "use client";
 
+import Button from "@/components/ui/Button";
 import React from "react";
-import { Check, IconComponent } from "reicon-react";
+import { Check, Link as LinkIcon } from "reicon-react";
 
 interface CopyLinkProps {
-  children: React.ReactElement<{
-    icon?: IconComponent;
-    onClick?: () => void;
-  }>;
   link: string;
 }
 
-export default function CopyLink({ children, link }: CopyLinkProps) {
+export default function CopyLink({ link }: CopyLinkProps) {
   const [copied, setCopied] = React.useState(false);
   const feedbackTimeout = React.useRef<ReturnType<typeof setTimeout> | null>(
     null,
@@ -46,8 +43,11 @@ export default function CopyLink({ children, link }: CopyLinkProps) {
     }
   };
 
-  return React.cloneElement(children, {
-    icon: copied ? Check : children.props.icon,
-    onClick: handleCopy,
-  });
+  return (
+    <Button
+      className="px-xs py-sm h-md"
+      icon={copied ? Check : LinkIcon}
+      onClick={handleCopy}
+    />
+  );
 }

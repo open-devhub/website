@@ -15,7 +15,6 @@ import {
   Calendar,
   Clock,
   Edit,
-  Link as LinkIcon,
   PenLine,
   Tag3,
 } from "reicon-react";
@@ -56,9 +55,7 @@ async function SideBar({ slug }: { slug: string }) {
           </Link>
         ))}
 
-        <CopyLink link={`${staticData.linkShort}/blog/${slug}`}>
-          <Button className="px-xs py-sm h-md" icon={LinkIcon} />
-        </CopyLink>
+        <CopyLink link={`${staticData.linkShort}/blog/${slug}`} />
       </div>
       <div className="flex flex-col gap-xs">
         <span className="text-xl mb-sm px-xs tracking-wider hidden sm:block whitespace-nowrap">
