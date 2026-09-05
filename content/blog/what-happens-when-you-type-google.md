@@ -13,7 +13,6 @@ tags:
   - browsers
   - internet
   - how-it-works
-  - featured
 ---
 
 # What Happens When You Type `google.com`?
