@@ -105,7 +105,6 @@ export default function Footer() {
             href="https://raw.githubusercontent.com/open-devhub/website/refs/heads/main/LICENSE"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline"
           >
             GNU General Public License v3.0
           </Link>
