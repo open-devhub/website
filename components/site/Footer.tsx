@@ -99,7 +99,17 @@ export default function Footer() {
 
       {/* bottom section (copyright and a smol msg) */}
       <div className="flex flex-col sm:flex-row items-center justify-between text-text-tertiary w-full py-md border-t border-accent-muted whitespace-nowrap">
-        <span>© 2026 Open DevHub. All rights reserved.</span>
+        <span>
+          © 2026 Open DevHub. Licensed under the{" "}
+          <Link
+            href="https://raw.githubusercontent.com/open-devhub/website/refs/heads/main/LICENSE"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-text-secondary hover:underline"
+          >
+            GNU General Public License v3.0
+          </Link>
+        </span>
         <span className="flex gap-xxs items-center">
           Built with <Heart className="text-accent" weight="Filled" size={16} />{" "}
           by the community, for the community.
