@@ -779,4 +779,3 @@ And finally, **you see a webpage.**
 All from six characters. That's the web. And that's what happens when you type `google.com`.
 
 > **The Internet feels simple because billions of complicated decisions happen underneath the surface.**
-
