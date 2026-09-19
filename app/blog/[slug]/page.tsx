@@ -200,8 +200,8 @@ async function BlogContent({ slug }: { slug: string }) {
           {blogs
             .filter((b) => blog !== b)
             .slice(0, 2)
-            .map((blog) => (
-              <BlogCard key={blog.metadata.title} blog={blog} />
+            .map((blog, i) => (
+              <BlogCard key={blog.metadata.title} blog={blog} index={i} />
             ))}
         </div>
       </div>
