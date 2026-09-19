@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRightUp, Calendar, Edit } from "reicon-react";
 import { type BlogData, getBlogs } from "./loader";
 
-export function BlogCard({ blog }: { blog: BlogData }) {
+export function BlogCard({ blog, index }: { blog: BlogData; index: number }) {
   const isFeatured = blog.metadata.featured;
 
   return (
@@ -25,11 +25,18 @@ export function BlogCard({ blog }: { blog: BlogData }) {
             </div>
           )}
 
-          {isFeatured && (
-            <span className="bg-accent-muted text-text-primary px-xs py-xxs rounded-md text-xs">
-              Featured
-            </span>
-          )}
+          <div className="flex items-center gap-xxs">
+            {index === 0 && (
+              <span className="bg-accent-muted text-text-primary px-xs py-xxs rounded-md text-xs">
+                Latest
+              </span>
+            )}
+            {isFeatured && (
+              <span className="bg-accent-muted text-text-primary px-xs py-xxs rounded-md text-xs">
+                Featured
+              </span>
+            )}
+          </div>
         </div>
 
         <h2 className="text-2xl">
@@ -108,8 +115,8 @@ export default async function Blog() {
 
       <div className="max-w-7xl w-full px-md py-lg">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-md grid-flow-dense">
-          {blogs.map((blog) => (
-            <BlogCard key={blog.metadata.title} blog={blog} />
+          {blogs.map((blog, i) => (
+            <BlogCard key={blog.metadata.title} blog={blog} index={i} />
           ))}
         </div>
       </div>
