@@ -43,7 +43,7 @@ export default function Partners() {
               <h1 className="text-2xl">{partner.name}</h1>
               <span className="text-text-secondary">{partner.description}</span>
               <Link
-                href={`${partner.url}?utm_source=devhub&utm_medium=partner&ref=devhub`}
+                href={`${partner.url}?utm_source=devhub&utm_medium=partner&ref=${staticData.link.split("://")[1] ?? "devhub"}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-fit"
