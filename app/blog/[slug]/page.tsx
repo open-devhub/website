@@ -1,3 +1,4 @@
+
 import Button from "@/components/ui/Button";
 import Skeleton from "@/components/ui/Skeleton";
 import { getTOC, headingComponents, remarkCustomAlerts } from "@/lib/markdown";
@@ -185,26 +186,31 @@ async function BlogContent({ slug }: { slug: string }) {
         </Markdown>
       </article>
 
-      <div className="flex flex-col gap-md mt-md">
-        <div className="flex items-center justify-between">
-          <h3 className="text-lg flex items-center gap-sm">
-            <span>More like this</span>
-            <ArrowDown size={16} />
-          </h3>
-          <Link href="/blog" className="text-lg flex items-center gap-sm">
-            <span>All posts</span>
-            <ArrowRight size={16} />
-          </Link>
-        </div>
-        <div className="flex gap-md">
-          {blogs
-            .filter((b) => blog !== b)
-            .slice(0, 2)
-            .map((blog, i) => (
-              <BlogCard key={blog.metadata.title} blog={blog} index={i} />
-            ))}
-        </div>
-      </div>
+      {(() => {
+        const currentIndex = blogs.findIndex((b) => b === blog);
+        const prevPost = blogs[currentIndex + 1]; // older post (array is newest-first)
+        const nextPost = blogs[currentIndex - 1]; // newer post
+
+        return (
+          <div className="flex flex-col gap-md mt-md">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg flex items-center gap-sm">
+                <span>More like this</span>
+                <ArrowDown size={16} />
+              </h3>
+              <Link href="/blog" className="text-lg flex items-center gap-sm">
+                <span>All posts</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+            <div className="flex gap-md">
+              {[prevPost, nextPost].filter(Boolean).map((b, i) => (
+                <BlogCard key={b!.metadata.title} blog={b!} index={i} />
+              ))}
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 }
