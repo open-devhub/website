@@ -2,7 +2,9 @@
 import Button from "@/components/ui/Button";
 import Skeleton from "@/components/ui/Skeleton";
 import { getTOC, headingComponents, remarkCustomAlerts } from "@/lib/markdown";
+import { metadata as siteMetadata } from "@/lib/metadata";
 import staticData from "@/lib/staticdata";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -237,6 +239,58 @@ async function BlogPageContent({ slug }: { slug: string }) {
   );
 }
 
+export async function generateStaticParams() {
+  return (await getBlogs()).map((blog) => ({ slug: blog.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const blog = await getBlogBySlug(slug);
+
+  if (!blog) return {};
+
+  const { title, description, date, authors, tags } = blog.metadata;
+  const parsed = date ? new Date(date) : undefined;
+  // front matter dates have no timezone, keep the calendar day in UTC
+  const published =
+    parsed && !isNaN(parsed.getTime())
+      ? new Date(
+          Date.UTC(parsed.getFullYear(), parsed.getMonth(), parsed.getDate()),
+        ).toISOString()
+      : undefined;
+  const url = `/blog/${slug}`;
+
+  return {
+    title,
+    description,
+    authors: authors?.map((name) => ({ name })),
+    keywords: tags,
+    alternates: { canonical: url },
+    // openGraph and twitter replace the root ones, so keep the site defaults
+    openGraph: {
+      siteName: siteMetadata.openGraph?.siteName,
+      locale: siteMetadata.openGraph?.locale,
+      images: siteMetadata.openGraph?.images,
+      type: "article",
+      url,
+      title,
+      description,
+      publishedTime: published,
+      authors,
+      tags,
+    },
+    twitter: {
+      ...siteMetadata.twitter,
+      title,
+      description,
+    },
+  };
+}
+
 export default async function Blog({
   params,
 }: {
@@ -245,6 +299,9 @@ export default async function Blog({
   }>;
 }) {
   const { slug } = await params;
+
+  // notFound() inside the suspense boundary would still answer with a 200
+  if (!(await getBlogBySlug(slug))) notFound();
 
   return (
     <div className="w-full flex justify-center py-md">
