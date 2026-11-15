@@ -2,7 +2,9 @@ import Button from "@/components/ui/Button";
 import ShinyText from "@/components/ui/ShinyText";
 import Skeleton from "@/components/ui/Skeleton";
 import { headingComponents, remarkCustomAlerts } from "@/lib/markdown";
+import { metadata as siteMetadata } from "@/lib/metadata";
 import staticData from "@/lib/staticdata";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -152,6 +154,42 @@ function PageSkeleton() {
   );
 }
 
+export async function generateStaticParams() {
+  return (await getPages()).map((page) => ({ slug: page.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const page = await getPageBySlug(slug);
+
+  if (!page) return {};
+
+  const { title, description } = page.metadata;
+  const url = `/pages/${slug}`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    // openGraph and twitter replace the root ones, so keep the site defaults
+    openGraph: {
+      ...siteMetadata.openGraph,
+      url,
+      title,
+      description,
+    },
+    twitter: {
+      ...siteMetadata.twitter,
+      title,
+      description,
+    },
+  };
+}
+
 export default async function Page({
   params,
 }: {
@@ -160,6 +198,9 @@ export default async function Page({
   }>;
 }) {
   const { slug } = await params;
+
+  // notFound() inside the suspense boundary would still answer with a 200
+  if (!(await getPageBySlug(slug))) notFound();
 
   return (
     <div className="w-full flex justify-center py-md">
